@@ -1,12 +1,12 @@
 # Advanced Setup
 
-If you want to setup XREngine docker instances, client, server, and/or
+If you want to setup Ethereal Engine docker instances, client, server, and/or
 instance-server manually, follow these directions. The advanced setup is recommended
 for all users, in order to understand more about everything that going on.
 
 ### 1.  Install your dependencies
 ```
-cd path/to/xrengine
+cd path/to/ethereal-engine
 npm install
 npm run dev-docker
 npm run dev-reinit
@@ -90,7 +90,7 @@ If you are on windows you need to use ```npm run dev-windows``` instead of ```np
 ### 7. In a browser, navigate to https://127.0.0.1:3000/location/default
 The database seeding process creates a default empty location called 'default'.
 It can be navigated to by going to 'https://127.0.0.1:3000/location/default'.
-As of this writing, the cert provided in the XREngine package for local use is
+As of this writing, the cert provided in the ethereal engine package for local use is
 not adequately signed. You can create signed certificates and replace the
 default ones, but most developers just ignore the warnings. Browsers will throw
 up warnings about going to insecure pages. You should be able to tell the browser

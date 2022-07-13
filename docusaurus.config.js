@@ -13,11 +13,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'xrengine',
+  title: 'ethereal-engine',
   tagline:
     'An end-to-end solution for hosting humans and AI in a virtual space, built on top of react, three.js and express/feathers.',
   url: 'https://xrfoundation.github.io',
-  baseUrl: '/xrengine-docs/',
+  baseUrl: '/ethereal-engine-docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -176,7 +176,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/XRFoundation/XREngine/packages/docs/'
+          editUrl: 'https://github.com/XRFoundation/Ethereal-Engine-Docs/'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -189,9 +189,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'XREngine',
+        title: 'Ethereal Engine',
         logo: {
-          alt: 'XREngine Logo',
+          alt: 'Ethereal Engine Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -251,12 +251,12 @@ const config = {
               },
               {
                 label: 'Open Collective',
-                href: 'https://opencollective.com/xrfoundation'
+                href: 'https://opencollective.com/etherealengine'
               }
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} XRFoundation.`
+        copyright: `Copyright © ${new Date().getFullYear()} Ethereal Engine.`
       },
       prism: {
         theme: lightCodeTheme,

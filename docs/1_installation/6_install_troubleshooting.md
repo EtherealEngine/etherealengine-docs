@@ -6,7 +6,7 @@
 
 ### Invalid Certificate errors in local environment
 
-As of this writing, the cert provided in the xrengine package for local use
+As of this writing, the cert provided in the ethereal engine package for local use
 is not adequately signed. Browsers will throw up warnings about going to insecure pages.
 You should be able to tell the browser to ignore it, usually by clicking on some sort
 of 'advanced options' button or link and then something along the lines of 'go there anyway'.

@@ -1,4 +1,4 @@
-# XREngine on Minikube
+# Ethereal Engine on Minikube
 
 ## Install kubectl, Helm, Docker, and VirtualBox
 If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/),
@@ -11,19 +11,19 @@ You may also need to install [Docker Compose](https://docs.docker.com/compose/in
 Instructions can be found [here](https://minikube.sigs.k8s.io/docs/start/)
 
 While you can follow the demo instructions there about starting minikube, deploying
-some demo deployments, etc. to get a feel for it, before deploying XREngine you should delete
+some demo deployments, etc. to get a feel for it, before deploying Ethereal Engine you should delete
 your minikube cluster, since we have some specific starting requirements.
 
 ## Clone this repo to your local machine
-To build the XREngine Docker image locally, and to have a pre-tested way to run various local
-services, you'll need to get the XREngine repo on your machine. This is most easily
+To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local
+services, you'll need to get the Ethereal Engine repo on your machine. This is most easily
 done by running `git clone https://github.com/XRFoundation/XREngine.git`
 
 ## Start MariaDB server locally via Docker
 For simplicity, we recommend running a MariaDB server on your local machine outside of minikube.
 Later instructions will set up minikube so that it can access this server
 
-If you run `docker-compose up` from the top-level `/scripts` directory in the XREngine repo, it will
+If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will
 start up multiple MariaDB docker images (as well as a redis server, which is not needed). One, intended
 for local development, runs on port 3306; another, intended for automated testing purposes, runs on 
 port 3305; and the last one, intended for minikube testing, runs on port 3304. Once the
@@ -40,7 +40,7 @@ storage provider like AWS S3, you'll need to have the local file server running 
 outside of minikube.
 
 Run `npm install` (or `yarn install` if `npm install` isn't working right;
-you'd need to install yarn in that case) from the root of the XREngine repo. When that's finished,
+you'd need to install yarn in that case) from the root of the Ethereal Engine repo. When that's finished,
 go to packages/server and run `npm run serve-local-files`. This will start a local file server
 on port 8642, and will create and serve those files from packages/server/upload.
 
@@ -90,7 +90,7 @@ You'll need to add a few Helm repos. Run the following:
 `helm repo add redis https://charts.bitnami.com/bitnami`
 `helm repo add xrengine https://helm.xrengine.io`
 
-This will add the Helm charts for Agones, redis, and XREngine, respectively.
+This will add the Helm charts for Agones, redis, and Ethereal Engine, respectively.
 
 ## Install Agones and redis deployments
 After adding those Helm repos, you'll start installing deployments using Helm repos.
@@ -100,7 +100,7 @@ which should say 'minikube'. You can also run `kubectl config get-contexts` to g
 that kubectl has been configured to run; the current one will have a '*' under the left-most
 'current' column.
 
-Once kubectl is pointed to minikube, from the top of the XREngine repo, run
+Once kubectl is pointed to minikube, from the top of the Ethereal Engine repo, run
 `helm install -f packages/ops/configs/agones-default-values.yaml agones agones/agones` to install Agones
 and `helm install local-redis redis/redis` to install redis.
 
@@ -136,7 +136,7 @@ After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by ty
 In order to connect logger with elasticsearch, update `packages/ops/configs/local.template.values.yaml` env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
 
 ## Run build_minikube.sh
-When minikube is running, run the following command from the root of the XREngine repo:
+When minikube is running, run the following command from the root of the Ethereal Engine repo:
 `./scripts/build_minikube.sh`
 
 This points Docker *in the current terminal* to minikube's Docker environment. Anything that Docker builds
@@ -152,11 +152,11 @@ accessible on `(local/api-local/instanceserver-local).theoverlay.io`; if you wan
 domain, then you'll have to set those three environment variables to what you want them to be (and also
 change the hostfile records you made pointing those subdomains to minikube's IP)
 
-This will build an image of the entire XREngine repo into a single Docker file. When deployed for
+This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for
 different services, it will only run the parts needed for that service. This may take up to 15 minutes,
 though later builds should take less time as things are cached.
 
-## Deploy XREngine Helm chart
+## Deploy Ethereal Engine Helm chart
 Run the following command: `helm install -f </path/to/local.values.yaml> --set api.extraEnv.FORCE_DB_REFRESH=true local xrengine/xrengine`.
 This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
 a [template](../packages/ops/configs/local.template.values.yaml) for this file in packages/ops/configs

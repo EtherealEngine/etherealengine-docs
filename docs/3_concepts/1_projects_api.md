@@ -81,7 +81,7 @@ uncommitted & unpushed files will be lost.
 
 ## Config
 
-The xrengine config file has the following options:
+The ethereal engine config file has the following options:
 
 ```ts
 export interface ProjectConfigInterface {
@@ -118,7 +118,7 @@ export interface ProjectEventHooks {
 
 These functions are called when the project they belong to are installed, 
 updated (such as scenes saved) or uninstalled respectively. This is used in the 
-default xrengine project to install the default avatars. 
+default ethereal engine project to install the default avatars. 
 See `/packages/projects/default-project/projectEventHooks.ts`.
 
 ### Thumbnail
@@ -158,7 +158,7 @@ The `databaseSeed` property is a relative path that points to a file which must
 return type `ServicesSeedConfig` from `../packages/common/src/interfaces/ServicesSeedConfig.ts`
 which is run when the database seeder is run. This can be useful for setting 
 custom locations, which can be seen in the 
-[xrengine demo project](https://github.com/XRFoundation/demo-xrengine-project).
+[Ethereal Engine demo project](https://github.com/XRFoundation/demo-xrengine-project).
 
 ### i18n
 

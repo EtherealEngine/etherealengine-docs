@@ -6,7 +6,7 @@ slug: /
 sidebar_position: 0
 ---
 
-# Why are we building XREngine?
+# Why are we building Ethereal Engine?
 
 We chose to build a free, open, full-stack MMO engine that anyone could run for 
 any reason - to host events, make games, show art, or just to give a space for 
@@ -14,7 +14,7 @@ your community. There are plenty of platforms you can spend a bit of money on to
 have a world, but you can't be in complete control of the experience or 
 customise it from the ground up.
 
-When the XREngine stack is deployed, that stack is sovereign, open and cross 
+When the Ethereal Engine stack is deployed, that stack is sovereign, open and cross 
 platform by default. Users can make any kind of game or experience with no limits. 
 And with the tech we're building now, users will be able to seamlessly travel 
 through portals from my worlds to yours, on different servers, and have all 
@@ -27,9 +27,9 @@ belong to a community.
 
 This repository serves a few functions. 
 
-### XREngine
+### Ethereal Engine
 Primarily, it acts a full stack deployment environment. The engine itself is the 
-heart of XREngine, using libraries such as [threejs](https://threejs.org/), 
+heart of Ethereal Engine, using libraries such as [threejs](https://threejs.org/), 
 [bitecs](https://github.com/NateTheGreatt/bitECS), [ethereal](https://github.com/aelatgt/ethereal), 
 [PhysX](https://github.com/NVIDIAGameWorks/PhysX) and 
 [Mediasoup WebRTC](https://github.com/versatica/mediasoup) to enables robust MMO 
