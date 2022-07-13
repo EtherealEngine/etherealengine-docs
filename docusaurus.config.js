@@ -17,7 +17,7 @@ const config = {
   tagline:
     'An end-to-end solution for hosting humans and AI in a virtual space, built on top of react, three.js and express/feathers.',
   url: 'https://xrfoundation.github.io',
-  baseUrl: '/xrengine-docs/',
+  baseUrl: '/Ethereal-Engine-Docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
