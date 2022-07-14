@@ -17,7 +17,7 @@ const config = {
   tagline:
     'An end-to-end solution for hosting humans and AI in a virtual space, built on top of react, three.js and express/feathers.',
   url: 'https://xrfoundation.github.io',
-  baseUrl: '/Ethereal-Engine-Docs/',
+  baseUrl: '/ethereal-engine-docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -25,7 +25,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'XRFoundation', // Usually your GitHub org/user name.
-  projectName: 'Ethereal-Engine-Docs', // Usually your repo name.
+  projectName: 'ethereal-engine-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -176,7 +176,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/XRFoundation/Ethereal-Engine-Docs/'
+          editUrl: 'https://github.com/XRFoundation/ethereal-engine-docs/'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
