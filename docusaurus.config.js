@@ -4,12 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
-// const commonExludePaths = [
-//   '**/node_modules/**',
-//   '**/dist/**',
-//   '**/tests/**',
-//   '**/packages/engine/src/assets/loaders/fbx/fflate.module.js'
-// ]
+const commonExcludePaths = ['**/**.js', '**/{node_modules,dist,tests}/**']
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -35,137 +30,120 @@ const config = {
     locales: ['en']
   },
 
-  // plugins: [
-  //   // [
-  //   //   'docusaurus-plugin-typedoc',
-  //   //   {
-  //   //     id: 'client',
-  //   //     entryPoints: ['../packages/client/src/main.tsx'],
-  //   //     entryPointStrategy: 'expand',
-  //   //     tsconfig: '../packages/client/tsconfig.json',
-  //   //     exclude: [
-  //   //       ...commonExludePaths,
-  //   //       '../packages/client/vite.config.js',
-  //   //       '../packages/client/jest.config.js',
-  //   //       '../packages/client/public/**',
-  //   //       '../packages/client/lib/**',
-  //   //       '../packages/client/scripts/**'
-  //   //     ],
-  //   //     out: 'generated/client',
-  //   //     readme: 'none',
-  //   //   },
-  //   // ],
-  //   // [
-  //   //   'docusaurus-plugin-typedoc',
-  //   //   {
-  //   //     id: 'client-core',
-  //   //     entryPoints: ['../packages/client-core'],
-  //   //     entryPointStrategy: 'expand',
-  //   //     tsconfig: '../packages/client-core/tsconfig.json',
-  //   //     exclude: [
-  //   //       ...commonExludePaths,
-  //   //       '../packages/client-core/build.js',
-  //   //       '../packages/client-core/rollup.config.js',
-  //   //       '../packages/client-core/jest.config.js',
-  //   //       '../packages/client-core/scripts/**',
-  //   //     ],
-  //   //     out: 'generated/client-core',
-  //   //     readme: 'none',
-  //   //   },
-  //   // ],
-  //   [
-  //     'docusaurus-plugin-typedoc',
-  //     {
-  //       id: 'server',
-  //       entryPoints: ['../packages/server'],
-  //       entryPointStrategy: 'expand',
-  //       tsconfig: '../packages/server/tsconfig.json',
-  //       exclude: [
-  //         ...commonExludePaths,
-  //         '../packages/server/public/**',
-  //         '../packages/server/scripts/**',
-  //         '../packages/server/tests old/**',
-  //         '../packages/engine/src/assets/loaders/fbx/fflate.module.js'
-  //       ],
-  //       out: 'generated/server',
-  //       readme: 'none',
-  //     },
-  //   ],
-  //   [
-  //     'docusaurus-plugin-typedoc',
-  //     {
-  //       id: 'server-core',
-  //       entryPoints: ['../packages/server-core/src/'],
-  //       entryPointStrategy: 'expand',
-  //       tsconfig: '../packages/server-core/tsconfig.json',
-  //       exclude: [
-  //         ...commonExludePaths,
-  //         '../packages/server-core/scripts/**',
-  //         '../packages/server-core/.mocharc.js',
-  //         '../packages/server-core/rollup.config.js',
-  //         '../packages/server-core/vite.build.js',
-  //         '../packages/engine/src/assets/loaders/fbx/fflate.module.js'
-  //       ],
-  //       out: 'generated/server-core',
-  //       readme: 'none',
-  //     },
-  //   ],
-  //   [
-  //     'docusaurus-plugin-typedoc',
-  //     {
-  //       id: 'common',
-  //       entryPoints: ['../packages/common'],
-  //       entryPointStrategy: 'expand',
-  //       tsconfig: '../packages/common/tsconfig.json',
-  //       exclude: [
-  //         ...commonExludePaths,
-  //         '../packages/common/scripts/**',
-  //         '../packages/common/rollup.config.js',
-  //         '../packages/common/vite.build.js',
-  //         '../packages/engine/src/assets/loaders/fbx/fflate.module.js'
-  //       ],
-  //       out: 'generated/common',
-  //       readme: 'none',
-  //     },
-  //   ],
-  //   [
-  //     'docusaurus-plugin-typedoc',
-  //     {
-  //       id: 'engine',
-  //       entryPoints: ['../packages/engine/src/'],
-  //       entryPointStrategy: 'expand',
-  //       tsconfig: '../packages/engine/tsconfig.json',
-  //       exclude: [
-  //         ...commonExludePaths,
-  //         '../packages/engine/scripts/**',
-  //         '../packages/engine/.mocharc.js',
-  //         '../packages/engine/rollup.config.js',
-  //         '../packages/engine/vite.build.js',
-  //         '../packages/engine/src/physics/physx/physx.release.cjs.js',
-  //         '../packages/engine/src/physics/physx/physx.release.esm.js',
-  //         '../packages/engine/src/assets/loaders/fbx/fflate.module.js'
-  //       ],
-  //       out: 'generated/engine',
-  //       readme: 'none',
-  //     },
-  //   ],
-  //   [
-  //     'docusaurus-plugin-typedoc',
-  //     {
-  //       id: 'gameserver',
-  //       entryPoints: ['../packages/gameserver/src/'],
-  //       entryPointStrategy: 'expand',
-  //       tsconfig: '../packages/gameserver/tsconfig.json',
-  //       exclude: [
-  //         ...commonExludePaths,
-  //         '../packages/gameserver/.mocharc.js',
-  //         '../packages/gameserver/vite.build.js'
-  //       ],
-  //       out: 'generated/gameserver',
-  //       readme: 'none',
-  //     },
-  //   ],
-  // ],
+  plugins: [
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'client',
+        entryPoints: ['../packages/client/src/main.tsx'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/client/tsconfig.json',
+        exclude: [...commonExcludePaths, '../packages/client/{public,scripts}/**'],
+        out: 'Api/client',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'client',
+          position: 1,
+        }
+      }
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'client-core',
+        entryPoints: ['../packages/client-core'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/client-core/tsconfig.json',
+        exclude: [...commonExcludePaths, '../packages/client-core/scripts/**'],
+        out: 'Api/client-core',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'client-core',
+          position: 2,
+        }
+      }
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'common',
+        entryPoints: ['../packages/common'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/common/tsconfig.json',
+        exclude: [...commonExcludePaths],
+        out: 'Api/common',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'common',
+          position: 3,
+        }
+      }
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'engine',
+        entryPoints: ['../packages/engine/src'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/engine/tsconfig.json',
+        exclude: [...commonExcludePaths, '../packages/engine/scripts/**'],
+        out: 'Api/engine',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'engine',
+          position: 4,
+        }
+      }
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'instanceserver',
+        entryPoints: ['../packages/instanceserver/src/'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/instanceserver/tsconfig.json',
+        exclude: [...commonExcludePaths],
+        out: 'Api/instanceserver',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'instanceserver',
+          position: 5,
+        }
+      }
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'server',
+        entryPoints: ['../packages/server'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/server/tsconfig.json',
+        exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
+        out: 'Api/server',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'server',
+          position: 6,
+        }
+      }
+    ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        id: 'server-core',
+        entryPoints: ['../packages/server-core/src/'],
+        entryPointStrategy: 'expand',
+        tsconfig: '../packages/server-core/tsconfig.json',
+        exclude: [...commonExcludePaths, '../packages/server-core/scripts/**'],
+        out: 'Api/server-core',
+        readme: 'none',
+        sidebar: {
+          categoryLabel: 'server-core',
+          position: 7,
+        }
+      }
+    ]
+  ],
 
   presets: [
     [
@@ -192,7 +170,7 @@ const config = {
         title: 'Ethereal Engine',
         logo: {
           alt: 'Ethereal Engine Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.svg'
         },
         items: [
           {
