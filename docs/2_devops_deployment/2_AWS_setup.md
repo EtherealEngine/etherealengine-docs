@@ -351,30 +351,6 @@ From the top level of this repo, run ```helm install -f ./packages/ops/configs/n
 This says to install a service called 'nginx' from the 'ingress-nginx' package in the 'ingress-nginx' chart, and to configure it with
 a file found at /packages/ops/configs/nginx-ingress-aws-values.yml.
 
-## Upgrade Classic LoadBalancer to Application LoadBalancer
-**This step cannot be done until the ingress-nginx service installation step has completed, which requires the associated ACM Certificate to be validated**
-
-By default, Kubernetes LoadBalancer Services will create Classic LoadBalancers in AWS.
-There are features of Application LoadBalancers we'd like to have though.
-In the AWS web client, go to EC2 -> Load Balancing -> Load Balancers.
-There should be one Classic loadbalancer there. If there are others from other projects,
-find the one that the cluster just made; clicking through to its VPC should show whether
-it's the one you're looking for (the VPC should be named ```eksctl-<cluster_name>-cluster```).
-
-When you've highlighted the correct LB, click on the tab Migration, then click the button
-Launch ALB Migration Wizard. You shouldn't have to select anything on the page that comes
-up, just hit Create and then Close once it finishes.
-
-When you go back to the Load Balancer list, make note of the DNS name of the Application
-loadbalancer you just created. It should be similar to the name of the classic one.
-
-Highlight the new ALB and click on the Listeners tab. Select the HTTPS:443 listener and click Edit.
-There should be one entry under Default Action(s), and it should be Forward To `<ID of both load balancers>`.
-Click the pencil icon on the left to edit it, then open the accordion for Group-Level Stickiness,
-check the checkbox next to Enable Up To and switch 'hours' to 'days', leaving it as 'Enable up to 1 days'.
-(Several hours would also be an acceptable setting; we just don't want connections to time out after an hour).
-Click the checkmark at the bottom of this accordion, then the Update button near the top of the screen.
-
 ## Set up Simple Email Service
 
 You need to set up Simple Email Service so that login links can be sent.
@@ -487,10 +463,8 @@ Under Routing Policy, leave it on Simple Routing and click Next. Then click Defi
 
 The first record should be for the top-level domain, e.g. ```ethereal-engine.io```, so leave the Record Name
 text field blank. Under Value/Route Traffic To, click on the dropdown and select
-Alias to Application and Classic Load Balancer. Select the region that your cluster is in.
-Where it says Choose Load Balancer, click the dropdown, and select the Application loadbalancer - make
-sure you're selecting the Application LB and not the Classic LB, which are easy to get mixed up since everything
-before the '-' in the name is the same.
+Alias to Network Load Balancer. Select the region that your cluster is in.
+Where it says Choose Load Balancer, click the dropdown, and select the NLB that was created.
 Leave the Record Type as 'A - Route traffic to an IPv4 address and some AWS resources', then click
 Define Simple Record.
 
