@@ -37,13 +37,14 @@ const config = {
         id: 'client',
         entryPoints: ['../packages/client/src/main.tsx'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/client/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/client/{public,scripts}/**'],
         out: 'Api/client',
         readme: 'none',
         sidebar: {
           categoryLabel: 'client',
-          position: 1,
+          position: 1
         }
       }
     ],
@@ -53,13 +54,14 @@ const config = {
         id: 'client-core',
         entryPoints: ['../packages/client-core'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/client-core/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/client-core/scripts/**'],
         out: 'Api/client-core',
         readme: 'none',
         sidebar: {
           categoryLabel: 'client-core',
-          position: 2,
+          position: 2
         }
       }
     ],
@@ -69,13 +71,14 @@ const config = {
         id: 'common',
         entryPoints: ['../packages/common'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/common/tsconfig.json',
         exclude: [...commonExcludePaths],
         out: 'Api/common',
         readme: 'none',
         sidebar: {
           categoryLabel: 'common',
-          position: 3,
+          position: 3
         }
       }
     ],
@@ -85,13 +88,14 @@ const config = {
         id: 'engine',
         entryPoints: ['../packages/engine/src'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/engine/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/engine/scripts/**'],
         out: 'Api/engine',
         readme: 'none',
         sidebar: {
           categoryLabel: 'engine',
-          position: 4,
+          position: 4
         }
       }
     ],
@@ -101,13 +105,14 @@ const config = {
         id: 'instanceserver',
         entryPoints: ['../packages/instanceserver/src/'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/instanceserver/tsconfig.json',
         exclude: [...commonExcludePaths],
         out: 'Api/instanceserver',
         readme: 'none',
         sidebar: {
           categoryLabel: 'instanceserver',
-          position: 5,
+          position: 5
         }
       }
     ],
@@ -117,13 +122,14 @@ const config = {
         id: 'server',
         entryPoints: ['../packages/server'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/server/tsconfig.json',
         exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
         out: 'Api/server',
         readme: 'none',
         sidebar: {
           categoryLabel: 'server',
-          position: 6,
+          position: 6
         }
       }
     ],
@@ -133,13 +139,14 @@ const config = {
         id: 'server-core',
         entryPoints: ['../packages/server-core/src/'],
         entryPointStrategy: 'expand',
+        excludeNotDocumented: true,
         tsconfig: '../packages/server-core/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/server-core/scripts/**'],
         out: 'Api/server-core',
         readme: 'none',
         sidebar: {
           categoryLabel: 'server-core',
-          position: 7,
+          position: 7
         }
       }
     ]
