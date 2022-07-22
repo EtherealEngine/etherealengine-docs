@@ -39,6 +39,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/client/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/client/{public,scripts}/**'],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/client',
         readme: 'none',
         sidebar: {
@@ -55,6 +58,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/client-core/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/client-core/scripts/**'],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/client-core',
         readme: 'none',
         sidebar: {
@@ -71,6 +77,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/common/tsconfig.json',
         exclude: [...commonExcludePaths],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/common',
         readme: 'none',
         sidebar: {
@@ -87,6 +96,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/engine/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/engine/scripts/**'],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/engine',
         readme: 'none',
         sidebar: {
@@ -103,6 +115,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/instanceserver/tsconfig.json',
         exclude: [...commonExcludePaths],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/instanceserver',
         readme: 'none',
         sidebar: {
@@ -119,6 +134,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/server/tsconfig.json',
         exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/server',
         readme: 'none',
         sidebar: {
@@ -135,6 +153,9 @@ const config = {
         entryPointStrategy: 'expand',
         tsconfig: '../packages/server-core/tsconfig.json',
         exclude: [...commonExcludePaths, '../packages/server-core/scripts/**'],
+        excludePrivate: true,
+        excludeProtected: true,
+        excludeInternal: true,
         out: 'Api/server-core',
         readme: 'none',
         sidebar: {
