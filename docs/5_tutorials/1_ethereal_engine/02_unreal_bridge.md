@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 # Ethereal Engine Bridge - Unreal
 
-https://www.youtube.com/watch?v=GbOpJRxkux8/
+https://github.com/XRFoundation/XRE-Bridge-Unreal
 
 Unreal SDK XREngine Alpha
 - User Management API
