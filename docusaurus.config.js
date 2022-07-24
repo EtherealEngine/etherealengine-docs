@@ -201,8 +201,8 @@ const config = {
             position: 'left'
           },
           {
-            href: 'https://xrfoundation.io/',
-            label: 'XR Foundation',
+            href: 'https://etherealengine.org/',
+            label: 'Ethereal Engine',
             position: 'right'
           }
         ]
@@ -245,8 +245,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'XR Foundation',
-                href: 'https://www.xrfoundation.io/'
+                label: 'Ethereal Engine',
+                href: 'https://www.etherealengine.org/'
               },
               {
                 label: 'Open Collective',
