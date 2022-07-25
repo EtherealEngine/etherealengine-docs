@@ -76,7 +76,7 @@ This first requires a generated bearer token for API autorization. OAuth API app
 
 This can be found in the EnvVars of the XREngine cluster and in the XRE SQL Database
 
-<img width="1189" alt="Screen Shot 2022-06-04 at 4 25 43 PM" src="https://user-images.githubusercontent.com/5104160/172028647-084f7aa0-d358-4b15-b6be-5788ee7d7ec4.png">
+<img width="1189" alt="Screen Shot 2022-06-04 at 4 25 43 PM" src="https://user-images.githubusercontent.com/5104160/172028647-084f7aa0-d358-4b15-b6be-5788ee7d7ec4.png" />
 
 Blueprints multiplayer Unreal reference
 
@@ -84,7 +84,7 @@ https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Networking/Bluep
 
 All K8 control plane systems can be access via rest calls to the local network of the gameserver, the functionality of Agones can be done via adding a node in Blueprints.
 
-The XREngine matchmaker service exposes the default endopints for open match. 
+The XREngine matchmaker service exposes the default endopints for open match.
 
 https://github.com/XRFoundation/XREngine/blob/dev/packages/ops/open-match/templates/01-open-match-core.yaml
 https://github.com/XRFoundation/XREngine/blob/dev/packages/ops/open-match/templates/07-open-match-default-evaluator.yaml
@@ -152,7 +152,7 @@ This first requires a generated bearer token for API autorization. OAuth API app
 
 This can be found in the EnvVars of the XREngine cluster and in the XRE SQL Database
 
-<img width="1189" alt="Screen Shot 2022-06-04 at 4 25 43 PM" src="https://user-images.githubusercontent.com/5104160/172028647-084f7aa0-d358-4b15-b6be-5788ee7d7ec4.png">
+<img width="1189" alt="Screen Shot 2022-06-04 at 4 25 43 PM" src="https://user-images.githubusercontent.com/5104160/172028647-084f7aa0-d358-4b15-b6be-5788ee7d7ec4.png" />
 
 Blueprints multiplayer Unreal reference
 
