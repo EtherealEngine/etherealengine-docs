@@ -22,7 +22,7 @@ Short version (common for development process on Ubuntu):
 1. Execute `sudo apt install libnss3-tools`
 2. Execute `brew install mkcert` (if you don't have brew, check it's page: https://brew.sh/)
 3. Execute `mkcert --install`
-4. Mavigate to `./certs` folder
+4. Navigate to `./certs` folder
 5. Execute `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1`
 
 ### Allow local file http-server connection with invalid certificate
