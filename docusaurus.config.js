@@ -12,7 +12,7 @@ const config = {
   tagline:
     'An end-to-end solution for hosting humans and AI in a virtual space, built on top of react, three.js and express/feathers.',
   url: 'https://xrfoundation.github.io',
-  baseUrl: '/ethereal-engine-docs/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -42,7 +42,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/client',
+        out: 'API/client',
         readme: 'none',
         sidebar: {
           categoryLabel: 'client',
@@ -61,7 +61,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/client-core',
+        out: 'API/client-core',
         readme: 'none',
         sidebar: {
           categoryLabel: 'client-core',
@@ -80,7 +80,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/common',
+        out: 'API/common',
         readme: 'none',
         sidebar: {
           categoryLabel: 'common',
@@ -99,7 +99,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/engine',
+        out: 'API/engine',
         readme: 'none',
         sidebar: {
           categoryLabel: 'engine',
@@ -118,7 +118,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/instanceserver',
+        out: 'API/instanceserver',
         readme: 'none',
         sidebar: {
           categoryLabel: 'instanceserver',
@@ -137,7 +137,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/server',
+        out: 'API/server',
         readme: 'none',
         sidebar: {
           categoryLabel: 'server',
@@ -156,7 +156,7 @@ const config = {
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
-        out: 'Api/server-core',
+        out: 'API/server-core',
         readme: 'none',
         sidebar: {
           categoryLabel: 'server-core',
