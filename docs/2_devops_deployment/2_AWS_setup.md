@@ -1,6 +1,6 @@
 # Ethereal Engine on AWS
 
-## Create EKS cluster
+## Create EKS cluster with four nodegroups
 You first need to set up an EKS cluster for Ethereal Engine to run on.
 While this can be done via AWS' web interface, the ```eksctl``` CLI 
 will automatically provision more of the services you need automatically,
@@ -14,7 +14,7 @@ Next run the following command:
 
 ```eksctl create cluster --name <name> --version <version> --region <region> --managed --nodegroup-name <name> --node-type <instance type> --nodes <target_node_number> --nodes-min <minimum_node_number> --nodes-max <maximum_node_number>```
 
-This will create an EKS cluster with managed nodes in the specified region, including automatically
+This will create an EKS cluster with a managed nodegroup in the specified region, including automatically
 creating subnets, making a VPC, and more. It may take up to 15 minutes to complete.
 
 You can also use the flag ```--zones <zone1>,<zone2>``` to specify which Availability Zones the cluster
@@ -28,7 +28,8 @@ but if you make the cluster in any other region, you'll need to make sure you're
 DNS records, etc. in the same region.
 
 As of this writing, the API and client are configured to run on a nodegroup named 'ng-1'.
-If you name it something else, be sure to change the NodeAffinity in the configuration file.
+If you name it something else, be sure to change the NodeAffinity in the configuration file. This is one of **four**
+nodegroups that will be created for various services to run on.
 
 Make sure to increase the maximum node limit, as by default target, minimum, and maximum are
 set to 2, and Ethereal Engine's setup will definitely need more than two nodes if you've configured
@@ -71,7 +72,7 @@ There may be connection issues with instanceserver instances in private subnets,
 subnets from the list of subnets to use, and make sure that public subnets are being used (sometimes
 the workflow only selects private subnets by default). Hit Next, review everything, and click Create.
 
-### Create nodegroup for redis
+#### Create nodegroup for redis
 
 Redis should get its own nodegroup to isolate it from any other changes that might be made to your cluster.
 As with the instanceserver nodegroup, it's not strictly necessary, but can prevent various other things from
@@ -85,7 +86,7 @@ then click Next. On the second page, Choose the instance type(s) you'd like for 
 set the minimum/maximum/desired scaling sizes, and hit Next (You can probably get away with a single t3(a).small). 
 The default subnets should be fine, so hit Next, review everything, and click Create.
 
-### Create nodegroup for builder
+#### Create nodegroup for builder
 
 The full Ethereal Engine stack needs a builder server within the cluster in order to bundle and build
 Ethereal Engine projects into the codebase that will be deployed. This should run on its own nodegroup
@@ -166,7 +167,7 @@ grant them:
 
 You'll also need to create an IAM user that GitHub Actions can use to access the cluster and push/pull
 Docker images from ECR. By convention, we call this user 'Github-Actions-User', and it needs these
-permissions: `AmazonEKSClusterPolicy, AmazonEKSWorkerNodePolicy, AmazonEKSServicePolicy, AmazonElasticContainerRegistryPublicAccess, AmazonEC2ContainerRegistryFullAccess`
+permissions: `AmazonEKSClusterPolicy, AmazonEKSWorkerNodePolicy, AmazonEKSServicePolicy, AmazonElasticContainerRegistryPublicFullAccess, AmazonEC2ContainerRegistryFullAccess`
 
 ### Creating new credentials for an IAM user
 If you ever lose the secret to a user, or want to make new credentials for whatever reason, go to
@@ -439,16 +440,40 @@ It should have the following settings; if not, click Edit and copy this in:
 In the AWS web client, go to Cloudfront -> Distributions and click on Create Distribution.
 Under 'Web', click on Get Started.
 
-Under Origin Settings, click on the box next to Origin Domain Name, and select the name of the S3 bucket you just made.
+Under `Origin`, click on the text box under `Origin domain`, and select the name of the S3 bucket you just made.
+The `Name` field should be automatically populated, and should be left as whatever that value is.
 
-Under Default Cache Behavior Settings, Allowed HTTP Methods should be set to 'GET, HEAD, OPTIONS'.
-Cache and origin request settings should be left on 'Use a cache policy and origin request policy'.
-For Origin Request Policy, select 'Managed-CORS-S3Origin'
+Several fields in `Default cache behavior` will be changed.
 
-Under Distribution Settings, you can change Price Class to 'Use Only U.S. Canada and Europe' to save some money.
-For Alternate Domain Names, enter 'resources.`<domain>`', e.g. ```resources.ethereal-engine.io```.
-For SSL Certificate, select Custom SSL Certificate, then when you click on the box, choose
-the 'resources.`<domain>`' certificate you made earlier.
+Under `Viewer -> Viewer protocol policy`, select 'Redirect HTTP to HTTPS'
+Under `Viewer -. Allowed HTTP methods`, select 'GET, HEAD, OPTIONS', and check `Cache HTTP methods -> OPTIONS`.
+
+In `Cache key and origin requests`, leave it on `Cache policy and origin request policy`.
+If this option is not available, see the below subsection for `Legacy cache settings`
+
+For `Cache policy`, you will need to make a new policy, which is easily done by clicking the link `Create policy`
+underneath the selector; this will open a new tab. Name this policy anything you want, e.g. 'Cached-on-headers',
+then under `Cache key settings`, click on the `Headers` selector and select 'Include the following headers'. A new
+selector should appear under that titled `Add header`. Click the selector, and check 'Host', 'Origin',
+'Access-Control-Request-Method', and 'Access-Control-Request-Headers', then click away from the menu. Click the 'Create'
+button to create the new policy.
+
+Once the policy has been created, go back to the tab that you were creating the CloudFront distribution in.
+Click the refresh button to the right of the `Cache policy` selector to fetch your new policy, then click the selector, 
+and your new policy should appear in the selector at the bottom of the list under the header 'Custom'. Select it.
+
+For `Origin request policy`, select the option 'CORS-S3Origin'.
+
+#### Legacy cache settings
+If for some reason `Cache policy and origin request policy` is not available for you, and you have to use
+`Legacy cache settings`, the under `Headers`, select 'Include the following headers'. Under `Add header` that appears,
+click on the selector titled 'Select headers', and in the menu that opens, check 'Host', 'Origin',
+'Access-Control-Request-Method', and 'Access-Control-Request-Headers', then click away. 
+
+Under `Settings`, you can change `Price class` to 'Use Only North America and Europe' to save some money.
+For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g. 
+```resources.ethereal-engine.io```. Under `Custom SSL Certificate`, click on the selector that says
+'Choose certificate', then select the 'resources.`<domain>`' certificate you made earlier.
 
 Everything else can be left at the default values, click Create Distribution.
 
