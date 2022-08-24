@@ -73,11 +73,23 @@ downloaded and installed to the local file system each time the docker builder
 pod runs. This allows full version controlled access for local development flow
 and version locking for production deployment.
 
-The update button will re-download the git repository to install the latest 
-version of the project.
+In order to prevent multiple deployments pushing updates to the same branch, once
+`git clone` has been run, the project will be pushed to a new branch in the repo that
+it is cloned from. The branch is named `<RELEASE_NAME>-deployment`, using the environment
+variable `RELEASE_NAME` that identifies the deployment. If `RELEASE_NAME` is empty, then
+`local` is used; this could lead to multiple local installations of the platform conflicting,
+but one can set `RELEASE_NAME` locally to something else. The `Push to GitHub` button pushes
+to this deployment-specific branch, never to the main branch in the repo.
 
-The remove button will remove the folder containing that project. WARNING: Any 
-uncommitted & unpushed files will be lost.
+The update button will re-download the git repository *from the deployment's branch* to install 
+the latest version of that deployment's project. If one wants to pull the latest version of the
+code in the main branch of the repo, one should use the `Reset` button on the right-hand side.
+This will clone the main branch and force-push its contents to the deployment's branch.
+WARNING: this will overwrite any deployment-specific changes that were present in the deployment
+branch.
+
+The remove button will remove the folder containing that project. This will not delete the deployment
+branch. WARNING: Any uncommitted & unpushed files will be lost.
 
 ## Config
 
