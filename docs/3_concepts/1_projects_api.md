@@ -62,6 +62,12 @@ the 'Add Project'
 
 ![](./images/projects-admin-install-new.png)
 
+If a GitHub app is installed, after a few seconds, a `Source` selector will appear,
+letting you choose between a public GitHub URL and a list of repos that the GitHub
+app has access to.
+
+![](./images/projects-admin-install-select.png)
+
 ![](./images/projects-admin.png)
 
 In local development, the 'Remove Project' button has been disabled, as to
@@ -75,7 +81,8 @@ and version locking for production deployment.
 
 In order to prevent multiple deployments pushing updates to the same branch, once
 `git clone` has been run, the project will be pushed to a new branch in the repo that
-it is cloned from. The branch is named `<RELEASE_NAME>-deployment`, using the environment
+it is cloned from (assuming the user or GitHub app cloning the repo has write permissions
+to that repo). The branch is named `<RELEASE_NAME>-deployment`, using the environment
 variable `RELEASE_NAME` that identifies the deployment. If `RELEASE_NAME` is empty, then
 `local` is used; this could lead to multiple local installations of the platform conflicting,
 but one can set `RELEASE_NAME` locally to something else. The `Push to GitHub` button pushes

@@ -1,13 +1,14 @@
-# How to set up GitHub to install external projects
+# How to set up GitHub to install external private projects
 
 Ethereal Engine is extensible via [Projects](../3_concepts/1_projects_api.md), which can contain
 new scenes, new avatars, new static resources, additional code, and more. Ethereal Engine integrates
 with GitHub to push and pull projects for backup and restoration, and one can also install existing
-projects from GitHub. For this to work, a GitHub App that you control must be created, configured,
+projects from GitHub. In order to install projects from private repositories, or to push local project 
+changes to a GitHub repo, a GitHub App that you control must be created, configured,
 and installed in both the organizations/users you wish to have access to and the Ethereal Engine
-deployment.
+deployment[^1].
 
-A side effect of this is that you will be able to log in via GitHub, as all of the OAuth logic
+A useful side effect of this is that you will be able to log in via GitHub, as all of the OAuth logic
 is included in a GitHub app.
 
 Note that it is recommended that you complete most of this before the initial installation of
@@ -16,6 +17,27 @@ logged-in user. If you do not, then you will either need to manually insert some
 into the database so that you can log yourself in; have another log method configured already
 and use that logged-in admin user; or reset the database with these values configured in the
 updated Helm configuration that is used for the reset. 
+
+[^1] You don't technically need to install the app in your repos, but it makes managing pushing to
+  GitHub much easier. The mechanics are as follows:
+
+  * Any user who is logged in with GitHub, which is done through the GitHub app's OAuth capapbilities,
+    will have the repos that they have admin or write access to checked.
+    If the user has admin and project:write scopes in Ethereal Engine, they can push any projects that 
+    are linked to a repo that they have owner access to.
+  * The GitHub app, when installed into a GitHub repo, will gain certain permissions over that repo.
+    A user with admin and project:write scopes in Ethereal Engine, even if they don't have GitHub access to a repo,
+    can install a project from, and push a project to, a GitHub repo that the GitHub app is installed in. In these
+    situations, the Ethereal Engine project API is using the GitHub app's credentials to perform the actions,
+    rather than a user's personal credentials.
+
+  So, while it is possible to manage GitHub project integration without installing the GitHub app into any repos,
+  it requires that all project owners be logged in via GitHub and have admin/write access to the repositories.
+
+  If you install a project from a public repository that you do not have admin/write access to, and which the GitHub
+  app is not installed in, it will download just fine, but it will not automatically create a deployment branch in that repo,
+  nor will you be able to push changes to that repo. If you wish to back up up your changes, it is recommended that
+  you clone the repo and use that as the source repository.
 
 ## Create a GitHub App in an organization, or your user
 
@@ -114,9 +136,14 @@ in and be an admin user (or grant admin status to another user).
 As an admin, go to /admin/settings, then click on the `Server` selector. In the right-hand column,
 you should see a field near the bottom named `Github Private Key`. You will need to copy/paste 
 the contents of the .pem file you downloaded earlier here. Note that this needs to be the entire
-text contents of the file - do not try to upload the file. It is simplest to open the file in some
+text contents of the file; there is currently no option to upload the file. It is simplest to open the file in some
 sort of text editor, then press Ctrl+A to select the entire contents, then Ctrl+C to copy that selection,
-then click over to the admin page, click this text box, and Ctrl+V to paste the contents. It must begin
-with `-----BEGIN RSA PRIVATE KEY----- <start of tons of letters>` and end with 
-`<end of tons of letters> -----END RSA PRIVATE KEY-----`. Click the Save button once you have
+then click over to the admin page, click this text box, and Ctrl+V to paste the contents
+(substitute Apple Key+<key> for Macs). It must begin with `-----BEGIN RSA PRIVATE KEY----- <start of tons of letters>` 
+and end with `<end of tons of letters> -----END RSA PRIVATE KEY-----`. Click the Save button once you have
 pasted it in.
+
+# Installing Ethereal Engine projects from GitHub
+
+See [the section 'Graphical Install Flow](../3_concepts/1_projects_api.md) for more information on how to install
+projects from GitHub.
