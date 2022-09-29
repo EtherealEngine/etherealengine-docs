@@ -139,7 +139,7 @@ the contents of the .pem file you downloaded earlier here. Note that this needs 
 text contents of the file; there is currently no option to upload the file. It is simplest to open the file in some
 sort of text editor, then press Ctrl+A to select the entire contents, then Ctrl+C to copy that selection,
 then click over to the admin page, click this text box, and Ctrl+V to paste the contents
-(substitute Apple Key+<key> for Macs). It must begin with `-----BEGIN RSA PRIVATE KEY----- <start of tons of letters>` 
+(substitute Apple Key+\<key\> for Macs). It must begin with `-----BEGIN RSA PRIVATE KEY----- <start of tons of letters>` 
 and end with `<end of tons of letters> -----END RSA PRIVATE KEY-----`. Click the Save button once you have
 pasted it in.
 
