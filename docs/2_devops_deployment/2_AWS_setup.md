@@ -620,7 +620,7 @@ Each service has to have the proper `-<service>` suffix on it, e.g. `-api`, `-cl
 
 #### GITHUB_APP_ID/GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
 If you plan to backup Projects to GitHub, or install project from GitHub, it is helpful to set up the GitHub app that
-will facilitate this before the initial installation. See [this document](./3_installing_projects_from_github.md) for
+will facilitate this before the initial installation. See [this document](./4_setup_github_oauth_for_projects.md) for
 more information, and enter the appropriate IDs/secret in these variables.
 
 ### Run Helm install
