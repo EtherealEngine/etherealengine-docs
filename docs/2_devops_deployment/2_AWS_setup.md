@@ -588,6 +588,13 @@ using social login, for instance, you don't need credentials for Github/Google/F
 
 ### Configuration variables of note
 Here are some configuration variables that you'll probably need to change based on your specific setup
+
+#### <api/instanceserver/analytics>.extraEnv.AUTH_SECRET
+This is a secret value that is used to sign the JWTs that authenticate users.
+You can use any string for this value, and a randomly-generated one of sufficient length,
+i.e. 32 or more characters, will suffice. If this is changed after some users have signed
+in, their login credentials won't work any more.
+
 #### <api/client/analytics>.affinity.nodeAffinity
 Within the sections of the config for the api, client, instanceserver, etc., is a section that looks 
 something like this:
