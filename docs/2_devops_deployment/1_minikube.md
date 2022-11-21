@@ -73,10 +73,10 @@ You'll need to edit your hostfile to point certain domains to minikube IP addres
 this is done by running `sudo gedit /etc/hosts`.
 
 Add the following lines:
-`<Output of 'minikube ip'>  local.theoverlay.io api-local.theoverlay.io instanceserver-local.theoverlay.io 00000.instanceserver-local.theoverlay.io 00001.instanceserver-local.theoverlay.io 00002.instanceserver-local.theoverlay.io 00003.instanceserver-local.theoverlay.io`
+`<Output of 'minikube ip'>  local.etherealengine.com api-local.etherealengine.com instanceserver-local.etherealengine.com 00000.instanceserver-local.etherealengine.com 00001.instanceserver-local.etherealengine.com 00002.instanceserver-local.etherealengine.com 00003.instanceserver-local.etherealengine.com`
 `10.0.2.2   host.minikube.internal`
 
-The first line says to point several *-local.theoverlay.io domains internally to the minikube cluster,
+The first line says to point several *-local.etherealengine.com domains internally to the minikube cluster,
 where the nginx ingress server will redirect the traffic to the appropriate pod.
 The second line is used to give minikube access to your local environment, particularly so that it
 can access the MariaDB server.
@@ -148,7 +148,7 @@ the client files, uses some information from the MariaDB database created for mi
 to fill in some variables, and needs database credentials. The script will supply default values
 for all of the MYSQL_* variables if they are not provided to the script, as well as VITE_CLIENT_HOST,
 VITE_SERVER_HOST, and VITE_INSTANCESERVER_HOST. The latter three will make your minikube deployment
-accessible on `(local/api-local/instanceserver-local).theoverlay.io`; if you want to run it on a different
+accessible on `(local/api-local/instanceserver-local).etherealengine.com`; if you want to run it on a different
 domain, then you'll have to set those three environment variables to what you want them to be (and also
 change the hostfile records you made pointing those subdomains to minikube's IP)
 
@@ -171,11 +171,11 @@ The API pods will restart and will now not attempt to reinit the database on boo
 Since there are no valid certificates for this domain, you'll have to tell your browser to ignore the
 insecure connections when you try to load the application.
 
-Go to https://local.theoverlay.io/login You should see a warning about an invalid certificate; accept this
+Go to https://local.etherealengine.com/login You should see a warning about an invalid certificate; accept this
 invalid cert to get to the login page. You'll next have to open the dev tools for your browser and go to
-the console and/or Network tab. There should be errors on https://api-local.theoverlay.io; open that link
+the console and/or Network tab. There should be errors on https://api-local.etherealengine.com; open that link
 in a new tab and accept the invalid certificate for that, too.
 
-When you go to https://local.theoverlay.io/location/default, you'll have to open the console again, find the
-erroring https://instanceserver-local.theoverlay.io, open that link in a new tab, and accept the invalid certificate
+When you go to https://local.etherealengine.com/location/default, you'll have to open the console again, find the
+erroring https://instanceserver-local.etherealengine.com, open that link in a new tab, and accept the invalid certificate
 for that domain, as well.

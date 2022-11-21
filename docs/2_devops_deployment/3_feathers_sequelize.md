@@ -26,4 +26,4 @@ You can see the docs for a running Ethereal Engine instance locally at:
 https://localhost:3030/openapi
 ```
 
-Or on our [dev cluster](https://api-dev.theoverlay.io/openapi)
+Or on our [dev cluster](https://api-dev.etherealengine.com/openapi)

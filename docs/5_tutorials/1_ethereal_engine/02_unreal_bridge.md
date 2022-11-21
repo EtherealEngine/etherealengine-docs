@@ -70,7 +70,7 @@ https://github.com/XRFoundation/XRE-Bridge-Unreal/
 
 This bridge is wrapping OpenAPI endpoints presented by XREngine 
 
-https://api-dev.theoverlay.io/openapi/
+https://api-dev.etherealengine.com/openapi/
 
 This first requires a generated bearer token for API autorization. OAuth API app digestion with socpes is coming soon!
 
@@ -146,7 +146,7 @@ https://github.com/XRFoundation/XRE-Bridge-Unreal/
 
 This bridge is wrapping OpenAPI endpoints presented by XREngine 
 
-https://api-dev.theoverlay.io/openapi/
+https://api-dev.etherealengine.com/openapi/
 
 This first requires a generated bearer token for API autorization. OAuth API app digestion with socpes is coming soon!
 
