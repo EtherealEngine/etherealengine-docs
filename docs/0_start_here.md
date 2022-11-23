@@ -53,7 +53,6 @@ changing any of the base repository code.
 -
 
 ## Packages
-### analytics
 ### client
 ### client-core
 ### common
@@ -65,5 +64,6 @@ changing any of the base repository code.
 ### projects
 ### server
 ### server-core
+### taskserver
 
 ![](./images/0-repo-hierarchy.png)
