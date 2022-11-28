@@ -127,8 +127,8 @@ repo and want to turn on Tag Immutability, that's fine. The image tags that are 
 will prevent any manual overwriting of a tag. Click Create Repository.
 
 You will need to make four more repos for each of the services that are deployed as part of the Ethereal Engine stack -
-`api`, `analytics`, `client`, and `instanceserver`, which are also in the form `xrengine-<deployment_name>-<service_name>`.
-e.g. `xrengine-dev-api`, `xrengine-dev-analytics`, `xrengine-dev-client`, and `xrengine-dev-instanceserver`.
+`api`, `client`, `instanceserver` and `taskserver`, which are also in the form `xrengine-<deployment_name>-<service_name>`.
+e.g. `xrengine-dev-api`, `xrengine-dev-client`, `xrengine-dev-instanceserver` and `xrengine-dev-taskserver`.
 Everything else can be left alone for those, too.
 
 On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see both of 
@@ -589,13 +589,13 @@ using social login, for instance, you don't need credentials for Github/Google/F
 ### Configuration variables of note
 Here are some configuration variables that you'll probably need to change based on your specific setup
 
-#### <api/instanceserver/analytics>.extraEnv.AUTH_SECRET
+#### <api/instanceserver/taskserver>.extraEnv.AUTH_SECRET
 This is a secret value that is used to sign the JWTs that authenticate users.
 You can use any string for this value, and a randomly-generated one of sufficient length,
 i.e. 32 or more characters, will suffice. If this is changed after some users have signed
 in, their login credentials won't work any more.
 
-#### <api/client/analytics>.affinity.nodeAffinity
+#### <api/client/taskserver>.affinity.nodeAffinity
 Within the sections of the config for the api, client, instanceserver, etc., is a section that looks 
 something like this:
 ```
@@ -615,7 +615,7 @@ that service will be running on, e.g. if you create a nodegroup for the instance
 `abcd-instanceservers-5`, then you'd use that value under `values:`
 
 If your EKS setup created a nodegroup for you, and you want to use that for the api, client, and
-analytics servers, make sure to change the affinity value for them to whatever EKS named the
+task servers, make sure to change the affinity value for them to whatever EKS named the
 initial nodegroup.
 
 #### builder.extraEnv.PRIVATE_ECR
@@ -660,7 +660,7 @@ The full build and deployment process works like this:
 7. The builder builds the Docker image for each service concurrently using these projects, building them into the client files as well as copying them so that the api and instanceservers have access to them.
 8. The builder pushes these final Docker images to the repos `xrengine-<release>-<service>` in ECR
 9. The builder updates the main deployment to point to the final images it just created.
-10. The main deployment spins up the final Docker images for the api, analytics, client, and instanceserver services.
+10. The main deployment spins up the final Docker images for the api, client, instanceserver and taskserver services.
 
 ## Install Elastic Search and Kibana using Helm for Server Logs
 
