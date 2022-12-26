@@ -14,7 +14,7 @@ You should also set up kubectl and Helm, as we will be using that to install mul
 
 Next run the following command:
 
-```eksctl create cluster --name <name> --version <version> --region <region> --managed --nodegroup-name <name> --node-type <instance type> --nodes <target_node_number> --nodes-min <minimum_node_number> --nodes-max <maximum_node_number>```
+```eksctl create cluster --name <name> --version <version> --region <region> --managed --nodegroup-name <name> --node-type <instance type> --nodes <target_node_number> --nodes-min <minimum_node_number> --nodes-max <maximum_node_number> --spot```
 
 This will create an EKS cluster with a managed nodegroup in the specified region, including automatically
 creating subnets, making a VPC, and more. It may take up to 15 minutes to complete.
@@ -37,6 +37,10 @@ Make sure to increase the maximum node limit, as by default target, minimum, and
 set to 2, and Ethereal Engine's setup will definitely need more than two nodes if you've configured
 them to use relatively small instance types such as t3a.medium.
 
+#### Enable EBS CSI Addon (if EKS version is 1.23 or later)
+Follow the instructions [here](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html)
+to enable an EKS addon that's required for any cluster that will have Persistent Volumes, which an
+Ethereal Engine deployment cluster will.
 
 #### Install Cluster Autoscaler (optional)
 
@@ -53,6 +57,8 @@ the time that the autoscaler sees the need to add more nodes before those nodes 
 the appropriate Docker image has been installed onto them, and they are ready to be used. It takes about
 15 minutes for the autoscaler to actually remove nodes that are deemed superfluous, as a hedge against
 the recent high traffic picking up again.
+
+The OIDC provider that was created in the prior step, installing the EBS CSI Addon, can be re-used in this step.
 
 #### Create launch template
 Go to EC2 -> Launch Templates and make a new one. Name it something like 'xrengine-production-instanceserver'.
@@ -85,7 +91,8 @@ a name of 'ng-redis-1'), select the IAM role that was created with the cluster
 (it should be something like ```eksctl-<cluster_name>-node-NodeInstanceRole-<jumble_of_characters>```),
 toggle the Use Launch Template toggle and select the launch template used to make the initial nodegroup,
 then click Next. On the second page, Choose the instance type(s) you'd like for the group,
-set the minimum/maximum/desired scaling sizes, and hit Next (You can probably get away with a single t3(a).small). 
+set the minimum/maximum/desired scaling sizes (you can probably get away with a single t3(a).small, but it's recommended
+to have at least two nodes so that one going down doesn't kill the entire deployment from a lack of redis), and hit Next. 
 The default subnets should be fine, so hit Next, review everything, and click Create.
 
 #### Create nodegroup for builder
