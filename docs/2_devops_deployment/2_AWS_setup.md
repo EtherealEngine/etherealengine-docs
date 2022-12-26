@@ -1,5 +1,7 @@
 # Ethereal Engine on AWS
 
+The value `RELEASE_NAME` referenced throughout this guide is the name of the deployment, e.g. `dev` or `prod`.
+
 ## Create EKS cluster with four nodegroups
 You first need to set up an EKS cluster for Ethereal Engine to run on.
 While this can be done via AWS' web interface, the ```eksctl``` CLI 
@@ -121,22 +123,22 @@ Ethereal Engine project codebase(s) getting out, you can choose Private for Visi
 You'll be needing to create multiple repositories for each deployment, e.g. several repos for a `dev` deployment,
 several more for a `prod` deployment, etc.
 
-Assuming you're first doing a `dev` deployment, name the first repo `xrengine-<deployment_name>-builder` under Repository
+Assuming you're first doing a `dev` deployment, name the first repo `xrengine-<RELEASE_NAME>-builder` under Repository
 Name, e.g. `xrengine-dev-builder`. You shouldn't need to change any other settings, though if you're using a Private 
 repo and want to turn on Tag Immutability, that's fine. The image tags that are generated should never collide, but it
 will prevent any manual overwriting of a tag. Click Create Repository.
 
 You will need to make four more repos for each of the services that are deployed as part of the Ethereal Engine stack -
-`api`, `client`, `instanceserver` and `taskserver`, which are also in the form `xrengine-<deployment_name>-<service_name>`.
+`api`, `client`, `instanceserver` and `taskserver`, which are also in the form `xrengine-<RELEASE_NAME>-<service_name>`.
 e.g. `xrengine-dev-api`, `xrengine-dev-client`, `xrengine-dev-instanceserver` and `xrengine-dev-taskserver`.
 Everything else can be left alone for those, too.
 
 On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see both of 
 the repositories you made. If you don't see any, you may be on the wrong tab up top - click Private or Public to switch
 between them. Also check that you're in the right AWS region. You'll see a column 'URI'. If you made public repos,
-the URIs should be in the form `public.ecr.aws/<identifier>/xrengine-<deployment_name>(-builder)`; if you made private 
+the URIs should be in the form `public.ecr.aws/<identifier>/xrengine-<RELEASE_NAME>(-builder)`; if you made private 
 repos, the URIs should be in the form `<AWS_account_id>.dkr.ecr.<AWS_region>.amazonaws.com/xrengine-<deployment>(-builder)`. 
-Take note of everything before the `/xrengine-<deployment_name>` - you'll need to add that as a variable in later steps.
+Take note of everything before the `/xrengine-<RELEASE_NAME>` - you'll need to add that as a variable in later steps.
 It will be called `ECR_URL` there.
 
 ## Create IAM Roles for S3/SES/SNS/Route53 (or a single admin role)
@@ -319,7 +321,7 @@ Each redis deployment needs to be named the same as the deployment that will use
 Ethereal Engine deployment named 'dev', the corresponding redis deployment would need to be named
 'dev-redis'.
 
-Run ```helm install  -f packages/ops/configs/redis-values.yaml <deployment_name>-redis redis/redis``` to install, e.g.
+Run ```helm install  -f packages/ops/configs/redis-values.yaml <RELEASE_NAME>-redis redis/redis``` to install, e.g.
 ```helm install  -f packages/ops/configs/redis-values.yaml dev-redis redis/redis```.
 If you named the redis nodegroup something other than 'ng-redis-1', you'll have to alter the value in
 packages/ops/configs/redis-values.yaml in two places to your redis nodegroup name.
@@ -352,9 +354,9 @@ From the top level of this repo, run ```helm install -f ./packages/ops/configs/n
 This says to install a service called 'nginx' from the 'ingress-nginx' package in the 'ingress-nginx' chart, and to configure it with
 a file found at /packages/ops/configs/nginx-ingress-aws-values.yml.
 
-## Set up Simple Email Service
+## Set up Simple Email Service (optional)
 
-You need to set up Simple Email Service so that login links can be sent.
+If you want to enable email magiclink login, you will need to set up Simple Email Service (SES).
 
 In the AWS web client, go to SES -> Domains. Click Verify a New Domain, then enter the top-level
 domain and check the box for Generate DKIM Settings, then click Verify This Domain.
@@ -394,8 +396,9 @@ Address'. Enter the address you want to test with, then click 'Verify This Email
 receive an email with a link to verify it (it may go to your Spam folder). Once you've followed the link,
 you can log in with that address.
 
-## Set up Simple Notification service
-SNS is used to send text messages from the Ethereal Engine platform.
+## Set up Simple Notification Service (optional)
+
+If you want to enable text message-based magiclink login, you will need to set up Simple Notification Service (SNS).
 
 In the AWS web client, go to SNS -> Topics and Create a new topic.
 Give it a name, and selected 'Standard' as the type, then click Create Topic.
@@ -625,14 +628,15 @@ If you're using a private ECR repo, set this to "true" in the builder config fil
 You'll need to replace every <repository_name> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/ethereal-engine-dev-api`.
 Each service has to have the proper `-<service>` suffix on it, e.g. `-api`, `-client`, etc.
 
-#### GITHUB_APP_ID/GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
-If you plan to backup Projects to GitHub, or install project from GitHub, it is helpful to set up the GitHub app that
-will facilitate this before the initial installation. See [this document](./4_setup_github_oauth_for_projects.md) for
-more information, and enter the appropriate IDs/secret in these variables.
+#### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
+If you plan to backup Projects you create in the editor to GitHub, or install project from GitHub, it is necessary 
+to set up the OAuth app that will facilitate this before the initial installation. 
+See [this document](./4_setup_github_oauth_for_projects.md) for
+more information, and enter the appropriate ID/secret in these variables.
 
 ### Run Helm install
-Run ```helm install -f </path/to/*.values.yaml> <stage_name>-builder xrengine/xrengine-builder```
-and then run ```helm install -f </path/to/*.values.yaml> <stage_name> xrengine/xrengine```
+Run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME>-builder xrengine/xrengine-builder```
+and then run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME> xrengine/xrengine```
 
 This will spin up the main and builder deployments using the Helm config file, <dev/prod>.values.yaml.
 Neither will fully work yet, since there's no valid image in the repos yet. The GitHub
@@ -691,7 +695,7 @@ In order to connect logger with elasticsearch, update config file(values.yml) fo
 One of the features of Helm is being able to easily upgrade deployments with new values. The command to
 do this is very similar to the install command:
 
-```helm upgrade --reuse-values -f </path/to/*.values.yaml> --set api.image.tag=<latest_github_commit_SHA>,client.image.tag=<latest_github_commit_SHA>,instanceserver.image.tag=<latest_github_commit_SHA> <stage_name> xrengine/xrengine```
+```helm upgrade --reuse-values -f </path/to/*.values.yaml> --set api.image.tag=<latest_github_commit_SHA>,client.image.tag=<latest_github_commit_SHA>,instanceserver.image.tag=<latest_github_commit_SHA> <RELEASE_NAME> xrengine/xrengine```
 
 ```--reuse-values``` says to carry over all configuration values from the previous deployment. This is most important
 for tags, since they're usually set inline with the `helm install/upgrade` command, not a Helm config.
