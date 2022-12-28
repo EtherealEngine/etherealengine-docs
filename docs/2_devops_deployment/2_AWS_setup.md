@@ -539,9 +539,9 @@ this page to make a new one. You will need to make several Secrets with the foll
 * AWS_SECRET -> The secret key of the Github-Actions-User IAM user
 * CLUSTER_NAME -> The name of the EKS cluster
 * DEPLOYMENTS_ENABLED -> Set to `true`
-* DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `ethereal-engine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
+* DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `xrengine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
 * DOCKER_LABEL -> This can be almost anything, but you can use `lagunalabs/xrengine`
-* ECR_URL -> The root ECR_URL for your repos, i.e. everything before the `/ethereal-engine-dev-builder`, e.g. `11111111111.dkr.ecr.us-west-1.amazonaws.com` or `public.ecr.aws/a1b2c3d4`
+* ECR_URL -> The root ECR_URL for your repos, i.e. everything before the `/xrengine-dev-builder`, e.g. `11111111111.dkr.ecr.us-west-1.amazonaws.com` or `public.ecr.aws/a1b2c3d4`
 * PRIVATE_ECR -> Set this to `true` if your ECR repos are private, if they're public you don't need to set this at all
 
 If you go to the Actions Tab, you might see a few workflow runs with green checkmarks. If so, you'll be re-running the
@@ -632,7 +632,7 @@ initial nodegroup.
 If you're using a private ECR repo, set this to "true" in the builder config file.
 
 #### (everything).image.repository
-You'll need to replace every <repository_name> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/ethereal-engine-dev-api`.
+You'll need to replace every <repository_name> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/xrengine-dev-api`.
 Each service has to have the proper `-<service>` suffix on it, e.g. `-api`, `-client`, etc.
 
 #### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
