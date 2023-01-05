@@ -231,6 +231,12 @@ Finally, click the Create Database button at the very bottom of the page.
 if you want to be very secure about this, or from anywhere (0.0.0.0/0) if you're less concerned about someone
 getting access.
 
+Some values to note for dev/prod.template.values.yaml:
+sql.database will be what you entered for Initial Database Name
+sql.user and sql.password will be the name and password of the admin user
+sql.host will be the Endpoint of the RDS instance/cluster; find this
+
+
 ## Edit security group to allow instanceserver traffic into VPC
 You'll need to edit the new cluster's main security group to allow instanceserver traffic.
 On the AWS web client, go to EC2 -> Security Groups. There should be three SGs that have
@@ -257,6 +263,9 @@ workflow to register a domain name.
 ### Create Route 53 Hosted Zone
 In the AWS web client, go to Route 53. Make a hosted zone for the domain you plan to use for
 your setup of Ethereal Engine. You'll be coming back here later to create DNS records.
+
+Open the Hosted zone, then click on 'Hosted zone details' to see more information. The value 'Hosted zone id'
+is used in the dev/prod.values.yaml file for 'ROUTE53_HOSTED_ZONE_ID'
 
 #### Point external registrar subdomains to use Route53 Nameservers (only if your domain is registered outside Route53)
 If you already have a domain registered with another registrar service, you'll need to add some DNS records
@@ -365,25 +374,21 @@ a file found at /packages/ops/configs/nginx-ingress-aws-values.yml.
 
 If you want to enable email magiclink login, you will need to set up Simple Email Service (SES).
 
-In the AWS web client, go to SES -> Domains. Click Verify a New Domain, then enter the top-level
-domain and check the box for Generate DKIM Settings, then click Verify This Domain.
-On the modal that pops up, there should be a button to create all the records in Route 53;
-click it. Then click Close.
+In the AWS web client, go to SES -> Configuration -> Verified Identities. Click Create Identity, then under 'Identity type'
+select 'Domain'. Enter the top-level domain under the 'Domain' field. Finally, click the 'Create identity' button.
 
 ### Create SMTP credentials
 You need to create SMTP credentials in order to authorize SES. These will show up as an IAM user,
 but you must go through an SES-specific process to get valid credentials; just creating an IAM user
 with SESFullAccess will not work.
 
-Go to an SES page and select 'SMTP Settings', then click the button 'Create My SMTP Credentials'.
+Go to an SES page and select 'SMTP Settings', then click the button 'Create SMTP Credentials'.
 You can leave the default IAM User Name as-is; click the Create button. You should be taken to a screen
 says a user has been created successfully. Click on 'Show User SMTP Security Credentials'.
 
-You will see a Username and Password. The Username is like any other IAM user ID, but the Password
-needs to be transformed in order to make it a valid Secret.
-
-These credentials will go into the Helm config file. You must also fill in the region that you've
-created these credentials in, replacing <SES_REGION> in api.extraEnv.SMTP_HOST.
+You will see a Username and Password. These credentials will go into the Helm config file, under
+AWS_SMTP_USER and AWS_SMTP_PASS, respectively. You must also fill in the region that you've created these credentials 
+in, replacing <SES_REGION> in api.extraEnv.SMTP_HOST.
 
 ### Move SES out of Sandbox
 By default, SES domains are in Sandbox mode, where they can only send emails to verified email addresses.
