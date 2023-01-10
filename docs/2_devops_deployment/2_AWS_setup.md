@@ -479,18 +479,18 @@ and your new policy should appear in the selector at the bottom of the list unde
 
 For `Origin request policy`, select the option 'CORS-S3Origin'.
 
-#### Legacy cache settings
-If for some reason `Cache policy and origin request policy` is not available for you, and you have to use
-`Legacy cache settings`, the under `Headers`, select 'Include the following headers'. Under `Add header` that appears,
-click on the selector titled 'Select headers', and in the menu that opens, check 'Host', 'Origin',
-'Access-Control-Request-Method', and 'Access-Control-Request-Headers', then click away. 
-
 Under `Settings`, you can change `Price class` to 'Use Only North America and Europe' to save some money.
-For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g. 
+For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g.
 ```resources.ethereal-engine.io```. Under `Custom SSL Certificate`, click on the selector that says
 'Choose certificate', then select the 'resources.`<domain>`' certificate you made earlier.
 
 Everything else can be left at the default values, click Create Distribution.
+
+#### Legacy cache settings
+If for some reason `Cache policy and origin request policy` is not available for you, and you have to use
+`Legacy cache settings`, the under `Headers`, select 'Include the following headers'. Under `Add header` that appears,
+click on the selector titled 'Select headers', and in the menu that opens, check 'Host', 'Origin',
+'Access-Control-Request-Method', and 'Access-Control-Request-Headers', then click away.
 
 ## Set up DNS records
 **The Nginx Load Balancer must be fully set up and running before this step can be completed**
