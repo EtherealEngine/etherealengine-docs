@@ -162,7 +162,7 @@ The script builds the full-repo Docker image using several build arguments. Vite
 
 This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for different services, it will only run the parts needed for that service. This may take up to 15 minutes, though later builds should take less time as things are cached.
 
-Once the images are build. It will push it to MicroK8s local registry.
+Once the images are build. It will push it to MicroK8s local registry. You can verify that images are pushed to registry by visiting <http://localhost:32000/v2/_catalog>.
 
 ## Update Helm Values File
 
