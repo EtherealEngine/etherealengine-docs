@@ -14,7 +14,7 @@ While you can follow the demo instructions there about starting minikube, deploy
 some demo deployments, etc. to get a feel for it, before deploying Ethereal Engine you should delete
 your minikube cluster, since we have some specific starting requirements.
 
-## Clone this repo to your local machine
+## Clone Ethereal Engine repo to your local machine
 To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local
 services, you'll need to get the Ethereal Engine repo on your machine. This is most easily
 done by running `git clone https://github.com/XRFoundation/XREngine.git`
@@ -42,7 +42,7 @@ outside of minikube.
 Run `npm install` (or `yarn install` if `npm install` isn't working right;
 you'd need to install yarn in that case) from the root of the Ethereal Engine repo. When that's finished,
 go to packages/server and run `npm run serve-local-files`. This will start a local file server
-on port 8642, and will create and serve those files from packages/server/upload.
+on port 8642, and will create and serve those files from `packages/server/upload`.
 
 ## Create minikube cluster
 Run the following command:
@@ -86,13 +86,16 @@ to edit it.
 
 ## Add Helm repos
 You'll need to add a few Helm repos. Run the following:
-`helm repo add agones https://agones.dev/chart/stable`
-`helm repo add redis https://charts.bitnami.com/bitnami`
-`helm repo add xrengine https://helm.xrengine.io`
 
-This will add the Helm charts for Agones, redis, and Ethereal Engine, respectively.
+```bash
+helm repo add agones https://agones.dev/chart/stable
+helm repo add redis https://charts.bitnami.com/bitnami
+helm repo add xrengine https://helm.xrengine.io
+```
 
-## Install Agones and redis deployments
+This will add the Helm charts for Agones, Redis, and Ethereal Engine, respectively.
+
+## Install Agones and Redis deployments
 After adding those Helm repos, you'll start installing deployments using Helm repos.
 
 Make sure that kubectl is pointed at minikube by running `kubectl config current-context`,
@@ -131,9 +134,9 @@ To install Kibana on top of Elasticsearch : `helm install kibana elastic/kibana`
 
 Check if all the pods are ready: `kubectl get pods`
 
-After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by typing `http://localhost:5601 `in your browser
+After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by typing `http://localhost:5601` in your browser
 
-In order to connect logger with elasticsearch, update `packages/ops/configs/local.template.values.yaml` env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
+In order to connect logger with elasticsearch, update `packages/ops/configs/local.minikube.template.values.yaml` env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
 
 ## Run build_minikube.sh
 When minikube is running, run the following command from the root of the Ethereal Engine repo:
@@ -156,15 +159,20 @@ This will build an image of the entire Ethereal Engine repo into a single Docker
 different services, it will only run the parts needed for that service. This may take up to 15 minutes,
 though later builds should take less time as things are cached.
 
-## Deploy Ethereal Engine Helm chart
-Run the following command: `helm install -f </path/to/local.values.yaml> --set api.extraEnv.FORCE_DB_REFRESH=true local xrengine/xrengine`.
+## Update Helm Values File
+
 This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
-a [template](../packages/ops/configs/local.template.values.yaml) for this file in packages/ops/configs
+a [template](./packages/ops/configs/local.minikube.template.values.yaml) for this file in packages/ops/configs
+
+If you are using local file server as explained couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value e.g. '/hosthome/<OS_USER_NAME>/<ENGINE_FOLDER>/packages/server/upload'. The folder must be in home folder and make sure to use /hosthome/ instead of home in path. Its mandatory to point to `/packages/server/upload` folder of your engine folder.
+
+## Deploy Ethereal Engine Helm chart
+Run the following command: `helm install -f </path/to/local.values.yaml> -f ./packages/ops/configs/db-refresh-true.values.yaml local xrengine/xrengine`.
 
 After a minute or so, running `kubectl get pods` should show one or more instanceservers, one or more api
 servers, and one client server in the Running state. Setting `FORCE_DB_REFRESH=true` made the api servers
 (re)initialize the database. Since you don't want that to happen every time a new api pod starts, run
-`helm upgrade --reuse-values --set api.extraEnv.FORCE_DB_REFRESH=false local xrengine/xrengine`.
+`helm upgrade --reuse-values -f ./packages/ops/configs/db-refresh-false.values.yaml local xrengine/xrengine`.
 The API pods will restart and will now not attempt to reinit the database on boot.
 
 ## Accept invalid certs
