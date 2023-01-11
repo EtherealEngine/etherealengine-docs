@@ -45,7 +45,7 @@ Set alias for kubectl & helm:
 
 ```bash
 alias kubectl='microk8s kubectl' 
-alias helm='microk8s kubectl' 
+alias helm='microk8s helm' 
 ```
 
 ## Enable MicroK8s access for local docker
@@ -90,7 +90,8 @@ If you want to add MicroK8s cluster to GUI tool [Lens](https://k8slens.dev/). Pr
 
 `kubectl config view --raw`
 
-In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
+Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.
+Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
 
 ## Update system hostfile to point to MicroK8s
 
