@@ -2,9 +2,9 @@
 
 This guide is intended for local environment and currently tested on Ubuntu.
 
-## Install Docker
+## Install kubectl, Helm and Docker
 
-If [Docker](https://docs.docker.com/get-docker/) isn't already installed on your machine, install it.
+If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/) and [Docker](https://docs.docker.com/get-docker/) aren't already installed on your machine, install them.
 
 You may also need to install [Docker Compose](https://docs.docker.com/compose/install/)
 
@@ -41,12 +41,36 @@ Execute following command in your terminal to enable MicroK8s addons
 
 `sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3`
 
-Set alias for kubectl & helm:
+## Add MicroK8s to Kubectl
+
+First make sure there is no existing configuration for microk8s in your kubectl config. To do so you run `kubectl config get-contexts` command in terminal and see if the output contains microk8s. You can remove the existing configurations using following commands:
 
 ```bash
-alias kubectl='microk8s kubectl' 
-alias helm='microk8s helm' 
+kubectl config delete-context microk8s
+kubectl config delete-cluster microk8s-cluster
+kubectl config delete-user microk8s-admin
 ```
+
+Now, we will add microk8s configuration to kubectl config. We can do this by using following commands. [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)
+
+```bash
+kubectl config set-cluster microk8s --server=https://127.0.0.1:16443/ --certificate-authority=/var/snap/microk8s/current/certs/ca.crt
+kubectl config set-credentials microk8s-admin --token="$(sudo microk8s kubectl config view --raw -o 'jsonpath={.users[0].user.token}')"
+kubectl config set-context microk8s --cluster=microk8s --namespace=default --user=microk8s-admin
+```
+
+Afterwards you can use this newly create context by executing `kubectl config use-context microk8s`
+
+Now if you run `kubectl config get-contexts` command then microk8s should be current context.
+
+## (Optional) Add MicroK8s to Lens
+
+ If the previous step was performed successfully then you should be able to see MicroK8s cluster in GUI tool [Lens](https://k8slens.dev/). Else you can print the configuration using following command:
+
+`microk8s config`
+
+Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.
+Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
 
 ## Enable MicroK8s access for local docker
 
@@ -83,15 +107,6 @@ Run `sudo microk8s inspect` and check if there is any warning. Its recommended t
     Possible Fix: <https://lightrun.com/answers/canonical-microk8s-microk8s-is-not-running-microk8sinspect-showing-no-error>
 
     Here this error cloud be due to conflicting kubectl being installed. Use this command to remove kubectl `sudo rm -rf /usr/local/bin/kubectl`
-
-## (Optional) Add MicroK8s to Lens
-
-If you want to add MicroK8s cluster to GUI tool [Lens](https://k8slens.dev/). Print the configuration using following command:
-
-`kubectl config view --raw`
-
-Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.
-Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
 
 ## Update system hostfile to point to MicroK8s
 
