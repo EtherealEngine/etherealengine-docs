@@ -1,6 +1,28 @@
-# Ethereal Engine on MicroK8s
+# Ethereal Engine on MicroK8s (Linux)
 
 This guide is intended for local environment and currently tested on Ubuntu.
+
+## Install Python 3
+
+In your WSL Ubuntu terminal, if python 3 (`pip3 --version`) isn't already installed on your machine. You can do so by running following commands:
+
+```bash
+sudo apt-get update -y
+sudo apt-get install -y python3-pip
+```
+
+You can verify pip3 by using `pip3 --version` command.
+
+## Install Make
+
+In your WSL Ubuntu terminal, if make (`make --version`) isn't already installed on your machine. You can do so by running following commands:
+
+```bash
+sudo apt-get update -y
+sudo apt-get install -y build-essential
+```
+
+You can verify make by using `make --version` command.
 
 ## Install kubectl, Helm and Docker
 
@@ -19,7 +41,13 @@ While you can follow the demo instructions there about starting MicroK8s, deploy
 
 ## Clone Ethereal Engine repo to your local machine
 
-To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to get the Ethereal Engine repo on your machine. This is most easily done by running `git clone https://github.com/XRFoundation/XREngine.git`
+To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to get the Ethereal Engine repo on your machine. This is most easily done by running following command in WSL Ubuntu terminal.
+
+```bash
+git clone https://github.com/XRFoundation/XREngine.git ethereal-engine
+```
+
+If `.env.local` file does not exist in the root of your repo folder then create it by duplicating `.env.local.default`.
 
 ## Start MariaDB server locally via Docker
 
@@ -33,7 +61,13 @@ Alternatively, if you want to just run MariaDB on its own without Docker, that's
 
 If you're going to have the MicroK8s deployment use a local storage provider, rather than a cloud storage provider like AWS S3, you'll need to have the local file server running on your machine outside of MicroK8s.
 
-Run `npm install` (or `yarn install` if `npm install` isn't working right; you'd need to install yarn in that case) from the root of the Ethereal Engine repo. When that's finished, go to packages/server and run `npm run serve-local-files`. This will start a local file server on port 8642, and will create and serve those files from `packages/server/upload`.
+Run `npm install` (or `yarn install` if `npm install` isn't working right; you'd need to install yarn in that case) from the root of the Ethereal Engine repo. When that's finished, go to `packages/server` and run:
+
+```bash
+npm run serve-local-files
+```
+
+This will start a local file server on port 8642, and will create and serve those files from `packages/server/upload`.
 
 ## Enabling MicroK8s Addons
 
@@ -69,12 +103,12 @@ Now if you run `kubectl config get-contexts` command then microk8s should be cur
 
 `microk8s config`
 
-Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.
+Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.  
 Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
 
 ## Enable MicroK8s access for local docker
 
-For MicroK8s we will be using MicroK8s [registry](https://microk8s.io/docs/registry-built-in)
+For MicroK8s we will be using MicroK8s local [registry](https://microk8s.io/docs/registry-built-in)
 
 Add the following lines to `/etc/docker/daemon.json`. On Linux, this is done by running `sudo gedit /etc/docker/daemon.json`.  
 

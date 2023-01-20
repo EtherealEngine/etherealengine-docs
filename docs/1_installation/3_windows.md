@@ -16,18 +16,3 @@ docker container start xrengine_db
 
 8. Check your WSL config for any incorrect networking settings.
    https://docs.microsoft.com/en-us/windows/wsl/wsl-config#network
-
-### Installing on Windows with WSL2
-Note: **You must have WSL2 installed for these instructions to work**
-
-First, open a wsl prompt. Then type these commands:
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install build-essential
-npm install
-npm install mediasoup@3 --save
-sudo service docker start
-npm run dev-docker
-npm run dev-reinit
-```
