@@ -234,7 +234,10 @@ getting access.
 Some values to note for dev/prod.template.values.yaml:
 sql.database will be what you entered for Initial Database Name
 sql.user and sql.password will be the name and password of the admin user
-sql.host will be the Endpoint of the RDS instance/cluster; find this
+sql.host will be the Endpoint of the RDS instance/cluster; find this by going to RDS -> Databases,
+clicking on either the lone DB identifier (if made in a single AZ) or the top-level regional cluster
+identifier (if set up in a multi-AZ deployment); the look for Endpoint (single-AZ) or, if multi-AZ,
+the Endpoint name that has type 'Writer instance'.
 
 
 ## Edit security group to allow instanceserver traffic into VPC
@@ -461,7 +464,7 @@ The `Name` field should be automatically populated, and should be left as whatev
 Several fields in `Default cache behavior` will be changed.
 
 Under `Viewer -> Viewer protocol policy`, select 'Redirect HTTP to HTTPS'
-Under `Viewer -. Allowed HTTP methods`, select 'GET, HEAD, OPTIONS', and check `Cache HTTP methods -> OPTIONS`.
+Under `Viewer -> Allowed HTTP methods`, select 'GET, HEAD, OPTIONS', and check `Cache HTTP methods -> OPTIONS`.
 
 In `Cache key and origin requests`, leave it on `Cache policy and origin request policy`.
 If this option is not available, see the below subsection for `Legacy cache settings`
@@ -469,7 +472,7 @@ If this option is not available, see the below subsection for `Legacy cache sett
 For `Cache policy`, you will need to make a new policy, which is easily done by clicking the link `Create policy`
 underneath the selector; this will open a new tab. Name this policy anything you want, e.g. 'Cached-on-headers',
 then under `Cache key settings`, click on the `Headers` selector and select 'Include the following headers'. A new
-selector should appear under that titled `Add header`. Click the selector, and check 'Host', 'Origin',
+selector should appear under that titled `Add header`. Click the selector, and check 'Origin',
 'Access-Control-Request-Method', and 'Access-Control-Request-Headers', then click away from the menu. Click the 'Create'
 button to create the new policy.
 
