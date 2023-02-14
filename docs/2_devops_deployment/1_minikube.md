@@ -73,8 +73,11 @@ You'll need to edit your hostfile to point certain domains to minikube IP addres
 this is done by running `sudo gedit /etc/hosts`.
 
 Add the following lines:
-`<Output of 'minikube ip'>  local.etherealengine.com api-local.etherealengine.com instanceserver-local.etherealengine.com 00000.instanceserver-local.etherealengine.com 00001.instanceserver-local.etherealengine.com 00002.instanceserver-local.etherealengine.com 00003.instanceserver-local.etherealengine.com`
-`10.0.2.2   host.minikube.internal`
+
+```conf
+<Output of 'minikube ip'>  local.etherealengine.com api-local.etherealengine.com instanceserver-local.etherealengine.com 00000.instanceserver-local.etherealengine.com 00001.instanceserver-local.etherealengine.com 00002.instanceserver-local.etherealengine.com 00003.instanceserver-local.etherealengine.com
+10.0.2.2   host.minikube.internal
+```
 
 The first line says to point several *-local.etherealengine.com domains internally to the minikube cluster,
 where the nginx ingress server will redirect the traffic to the appropriate pod.
