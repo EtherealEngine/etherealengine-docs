@@ -305,6 +305,15 @@ When microk8s is running, run the following command from the root of the Etherea
 export REGISTRY_HOST=microk8s.registry; export MYSQL_HOST=kubernetes.docker.internal;bash ./scripts/build_microk8s.sh
 ```
 
+> If you face issue related to `"packages/projects/projects/" does not exist` then run following commands in your WSL terminal:
+
+```bash
+export MYSQL_HOST=localhost
+npm run dev-docker
+npm run dev-reinit
+npm run install-projects
+```
+
 The script builds the full-repo Docker image using several build arguments. Vite, which builds he client files, uses some information from the MariaDB database created for microk8s deployments to fill in some variables, and needs database credentials. The script will supply default values for all of the MYSQL_* variables if they are not provided to the script, as well as VITE_CLIENT_HOST, VITE_SERVER_HOST, and VITE_INSTANCESERVER_HOST. The latter three will make your microk8s deployment accessible on `(local/api-local/instanceserver-local).etherealengine.com`; if you want to run it on a different domain, then you'll have to set those three environment variables to what you want them to be (and also change the hostfile records you made pointing those subdomains)
 
 This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for different services, it will only run the parts needed for that service. This may take up to 15 minutes, though later builds should take less time as things are cached.

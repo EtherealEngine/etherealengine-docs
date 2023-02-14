@@ -143,7 +143,19 @@ In order to connect logger with elasticsearch, update `packages/ops/configs/loca
 
 ## Run build_minikube.sh
 When minikube is running, run the following command from the root of the Ethereal Engine repo:
-`./scripts/build_minikube.sh`
+
+```bash
+./scripts/build_minikube.sh
+```
+
+> If you face issue related to `"packages/projects/projects/" does not exist` then run following commands in your terminal:
+
+```bash
+export MYSQL_HOST=localhost
+npm run dev-docker
+npm run dev-reinit
+npm run install-projects
+```
 
 This points Docker *in the current terminal* to minikube's Docker environment. Anything that Docker builds
 will be locally accessible to minikube; if the first main command in the script were not run, Docker would build to your
