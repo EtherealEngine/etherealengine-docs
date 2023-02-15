@@ -31,7 +31,7 @@ The engine uses a very similar model to Unity's update loop (found here https://
 
 ### API
 
-[Component Functions](../packages/engine/src/ecs/functions/ComponentFunctions.ts)
+[Component Functions](https://raw.githubusercontent.com/XRFoundation/XREngine/dev/packages/engine/src/ecs/functions/ComponentFunctions.ts)
 
 #### Entities
 

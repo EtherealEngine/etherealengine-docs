@@ -229,7 +229,7 @@ Once the images are build. It will push it to MicroK8s local registry. You can v
 ## Update Helm Values File
 
 This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
-a [template](./packages/ops/configs/local.microk8s.template.values.yaml) for this file in packages/ops/configs
+a [template](https://raw.githubusercontent.com/XRFoundation/XREngine/dev/packages/ops/configs/local.microk8s.template.values.yaml) for this file in packages/ops/configs
 
 If you are using local file server as explained couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value similar to '<ENGINE_FULL_PATH>/packages/server/upload' e.g. '/home/<OS_USER_NAME>/<ENGINE_FOLDER>/packages/server/upload'. Its mandatory to point to `/packages/server/upload` folder of your engine folder.
 

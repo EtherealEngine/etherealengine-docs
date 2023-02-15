@@ -39,3 +39,12 @@
 .button.button--secondary.button--outline:not(.button--active):not(:hover) {
     color: #ffffff!important;
 }
+
+.markdown a {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.markdown a:hover {
+  opacity: 0.7;
+}
