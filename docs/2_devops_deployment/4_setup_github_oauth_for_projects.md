@@ -119,3 +119,41 @@ In short form:
 
 See [the section 'Graphical Install Flow](../3_concepts/1_projects_api.md) for more information on how to install
 projects from GitHub.
+
+# User Repo Access to GitHub (with optional webhooks)
+
+Users can push projects to GitHub if they have write/maintain/admin access to the associated GitHub repository.
+Since fetching this access from the GitHub API every time a user fetches their projects can take a noticeable
+amount of time, Ethereal Engine stores users' GitHub repo access in its database. This is much faster to access.
+
+There are multiple actions that will make the engine re-fetch and update users' repo access:
+
+* When a user logs in via GitHub
+* When a user clicks on the button "Refresh GitHub Repo Access" on /admin/projects or /studio (must be logged
+  in as a user that is associated with a GitHub account)
+* Via a GitHub webhook - must manually configure this
+
+## Setting up GitHub webhook
+Ethereal Engine currently only supports webhook notifications for Collaborators being added/edited/removed. 
+Changes in Teams are not handled by Ethereal Engine due to the opacity of team members. (Team change webhooks do not 
+include team members, and the engine does not track who is in a team)
+
+An admin needs to go to /admin/settings, click on 'Server', then enter a secret key in the field 
+"GitHub Webhook Secret", then click the Save button. The secret can be any string you make up.
+Randomly generated strings are encouraged.
+
+Next, go to GitGub. In the Repository or Organization that you want to send updates for, go to
+Settings -> Code(, planning,) and automation -> Webhooks, then click "Add webhook".
+
+For Payload URL, enter `<your_api_subdomain>/github-repo-access-webhook`, e.g. `https://api.example.com/github-repo-access-webhook`
+Set Content Type to `application/json`. For Secret, enter the secret from the earlier step. For
+"Which events would you like to trigger this webhook?", select "Let me select individual events."
+In the list of events that appears, uncheck "Pushes", anf check "Collaborator add, remove, or changed".
+At the very bottom of the page, click the green button "Add webhook".
+
+After the webhook is created, the webhook will send a ping request to the API endpoint you provided. If the URL
+was entered correctly, and the secret was entered correctly in both ends, the ping should get a 200 response.
+You can check the status under the "Recent Deliveries" tab of that webhook on GitHub.
+
+When this is working, whenever a user is added, removed, or has their access modified, the engine
+will re-fetch the user's full set of GitHub repo accesses and update the database's records.
