@@ -261,4 +261,4 @@ custom locations, which can be seen in the
 
 ### i18n
 
-Internationalization can be added using the pattern `./i18n/<language>/<namespace>.json`. An example of the format can be found in [the base i18n files](../../../packages/client-core/i18n/).
+Internationalization can be added using the pattern `./i18n/<language>/<namespace>.json`. An example of the format can be found in [the base i18n files](https://github.com/XRFoundation/XREngine/tree/dev/packages/client-core/i18n).
