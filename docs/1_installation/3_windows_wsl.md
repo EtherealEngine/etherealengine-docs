@@ -72,7 +72,7 @@ You can verify make by using `make --version` command.
 Clone Ethereal Engine repo on your machine by running following command in WSL Ubuntu terminal.
 
 ```bash
-git clone https://github.com/XRFoundation/XREngine.git ethereal-engine
+git clone https://github.com/etherealengine/etherealengine.git etherealengine
 ```
 
 If `.env.local` file does not exist in the root of your repo folder then create it by duplicating `.env.local.default`.
@@ -86,7 +86,7 @@ npm install
 > Note: If you face issue related to `mediasoup` while doing npm install. Then remove the `mediasoup` package from `packages/instanceserver/package.json` file of Ethereal Engine source code. And run `npm install` again. Afterwards, run:
 
 ```bash
-npm install mediasoup@3 -w @xrengine/instanceserver
+npm install mediasoup@3 -w @etherealengine/instanceserver
 ```
 
 ## Initialize MariaDB server

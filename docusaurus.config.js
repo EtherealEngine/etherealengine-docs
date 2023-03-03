@@ -8,19 +8,19 @@ const commonExcludePaths = ['**/**.js', '**/{node_modules,dist,tests}/**']
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ethereal-engine',
+  title: 'etherealengine',
   tagline:
     'An end-to-end solution for hosting humans and AI in a virtual space, built on top of react, three.js and express/feathers.',
-  url: 'https://xrfoundation.github.io',
-  baseUrl: '/ethereal-engine-docs/',
+  url: 'https://etherealengine.github.io',
+  baseUrl: '/etherealengine-docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'XRFoundation', // Usually your GitHub org/user name.
-  projectName: 'ethereal-engine-docs', // Usually your repo name.
+  organizationName: 'etherealengine', // Usually your GitHub org/user name.
+  projectName: 'etherealengine-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -175,7 +175,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/XRFoundation/ethereal-engine-docs/'
+          editUrl: 'https://github.com/etherealengine/etherealengine-docs/'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -233,7 +233,7 @@ const config = {
             items: [
               {
                 label: 'Github',
-                href: 'https://github.com/XRFoundation/XREngine'
+                href: 'https://github.com/etherealengine/etherealengine'
               },
               {
                 label: 'Npm',

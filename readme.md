@@ -11,4 +11,4 @@
 * DevOps
   - [Database Migration](docs/2_devops_deployment/3_feathers_sequelize.md)
   - [Deploying Ethereal Engine on minikube](docs/2_devops_deployment/1_minikube.md)
-* See also [Ethereal Engine Wiki](https://github.com/XRFoundation/XREngine/wiki/)
+* See also [Ethereal Engine Wiki](https://github.com/etherealengine/etherealengine/wiki/)

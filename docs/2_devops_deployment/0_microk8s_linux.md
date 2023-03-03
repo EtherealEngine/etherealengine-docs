@@ -44,7 +44,7 @@ While you can follow the demo instructions there about starting MicroK8s, deploy
 To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to get the Ethereal Engine repo on your machine. This is most easily done by running following command in WSL Ubuntu terminal.
 
 ```bash
-git clone https://github.com/XRFoundation/XREngine.git ethereal-engine
+git clone https://github.com/etherealengine/etherealengine.git etherealengine
 ```
 
 If `.env.local` file does not exist in the root of your repo folder then create it by duplicating `.env.local.default`.
@@ -53,7 +53,7 @@ If `.env.local` file does not exist in the root of your repo folder then create 
 
 For simplicity, we recommend running a MariaDB server on your local machine outside of MicroK8s.
 
-If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will start up multiple MariaDB docker images (as well as a redis server, which is not needed). One, intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the minikube/microk8s MariaDB Docker image is stopped, you can start it again by running `docker start xrengine_minikube_db`.
+If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will start up multiple MariaDB docker images (as well as a redis server, which is not needed). One, intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the minikube/microk8s MariaDB Docker image is stopped, you can start it again by running `docker start etherealengine_minikube_db`.
 
 Alternatively, if you want to just run MariaDB on its own without Docker, that's fine too. You'll just have to configure the Helm config file to have the appropriate SQL server configuration, and possibly change the script `./scripts/build_microk8s.sh`.
 
@@ -161,7 +161,7 @@ You'll need to add a few Helm repos. Run the following:
 ```bash
 helm repo add agones https://agones.dev/chart/stable
 helm repo add redis https://charts.bitnami.com/bitnami
-helm repo add xrengine https://helm.xrengine.io
+helm repo add etherealengine https://helm.etherealengine.io
 ```
 
 This will add the Helm charts for Agones, Redis, and Ethereal Engine, respectively.
@@ -229,15 +229,15 @@ Once the images are build. It will push it to MicroK8s local registry. You can v
 ## Update Helm Values File
 
 This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
-a [template](https://raw.githubusercontent.com/XRFoundation/XREngine/dev/packages/ops/configs/local.microk8s.template.values.yaml) for this file in packages/ops/configs
+a [template](https://raw.githubusercontent.com/etherealengine/etherealengine/dev/packages/ops/configs/local.microk8s.template.values.yaml) for this file in packages/ops/configs
 
 If you are using local file server as explained couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value similar to '<ENGINE_FULL_PATH>/packages/server/upload' e.g. '/home/<OS_USER_NAME>/<ENGINE_FOLDER>/packages/server/upload'. Its mandatory to point to `/packages/server/upload` folder of your engine folder.
 
 ## Deploy Ethereal Engine Helm chart
 
-Run the following command: `helm install -f </path/to/local.values.yaml> -f ./packages/ops/configs/db-refresh-true.values.yaml local xrengine/xrengine`.
+Run the following command: `helm install -f </path/to/local.values.yaml> -f ./packages/ops/configs/db-refresh-true.values.yaml local etherealengine/etherealengine`.
 
-After a minute or so, running `kubectl get pods` should show one or more instanceservers, one or more api servers, and one client server in the Running state. Setting `FORCE_DB_REFRESH=true` made the api servers (re)initialize the database. Since you don't want that to happen every time a new api pod starts, run `helm upgrade --reuse-values -f ./packages/ops/configs/db-refresh-false.values.yaml local xrengine/xrengine`. The API pods will restart and will now not attempt to reinit the database on boot.
+After a minute or so, running `kubectl get pods` should show one or more instanceservers, one or more api servers, and one client server in the Running state. Setting `FORCE_DB_REFRESH=true` made the api servers (re)initialize the database. Since you don't want that to happen every time a new api pod starts, run `helm upgrade --reuse-values -f ./packages/ops/configs/db-refresh-false.values.yaml local etherealengine/etherealengine`. The API pods will restart and will now not attempt to reinit the database on boot.
 
 ## Accept invalid certs
 
