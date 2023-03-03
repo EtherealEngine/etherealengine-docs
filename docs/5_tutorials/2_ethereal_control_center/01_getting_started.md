@@ -14,7 +14,7 @@ This video gives a complete walk through of how to get started with Control Cent
 
 ## Installation
 
-In order to download Ethereal Engine control center app, navigate to **<u>[releases](https://github.com/XRFoundation/XREngine-Control-Center/releases)</u>** page and download the latest version of AppImage.
+In order to download Ethereal Engine control center app, navigate to **<u>[releases](https://github.com/etherealengine/Ethereal-Control-Center/releases)</u>** page and download the latest version of AppImage.
 
 Once downloaded, right click and go to **Properties** of App Image. In **Permissions** tab check 'Allow executing file as program'. Afterwards, double click on AppImage to launch the app.
 
@@ -50,7 +50,7 @@ Once the configuration started it will take time based on the required app to be
 
 Once all the tick marks in control center are green and launch button is enabled. Please hit on Launch button to open Ethereal Engine in your browser.
 
-Make sure to allow certificates as show in videos and also explained **<u>[here](https://xrfoundation.github.io/ethereal-engine-docs/docs/installation/install_troubleshooting#invalid-certificate-errors-in-local-environment)</u>**
+Make sure to allow certificates as show in videos and also explained **<u>[here](https://etherealengine.github.io/etherealengine-docs/docs/installation/install_troubleshooting#invalid-certificate-errors-in-local-environment)</u>**
 
 ## Updating the App
 

@@ -25,9 +25,9 @@ Create an empty folder at the root called `project-package-jsons` and the run
 the following command to build:
 
 ``` bash
-DOCKER_BUILDKIT=1 docker build -t xrengine --build-arg MYSQL_USER=server \
+DOCKER_BUILDKIT=1 docker build -t etherealengine --build-arg MYSQL_USER=server \
   --build-arg MYSQL_PASSWORD=password --build-arg MYSQL_HOST=127.0.0.1 \
-  --build-arg MYSQL_DATABASE=xrengine --build-arg MYSQL_PORT=3304 \
+  --build-arg MYSQL_DATABASE=etherealengine --build-arg MYSQL_PORT=3304 \
   --build-arg VITE_SERVER_HOST=localhost --build-arg VITE_SERVER_PORT=3030 \
   --build-arg VITE_INSTANCESERVER_HOST=localhost --build-arg VITE_INSTANCESERVER_PORT=3031 \
   --build-arg VITE_LOCAL_BUILD=true --build-arg CACHE_DATE="$(date)" --network="host" .
@@ -36,7 +36,7 @@ DOCKER_BUILDKIT=1 docker build -t xrengine --build-arg MYSQL_USER=server \
 ## Run the server to seed the database, wait a couple minutes, then delete it
 
 ``` bash
-docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "FORCE_DB_REFRESH=true" --network host xrengine
+docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "FORCE_DB_REFRESH=true" --network host etherealengine
 docker logs server -f
 -Wait for the line "Server Ready", then Ctrl+c out of the logs-
 docker container stop server
@@ -45,11 +45,11 @@ docker container rm server
 
 ## Run the images
 ``` bash
-docker run -d --name serve-local --env-file .env.local.default -e "SERVER_MODE=serve-local" --network host xrengine
-docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "INSTANCESERVER_HOST=<local IP address" --network host xrengine
-docker run -d --name client --env-file .env.local.default -e "SERVER_MODE=client" --network host xrengine
-docker run -d --name world --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" --network host xrengine
-docker run -d --name channel --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" -e "INSTANCESERVER_PORT=3032" --network host xrengine
+docker run -d --name serve-local --env-file .env.local.default -e "SERVER_MODE=serve-local" --network host etherealengine
+docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "INSTANCESERVER_HOST=<local IP address" --network host etherealengine
+docker run -d --name client --env-file .env.local.default -e "SERVER_MODE=client" --network host etherealengine
+docker run -d --name world --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" --network host etherealengine
+docker run -d --name channel --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" -e "INSTANCESERVER_PORT=3032" --network host etherealengine
 ```
 
 ## Delete containers, if you want to run a new build, or just get rid of them

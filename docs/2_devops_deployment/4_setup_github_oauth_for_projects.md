@@ -81,10 +81,10 @@ Open your Helm configuration. Enter the Client ID for `GITHUB_CLIENT_ID` and the
 double quotes in the .yaml file, so that they are interpreted as strings even if they start with a
 number, e.g. `GITHUB_CLIENT_ID: "17592577832789234"`
 
-Next, run `helm upgrade --reuse-values -f <path/to/configuration.yaml> --set-string api.extraEnv.FORCE_DB_REFRESH=true <stage_name> xrengine/xrengine`.
+Next, run `helm upgrade --reuse-values -f <path/to/configuration.yaml> --set-string api.extraEnv.FORCE_DB_REFRESH=true <stage_name> etherealengine/etherealengine`.
 This tells Helm to restart the API servers, and for them to wipe the database and reseed it with the values
 in the configuration file. It should only take a minute or two, and you should then run
-`helm upgrade --reuse-values --set-string api.extraEnv.FORCE_DB_REFRESH=false <stage_name> xrengine/xrengine` to unset
+`helm upgrade --reuse-values --set-string api.extraEnv.FORCE_DB_REFRESH=false <stage_name> etherealengine/etherealengine` to unset
 the flag telling it to reset the database.
 
 Once this is done, you should be able to log in with GitHub and be granted admin status.

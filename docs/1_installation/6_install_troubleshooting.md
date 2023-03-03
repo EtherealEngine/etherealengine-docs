@@ -103,7 +103,7 @@ Example
 
 Type in terminal
 
-     npm i <packagename> -w @xrengine/editor
+     npm i <packagename> -w @etherealengine/editor
 
 ### To repopulate database
 
@@ -118,8 +118,8 @@ Try
     npm run dev-reinit 
 or
  
-    docker container stop xrengine_db
-    docker container rm xrengine_db
+    docker container stop etherealengine_db
+    docker container rm etherealengine_db
     docker container prune
     npm run dev-docker
     npm run dev-reinit

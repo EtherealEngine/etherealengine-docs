@@ -12,7 +12,7 @@
 `./start-db.sh` only needs to be run once. If the docker image has stopped, start it again with:
 
 ```
-docker container start xrengine_db
+docker container start etherealengine_db
 ```
 
 8. Check your WSL config for any incorrect networking settings.

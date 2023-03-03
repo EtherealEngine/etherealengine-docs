@@ -1,7 +1,7 @@
 # Updating database models
 
 Tooling for automatically updating the database based on changes in models is included in
-[sequelize.ts](https://raw.githubusercontent.com/XRFoundation/XREngine/dev/packages/server-core/src/sequelize.ts). Most of it is controlled by setting
+[sequelize.ts](https://raw.githubusercontent.com/etherealengine/etherealengine/dev/packages/server-core/src/sequelize.ts). Most of it is controlled by setting
 the environment variable `PREPARE_DATABSE=true`. 
 
 If that is set, then the database setup will iterate through every model's fields and try
@@ -10,13 +10,13 @@ to match each one to a column. If it can't find an existing column, then one of 
 * If the model has a value `oldColumn` set on the field/foreignKey definition, and that old 
   column exists, then the old column will be renamed to the current name of the model field
 
-The following is an example of [user.model.ts](https://raw.githubusercontent.com/XRFoundation/XREngine/dev/packages/server-core/src/user/user/user.model.ts)
+The following is an example of [user.model.ts](https://raw.githubusercontent.com/etherealengine/etherealengine/dev/packages/server-core/src/user/user/user.model.ts)
 where the field `inviteCode` will be renamed to `codeInvite`, and the association that was called
 `channelInstanceId` is renamed to `instanceChannelId`. Note the `oldColumn` definition on each.
 ```
 import { DataTypes, Sequelize, Model } from 'sequelize'
 import { Application } from '../../../declarations'
-import { UserInterface } from '@xrengine/common/src/dbmodels/UserInterface'
+import { UserInterface } from '@etherealengine/common/src/dbmodels/UserInterface'
 
 /**
  * This model contain users information

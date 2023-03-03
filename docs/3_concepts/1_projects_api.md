@@ -36,7 +36,7 @@ Projects have a few conventions.
 A project must also have a package.json to provide custom dependencies, and to define
 the project name, project version, and Ethereal Engine version it is known to work with.
 
-`@xrengine/*` monorepo dependencies will be symlinked and not needed, but some
+`@etherealengine/*` monorepo dependencies will be symlinked and not needed, but some
 package managers (such as pnpm) require these to be defined. If so, they should
 be defined in `peerDependencies`.
 
@@ -257,8 +257,8 @@ The `databaseSeed` property is a relative path that points to a file which must
 return type `ServicesSeedConfig` from `../packages/common/src/interfaces/ServicesSeedConfig.ts`
 which is run when the database seeder is run. This can be useful for setting 
 custom locations, which can be seen in the 
-[Ethereal Engine demo project](https://github.com/XRFoundation/demo-xrengine-project).
+[Ethereal Engine demo project](https://github.com/etherealengine/demo-etherealengine-project).
 
 ### i18n
 
-Internationalization can be added using the pattern `./i18n/<language>/<namespace>.json`. An example of the format can be found in [the base i18n files](https://github.com/XRFoundation/XREngine/tree/dev/packages/client-core/i18n).
+Internationalization can be added using the pattern `./i18n/<language>/<namespace>.json`. An example of the format can be found in [the base i18n files](https://github.com/etherealengine/etherealengine/tree/dev/packages/client-core/i18n).

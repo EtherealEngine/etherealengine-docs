@@ -61,7 +61,7 @@ the recent high traffic picking up again.
 The OIDC provider that was created in the prior step, installing the EBS CSI Addon, can be re-used in this step.
 
 #### Create launch template
-Go to EC2 -> Launch Templates and make a new one. Name it something like 'xrengine-production-instanceserver'.
+Go to EC2 -> Launch Templates and make a new one. Name it something like 'etherealengine-production-instanceserver'.
 Most settings can be left as-is, except for the following:
 * Storage -> Add a volume, set the size to ~20GB, and for Device name select '/dev/xvda'.
 * Network Interfaces -> Add one, and under 'Auto-assign public IP' select 'Enable'
@@ -130,22 +130,22 @@ Ethereal Engine project codebase(s) getting out, you can choose Private for Visi
 You'll be needing to create multiple repositories for each deployment, e.g. several repos for a `dev` deployment,
 several more for a `prod` deployment, etc.
 
-Assuming you're first doing a `dev` deployment, name the first repo `xrengine-<RELEASE_NAME>-builder` under Repository
-Name, e.g. `xrengine-dev-builder`. You shouldn't need to change any other settings, though if you're using a Private 
+Assuming you're first doing a `dev` deployment, name the first repo `etherealengine-<RELEASE_NAME>-builder` under Repository
+Name, e.g. `etherealengine-dev-builder`. You shouldn't need to change any other settings, though if you're using a Private 
 repo and want to turn on Tag Immutability, that's fine. The image tags that are generated should never collide, but it
 will prevent any manual overwriting of a tag. Click Create Repository.
 
 You will need to make four more repos for each of the services that are deployed as part of the Ethereal Engine stack -
-`api`, `client`, `instanceserver` and `taskserver`, which are also in the form `xrengine-<RELEASE_NAME>-<service_name>`.
-e.g. `xrengine-dev-api`, `xrengine-dev-client`, `xrengine-dev-instanceserver` and `xrengine-dev-taskserver`.
+`api`, `client`, `instanceserver` and `taskserver`, which are also in the form `etherealengine-<RELEASE_NAME>-<service_name>`.
+e.g. `etherealengine-dev-api`, `etherealengine-dev-client`, `etherealengine-dev-instanceserver` and `etherealengine-dev-taskserver`.
 Everything else can be left alone for those, too.
 
 On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see both of 
 the repositories you made. If you don't see any, you may be on the wrong tab up top - click Private or Public to switch
 between them. Also check that you're in the right AWS region. You'll see a column 'URI'. If you made public repos,
-the URIs should be in the form `public.ecr.aws/<identifier>/xrengine-<RELEASE_NAME>(-builder)`; if you made private 
-repos, the URIs should be in the form `<AWS_account_id>.dkr.ecr.<AWS_region>.amazonaws.com/xrengine-<deployment>(-builder)`. 
-Take note of everything before the `/xrengine-<RELEASE_NAME>` - you'll need to add that as a variable in later steps.
+the URIs should be in the form `public.ecr.aws/<identifier>/etherealengine-<RELEASE_NAME>(-builder)`; if you made private 
+repos, the URIs should be in the form `<AWS_account_id>.dkr.ecr.<AWS_region>.amazonaws.com/etherealengine-<deployment>(-builder)`. 
+Take note of everything before the `/etherealengine-<RELEASE_NAME>` - you'll need to add that as a variable in later steps.
 It will be called `ECR_URL` there.
 
 ## Create IAM Roles for S3/SES/SNS/Route53 (or a single admin role)
@@ -292,8 +292,8 @@ Go to Amazon Certificate Manager. If there are no certs in that region, click on
 otherwise click on Request a Certificate.
 
 You should select Request a Public Certificate, then select Request a Certificate. The next page
-should be headed Add Domain Names. You should add both the top-level domain, such as ```ethereal-engine.io```, 
-as well as a wildcard for all subdomains e.g. ```*.ethereal-engine.io```, then click Next.
+should be headed Add Domain Names. You should add both the top-level domain, such as ```etherealengine.org```, 
+as well as a wildcard for all subdomains e.g. ```*.etherealengine.org```, then click Next.
 
 Choose DNS Validation on the next page and click Next. You can skip adding tags and just click Review,
 then Confirm on the final page.
@@ -324,7 +324,7 @@ If that isn't present, you'll have to edit the configuration to make the appropr
 
 You next need to add the Agones, ingress-nginx, and redis Helm charts to helm by running 
 ```helm repo add agones https://agones.dev/chart/stable```, ```helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx```, and ```helm repo add redis https://charts.bitnami.com/bitnami```.
-You should also at this time add Ethereal Engine's repo via ```helm repo add xrengine https://helm.xrengine.io```.
+You should also at this time add Ethereal Engine's repo via ```helm repo add etherealengine https://helm.etherealengine.io```.
 
 If you ever suspect that a chart is out-of-date, run ```helm repo update``` to update all of them to the latest.
 
@@ -424,7 +424,7 @@ Various static files are stored in S3 behind a Cloudfront distribution.
 
 ### Create S3 bucket
 In the AWS web client, go to S3 -> Buckets and click Create Bucket.
-Name the bucket `<name>-static-resources`, e.g. ```ethereal-engine-static-resources```, and have it be in Region us-east-1.
+Name the bucket `<name>-static-resources`, e.g. ```etherealengine-static-resources```, and have it be in Region us-east-1.
 Under Object Ownership, select 'ACLs enabled', and under that select 'Object Writer'.
 Under Block Public Access Settings For The Bucket, uncheck the checkbox Block *all* Public Access; 
 you need the bucket to be publicly accessible.
@@ -484,7 +484,7 @@ For `Origin request policy`, select the option 'CORS-S3Origin'.
 
 Under `Settings`, you can change `Price class` to 'Use Only North America and Europe' to save some money.
 For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g.
-```resources.ethereal-engine.io```. Under `Custom SSL Certificate`, click on the selector that says
+```resources.etherealengine.org```. Under `Custom SSL Certificate`, click on the selector that says
 'Choose certificate', then select the 'resources.`<domain>`' certificate you made earlier.
 
 Everything else can be left at the default values, click Create Distribution.
@@ -504,7 +504,7 @@ Click on Create Record. If it starts you under Quick Create Record, click the li
 
 Under Routing Policy, leave it on Simple Routing and click Next. Then click Define Simple Record.
 
-The first record should be for the top-level domain, e.g. ```ethereal-engine.io```, so leave the Record Name
+The first record should be for the top-level domain, e.g. ```etherealengine.org```, so leave the Record Name
 text field blank. Under Value/Route Traffic To, click on the dropdown and select
 Alias to Network Load Balancer. Select the region that your cluster is in.
 Where it says Choose Load Balancer, click the dropdown, and select the NLB that was created.
@@ -514,25 +514,25 @@ Define Simple Record.
 You can keep clicking Define Simple Record to make more records in one batch. When you're
 done, click Create Records.
 
-You should make the following 'A' records to the loadbalancer, substituting your domain for 'ethereal-engine.io':
+You should make the following 'A' records to the loadbalancer, substituting your domain for 'etherealengine.org':
 
-* ethereal-engine.io
-* *.ethereal-engine.io
-* @.ethereal-engine.io
-* api-dev.ethereal-engine.io
-* api.ethereal-engine.io
-* dev.ethereal-engine.io
-* instanceserver.ethereal-engine.io
-* instanceserver-dev.ethereal-engine.io
+* etherealengine.org
+* *.etherealengine.org
+* @.etherealengine.org
+* api-dev.etherealengine.org
+* api.etherealengine.org
+* dev.etherealengine.org
+* instanceserver.etherealengine.org
+* instanceserver-dev.etherealengine.org
 
-You also need to make an 'A' record pointing 'resources.ethereal-engine.io' to the CloudFront distribution you made earlier.
+You also need to make an 'A' record pointing 'resources.etherealengine.org' to the CloudFront distribution you made earlier.
 
 ## Create GitHub fork of Ethereal Engine repository.
 The Ethereal Engine codebase is most easily deployed by forking it and configuring some Secrets so that the included GitHub
 Actions can run the deployment for you. You can run all of the commands that the `<dev/prod>`-deploy action runs manually
 if you so choose, and in that case, you don't need to fork the GH repo.
 
-Go to https://github.com/XRFoundation/XREngine. In the upper right-hand corner, there's a button 'Fork'. Click that,
+Go to https://github.com/etherealengine/etherealengine. In the upper right-hand corner, there's a button 'Fork'. Click that,
 then click the account/organization you wish to fork it to. You should be taken to your fork in a short time.
 
 You'll need to set several Secrets (runtime variables) for GitHub Actions. By default GitHub Actions should be fully
@@ -547,9 +547,9 @@ this page to make a new one. You will need to make several Secrets with the foll
 * AWS_SECRET -> The secret key of the Github-Actions-User IAM user
 * CLUSTER_NAME -> The name of the EKS cluster
 * DEPLOYMENTS_ENABLED -> Set to `true`
-* DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `xrengine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
-* DOCKER_LABEL -> This can be almost anything, but you can use `lagunalabs/xrengine`
-* ECR_URL -> The root ECR_URL for your repos, i.e. everything before the `/xrengine-dev-builder`, e.g. `11111111111.dkr.ecr.us-west-1.amazonaws.com` or `public.ecr.aws/a1b2c3d4`
+* DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `etherealengine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
+* DOCKER_LABEL -> This can be almost anything, but you can use `lagunalabs/etherealengine`
+* ECR_URL -> The root ECR_URL for your repos, i.e. everything before the `/etherealengine-dev-builder`, e.g. `11111111111.dkr.ecr.us-west-1.amazonaws.com` or `public.ecr.aws/a1b2c3d4`
 * PRIVATE_ECR -> Set this to `true` if your ECR repos are private, if they're public you don't need to set this at all
 
 If you go to the Actions Tab, you might see a few workflow runs with green checkmarks. If so, you'll be re-running the
@@ -640,7 +640,7 @@ initial nodegroup.
 If you're using a private ECR repo, set this to "true" in the builder config file.
 
 #### (everything).image.repository
-You'll need to replace every <repository_name> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/xrengine-dev-api`.
+You'll need to replace every <repository_name> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/etherealengine-dev-api`.
 Each service has to have the proper `-<service>` suffix on it, e.g. `-api`, `-client`, etc.
 
 #### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
@@ -650,8 +650,8 @@ See [this document](./4_setup_github_oauth_for_projects.md) for
 more information, and enter the appropriate ID/secret in these variables.
 
 ### Run Helm install
-Run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME>-builder xrengine/xrengine-builder```
-and then run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME> xrengine/xrengine```
+Run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME>-builder etherealengine/etherealengine-builder```
+and then run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME> etherealengine/etherealengine```
 
 This will spin up the main and builder deployments using the Helm config file, <dev/prod>.values.yaml.
 Neither will fully work yet, since there's no valid image in the repos yet. The GitHub
@@ -669,7 +669,7 @@ attempt to build and deploy the builder.
 ### Overview of the build process
 The full build and deployment process works like this:
 1. GitHub Actions builds just enough of the Ethereal Engine monorepo to fetch any installed Ethereal Engine projects.
-2. GitHub Actions pushes this builder Docker image to the repo `xrengine-<release>-builder` in ECR
+2. GitHub Actions pushes this builder Docker image to the repo `etherealengine-<release>-builder` in ECR
 3. GitHub Actions updates the builder deployment to point to the builder image it just created.
 4. The builder deployment spins up the builder Docker image on its single node
 5. The builder connects to the deployment's database and checks if there is a table `user`. This is a proxy
@@ -677,7 +677,7 @@ The full build and deployment process works like this:
     seeds the default project into the database and storage provider, and seeds various types.
 6. The builder downloads any Ethereal Engine projects that the deployment has added.
 7. The builder builds the Docker image for each service concurrently using these projects, building them into the client files as well as copying them so that the api and instanceservers have access to them.
-8. The builder pushes these final Docker images to the repos `xrengine-<release>-<service>` in ECR
+8. The builder pushes these final Docker images to the repos `etherealengine-<release>-<service>` in ECR
 9. The builder updates the main deployment to point to the final images it just created.
 10. The main deployment spins up the final Docker images for the api, client, instanceserver and taskserver services.
 
@@ -710,7 +710,7 @@ In order to connect logger with elasticsearch, update config file(values.yml) fo
 One of the features of Helm is being able to easily upgrade deployments with new values. The command to
 do this is very similar to the install command:
 
-```helm upgrade --reuse-values -f </path/to/*.values.yaml> --set api.image.tag=<latest_github_commit_SHA>,client.image.tag=<latest_github_commit_SHA>,instanceserver.image.tag=<latest_github_commit_SHA> <RELEASE_NAME> xrengine/xrengine```
+```helm upgrade --reuse-values -f </path/to/*.values.yaml> --set api.image.tag=<latest_github_commit_SHA>,client.image.tag=<latest_github_commit_SHA>,instanceserver.image.tag=<latest_github_commit_SHA> <RELEASE_NAME> etherealengine/etherealengine```
 
 ```--reuse-values``` says to carry over all configuration values from the previous deployment. This is most important
 for tags, since they're usually set inline with the `helm install/upgrade` command, not a Helm config.

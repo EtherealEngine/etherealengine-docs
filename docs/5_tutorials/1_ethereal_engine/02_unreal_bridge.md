@@ -9,17 +9,17 @@ hide_table_of_contents: true
 
 # Ethereal Engine Bridge - Unreal
 
-https://github.com/XRFoundation/XRE-Bridge-Unreal
+https://github.com/etherealengine/XRE-Bridge-Unreal
 
-Unreal SDK XREngine Alpha
+Unreal SDK Ethereal Engine Alpha
 - User Management API
 - Server Party Matchmaker
 - Unreal Game Server Lifecycle System
-- Unreal Blueprints XREngine SDK
+- Unreal Blueprints Ethereal Engine SDK
 
 CMS and marketplace services coming soon
 
-EXAMPLE https://github.com/XRFoundation/XREngine-Bridge-Unreal-Example
+EXAMPLE https://github.com/etherealengine/Ethereal-Engine-Bridge-Unreal-Example
 
 ![Screenshot 2022-06-06 193750](https://user-images.githubusercontent.com/5104160/172299848-3e1c6a5f-ecd2-4562-a894-0d8b55e5b9e5.png)
 
@@ -56,7 +56,7 @@ TroveServer.exe IslandLobby.uproject /Trove/Maps/Island1?game=MyGameInfo?listen 
 TroveServer.exe IsleOfDeath.uproject /Trove/Maps/IsleOfDeathStart?game=MyGameInfo?listen -stakedgame -server 127.0.0.1
 ```
 
-## VaREST and wrapping the XREngine Web API 
+## VaREST and wrapping the Ethereal Engine Web API 
 
 knowledge required: Learn REST APIs, OpenAPI, Header based http auth, Verbs:Get/Post/etc, paylods, json
 
@@ -64,17 +64,17 @@ knowledge required: Learn REST APIs, OpenAPI, Header based http auth, Verbs:Get/
 
 Targeting support for 4.26 and 4.27
 
-Trial implementations on epic games unreal examples for the XREngine bridge for Unreal
+Trial implementations on epic games unreal examples for the Ethereal Engine bridge for Unreal
 
-https://github.com/XRFoundation/XRE-Bridge-Unreal/
+https://github.com/etherealengine/XRE-Bridge-Unreal/
 
-This bridge is wrapping OpenAPI endpoints presented by XREngine 
+This bridge is wrapping OpenAPI endpoints presented by Ethereal Engine 
 
 https://api-dev.etherealengine.com/openapi/
 
 This first requires a generated bearer token for API autorization. OAuth API app digestion with socpes is coming soon!
 
-This can be found in the EnvVars of the XREngine cluster and in the XRE SQL Database
+This can be found in the EnvVars of the Ethereal Engine cluster and in the XRE SQL Database
 
 <img width="1189" alt="Screen Shot 2022-06-04 at 4 25 43 PM" src="https://user-images.githubusercontent.com/5104160/172028647-084f7aa0-d358-4b15-b6be-5788ee7d7ec4.png" />
 
@@ -84,34 +84,34 @@ https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Networking/Bluep
 
 All K8 control plane systems can be access via rest calls to the local network of the gameserver, the functionality of Agones can be done via adding a node in Blueprints.
 
-The XREngine matchmaker service exposes the default endopints for open match.
+The Ethereal Engine matchmaker service exposes the default endopints for open match.
 
-https://github.com/XRFoundation/XREngine/blob/dev/packages/ops/open-match/templates/01-open-match-core.yaml
-https://github.com/XRFoundation/XREngine/blob/dev/packages/ops/open-match/templates/07-open-match-default-evaluator.yaml
+https://github.com/etherealengine/etherealengine/blob/dev/packages/ops/open-match/templates/01-open-match-core.yaml
+https://github.com/etherealengine/etherealengine/blob/dev/packages/ops/open-match/templates/07-open-match-default-evaluator.yaml
 
 REST API local call access docs
 
 https://open-match.dev/site/docs/guides/access/
 
-This is a ticketing system to be placed into a lobby group and then into a gameserver. XREngine has API call examples of this
+This is a ticketing system to be placed into a lobby group and then into a gameserver. Ethereal Engine has API call examples of this
 
 Match User Relation
 
-https://github.com/XRFoundation/XREngine/blob/dev/packages/server-core/src/matchmaking/match-user/match-user.class.ts
+https://github.com/etherealengine/etherealengine/blob/dev/packages/server-core/src/matchmaking/match-user/match-user.class.ts
 
 #### Open Match Endpoint Reference
 
 Match the ticket for an assignment
 
-https://github.com/XRFoundation/XREngine/blob/dev/packages/server-core/src/matchmaking/match-ticket/match-ticket.class.ts
+https://github.com/etherealengine/etherealengine/blob/dev/packages/server-core/src/matchmaking/match-ticket/match-ticket.class.ts
 
 Match Gameserver Instance Relation
 
-https://github.com/XRFoundation/XREngine/blob/dev/packages/server-core/src/matchmaking/match-instance/match-instance.class.ts
+https://github.com/etherealengine/etherealengine/blob/dev/packages/server-core/src/matchmaking/match-instance/match-instance.class.ts
 
 Get a ticket for assignment to a gameserver instance
 
-https://github.com/XRFoundation/XREngine/blob/dev/packages/server-core/src/matchmaking/match-ticket-assignment/match-ticket-assignment.class.ts
+https://github.com/etherealengine/etherealengine/blob/dev/packages/server-core/src/matchmaking/match-ticket-assignment/match-ticket-assignment.class.ts
 
 
 
@@ -122,9 +122,9 @@ Agones Actions
 
 
 
-# XREngine-Bridge-Unreal-Example
+# Ethereal-Engine-Bridge-Unreal-Example
 
-https://github.com/XRFoundation/XREngine-Bridge-Unreal-Example
+https://github.com/etherealengine/Ethereal-Engine-Bridge-Unreal-Example
 
 Preinstall Requirements
 
@@ -140,17 +140,17 @@ Add Plugins
 
 Targeting support for 4.26 and 4.27
 
-Trial implementations on epic games unreal examples for the XREngine bridge for Unreal
+Trial implementations on epic games unreal examples for the Ethereal Engine bridge for Unreal
 
-https://github.com/XRFoundation/XRE-Bridge-Unreal/
+https://github.com/etherealengine/XRE-Bridge-Unreal/
 
-This bridge is wrapping OpenAPI endpoints presented by XREngine 
+This bridge is wrapping OpenAPI endpoints presented by Ethereal Engine 
 
 https://api-dev.etherealengine.com/openapi/
 
 This first requires a generated bearer token for API autorization. OAuth API app digestion with socpes is coming soon!
 
-This can be found in the EnvVars of the XREngine cluster and in the XRE SQL Database
+This can be found in the EnvVars of the Ethereal Engine cluster and in the XRE SQL Database
 
 <img width="1189" alt="Screen Shot 2022-06-04 at 4 25 43 PM" src="https://user-images.githubusercontent.com/5104160/172028647-084f7aa0-d358-4b15-b6be-5788ee7d7ec4.png" />
 
