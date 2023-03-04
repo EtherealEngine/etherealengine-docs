@@ -237,7 +237,7 @@ const config = {
               },
               {
                 label: 'Npm',
-                href: 'https://www.npmjs.com/search?q=%40xrengine'
+                href: 'https://www.npmjs.com/search?q=%40etherealengine'
               }
             ]
           },
