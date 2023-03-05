@@ -31,139 +31,139 @@ const config = {
   },
 
   plugins: [
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'client',
-        entryPoints: ['../packages/client/src/main.tsx'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/client/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/client/{public,scripts}/**'],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/client',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'client',
-          position: 1
-        }
-      }
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'client-core',
-        entryPoints: ['../packages/client-core'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/client-core/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/client-core/scripts/**'],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/client-core',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'client-core',
-          position: 2
-        }
-      }
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'common',
-        entryPoints: ['../packages/common'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/common/tsconfig.json',
-        exclude: [...commonExcludePaths],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/common',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'common',
-          position: 3
-        }
-      }
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'engine',
-        entryPoints: ['../packages/engine/src'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/engine/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/engine/scripts/**'],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/engine',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'engine',
-          position: 4
-        }
-      }
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'instanceserver',
-        entryPoints: ['../packages/instanceserver/src/'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/instanceserver/tsconfig.json',
-        exclude: [...commonExcludePaths],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/instanceserver',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'instanceserver',
-          position: 5
-        }
-      }
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'server',
-        entryPoints: ['../packages/server'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/server/tsconfig.json',
-        exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/server',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'server',
-          position: 6
-        }
-      }
-    ],
-    [
-      'docusaurus-plugin-typedoc',
-      {
-        id: 'server-core',
-        entryPoints: ['../packages/server-core/src/'],
-        entryPointStrategy: 'expand',
-        tsconfig: '../packages/server-core/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/server-core/scripts/**'],
-        excludePrivate: true,
-        excludeProtected: true,
-        excludeInternal: true,
-        out: 'API/server-core',
-        readme: 'none',
-        sidebar: {
-          categoryLabel: 'server-core',
-          position: 7
-        }
-      }
-    ]
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'client',
+    //     entryPoints: ['../packages/client/src/main.tsx'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/client/tsconfig.json',
+    //     exclude: [...commonExcludePaths, '../packages/client/{public,scripts}/**'],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/client',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'client',
+    //       position: 1
+    //     }
+    //   }
+    // ],
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'client-core',
+    //     entryPoints: ['../packages/client-core'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/client-core/tsconfig.json',
+    //     exclude: [...commonExcludePaths, '../packages/client-core/scripts/**'],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/client-core',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'client-core',
+    //       position: 2
+    //     }
+    //   }
+    // ],
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'common',
+    //     entryPoints: ['../packages/common'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/common/tsconfig.json',
+    //     exclude: [...commonExcludePaths],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/common',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'common',
+    //       position: 3
+    //     }
+    //   }
+    // ],
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'engine',
+    //     entryPoints: ['../packages/engine/src'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/engine/tsconfig.json',
+    //     exclude: [...commonExcludePaths, '../packages/engine/scripts/**'],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/engine',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'engine',
+    //       position: 4
+    //     }
+    //   }
+    // ],
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'instanceserver',
+    //     entryPoints: ['../packages/instanceserver/src/'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/instanceserver/tsconfig.json',
+    //     exclude: [...commonExcludePaths],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/instanceserver',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'instanceserver',
+    //       position: 5
+    //     }
+    //   }
+    // ],
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'server',
+    //     entryPoints: ['../packages/server'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/server/tsconfig.json',
+    //     exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/server',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'server',
+    //       position: 6
+    //     }
+    //   }
+    // ],
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   {
+    //     id: 'server-core',
+    //     entryPoints: ['../packages/server-core/src/'],
+    //     entryPointStrategy: 'expand',
+    //     tsconfig: '../packages/server-core/tsconfig.json',
+    //     exclude: [...commonExcludePaths, '../packages/server-core/scripts/**'],
+    //     excludePrivate: true,
+    //     excludeProtected: true,
+    //     excludeInternal: true,
+    //     out: 'API/server-core',
+    //     readme: 'none',
+    //     sidebar: {
+    //       categoryLabel: 'server-core',
+    //       position: 7
+    //     }
+    //   }
+    // ]
   ],
 
   presets: [
