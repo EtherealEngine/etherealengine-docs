@@ -324,7 +324,7 @@ If that isn't present, you'll have to edit the configuration to make the appropr
 
 You next need to add the Agones, ingress-nginx, and redis Helm charts to helm by running 
 ```helm repo add agones https://agones.dev/chart/stable```, ```helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx```, and ```helm repo add redis https://charts.bitnami.com/bitnami```.
-You should also at this time add Ethereal Engine's repo via ```helm repo add etherealengine https://helm.etherealengine.io```.
+You should also at this time add Ethereal Engine's repo via ```helm repo add etherealengine https://helm.etherealengine.org```.
 
 If you ever suspect that a chart is out-of-date, run ```helm repo update``` to update all of them to the latest.
 

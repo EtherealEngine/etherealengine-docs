@@ -255,7 +255,7 @@ You'll need to add a few Helm repos. Run the following:
 ```bash
 helm repo add agones https://agones.dev/chart/stable
 helm repo add redis https://charts.bitnami.com/bitnami
-helm repo add etherealengine https://helm.etherealengine.io
+helm repo add etherealengine https://helm.etherealengine.org
 ```
 
 This will add the Helm charts for Agones, Redis, and Ethereal Engine, respectively.
