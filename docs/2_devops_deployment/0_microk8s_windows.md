@@ -237,14 +237,14 @@ From the above output, use `172.31.89.133` as `{WSL_IP}`.
 Next, edit your Windows hostfile, this is done by editing `C:\Windows\System32\drivers\etc\hosts`. Add/Update the following lines:
 
 ```conf
-{WSL_IP} local.etherealengine.com api-local.etherealengine.com instanceserver-local.etherealengine.com 00000.instanceserver-local.etherealengine.com 00001.instanceserver-local.etherealengine.com 00002.instanceserver-local.etherealengine.com 00003.instanceserver-local.etherealengine.com
+{WSL_IP} local.etherealengine.org api-local.etherealengine.org instanceserver-local.etherealengine.org 00000.instanceserver-local.etherealengine.org 00001.instanceserver-local.etherealengine.org 00002.instanceserver-local.etherealengine.org 00003.instanceserver-local.etherealengine.org
 
 {WSL_IP} microk8s.registry
 ```
 
 Make sure to replace `{WSL_IP}` with ip address from `wsl hostname -I` command.
 
-The first line says to point several *-local.etherealengine.com domains internally to the host machine, where the nginx ingress server will redirect the traffic to the appropriate pod.
+The first line says to point several *-local.etherealengine.org domains internally to the host machine, where the nginx ingress server will redirect the traffic to the appropriate pod.
 
 Make sure to save this file after you've edited it. Also, you will need to update hostfile with updated ip address after every Windows/WSL reboot.
 
@@ -314,7 +314,7 @@ npm run dev-reinit
 npm run install-projects
 ```
 
-The script builds the full-repo Docker image using several build arguments. Vite, which builds he client files, uses some information from the MariaDB database created for microk8s deployments to fill in some variables, and needs database credentials. The script will supply default values for all of the MYSQL_* variables if they are not provided to the script, as well as VITE_CLIENT_HOST, VITE_SERVER_HOST, and VITE_INSTANCESERVER_HOST. The latter three will make your microk8s deployment accessible on `(local/api-local/instanceserver-local).etherealengine.com`; if you want to run it on a different domain, then you'll have to set those three environment variables to what you want them to be (and also change the hostfile records you made pointing those subdomains)
+The script builds the full-repo Docker image using several build arguments. Vite, which builds he client files, uses some information from the MariaDB database created for microk8s deployments to fill in some variables, and needs database credentials. The script will supply default values for all of the MYSQL_* variables if they are not provided to the script, as well as VITE_CLIENT_HOST, VITE_SERVER_HOST, and VITE_INSTANCESERVER_HOST. The latter three will make your microk8s deployment accessible on `(local/api-local/instanceserver-local).etherealengine.org`; if you want to run it on a different domain, then you'll have to set those three environment variables to what you want them to be (and also change the hostfile records you made pointing those subdomains)
 
 This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for different services, it will only run the parts needed for that service. This may take up to 15 minutes, though later builds should take less time as things are cached.
 
@@ -341,6 +341,6 @@ After a minute or so, running `kubectl get pods` should show one or more instanc
 
 Since there are no valid certificates for this domain, you'll have to tell your browser to ignore the insecure connections when you try to load the application.
 
-Go to <https://local.etherealengine.com/> You should see a warning about an invalid certificate; accept this invalid cert to get to the login page. You'll next have to open the dev tools for your browser and go to the console and/or Network tab. There should be errors on <https://api-local.etherealengine.com>; open that link in a new tab and accept the invalid certificate for that, too.
+Go to <https://local.etherealengine.org/> You should see a warning about an invalid certificate; accept this invalid cert to get to the login page. You'll next have to open the dev tools for your browser and go to the console and/or Network tab. There should be errors on <https://api-local.etherealengine.org>; open that link in a new tab and accept the invalid certificate for that, too.
 
-When you go to <https://local.etherealengine.com/location/default>, you'll have to open the console again, find the erroring <https://instanceserver-local.etherealengine.com>, open that link in a new tab, and accept the invalid certificate for that domain, as well.
+When you go to <https://local.etherealengine.org/location/default>, you'll have to open the console again, find the erroring <https://instanceserver-local.etherealengine.org>, open that link in a new tab, and accept the invalid certificate for that domain, as well.
