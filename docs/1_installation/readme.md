@@ -7,7 +7,7 @@ for your environment.
 ## Pre-Install Checklist
 
 * [ ] Clone the repository
-* [ ] Install Node.js v16 (later versions not guaranteed to work)
+* [ ] Install Node.js 16 or 18 (earlier versions not guaranteed to work)
 * [ ] Install Python >=3.6 + [PIP](https://pypi.org/project/pip/), C++, and
   other build tools. See the [Mediasoup install instructions](https://mediasoup.org/documentation/v3/mediasoup/installation/)
   for full details.
@@ -48,7 +48,7 @@ getting dependency errors.
 You don't need to use [Docker]((https://docs.docker.com/)), but it will make 
 your life much easier.
 If you don't wish to use Docker, you will need to setup mariadb and redis on 
-your machine. You can find credentials in `etherealengine/scripts/docker-compose.yml`
+your machine. You can find credentials in `/scripts/docker-compose.yml`
 
 ## Quick Start
 
@@ -92,28 +92,20 @@ for those commands.
 ### Admin System and User Setup
 You can administrate many features from the admin panel at https://localhost:3000/admin
 
-How to make a user an admin:
-
-Create a user at `https://localhost:3000/`
-
-To locate your User ID:
-In Chrome Dev Tools console, write `copy(userId)`. This will copy your User ID
-(As shown in attached screenshot). Paste it in and run the following command in
-a 'nix shell (e.g. Bash, ZSH):
+To make a user an admin, open a page and open the profile menu. There is a button labelled `Show User ID`
+which opens a text field with your userId. Paste it in and run the following command in
+your terminal:
 
 `npm run make-user-admin -- --id={COPIED_USER_ID}`
 
 Example:
 `npm run make-user-admin -- --id=c06b0210-453e-11ec-afc3-c57a57eeb1ac`
 
-![image](https://user-images.githubusercontent.com/43248658/142813912-35f450e1-f012-4bdf-adfa-f0fa2816160f.png)
+![image](./../images/userid.png)
 
-2. TODO: Improve with email/phone ID support
-
-Alternate Method:
-1. Look up in User table and change userRole to 'admin'
-2. Dev DB credentials can be found here: packages/ops/docker-compose-local.yml#L42
-3. Suggested: beekeeperstudio.io
+#### Alternate Method:
+Look up in User table and change userRole to 'admin' 
+(It helps to use a graphical database explorer, we recommend [beekeeperstudio.io](https://beekeeperstudio.io/))
 
 Test user Admin privileges by going to `/admin`
 

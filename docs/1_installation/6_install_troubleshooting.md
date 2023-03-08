@@ -83,51 +83,24 @@ Try typing ```“thisisunsafe”``` or ```"iknowwhatiamdoing"``` then reload pag
 Open dev console, click on the GET link in new tab and  accept certificate by 
 typing ```thisisunsafe”``` or ```"iknowwhatiamdoing"``` then reload original page
 
-### Hang on spinner page?
-Try typing the following in terminal, in the /packages/server directory
-
-    npm run dev-reinit-db
-
-### To login as admin
-
-In chrome dev tool write ```userId``` This will display your user id. Copy this 
-user Id as string, run it as following command in shell:
-
-    npm run make-user-admin -- --id={COPIED_USER_ID}
-
-Example
-
-    npm run make-user-admin -- --id=c06b0210-453e-21ws-afc3-c97a57eeb1ac
-
 ### To install a new package for editor react components in monorepo
 
 Type in terminal
 
      npm i <packagename> -w @etherealengine/editor
 
-### To repopulate database
-
-   Kill the server first then type in terminal 
-
-    cd packages/server && npm run dev-reinit-db
-
 ### DB not seeding routes (E.g. Error: No project installed- please contact site admin)
 
 Try
 
-    npm run dev-reinit 
+  npm run dev-reinit 
 or
  
-    docker container stop etherealengine_db
-    docker container rm etherealengine_db
-    docker container prune
-    npm run dev-docker
-    npm run dev-reinit
-
-### 'TypeError: Cannot read property 'position' of undefined' when accessing /location/home
-As of this writing, there's a bug with the default seeded test location.
-Go to /editor/projects and open the 'Test' project. Save the project, and
-the error should go away.
+  docker container stop etherealengine_db
+  docker container rm etherealengine_db
+  docker container prune
+  npm run dev-docker
+  npm run dev-reinit
 
 ### Weird issues with your database?
 Try

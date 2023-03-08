@@ -24,7 +24,9 @@ Projects have a few conventions.
 
 - `assets/` is where files uploaded from the editor will be uploaded to
 
-- `public/` is for hosting public assets, these will be served from the client
+- `src/` is where code assets can be served from
+
+- `tests/` is where test files can be run
 
 - `sceneName.scene.json` is a scene file
 
@@ -36,9 +38,13 @@ Projects have a few conventions.
 A project must also have a package.json to provide custom dependencies, and to define
 the project name, project version, and Ethereal Engine version it is known to work with.
 
+Systems imported from a scene MUST have their filename end with `System.ts` and be in the `/src/systems` folder.
+This is to optimize vite's code-splitting bundling process, as each potentially dynamically
+importable file will result in a new bundle with it's own copy of all of it's import dependencies.
+
 `@etherealengine/*` monorepo dependencies will be symlinked and not needed, but some
 package managers (such as pnpm) require these to be defined. If so, they should
-be defined in `peerDependencies`.
+be defined in `peerDependencies` and kept up to date with the current engine version.
 
 ## Local Install Flow
 
@@ -196,7 +202,7 @@ export interface ProjectConfigInterface {
     }
   }
   webappInjection?: () => Promise<{ default: (props: any) => void | JSX.Element }>
-  worldInjection?: () => Promise<{ default: (world: World) => Promise<void> }>
+  worldInjection?: () => Promise<{ default: () => Promise<void> }>
   services?: string
   databaseSeed?: string
   settings?: Array<ProjectSettingSchema>
@@ -210,8 +216,15 @@ must expose an object with properties as follows:
 ```ts
 export interface ProjectEventHooks {
   onInstall?: (app: Application) => Promise<any>
+  onLoad?: (app: Application) => Promise<any>
   onUpdate?: (app: Application) => Promise<any>
   onUninstall?: (app: Application) => Promise<any>
+  /**
+   * get oEmbed for active routes that match URL
+   * return that project's onOEmbedRequest()
+   * if null, return default
+   */
+  onOEmbedRequest?: (app: Application, url: URL, currentOEmbed: OEmbed) => Promise<OEmbed | null>
 }
 ```
 
