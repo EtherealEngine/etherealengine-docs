@@ -3,10 +3,10 @@
 This guide is currently tested on Windows 10 (22H2) and Windows 11.
 
 ## Install Windows Subsystem for Linux (WSL). 
-Remember to run Powershell in Administrator mode either by right clicking and selecting 'Run as administrator' or by typing PowerShell in 'Run dialog box' of Windows and pressing ```Ctrl+Shift+Enter``` key combination.
+Remember to run Powershell in Administrator mode either by right clicking and selecting 'Run as administrator' or by typing PowerShell in 'Run' dialog box of Windows and pressing `Ctrl+Shift+Enter` key combination.
 
 Install Ubuntu distribution of Linux by executing the command:
-```wsl --install --distribution Ubuntu```
+`wsl --install --distribution Ubuntu`
 or
 Install Ubuntu distribution of Linux from Microsoft Store by using guide [here](https://learn.microsoft.com/en-us/windows/wsl/install).
 
@@ -111,4 +111,6 @@ You can run Ethereal Engine stack by running:
 ```bash
 npm run dev
 ```
-Now run Ethereal Engine in browser by navigating to [this link](https://127.0.0.1:3000/location/default). If it keeps displaying 'loading routes' progress for a long time, it is due to the fact that you have to allow certificates. If you open dev tools on above tab in chrome and then go to console of developer tools you will see some errors of address starting with wss. Replace that wss with http and open it in new tab, accept the certificate and reload your ethereal engine tab.
+Now run Ethereal Engine in browser by navigating to [this link](https://127.0.0.1:3000/location/default).   
+> If it keeps displaying 'loading routes' progress for a long time, it is due to the fact that you have to allow certificates.   
+> Open Developer tools in Chrome by clicking the side menu with three dots, then `More tools > Developer tools` (or use `Ctrl+Shift+I`) and then go to the 'Console' tab. You will see some errors in URL address starting with 'wss'. Replace 'wss' with 'https' and open it in new tab. Accept the certificate and reload your Ethereal Engine tab.
