@@ -64,11 +64,11 @@ npm run dev-reinit
 npm run dev
 ```
 
-### Setup Elastic Search & Grafana
+### Setup Elastic Search & Kibana
 
-Elastic Search and Grafana will be automatically launched with `npm run dev`.
+Elastic Search and Kibana will be automatically launched with `npm run dev`.
 
-Elasticsearch & Grafana will be running on localhost port 9200 & 5601 respectively.
+Elasticsearch & Kibana will be running on localhost port 9200 & 5601 respectively.
 
 This will automatically set up and run Redis/MariaDB docker
 containers, and Ethereal Engine client/server/instance-server instances.
