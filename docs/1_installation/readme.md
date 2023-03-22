@@ -6,8 +6,9 @@ for your environment.
 
 ## Pre-Install Checklist
 
+* [ ] Ensure you have at least 16GB of RAM - you may run into issues running the full development setup with less
 * [ ] Clone the repository
-* [ ] Install Node.js v16 (later versions not guaranteed to work)
+* [ ] Install Node.js 16 or 18 (earlier versions not guaranteed to work)
 * [ ] Install Python >=3.6 + [PIP](https://pypi.org/project/pip/), C++, and
   other build tools. See the [Mediasoup install instructions](https://mediasoup.org/documentation/v3/mediasoup/installation/)
   for full details.
@@ -25,18 +26,13 @@ To avoid cloning the entire thing, use this command:
 git clone https://github.com/etherealengine/etherealengine --depth 1
 ```
 
-### Ensure you are running Node 16
-The engine to date has only been confirmed to work perfectly with Node 16.x. Earlier or later major versions 
+### Ensure you are running Node 16 or 18
+The engine to date has only been confirmed to work perfectly with Node 16.x and 18.x. Earlier or later major versions 
 are not guaranteed to work properly.
 
 A version manager can be helpful for this:
  - NodeJS only: [NVM](https://github.com/nvm-sh/nvm)
  - Polyglot: [ASDF](https://github.com/asdf-vm/asdf)
-
-(Note: As of this writing, June 15 2022, the implementation of PhysX that's used in the `engine` package does not
-work properly with Node versions 18.1 and higher, due to Node's implementation of WebAssembly making PhysX think
-that it's running in the browser. We are in the process of replacing PhysX with Rapier; when that is done, it should
-work with Node >= 18.1)
 
 Before running the engine, please check `node --version`
 If you are using a node version below 16, please update or nothing will work. 
@@ -48,7 +44,7 @@ getting dependency errors.
 You don't need to use [Docker]((https://docs.docker.com/)), but it will make 
 your life much easier.
 If you don't wish to use Docker, you will need to setup mariadb and redis on 
-your machine. You can find credentials in `etherealengine/scripts/docker-compose.yml`
+your machine. You can find credentials in `/scripts/docker-compose.yml`
 
 ## Quick Start
 
@@ -64,11 +60,11 @@ npm run dev-reinit
 npm run dev
 ```
 
-### Setup Elastic Search & Grafana
+### Setup Elastic Search & Kibana
 
-Elastic Search and Grafana will be automatically launched with `npm run dev`.
+Elastic Search and Kibana will be automatically launched with `npm run dev`.
 
-Elasticsearch & Grafana will be running on localhost port 9200 & 5601 respectively.
+Elasticsearch & Kibana will be running on localhost port 9200 & 5601 respectively.
 
 This will automatically set up and run Redis/MariaDB docker
 containers, and Ethereal Engine client/server/instance-server instances.
@@ -92,28 +88,20 @@ for those commands.
 ### Admin System and User Setup
 You can administrate many features from the admin panel at https://localhost:3000/admin
 
-How to make a user an admin:
-
-Create a user at `https://localhost:3000/`
-
-To locate your User ID:
-In Chrome Dev Tools console, write `copy(userId)`. This will copy your User ID
-(As shown in attached screenshot). Paste it in and run the following command in
-a 'nix shell (e.g. Bash, ZSH):
+To make a user an admin, open a page and open the profile menu. There is a button labelled `Show User ID`
+which opens a text field with your userId. Paste it in and run the following command in
+your terminal:
 
 `npm run make-user-admin -- --id={COPIED_USER_ID}`
 
 Example:
 `npm run make-user-admin -- --id=c06b0210-453e-11ec-afc3-c57a57eeb1ac`
 
-![image](https://user-images.githubusercontent.com/43248658/142813912-35f450e1-f012-4bdf-adfa-f0fa2816160f.png)
+![image](./../images/userid.png)
 
-2. TODO: Improve with email/phone ID support
-
-Alternate Method:
-1. Look up in User table and change userRole to 'admin'
-2. Dev DB credentials can be found here: packages/ops/docker-compose-local.yml#L42
-3. Suggested: beekeeperstudio.io
+#### Alternate Method:
+Look up in User table and change userRole to 'admin' 
+(It helps to use a graphical database explorer, we recommend [beekeeperstudio.io](https://beekeeperstudio.io/))
 
 Test user Admin privileges by going to `/admin`
 
