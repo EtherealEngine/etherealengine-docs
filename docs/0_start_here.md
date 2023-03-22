@@ -30,8 +30,8 @@ This repository serves a few functions.
 ### Ethereal Engine
 Primarily, it acts a full stack deployment environment. The engine itself is the 
 heart of Ethereal Engine, using libraries such as [threejs](https://threejs.org/), 
-[bitecs](https://github.com/NateTheGreatt/bitECS), [ethereal](https://github.com/aelatgt/ethereal), 
-[PhysX](https://github.com/NVIDIAGameWorks/PhysX) and 
+[bitecs](https://github.com/NateTheGreatt/bitECS), 
+[Rapierjs](https://github.com/dimforge/rapier.js) and 
 [Mediasoup WebRTC](https://github.com/versatica/mediasoup) to enables robust MMO 
 XR experience that rivals AAA quality and speed.
 
@@ -60,10 +60,11 @@ changing any of the base repository code.
 ### engine
 ### instanceserver
 ### matchmaking
-### ops
 ### projects
 ### server
 ### server-core
 ### taskserver
+### ui
+### xrui
 
 ![](./images/0-repo-hierarchy.png)

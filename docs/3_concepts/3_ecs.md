@@ -33,61 +33,73 @@ The engine uses a very similar model to Unity's update loop (found here https://
 
 [Component Functions](https://raw.githubusercontent.com/etherealengine/etherealengine/dev/packages/engine/src/ecs/functions/ComponentFunctions.ts)
 
-#### Entities
-
-`createEntity`
-
-`removeEntity`
-
-#### Component Lifecycle
-
-`createMappedComponent`
-
-`addComponent`
-
-`hasComponent`
-
-`getComponent`
-
-`removeComponent`
-
-#### Queries
-
-`defineQuery`
-
-`enter queries`
-
-`exit queries`
-
 
 ### Examples
 
-#### Tag Components
-
-Tag components are how booleans are represented in the ECS pattern. An entity either has a specific tag component, or it doesn't. The SceneObjectSystem includes queries for Object3DComponent and VisibleComponent. Any entities with an Object3DComponent that has a VisibleComponent added, will have the 'visible' property of the Object3D referenced in Object3DComponent.value set to 'true', and set to 'false' when the VisibleComponent is removed.
-
+This example uses 'Structure of Arrays' (SoA) data structures with bitECS syntax.
 
 ```ts
+export const TimerComponent = defineComponent({
+  name: 'TimerComponent',
+  schema: {
+    time: Types.f32
+  }
+})
 
-const visibleEntity = createEntity()
+export default async function TimerSystem() {
 
-const obj3d = new Object3D()
-obj3d.visible = false // since threejs defaults .visible to true, we must set it manually to sync up with the ECS
+  const myEntity = createEntity()
+  setComponent(myEntity, TimerComponent)
 
-addComponent(entity, Object3D, { value: obj3d })
+  const timerQuery = defineQuery([TimerComponent])
 
-console.log(obj3d.visible) // false
+  return () => {
+    const { delta } = Engine.instance
 
-addComponent(entity, VisibleComponent)
+    for (const entity of timerQuery()) {
+      TimerComponent.time[entity] += delta
+    }
 
-// iterate logic loop
+  }
+}
 
-console.log(obj3d.visible) // true
+```
 
-removeComponent(entity, VisibleComponent)
+This example uses 'Array of Structures' syntax, with reactive data binding.
 
-// iterate logic loop
+```ts
+const MockComponent = defineComponent({
+  name: 'MockComponent',
+  onInit: (entity) => {
+    return {
+      mockValue: 0
+    }
+  },
+  onSet: (entity, component, json: { mockValue: number }) => {
+    if (typeof json?.mockValue === 'number') component.mockValue.set(json.mockValue)
+  },
+  toJSON: (entity, component) => {
+    return {
+      mockValue: component.mockValue.value
+    }
+  }
+})
 
-console.log(obj3d.visible) // false
+export default async function TimerSystem() {
 
+  const myEntity = createEntity()
+  setComponent(myEntity, TimerComponent)
+
+  const timerQuery = defineQuery([TimerComponent])
+
+  return () => {
+    const { delta } = Engine.instance
+
+    for (const entity of timerQuery()) {
+      const timerComponent = getMutableComponent(entity, TimerComponent)
+      timerComponent.time.set(timerComponent.time.value + delta)
+    }
+
+  }
+}
 ```
