@@ -27,7 +27,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en']
+    locales: ['en', 'es', 'zh-cn']
   },
 
   plugins: [
@@ -204,7 +204,11 @@ const config = {
             href: 'https://etherealengine.org/',
             label: 'Ethereal Engine',
             position: 'right'
-          }
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
         ]
       },
 
