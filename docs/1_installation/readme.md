@@ -41,7 +41,7 @@ getting dependency errors.
 
 ### Docker is your friend
 
-You don't need to use [Docker]((https://docs.docker.com/)), but it will make 
+You don't need to use [Docker](https://docs.docker.com/), but it will make 
 your life much easier.
 If you don't wish to use Docker, you will need to setup mariadb and redis on 
 your machine. You can find credentials in `/scripts/docker-compose.yml`
