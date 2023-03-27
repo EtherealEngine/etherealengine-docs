@@ -71,7 +71,7 @@ containers, and Ethereal Engine client/server/instance-server instances.
 
 In a browser, navigate to https://127.0.0.1:3000/location/default
 
-The database seeding process creates a test empty location called 'test'.
+The database seeding process creates an empty location called 'default', as well as some template scenes 'sky-station' and 'apartment'.
 It can be navigated to by going to 'https://127.0.0.1:3000/location/default'
 
 As of this writing, the cert provided in the etherealengine package for local use is
