@@ -16,9 +16,11 @@ type ```badidea``` or ```thisisunsafe``` when on that page. You don't enter that
 address bar or into a text box, Chrome is just passively listening for those commands.
 
 ### Allow instanceserver address connection via installing local Certificate Authority
+
 For more detailed instructions check: https://github.com/FiloSottile/mkcert
 
 Short version (common for development process on Ubuntu):
+
 1. Execute `sudo apt install libnss3-tools`
 2. Execute `brew install mkcert` (if you don't have brew, check it's page: https://brew.sh/)
 3. Execute `mkcert --install`
@@ -38,7 +40,7 @@ then right-click that URL, then select 'Open in new tab', and accept the invalid
 The instanceserver functionality is hosted on an address other than 127.0.0.1 in the local
 environment. Accepting an invalid certificate for 127.0.0.1 will not apply to this address.
 Open the dev console for Chrome/Firefox by pressing ```Ctrl+Shift+i``` simultaneously, and
-go to the Console or Network tabs. 
+go to the Console or Network tabs.
 
 If you see errors about not being able to connect to
 something like ```https://192.168.0.81:3031/socket.io/?location=<foobar>```, right click on
@@ -46,9 +48,10 @@ that URL and open it in a new tab. You should again get a warning page about an 
 certificate, and you again need to allow it.  
 
 ### AccessDenied connecting to mariadb
+
 Make sure you don't have another instance of mariadb running on port 3306
 
-```
+```bash
 lsof -i :3306
 ```
 
@@ -60,18 +63,20 @@ You can kill any running process with ```sudo kill <ID>```
 ### Error: listen EADDRINUSE :::3030
 
 Check which process is using port 3030 and kill
-```
+
+```bash
 killall -9 node 
 ```
 
 Or
 
-```
+```bash
 lsof -i :3030
 kill -3 <proccessIDfromPreviousCommand>
 ```
 
 ### 'CORS error' in terminal
+
 Try accessing the page using ```https://localhost:3000``` 
 instead of ```https://127.0.0.1:3000```
 
@@ -80,6 +85,7 @@ instead of ```https://127.0.0.1:3000```
 Try typing ```“thisisunsafe”``` or ```"iknowwhatiamdoing"``` then reload page
 
 ### Instanceserver or resource loading error?
+
 Open dev console, click on the GET link in new tab and  accept certificate by 
 typing ```thisisunsafe”``` or ```"iknowwhatiamdoing"``` then reload original page
 
@@ -87,27 +93,38 @@ typing ```thisisunsafe”``` or ```"iknowwhatiamdoing"``` then reload original p
 
 Type in terminal
 
+```bash
      npm i <packagename> -w @etherealengine/editor
+```
 
 ### DB not seeding routes (E.g. Error: No project installed- please contact site admin)
 
 Try
 
+```bash
   npm run dev-reinit 
+```
+
 or
- 
+
+```bash
   docker container stop etherealengine_db
   docker container rm etherealengine_db
   docker container prune
   npm run dev-docker
   npm run dev-reinit
+```
 
 ### Weird issues with your database?
+
 Try
-```
+
+```bash
 npm run dev-reinit
 ```
+
 Or if on windows
-```
+
+```bash
 npm run dev-reinit-windows
 ```
