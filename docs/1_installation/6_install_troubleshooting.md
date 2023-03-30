@@ -110,7 +110,7 @@ or
 ```bash
   docker container stop etherealengine_db
   docker container rm etherealengine_db
-  docker container prune
+  docker container prune --force
   npm run dev-docker
   npm run dev-reinit
 ```
