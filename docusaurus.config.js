@@ -1,11 +1,16 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const appRootPath = require('app-root-path')
+const dotenv = require('dotenv')
+dotenv.config({
+  path: appRootPath.path + '/.env.local'
+})
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 const commonExcludePaths = ['**/**.js', '**/{node_modules,dist,tests}/**']
-
+console.log(process.env.ENGINE_PATH, 'packages/client')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'etherealengine',
@@ -35,10 +40,10 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'client',
-        entryPoints: ['../packages/client/src/main.tsx'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/client'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/client/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/client/{public,scripts}/**'],
+        tsconfig: process.env.ENGINE_PATH + 'packages/client/tsconfig.json',
+        exclude: [...commonExcludePaths, process.env.ENGINE_PATH + 'packages/client/{public,scripts}/**'],
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
@@ -54,10 +59,10 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'client-core',
-        entryPoints: ['../packages/client-core'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/client-core'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/client-core/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/client-core/scripts/**'],
+        tsconfig: process.env.ENGINE_PATH + 'packages/client-core/tsconfig.json',
+        exclude: [...commonExcludePaths, process.env.ENGINE_PATH + 'packages/client-core/scripts/**'],
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
@@ -73,9 +78,9 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'common',
-        entryPoints: ['../packages/common'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/common'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/common/tsconfig.json',
+        tsconfig: process.env.ENGINE_PATH + 'packages/common/tsconfig.json',
         exclude: [...commonExcludePaths],
         excludePrivate: true,
         excludeProtected: true,
@@ -92,10 +97,10 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'engine',
-        entryPoints: ['../packages/engine/src'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/engine/src'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/engine/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/engine/scripts/**'],
+        tsconfig: process.env.ENGINE_PATH + 'packages/engine/tsconfig.json',
+        exclude: [...commonExcludePaths, process.env.ENGINE_PATH + 'packages/engine/scripts/**'],
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
@@ -111,9 +116,9 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'instanceserver',
-        entryPoints: ['../packages/instanceserver/src/'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/instanceserver/src/'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/instanceserver/tsconfig.json',
+        tsconfig: process.env.ENGINE_PATH + 'packages/instanceserver/tsconfig.json',
         exclude: [...commonExcludePaths],
         excludePrivate: true,
         excludeProtected: true,
@@ -130,9 +135,9 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'server',
-        entryPoints: ['../packages/server'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/server'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/server/tsconfig.json',
+        tsconfig: process.env.ENGINE_PATH + 'packages/server/tsconfig.json',
         exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
         excludePrivate: true,
         excludeProtected: true,
@@ -149,10 +154,10 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         id: 'server-core',
-        entryPoints: ['../packages/server-core/src/'],
+        entryPoints: [process.env.ENGINE_PATH + 'packages/server-core/src/'],
         entryPointStrategy: 'expand',
-        tsconfig: '../packages/server-core/tsconfig.json',
-        exclude: [...commonExcludePaths, '../packages/server-core/scripts/**'],
+        tsconfig: process.env.ENGINE_PATH + 'packages/server-core/tsconfig.json',
+        exclude: [...commonExcludePaths, process.env.ENGINE_PATH + 'packages/server-core/scripts/**'],
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,

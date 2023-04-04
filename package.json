@@ -49,8 +49,10 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.0",
     "@tsconfig/docusaurus": "1.0.7",
+    "app-root-path": "^3.1.0",
     "cross-env": "7.0.3",
     "docusaurus-plugin-typedoc": "0.17.5",
+    "dotenv": "^16.0.3",
     "rimraf": "^3.0.2",
     "typedoc": "0.23.21",
     "typedoc-plugin-markdown": "3.14.0",
