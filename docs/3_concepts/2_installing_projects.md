@@ -1,3 +1,4 @@
+# Installing Projects
 ## Local Install Flow
 
 To install a project locally, clone the repository you wish to install to the 
