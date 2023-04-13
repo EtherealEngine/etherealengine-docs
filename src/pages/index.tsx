@@ -9,19 +9,19 @@ import styles from './index.module.css'
 
 const features = [
   {
-    title: 'Build Web-First',
+    title: 'Ethereal Engine Embraces The Web',
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: <>Engage your audience right from your website.</>
+    description: <>Reach everyone. No app stores. Open Source. <br/>Mobile - Desktop - Headsets</>
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Focus On What Matters',
     imageUrl: 'img/undraw_docusaurus_tree.svg',
-    description: <>Something will go here when we've thought of it.</>
+    description: <>A comprehensive studio, pipeline tools, endless immersive features.</>
   },
   {
-    title: 'Powered by Javascript',
+    title: 'Built On Well Known Web Frameworks',
     imageUrl: 'img/undraw_docusaurus_react.svg',
-    description: <>Something will go here when we've thought of it.</>
+    description: <>Power your experiences immediately with React, Threejs, Feathers, Kubernetes, bitECS</>
   }
 ]
 

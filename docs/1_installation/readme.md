@@ -6,6 +6,7 @@ for your environment.
 
 ## Pre-Install Checklist
 
+* [ ] Ensure you have at least 16GB of RAM - you may run into issues running the full development setup with less
 * [ ] Clone the repository
 * [ ] Install Node.js 16 or 18 (earlier versions not guaranteed to work)
 * [ ] Install Python >=3.6 + [PIP](https://pypi.org/project/pip/), C++, and
@@ -25,18 +26,13 @@ To avoid cloning the entire thing, use this command:
 git clone https://github.com/etherealengine/etherealengine --depth 1
 ```
 
-### Ensure you are running Node 16
-The engine to date has only been confirmed to work perfectly with Node 16.x. Earlier or later major versions 
+### Ensure you are running Node 16 or 18
+The engine to date has only been confirmed to work perfectly with Node 16.x and 18.x. Earlier or later major versions 
 are not guaranteed to work properly.
 
 A version manager can be helpful for this:
  - NodeJS only: [NVM](https://github.com/nvm-sh/nvm)
  - Polyglot: [ASDF](https://github.com/asdf-vm/asdf)
-
-(Note: As of this writing, June 15 2022, the implementation of PhysX that's used in the `engine` package does not
-work properly with Node versions 18.1 and higher, due to Node's implementation of WebAssembly making PhysX think
-that it's running in the browser. We are in the process of replacing PhysX with Rapier; when that is done, it should
-work with Node >= 18.1)
 
 Before running the engine, please check `node --version`
 If you are using a node version below 16, please update or nothing will work. 
@@ -45,7 +41,7 @@ getting dependency errors.
 
 ### Docker is your friend
 
-You don't need to use [Docker]((https://docs.docker.com/)), but it will make 
+You don't need to use [Docker](https://docs.docker.com/), but it will make 
 your life much easier.
 If you don't wish to use Docker, you will need to setup mariadb and redis on 
 your machine. You can find credentials in `/scripts/docker-compose.yml`
@@ -75,7 +71,7 @@ containers, and Ethereal Engine client/server/instance-server instances.
 
 In a browser, navigate to https://127.0.0.1:3000/location/default
 
-The database seeding process creates a test empty location called 'test'.
+The database seeding process creates an empty location called 'default', as well as some template scenes 'sky-station' and 'apartment'.
 It can be navigated to by going to 'https://127.0.0.1:3000/location/default'
 
 As of this writing, the cert provided in the etherealengine package for local use is
