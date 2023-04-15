@@ -2,7 +2,7 @@
 
 If you want to setup Ethereal Engine docker instances, client, server, and/or
 instance-server manually, follow these directions. The advanced setup is recommended
-for all users, in order to understand more about everything that going on.
+for all users, in order to understand more about everything that's going on.
 
 ### 1.  Install your dependencies
 ```
@@ -26,7 +26,7 @@ cd scripts && sudo bash start-db.sh
 
 This creates a Docker container of mariadb named etherealengine_db. You must have
 docker installed on your machine for this script to work.
-If you do not have Docker installed and do not wish to install it, you'll have
+If you do not have Docker installed and do not wish to install it, you will have
 to manually create a MariaDB server.
 
 The default username is 'server', the default password is 'password', the

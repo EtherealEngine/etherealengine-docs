@@ -7,7 +7,7 @@ the stack on WSL2 then you can refer to the following directions.
 
 1. Replace all localhost values with the static IP you want to run the stack on
    in your `.env.local` file.
-2. Open a powershell terminal as admin. And run the `wsl2-port-forwarding.ps1`
+2. Open a PowerShell terminal as admin. And run the `wsl2-port-forwarding.ps1`
    script present under `/scripts` directory.
   Note: Make sure all of the required ports are present in ports array of the
    `wsl2-port-forwarding.ps1` script.

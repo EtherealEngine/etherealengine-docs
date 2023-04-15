@@ -8,7 +8,7 @@ Opening a project will route you to `/studio/<projectName>` where the project st
 
 The scene consists of a list of 'nodes' which act as templates / prefabs. These are what you would normally expect in a scene studio, such as models, colliders and audio, but we also support a wide range of integrations, such as shopify, wordpress and even portals to let you traverse between worlds.
 
-To save a scene with Ctrl+S or in the top left hamburger menu.
+To save a scene with Ctrl+S or in the top left Hamburger menu.
 
 ## Locations & Instances
 

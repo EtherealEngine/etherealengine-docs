@@ -1,5 +1,5 @@
 # Installing on Windows 10+
-1. Install python 3 and add python installation directory path to 'path' env variable.
+1. Install python 3 and add python installation directory path to 'PATH' env variable.
 2. Install node js
 3. Install Visual studio community edition with build tools.
 > Note: If mediasoup is not installed properly then modify Visual studio setup to add c++ and Node.js support.

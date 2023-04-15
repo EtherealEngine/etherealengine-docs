@@ -8,19 +8,16 @@ sidebar_position: 0
 
 # Ethereal Engine
 
-Ethereal Engine is a free, open, full-stack MMO engine that anyone can run for 
-any reason - to host events, make games, show art, or just to give a space for 
-your community. There are plenty of platforms you can spend a bit on to 
-have a world, but you can't be in complete control of the experience or 
-customise it from the ground up.
+Ethereal Engine is a free, open, full-stack MMO engine that anyone can run for
+any reason - to host events, make games, showcase art, or just to provide a space for your community. There are plenty of platforms on which you can spend a bit to have a world, but you can't be in complete control of the experience or customise it from the ground up.
 
-When the Ethereal Engine stack is deployed, that stack is sovereign, open and cross 
-platform by default. Users can make any kind of game or experience with no limits. 
-With the tech wethat's being built now, users will be able to seamlessly travel 
-through portals from any worlds to any other world, on different servers, and have all 
+When the Ethereal Engine stack is deployed, that stack is sovereign, open and cross
+platform by default. Users can create any kind of game or experience with no limits.
+With the tech that's being built now, users will be able to seamlessly travel
+through portals from any worlds to any other world, on different servers, and have all
 their data and identity travel with them.
 
-This technology is for everyone, but especially people who want to build or 
+This technology is for everyone, but especially people who want to build or
 belong to a community.
 
 ![](./images/ethereal-engine.jpg)
@@ -28,11 +25,11 @@ belong to a community.
 ## Core Features
 
 ### WebXR Engine
-The core engine is the heart of Ethereal Engine. Based around the WebXR spec, brought to life with libraries such as [threejs](https://threejs.org/), [bitecs](https://github.com/NateTheGreatt/bitECS), [rapier.js](https://github.com/dimforge/rapier.js), [Mediasoup WebRTC](https://github.com/versatica/mediasoup), [reactjs](https://reactjs.org/) & [hookstatejs](https://hookstate.js.org/). With the latest understanding of Data-Oriented-Design, ECS & Event-Sourcing paradigms, we have put together a robust MMO XR framework that rivals AAA capabilities, quality and speed.
+The core engine is the heart of Ethereal Engine. Based around the WebXR spec, brought to life with libraries such as [threejs](https://threejs.org/), [bitecs](https://github.com/NateTheGreatt/bitECS), [rapier.js](https://github.com/dimforge/rapier.js), [Mediasoup WebRTC](https://github.com/versatica/mediasoup), [reactjs](https://reactjs.org/) & [hookstatejs](https://hookstate.js.org/). With the latest understanding of Data-Oriented Design, ECS and Event-Sourcing paradigms, we have put together a robust MMO XR framework that rivals AAA capabilities, quality and speed.
 
 ![](./images/treehouse.jpeg)
 
-### Webapp 
+### Webapp
 The front end of the web app extends the WebXR Engine to give a fully customisable and clean UI that works in both immersive and non-immersive contexts, as well as an administration panel for full control of deployment, locations, projects, avatars, custom routes & more.
 
 ![](./images/admin-panel.jpg)

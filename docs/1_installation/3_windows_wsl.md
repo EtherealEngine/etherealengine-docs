@@ -26,7 +26,7 @@ Once WSL is installed, make sure to:
 
 Install docker desktop with WSL 2 backend. You can find the instructions [here](https://docs.docker.com/desktop/install/windows-install/).
 
-Once docker desktop is installed and running make sure to enable your WSL distribution. You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`. Enable integartion with Ubuntu. Make sure to hit 'Apply & Restart'.
+Once docker desktop is installed and running make sure to enable your WSL distribution. You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`. Enable integration with Ubuntu. Make sure to hit 'Apply & Restart'.
 
 ![Docker Desktop WSL Distro](../2_devops_deployment/images/docker-desktop-wsl-distro.jpg)
 

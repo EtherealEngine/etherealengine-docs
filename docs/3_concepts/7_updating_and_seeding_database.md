@@ -2,7 +2,7 @@
 
 Tooling for automatically updating the database based on changes in models is included in
 [sequelize.ts](https://raw.githubusercontent.com/etherealengine/etherealengine/dev/packages/server-core/src/sequelize.ts). Most of it is controlled by setting
-the environment variable `PREPARE_DATABSE=true`. 
+the environment variable `PREPARE_DATABASE=true`. 
 
 If that is set, then the database setup will iterate through every model's fields and try
 to match each one to a column. If it can't find an existing column, then one of two things will happen:

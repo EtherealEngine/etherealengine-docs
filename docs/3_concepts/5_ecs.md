@@ -111,7 +111,7 @@ const exitEntities = query.exit()
 
 ### Timer
 
-The follow code snipets, we define a component and a system. The component will hold a property to store the current elapsed time rounded down.
+The follow code snippets, we define a component and a system. The component will hold a property to store the current elapsed time rounded down.
 
 In the **initializer** of the system, it creates a new entity and adds the component to it. In the **execute** function of the system, we set the property `time` on the component of the entity.
 
