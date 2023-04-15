@@ -4,7 +4,7 @@ You can quickstart locally using docker, if you don't have node installed or
 just want to test the latest.
 
 ## Get local IP address
-Use a tool like ifconfig to get your local IP address.
+Use a tool like `ifconfig` to get your local IP address.
 
 ## Start local databases
 
@@ -21,7 +21,7 @@ Ctrl+c out of that, then from scripts run `./start-all-docker.sh`
 
 ## Build the image
 
-Create an empty folder at the root called `project-package-jsons` and the run
+Create an empty folder at the root called `project-package-jsons` and then run
 the following command to build:
 
 ``` bash
@@ -46,7 +46,7 @@ docker container rm server
 ## Run the images
 ``` bash
 docker run -d --name serve-local --env-file .env.local.default -e "SERVER_MODE=serve-local" --network host etherealengine
-docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "INSTANCESERVER_HOST=<local IP address" --network host etherealengine
+docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "INSTANCESERVER_HOST=<local IP address>" --network host etherealengine
 docker run -d --name client --env-file .env.local.default -e "SERVER_MODE=client" --network host etherealengine
 docker run -d --name world --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" --network host etherealengine
 docker run -d --name channel --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" -e "INSTANCESERVER_PORT=3032" --network host etherealengine

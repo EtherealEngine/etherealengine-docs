@@ -6,7 +6,7 @@ In the functional programming (FP) paradigm, pure functions are functions which 
 
 Stateless means that the function itself has **no memory of the past**. Referential transparency means that the function is only operating on the parameters, and **nothing else** (no global state access, etc).
 
-These types of functions may (arguably) mutate parameter state, but may only operate on the given parameters. State residing outside of the scope of a stateless function should **never be depended on or mutated**. This will ensure that the function holds no inherent state of its own, and therefor will exhibit the behavior of being referentially transparent and **idempotent**. 
+These types of functions may (arguably) mutate parameter state, but may only operate on the given parameters. State residing outside of the scope of a stateless function should **never be depended on or mutated**. This will ensure that the function holds no inherent state of its own, and therefore will exhibit the behavior of being referentially transparent and **idempotent**. 
 
 Idempotency is a quality of any function which can be executed several times without changing the output for a specific input. Idempotent functions can be thought of as mappings from one input to one output. 
 

@@ -37,7 +37,7 @@ Preinstall Requirements
    - VaREST Tuturials https://www.youtube.com/watch?v=B90jnsEJ6E0
 - Agones SDK w/ Unreal tools https://agones.dev/site/docs/guides/client-sdks/unreal/
 
-### Containerizaiton details
+### Containerization details
 
 - https://unrealcontainers.com/docs/use-cases/dedicated-servers
 - https://unrealcontainers.com/docs/use-cases/linux-installed-builds
