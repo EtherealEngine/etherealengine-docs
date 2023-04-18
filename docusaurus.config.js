@@ -192,6 +192,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        apiKey: "SAMPLE_API_KEY",
+        indexName: "Ethereal_Engine_Docs",
+        contextualSearch: true,
+        placeholder: "Search docs",
+        appId: "SAMPLE_ID",
+      },
       navbar: {
         title: 'Ethereal Engine',
         logo: {
