@@ -2,6 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import StepAuthentication from './_step_authentication.md'
+import StepConfigurations from './_step_configurations.md'
+import StepVariables from './_step_variables.md'
+import StepSummary from './_step_summary.md'
+
 # Getting Started
 
 The Ethereal Engine Control Center is a self-contained Metaverse world in a box. Take what you need or launch the full stack. Ethereal Engine Control Center is a desktop app to manage an Ethereal Engine cluster.
@@ -51,49 +56,31 @@ In this step, you will need to provide following information:
 
 ![Create Cluster - Step 2](./images/create-cluster-2.jpg)
 
-In this step, you need to provide sudo password for linux terminal. This is because Control Center App will perform various actions on your system with admin privileges.
-
-> On Windows, this is the password of your WSL Ubuntu distribution's sudo user.
+<StepAuthentication />
 
 ### Step 3 - Configurations
 
 ![Create Cluster - Step 3](./images/create-cluster-3.jpg)
 
-In this step, you will need to provide following information:
-
-- **Engine Path:** This is the location of ethereal engine source code repo. If the path does not contain the source code, then it will be [cloned](https://github.com/EtherealEngine/etherealengine) by Control Center App.
-
-    > On Windows, the path must be inside WSL Ubuntu distribution.
-
-- **Ops Path:** This is the location of ethereal engine ops source code repo. If the path does not contain the source code, then it will be [cloned](https://github.com/EtherealEngine/ethereal-engine-ops) by Control Center App.
-
-    > On Windows, the path must be inside WSL Ubuntu distribution.
-
-- **Enable Ripple Stack:** By default you should keep this option as off unless you want to have IPFS & rippled server running in your local K8s deployment.
-
-- **Force DB Refresh:** This will truncate database tables & repopulate them with seed data.
-
-    > If the database is empty, then Control Center App will itself force populate it.
+<StepConfigurations />
 
 ### Step 4 - Variables
 
 ![Create Cluster - Step 4](./images/create-cluster-4.jpg)
 
-In this step for most of the users, go with the default variable values and leave the text fields as it is.
-
-For advanced setup, if you want to configure oAuth, S3 file storage, email, SMS support then you can provide variable values.
+<StepVariables />
 
 ### Step 5 - Summary
 
 ![Create Cluster - Step 5](./images/create-cluster-5.jpg)
 
-This step will show a summary of all the previous steps. User can review them before proceeding ahead. Afterwards, there are 2 buttons:
+<StepSummary />
 
 - **Create:** By default you should go with this option as it will create the cluster entry and show the current status of things.
 
 - **Create & Configure:** This will create the cluster entry and show the current status of things. And afterwards it will automatically start the configuration script to ensure things are setup.
 
->> If you use 'Create' option, then you can still run the Configure script as discussed later in this guide.
+>> If you use 'Create' option, then you can still run the Configure script as discussed later in this [guide](#4-configure-cluster).
 
 ## 3. Cluster Screen
 
@@ -193,7 +180,39 @@ This section will show all the logs of current session. The logs are of the diff
 
 ## 4. Configure Cluster
 
-On cluster screen, if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the options panel.
+On cluster screen, if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the options panel. Following are the different sections of create custer wizard.
+
+> Its always recommended to clear your logs before running configure script in order to trace outputs easily.
+
+### Step 1 - Authentication
+
+![Configure Cluster - Step 1](./images/configure-cluster-1.jpg)
+
+<StepAuthentication />
+
+### Step 2 - Configurations
+
+![Configure Cluster - Step 2](./images/configure-cluster-2.jpg)
+
+<StepConfigurations />
+
+### Step 3 - Variables
+
+![Configure Cluster - Step 3](./images/configure-cluster-3.jpg)
+
+<StepVariables />
+
+### Step 4 - Summary
+
+![Configure Cluster - Step 4](./images/configure-cluster-4.jpg)
+
+<StepSummary />
+
+- **Configure:** This will start the configuration script which will ensure things are setup. You can track output of various things in [logs](#7-logs). Depending on your system and status of apps, it can take a while to setup things. As the configure script run the Configure (![Configure Button](./images/options-panel-configure.jpg)) button will be disabled and have a spinner in it.
+
+    > Once the script finished its execution, the status cluster will be automatically refreshed.
+
+    > If the configure script failed, pay close attention to last lines of [log](#7-logs) section. As it will contain the reason why script failed.
 
 ## App Overview
 

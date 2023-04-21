@@ -180,6 +180,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
+          exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}'],
           editUrl: 'https://github.com/EtherealEngine/etherealengine-docs/blob/master/'
         },
         theme: {
