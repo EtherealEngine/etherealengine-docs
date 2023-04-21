@@ -482,6 +482,17 @@ and your new policy should appear in the selector at the bottom of the list unde
 
 For `Origin request policy`, select the option 'CORS-S3Origin'.
 
+You should also make a custom response header policy so that files are served with the `Origin-Agent-Cluster`
+header, which will tell most browsers to isolate resources for same-site cross-origin requests. To do that,
+you will need to make a custom response header policy. Under `Response headers policy`, select `Create Policy`. 
+This will open a separate tab. Name this something like `Origin-Agent-Cluster`, then under `Custom headers`,
+click `Add header`. For name, enter `Origin-Agent-Cluster`, and for `Value`, enter `?1`. Then click the `Create`
+button at the bottom.
+
+Go back to the tab where you were creating the Cloudfront distribution. Click the refresh button to the right of
+the `Response headers policy` selector to fetch the new policy, then click the selector, and your new policy should
+appear in the selector at the bottom of the list under the header `Custom`. Select it.
+
 Under `Settings`, you can change `Price class` to 'Use Only North America and Europe' to save some money.
 For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g.
 ```resources.etherealengine.org```. Under `Custom SSL Certificate`, click on the selector that says
