@@ -13,6 +13,18 @@ The Ethereal Engine Control Center is a self-contained Metaverse world in a box.
 
 We know it's been complicated to build with Ethereal Engine and we've made this tool to give the community easy access to the engine. We would love to see your creations and invite you all to come build with us.
 
+## App Overview
+
+The Ethereal Engine Control Center app provides access to various functionalities which includes:
+
+- Configure your Ethereal Engine in a cluster in just a few clicks.
+- View status of Ethereal Engine dependencies on your local system.
+- Manage an Ethereal Engine deployment through admin panel.
+- Manage kubernetes cluster through its dashboard.
+- Manage IPFS node running in the cluster.
+- Execute commands against rippled server.
+- See realtime logs of different actions being performed.
+
 ## 1. Downloading Control Center App
 
 In order to download Ethereal Engine control center app, navigate to **<u>[releases](https://github.com/etherealengine/Ethereal-Control-Center/releases)</u>** page and download the latest version of App. On Windows, you will need to download `.exe` while for linux download `AppImage`.
@@ -86,7 +98,7 @@ In this step, you will need to provide following information:
 
 ![Cluster Screen](./images/cluster-screen.jpg)
 
-Once you created a cluster you will be navigated to its screen. Lets explain various sections of this screen:
+Once you created a cluster you will be navigated to its screen also know as config page. Lets explain various sections of this screen:
 
 ### 1. Hotbar
 
@@ -214,22 +226,42 @@ On cluster screen, if any of the status is not green tick then it means you need
 
     > If the configure script failed, pay close attention to last lines of [log](#7-logs) section. As it will contain the reason why script failed.
 
-## App Overview
+## 5. Admin Dashboard
 
-The app provides access to various functionalities which includes:
+![Admin Dashboard](./images/admin-dashboard.jpg)
 
-- Configure your Ethereal Engine in a cluster.
-- View status of your Ethereal Engine dependencies.
-- Manage an Ethereal Engine deployment through admin panel.
-- Manage kubernetes cluster through dashboard.
-- Manage IPFS node running in the cluster.
-- Execute commands against rippled server.
-- See realtime logs of different actions being performed.
+Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Admin` button in [navbar](#2-navbar). This will show the admin dashboard of ethereal engine deployed in your local k8s cluster.
 
-This video gives a complete walk through of how to get started with Control Center app.
+You can perform various actions from admin dashboard including installing projects, managing users, groups, locations, instances, resources, etc.
 
-<iframe width="100%" height="600" src="https://www.youtube.com/embed/0sN8755A4Mw?&theme=dark&autohide=2&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+## 6. K8 Dashboard
 
-## Updating the App
+![K8 Dashboard](./images/k8s-dashboard.jpg)
+
+Once, your selected local k8s (Microk8s or Minikube) has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `K8 Dashboard` button in [navbar](#2-navbar). This will show the k8s dashboard.
+
+When you launch it for the first time then you will be asked regarding token configurations. You can use `Skip` button to pass through it.
+
+![K8 Dashboard Token](./images/k8s-dashboard-token.jpg)
+
+You can perform various actions from k8s dashboard including managing pods, jobs, deployments, services, etc.
+
+## 7. IPFS
+
+![IPFS Web UI](./images/ipfs-web-ui.jpg)
+
+If ripple stack is enabled and once, IPFS has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `IPFS` button in [navbar](#2-navbar). This will show the IPFS web UI.
+
+You can view and manage various aspects of the IPFS running in your local cluster using this dashboard. IPFS is not required by default for engine, though for custom use cases it can be used.
+
+## 8. Rippled CLI
+
+![Rippled CLI](./images/rippled-cli.jpg)
+
+If ripple stack is enabled and once, Rippled has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Rippled CLI` button in [navbar](#2-navbar). This will show the Rippled CLI page.
+
+You can run various commands against `rippled` server and view their outputs. Rippled is not required by default for engine, though for custom use cases it can be used.
+
+## 9. Updating the App
 
 Every time you launch control center app it will check for the latest version of the app. If there is any new updated it will prompt to update. Its always recommend to use the latest version of the app.
