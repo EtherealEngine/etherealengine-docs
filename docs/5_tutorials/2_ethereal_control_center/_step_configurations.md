@@ -13,3 +13,4 @@ In this step, you will need to provide following information:
 - **Force DB Refresh:** This will truncate database tables & repopulate them with seed data.
 
     > If the database is empty, then Control Center App will itself force populate it.
+    

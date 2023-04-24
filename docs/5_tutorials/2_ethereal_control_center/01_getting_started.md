@@ -27,7 +27,7 @@ The Ethereal Engine Control Center app provides access to various functionalitie
 
 ## 1. Downloading Control Center App
 
-In order to download Ethereal Engine control center app, navigate to **<u>[releases](https://github.com/etherealengine/Ethereal-Control-Center/releases)</u>** page and download the latest version of App. On Windows, you will need to download `.exe` while for linux download `AppImage`.
+In order to download Ethereal Engine Control Center app, navigate to **<u>[releases](https://github.com/etherealengine/Ethereal-Control-Center/releases)</u>** page and download the latest version of App. On Windows, you will need to download `.exe` while for linux download `AppImage`.
 
 > On Windows, you will need to allow permission for executing ps1 scripts. You can do so by running following command in Powershell with admin privileges ([reference](https://github.com/EtherealEngine/etherealengine-control-center#2-windows-permission-to-run-ps1-scripts)).
 > ```Powershell
@@ -47,7 +47,7 @@ When you launch the app for the first time, you will see below screen.
 
 ![Home Screen](./images/home-screen.jpg)
 
-Here you need to create a cluster. You can do so by clicking on 'Create' button in the center or anytime using round plus button on left bottom corner (in hotbar) of the screen. Following are the different sections of create custer wizard.
+Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#1-hotbar)) of the screen. Following are the different sections of create custer wizard:
 
 ### Step 1 - Cluster Information
 
@@ -98,7 +98,7 @@ In this step, you will need to provide following information:
 
 ![Cluster Screen](./images/cluster-screen.jpg)
 
-Once you created a cluster you will be navigated to its screen also know as config page. Lets explain various sections of this screen:
+Once you have created a cluster you will be navigated to its screen also know as config page. Lets explain various sections of this screen:
 
 ### 1. Hotbar
 
@@ -140,7 +140,7 @@ This section allows navigation and various utility options. Following are the va
 
 This section shows various actions against currently selected cluster. Following are the various options in it:
 
-- **Cluster Icon:** ![Cluster Icon](./images/options-panel-cluster-icon.jpg) Logo of the selected cluster type. If can be MicroK8s or Minikube logo.
+- **Cluster Icon:** ![Cluster Icon](./images/options-panel-cluster-icon.jpg) Logo of the selected cluster type. It can be MicroK8s or Minikube logo.
 
 - **Cluster Name:** This is the cluster name that you entered in create cluster dialog. i.e. Local.
 
@@ -152,13 +152,11 @@ This section shows various actions against currently selected cluster. Following
 
 - **Delete Icon:** ![Delete Icon](./images/options-panel-delete.jpg) This will delete a clusters. It would not make any changes in associated local kubernetes, app, etc.
 
-- **Settings Icon:** ![Settings Icon](./images/options-panel-settings.jpg) This will open settings dialog. It contain some cluster specific settings in addition to app settings.
+- **Settings Icon:** ![Settings Icon](./images/options-panel-settings.jpg) This will open settings dialog. It contain some selected cluster specific settings in addition to general app settings.
 
-- **Configure Button:** ![Configure Button](./images/options-panel-configure.jpg) This will open the configure dialog which we will discuss in detail later. If a configuration is already running then this button will be disabled and have a spinner in it.
+- **Configure Button:** ![Configure Button](./images/options-panel-configure.jpg) This will open the configure dialog which is [discussed](#4-configure-cluster) later. If a configuration is already running then this button will be disabled and have a spinner in it.
 
-- **Launch Button:** ![Launch Button](./images/options-panel-launch.jpg) Once all the tick marks in control center are green and launch button is enabled. This button will open Ethereal Engine's location in your browser.
-
-    > Make sure to allow certificates as explained **<u>[here](https://etherealengine.github.io/etherealengine-docs/docs/installation/install_troubleshooting#invalid-certificate-errors-in-local-environment)</u>**.
+- **Launch Button:** ![Launch Button](./images/options-panel-launch.jpg) This button will open Ethereal Engine's default location in your browser as [discussed](#5-launch-ethereal-engine) later.
 
 ### 4. System Status
 
@@ -178,7 +176,7 @@ This section will show the current status of all the apps required to run ethere
 
 ![Engine Status](./images/status-engine.jpg)
 
-This section will show the current status of various components of ethereal engine deployment.
+This section will show the current status of various components of ethereal engine deployment in your local kubernetes distribution.
 
 ### 7. Logs
 
@@ -192,7 +190,7 @@ This section will show all the logs of current session. The logs are of the diff
 
 ## 4. Configure Cluster
 
-On cluster screen, if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the options panel. Following are the different sections of create custer wizard.
+On cluster screen, if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the [options panel](#3-options-panel). Following are the different sections of create custer wizard:
 
 > Its always recommended to clear your logs before running configure script in order to trace outputs easily.
 
@@ -226,7 +224,15 @@ On cluster screen, if any of the status is not green tick then it means you need
 
     > If the configure script failed, pay close attention to last lines of [log](#7-logs) section. As it will contain the reason why script failed.
 
-## 5. Admin Dashboard
+## 5. Launch Ethereal Engine
+
+![Launch Ethereal Engine](./images/engine-launch.jpg)
+
+Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Launch` button in [options panel](#3-options-panel). This button will open Ethereal Engine's default location in your browser.
+
+> Make sure to allow certificates as explained **<u>[here](https://etherealengine.github.io/etherealengine-docs/docs/installation/install_troubleshooting#invalid-certificate-errors-in-local-environment)</u>**.
+
+## 6. Admin Dashboard
 
 ![Admin Dashboard](./images/admin-dashboard.jpg)
 
@@ -234,11 +240,11 @@ Once, everything is configured correctly and all ticks are green on config page 
 
 You can perform various actions from admin dashboard including installing projects, managing users, groups, locations, instances, resources, etc.
 
-## 6. K8 Dashboard
+## 7. K8 Dashboard
 
 ![K8 Dashboard](./images/k8s-dashboard.jpg)
 
-Once, your selected local k8s (Microk8s or Minikube) has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `K8 Dashboard` button in [navbar](#2-navbar). This will show the k8s dashboard.
+Once, your selected local k8s distribution (Microk8s or Minikube) has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `K8 Dashboard` button in [navbar](#2-navbar). This will show the k8s dashboard.
 
 When you launch it for the first time then you will be asked regarding token configurations. You can use `Skip` button to pass through it.
 
@@ -246,7 +252,7 @@ When you launch it for the first time then you will be asked regarding token con
 
 You can perform various actions from k8s dashboard including managing pods, jobs, deployments, services, etc.
 
-## 7. IPFS
+## 8. IPFS
 
 ![IPFS Web UI](./images/ipfs-web-ui.jpg)
 
@@ -254,7 +260,7 @@ If ripple stack is enabled and once, IPFS has a green tick on config page ([Clus
 
 You can view and manage various aspects of the IPFS running in your local cluster using this dashboard. IPFS is not required by default for engine, though for custom use cases it can be used.
 
-## 8. Rippled CLI
+## 9. Rippled CLI
 
 ![Rippled CLI](./images/rippled-cli.jpg)
 
@@ -262,6 +268,6 @@ If ripple stack is enabled and once, Rippled has a green tick on config page ([C
 
 You can run various commands against `rippled` server and view their outputs. Rippled is not required by default for engine, though for custom use cases it can be used.
 
-## 9. Updating the App
+## 10. Updating the App
 
-Every time you launch control center app it will check for the latest version of the app. If there is any new updated it will prompt to update. Its always recommend to use the latest version of the app.
+Every time you launch control center app it will check for the latest version of the app. If there is an update, then it will prompt to update. Its always recommend to use the latest version of the app.
