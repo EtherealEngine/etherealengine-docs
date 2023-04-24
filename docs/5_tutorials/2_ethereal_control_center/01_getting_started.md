@@ -27,7 +27,7 @@ The Ethereal Engine Control Center app provides access to various functionalitie
 
 ## 1. Downloading Control Center App
 
-In order to download Ethereal Engine Control Center app, navigate to **<u>[releases](https://github.com/EtherealEngine/etherealengine-control-center/releases)</u>** page and download the latest version of App. On Windows, you will need to download `.exe` while for linux download `AppImage`.
+In order to download Ethereal Engine Control Center App, navigate to [releases](https://github.com/EtherealEngine/etherealengine-control-center/releases) page and download the latest version of the App. On Windows, you will need to download `.exe` while for linux download `AppImage`.
 
 > On Windows, you will need to allow permission for executing ps1 scripts. You can do so by running following command in Powershell with admin privileges ([reference](https://github.com/EtherealEngine/etherealengine-control-center#2-windows-permission-to-run-ps1-scripts)).
 > ```Powershell
@@ -43,11 +43,11 @@ In order to download Ethereal Engine Control Center app, navigate to **<u>[relea
 
 ## 2. Launch & Create Cluster
 
-When you launch the app for the first time, you will see below screen.
+When you launch the app for the first time, you will see below screen:
 
 ![Home Screen](./images/home-screen.jpg)
 
-Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#1-hotbar)) of the screen. Following are the different sections of create custer wizard:
+Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#1-hotbar)) of the screen. Following are the different sections of create custer dialog:
 
 ### Step 1 - Cluster Information
 
@@ -59,9 +59,9 @@ In this step, you will need to provide following information:
 
 - **Cluster Type:** This will be the local kubernetes distribution you want to use. MicroK8s is recommended.
 
-    > Currently, `MicroK8s` is supported on Windows & Linux while `Minikube` is supported on Linux.
+    > Currently, `MicroK8s` is supported on Windows & Linux while `Minikube` is supported on Linux only.
 
-- **Prerequisites:** These are a set of items that should be manually configured by the user. If an item is correctly setup then its status will be green tick, else it will have a red cross with details and link to docs for the corrective measures.
+- **Prerequisites:** These are the set of items that should be manually configured by the user. If an item is correctly setup then its status will be green tick, else it will have a red cross with details and link to docs for the corrective measures.
     > Currently, there are no prerequisites for native Linux.
 
 ### Step 2 - Authentication
@@ -116,17 +116,17 @@ This section allows navigation and various utility options. Following are the va
 
 - **App Icon:** ![App Icon](./images/navbar-icon.jpg) Logo of this application.
 
-- **Home Icon:** ![Home Icon](./images/navbar-home.jpg) Allows to navigate to home.
+- **Home Icon:** ![Home Icon](./images/navbar-home.jpg) Navigate to home.
 
-- **Config:** Navigates to main dashboard of selected cluster.
+- **Config:** Navigates to cluster screen of selected cluster.
 
 - **Admin:** Navigates to ethereal engine admin panel of selected cluster.
 
 - **K8 Dashboard:** Navigates to kubernetes web dashboard of selected kubernetes distribution.
 
-- **IPFS:** Navigates to IPFS web UI of selected cluster. This option is enabled only if ripple stack is enabled.
+- **IPFS:** Navigates to IPFS web UI of selected cluster. This option is visible only if ripple stack is enabled.
 
-- **Rippled CLI:** Navigates to rippled server cli of selected cluster. This option is enabled only if ripple stack is enabled.
+- **Rippled CLI:** Navigates to rippled server cli of selected cluster. This option is visible only if ripple stack is enabled.
 
 - **Change Theme Icon:** ![Change Theme Icon](./images/navbar-theme.jpg) Allows to toggle between vaporware, light & dark themes. The color scheme of these themes are similar to ethereal engine.
 
@@ -138,7 +138,7 @@ This section allows navigation and various utility options. Following are the va
 
 ![Options Panel](./images/options-panel.jpg)
 
-This section shows various actions against currently selected cluster. Following are the various options in it:
+This section shows various actions against currently selected cluster. Following are the options in it:
 
 - **Cluster Icon:** ![Cluster Icon](./images/options-panel-cluster-icon.jpg) Logo of the selected cluster type. It can be MicroK8s or Minikube logo.
 
@@ -152,7 +152,7 @@ This section shows various actions against currently selected cluster. Following
 
 - **Delete Icon:** ![Delete Icon](./images/options-panel-delete.jpg) This will delete a clusters. It would not make any changes in associated local kubernetes, app, etc.
 
-- **Settings Icon:** ![Settings Icon](./images/options-panel-settings.jpg) This will open settings dialog. It contain some selected cluster specific settings in addition to general app settings.
+- **Settings Icon:** ![Settings Icon](./images/options-panel-settings.jpg) This will open settings dialog. It contains some selected cluster specific settings in addition to general app settings.
 
 - **Configure Button:** ![Configure Button](./images/options-panel-configure.jpg) This will open the configure dialog which is [discussed](#4-configure-cluster) later. If a configuration is already running then this button will be disabled and have a spinner in it.
 
@@ -164,7 +164,7 @@ This section shows various actions against currently selected cluster. Following
 
 This section will show the current status of whether the system requirements are meet or not. On Windows, it will also show the status of prerequisites.
 
-The status against each item will be displayed. You can find more details by hovering over ![Settings Icon](./images/status-info.jpg) info icon. This is useful when some item is not configured correctly.
+The status against each item will be displayed. You can find more details by hovering over ![Settings Icon](./images/status-info.jpg) info icon. This info icon is useful when some item is not configured correctly.
 
 ### 5. Apps Status
 
@@ -190,7 +190,7 @@ This section will show all the logs of current session. The logs are of the diff
 
 ## 4. Configure Cluster
 
-On cluster screen, if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the [options panel](#3-options-panel). Following are the different sections of create custer wizard:
+On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the [options panel](#3-options-panel). Following are the different sections of configure custer dialog:
 
 > Its always recommended to clear your logs before running configure script in order to trace outputs easily.
 
@@ -218,11 +218,11 @@ On cluster screen, if any of the status is not green tick then it means you need
 
 <StepSummary />
 
-- **Configure:** This will start the configuration script which will ensure things are setup. You can track output of various things in [logs](#7-logs). Depending on your system and status of apps, it can take a while to setup things. As the configure script run the Configure (![Configure Button](./images/options-panel-configure.jpg)) button will be disabled and have a spinner in it.
+- **Configure:** This will start the configuration script which will ensure things are setup. You can track output of various things in [logs](#7-logs). Depending on your system and status of apps, it can take a while to setup things. As the configure script is executing, the Configure (![Configure Button](./images/options-panel-configure.jpg)) button will be disabled and have a spinner in it.
 
-    > Once the script finished its execution, the status cluster will be automatically refreshed.
+    > Once the script finished its execution, the cluster status will be automatically refreshed.
 
-    > If the configure script failed, pay close attention to last lines of [log](#7-logs) section. As it will contain the reason why script failed.
+    > If the configure script failed, pay close attention to last few lines of [logs](#7-logs) section. As it will contain the reason why script failed.
 
 ## 5. Launch Ethereal Engine
 
@@ -230,7 +230,7 @@ On cluster screen, if any of the status is not green tick then it means you need
 
 Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Launch` button in [options panel](#3-options-panel). This button will open Ethereal Engine's default location in your browser.
 
-> Make sure to allow certificates as explained **<u>[here](https://etherealengine.github.io/etherealengine-docs/docs/installation/install_troubleshooting#invalid-certificate-errors-in-local-environment)</u>**.
+> Make sure to allow certificates as explained [here](https://etherealengine.github.io/etherealengine-docs/docs/devops_deployment/microk8s_linux#accept-invalid-certs).
 
 ## 6. Admin Dashboard
 
@@ -246,7 +246,7 @@ You can perform various actions from admin dashboard including installing projec
 
 Once, your selected local k8s distribution (Microk8s or Minikube) has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `K8 Dashboard` button in [navbar](#2-navbar). This will show the k8s dashboard.
 
-When you launch it for the first time then you will be asked regarding token configurations. You can use `Skip` button to pass through it.
+For MicroK8s, when you launch it for the first time then you will be asked regarding token configurations. You can use `Skip` button to pass through it.
 
 ![K8 Dashboard Token](./images/k8s-dashboard-token.jpg)
 
