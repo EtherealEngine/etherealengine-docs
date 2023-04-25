@@ -1,3 +1,7 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Debugging
 
 This section covers different techniques for debugging the source code.
