@@ -34,7 +34,10 @@ You may also need to install [Docker Compose](https://docs.docker.com/compose/in
 
 Instructions can be found [here](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview)
 
-`sudo snap install microk8s --classic --channel=1.26/stable`
+```bash
+sudo snap install microk8s --classic --channel=1.26/stable
+```
+
 > Due to some ongoing issue with host storage access in microk8s 1.25 version, it is recommended to use version 1.26.
 
 While you can follow the demo instructions there about starting MicroK8s, deploying some demo deployments, etc. to get a feel for it.
