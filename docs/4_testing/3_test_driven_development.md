@@ -1,3 +1,7 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Writing Good Tests
 
 Now that our code has been thoughtfully organized into stateless functions we can easily put them to the test with three simple steps:

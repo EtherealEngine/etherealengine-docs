@@ -1,3 +1,7 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Debugging Engine in WSL on Phone/Headset
 
 This section covers testing/debugging on phone/headset when engine stack hosted in WSL2 Ubuntu on Windows 11.

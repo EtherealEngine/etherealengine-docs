@@ -16,6 +16,22 @@ Once WSL is installed, make sure to:
 - [Set up your Linux username and password](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
 - [Update and upgrade packages](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#update-and-upgrade-packages)
 
+### Set Ubuntu as default WSL distribution
+
+In powershell/cmd run following command to see the list of distributions:
+
+```shell
+wsl -l
+```
+
+In the list you should be able to see `Ubuntu` listed. Afterwards, run following command to set Ubuntu as default distribution:
+
+```shell
+wsl -s Ubuntu
+```
+
+![WSL Ubuntu Default Distribution](./images/wsl-ubuntu-default.jpg)
+
 ## Install Docker Desktop
 
 Install docker desktop with WSL 2 backend. You can find the instructions [here](https://docs.docker.com/desktop/install/windows-install/).
@@ -108,7 +124,10 @@ Docker & Docker Compose should be installed if you successfully completed "[Inst
 
 Make sure to install MicroK8s in your WSL Ubuntu terminal. Instructions can be found [here](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview)
 
-`sudo snap install microk8s --classic --channel=1.26/stable`
+```bash
+sudo snap install microk8s --classic --channel=1.26/stable
+```
+
 > Due to some ongoing issue with host storage access in microk8s 1.25 version, it is recommended to use version 1.26.
 
 While you can follow the demo instructions there about starting MicroK8s, deploying some demo deployments, etc. to get a feel for it.
