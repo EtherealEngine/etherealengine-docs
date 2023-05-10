@@ -86,8 +86,8 @@ All K8 control plane systems can be access via rest calls to the local network o
 
 The Ethereal Engine matchmaker service exposes the default endopints for open match.
 
-https://github.com/etherealengine/etherealengine/blob/dev/packages/ops/open-match/templates/01-open-match-core.yaml
-https://github.com/etherealengine/etherealengine/blob/dev/packages/ops/open-match/templates/07-open-match-default-evaluator.yaml
+https://github.com/EtherealEngine/ethereal-engine-ops/tree/master/open-match/templates/01-open-match-core.yaml
+https://github.com/EtherealEngine/ethereal-engine-ops/tree/master/open-match/templates/07-open-match-default-evaluator.yaml
 
 REST API local call access docs
 

@@ -107,8 +107,10 @@ that kubectl has been configured to run; the current one will have a '*' under t
 'current' column.
 
 Once kubectl is pointed to minikube, from the top of the Ethereal Engine repo, run
-`helm install -f packages/ops/configs/agones-default-values.yaml agones agones/agones` to install Agones
+`helm install -f </path/to/agones-default-values.yaml> agones agones/agones` to install Agones
 and `helm install local-redis redis/redis` to install redis.
+
+> [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 You can run `kubectl get pods -A` to list all of the pods running in minikube. After a minute or so,
 all of these pods should be in the Running state.
@@ -139,7 +141,9 @@ Check if all the pods are ready: `kubectl get pods`
 
 After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by typing `http://localhost:5601` in your browser
 
-In order to connect logger with elasticsearch, update `packages/ops/configs/local.minikube.template.values.yaml` env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
+In order to connect logger with elasticsearch, update `local.minikube.template.values.yaml` env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
+
+> [local.minikube.template.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.minikube.template.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 ## Run build_minikube.sh
 When minikube is running, run the following command from the root of the Ethereal Engine repo:
@@ -177,18 +181,22 @@ though later builds should take less time as things are cached.
 ## Update Helm Values File
 
 This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
-a [template](https://raw.githubusercontent.com/etherealengine/etherealengine/dev/packages/ops/configs/local.minikube.template.values.yaml) for this file in packages/ops/configs
+a [template](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.minikube.template.values.yaml) for this file in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 If you are using local file server as explained couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value e.g. '/hosthome/<OS_USER_NAME>/<ENGINE_FOLDER>/packages/server/upload'. The folder must be in home folder and make sure to use /hosthome/ instead of home in path. Its mandatory to point to `/packages/server/upload` folder of your engine folder.
 
 ## Deploy Ethereal Engine Helm chart
-Run the following command: `helm install -f </path/to/local.values.yaml> -f ./packages/ops/configs/db-refresh-true.values.yaml local etherealengine/etherealengine`.
+Run the following command: `helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine`.
+
+> [db-refresh-true.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-true.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 After a minute or so, running `kubectl get pods` should show one or more instanceservers, one or more api
 servers, and one client server in the Running state. Setting `FORCE_DB_REFRESH=true` made the api servers
 (re)initialize the database. Since you don't want that to happen every time a new api pod starts, run
-`helm upgrade --reuse-values -f ./packages/ops/configs/db-refresh-false.values.yaml local etherealengine/etherealengine`.
+`helm upgrade --reuse-values -f </path/to/db-refresh-false.values.yaml> local etherealengine/etherealengine`.
 The API pods will restart and will now not attempt to reinit the database on boot.
+
+> [db-refresh-false.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-false.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 ## Accept invalid certs
 Since there are no valid certificates for this domain, you'll have to tell your browser to ignore the

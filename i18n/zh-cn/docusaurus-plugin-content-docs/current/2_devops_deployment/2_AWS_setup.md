@@ -321,9 +321,9 @@ Ethereal Engine由SQL服务器提供支持。我们在开发中使用MariaDB，�
 
 ### 安装阿贡斯
 
-从此存储库的顶层，运行`helm install -f ./packages/ops/configs/agones-default-values.yaml agones agones/agones`.
+从此存储库的顶层，运行`helm install -f agones-default-values.yaml agones agones/agones`.
 这表示从“agones”图表中的“agones”包中安装一个名为“agones”的服务，并将其配置为
-在 /packages/ops/configs/agones-default-values.yaml 找到的文件。
+在 https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml 找到的文件。
 
 ### 为每个部署安装 redis
 
@@ -332,11 +332,11 @@ Ethereal Engine的每个部署都使用一个redis集群来协调“feathers-syn
 名为“dev”的空灵引擎部署，需要命名相应的 redis 部署
 'dev-redis'.
 
-跑`helm install  -f packages/ops/configs/redis-values.yaml <deployment_name>-redis redis/redis`安装，例如
-`helm install  -f packages/ops/configs/redis-values.yaml dev-redis redis/redis`.
+跑`helm install -f redis-values.yaml <deployment_name>-redis redis/redis`安装，例如
+`helm install -f redis-values.yaml dev-redis redis/redis`.
 如果将 redis 节点组命名为“ng-redis-1”以外的名称，则必须更改
-packages/ops/configs/redis-values.yaml 位于 redis 节点组名称的两个位置。
-如果您没有仅为 redis 创建节点组，则必须省略`-f packages/ops/configs/redis-values.yaml`,
+https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/redis-values.yaml 位于 redis 节点组名称的两个位置。
+如果您没有仅为 redis 创建节点组，则必须省略`-f redis-values.yaml`,
 因为该配置使 redis pod 在特定节点组上运行。
 
 #### 将 redis 安装为 Ethereal 引擎图表的一部分（不建议用于生产）
@@ -354,7 +354,7 @@ Redis可以作为以太坊引擎图表的一部分进行安装，只要以太坊
 ### 安装 ingress-nginx
 
 **在完全验证关联的 ACM 证书之前，此步骤无法完成**
-打开文件`packages/ops/configs/nginx-ingress-aws-values.yml`.记下该行
+打开文件 [nginx-ingress-aws-values.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml).记下该行
 `service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<ACM Certificate ARN for SSL>"`
 将尖括号中的位（包括尖括号）替换为证书的 ARN
 您为顶级域和所有通配符子域制作，例如
@@ -363,9 +363,9 @@ Redis可以作为以太坊引擎图表的一部分进行安装，只要以太坊
 不要在插入 ARN 的情况下提交此文件;完成此步骤后，将文件还原回去
 到它所承诺的状态。
 
-从此存储库的顶层，运行`helm install -f ./packages/ops/configs/nginx-ingress-aws-values.yml nginx ingress-nginx/ingress-nginx`
+从此存储库的顶层，运行`helm install -f nginx-ingress-aws-values.yml nginx ingress-nginx/ingress-nginx`
 这表示从“ingress-nginx”图表中的“ingress-nginx”包中安装名为“nginx”的服务，并将其配置为
-在 /packages/ops/configs/nginx-ingress-aws-values.yml 上找到的文件。
+在 https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml 上找到的文件。
 
 ## 设置简单电子邮件服务
 
@@ -544,7 +544,7 @@ Ethereal Engine代码库最容易部署，方法是分叉它并配置一些Secre
 
 默认情况下，只有设置 EKS 集群的 IAM 用户才能访问该集群。
 为了允许其他用户访问集群，您必须将 aws-auth 配置映射应用于集群
-向特定 IAM 用户授予访问权限。此文件的模板可以在 packages/ops/config/aws-auth-template.yml 中找到。
+向特定 IAM 用户授予访问权限。此文件的模板可以在 https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/aws-auth-template.yml 中找到。
 
 您需要为此文件提供一些值。找到`<rolearn>`，在 AWS 中转到 EKS->Clusters->
 `<your cluster>`->计算>选择一个节点组。 详细信息中应为“节点 IAM 角色 ARN”;复制此
@@ -575,7 +575,7 @@ AWS 客户端的右上角应为`<your_username>@<abcd-1234-efgh>`.12 个字符�
 
 ### 用变量填写 Helm 配置文件
 
-用于开发和生产部署的模板 Helm 配置文件可以在 packages/ops/configs/\<dev/prod>.template.values.yaml 上找到。
+用于开发和生产部署的模板 Helm 配置文件可以在 https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/ \<dev/prod>.template.values.yaml 上找到。
 在填写它们之前，在其他地方创建一个副本，将其称为“\<dev/prod>.values.yaml”，然后编辑该副本。
 生成器和主部署应使用相同的配置文件。当构建器为数据库设定种子时，
 它需要许多值，这些值只需要为其他服务配置，因此所有值

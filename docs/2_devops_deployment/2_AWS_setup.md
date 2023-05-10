@@ -86,7 +86,7 @@ Redis should get its own nodegroup to isolate it from any other changes that mig
 As with the instanceserver nodegroup, it's not strictly necessary, but can prevent various other things from
 going down due to the redis servers getting interrupted.
 
-Back at the Compute tab, click on Add Node Group. Pick a name (the default config in packages/ops/config assumes
+Back at the Compute tab, click on Add Node Group. Pick a name (the default config in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.minikube.template.values.yaml) assumes
 a name of 'ng-redis-1'), select the IAM role that was created with the cluster 
 (it should be something like ```eksctl-<cluster_name>-node-NodeInstanceRole-<jumble_of_characters>```),
 toggle the Use Launch Template toggle and select the launch template used to make the initial nodegroup,
@@ -329,9 +329,9 @@ You should also at this time add Ethereal Engine's repo via ```helm repo add eth
 If you ever suspect that a chart is out-of-date, run ```helm repo update``` to update all of them to the latest.
 
 ### Install Agones
-From the top level of this repo, run ```helm install -f ./packages/ops/configs/agones-default-values.yaml agones agones/agones```.
+From the top level of this repo, run ```helm install -f </path/to/agones-default-values.yaml> agones agones/agones```.
 This says to install a service called 'agones' from the 'agones' package in the 'agones' chart, and to configure it with
-a file found at /packages/ops/configs/agones-default-values.yaml.
+[agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) that can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 ### Install redis for each deployment
 
@@ -340,11 +340,14 @@ Each redis deployment needs to be named the same as the deployment that will use
 Ethereal Engine deployment named 'dev', the corresponding redis deployment would need to be named
 'dev-redis'.
 
-Run ```helm install  -f packages/ops/configs/redis-values.yaml <RELEASE_NAME>-redis redis/redis``` to install, e.g.
-```helm install  -f packages/ops/configs/redis-values.yaml dev-redis redis/redis```.
+Run ```helm install -f </path/to/redis-values.yaml> <RELEASE_NAME>-redis redis/redis``` to install, e.g.
+```helm install -f </path/to/redis-values.yaml> dev-redis redis/redis```.
+
+> [redis-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/redis-values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
+
 If you named the redis nodegroup something other than 'ng-redis-1', you'll have to alter the value in
-packages/ops/configs/redis-values.yaml in two places to your redis nodegroup name.
-If you didn't create a nodegroup just for redis, you must omit the ` -f packages/ops/configs/redis-values.yaml `,
+`redis-values.yaml` in two places to your redis nodegroup name.
+If you didn't create a nodegroup just for redis, you must omit the ` -f </path/to/redis-values.yaml> `,
 as that config makes redis pods run on a specific nodegroup.
 
 #### Installing redis as part of Ethereal Engine chart (not recommended for production)
@@ -360,7 +363,7 @@ will immediately go down.
 
 ### Install ingress-nginx
 **This step cannot finish until the associated ACM Certificate is fully validated** 
-Open the file ```packages/ops/configs/nginx-ingress-aws-values.yml```. Take note of the line
+Open local version of [nginx-ingress-aws-values.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml) file. Take note of the line
 ```service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<ACM Certificate ARN for SSL>"```
 Replace the bit in angle brackets, including the angle brackets, with the ARN of the certificate
 you made for the top-level domain and all wildcarded subdomains, e.g.
@@ -369,9 +372,9 @@ you made for the top-level domain and all wildcarded subdomains, e.g.
 Do not commit this file with the ARN inserted; once you've completed this step, revert the file back
 to the state it was committed in.
 
-From the top level of this repo, run ```helm install -f ./packages/ops/configs/nginx-ingress-aws-values.yml nginx ingress-nginx/ingress-nginx```
+From the top level of this repo, run ```helm install -f </path/to/nginx-ingress-aws-values.yml> nginx ingress-nginx/ingress-nginx```
 This says to install a service called 'nginx' from the 'ingress-nginx' package in the 'ingress-nginx' chart, and to configure it with
-a file found at /packages/ops/configs/nginx-ingress-aws-values.yml.
+a file found at [nginx-ingress-aws-values.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml).
 
 ## Set up Simple Email Service (optional)
 
@@ -574,7 +577,7 @@ trigger the workflow by pushing new code to the dev branch.
 ## Grant Github-Actions-User access to cluster
 By default, only the IAM user who set up an EKS cluster may access it.
 In order to let other users access the cluster, you must apply an aws-auth configmap to the cluster
-granting access to specific IAM users. A template for this file can be found in packages/ops/config/aws-auth-template.yml.
+granting access to specific IAM users. A template of [aws-auth-template.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/aws-auth-template.yml) file can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 You'll need to provide a few values for this file. To find `<rolearn>`, in AWS go to EKS->Clusters->
 `<your cluster>`->Compute->Select a nodegroup.  In the details should be 'Node IAM Role ARN'; copy this
@@ -606,7 +609,7 @@ There's a couple of steps to this, which will involve deploying things with most
 configuration values, and then letting the deployment process fill in the rest.
 
 ### Fill in Helm config file with variables
-Template Helm config files for dev and prod deployments can be found at packages/ops/configs/<dev/prod>.template.values.yaml.
+Template Helm config files for dev and prod deployments can be found in [configs](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs) <dev/prod>.template.values.yaml.
 Before filling them in, make a copy elsewhere, call that '<dev/prod>.values.yaml', and edit that copy.
 Both the builder and main deployments should use the same config file. When the builder seeds the database,
 it needs a number of values that only need to be configured for the other services, so all of the values

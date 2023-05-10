@@ -80,7 +80,7 @@ Redis debe obtener su propio grupo de nodos para aislarlo de cualquier otro camb
 Al igual que con el grupo de nodos instanceserver, no es estrictamente necesario, pero puede evitar que otras cosas
 cayendo debido a que los servidores redis se interrumpen.
 
-De vuelta en la pestaña Calcular, haga clic en Agregar grupo de nodos. Elija un nombre (la configuración predeterminada en packages/ops/config supone
+De vuelta en la pestaña Calcular, haga clic en Agregar grupo de nodos. Elija un nombre (la configuración predeterminada en https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs supone
 un nombre de 'NG-Redis-1'), seleccione el rol de IAM que se creó con el clúster
 (debería ser algo así como `eksctl-<cluster_name>-node-NodeInstanceRole-<jumble_of_characters>`),
 alternar el interruptor Usar plantilla de inicio y seleccionar la plantilla de inicio utilizada para crear el grupo de nodos inicial,
@@ -321,9 +321,9 @@ Si alguna vez sospecha que un gráfico está desactualizado, ejecute `helm repo 
 
 ### Instalar Agones
 
-Desde el nivel superior de este repositorio, ejecute `helm install -f ./packages/ops/configs/agones-default-values.yaml agones agones/agones`.
+Desde el nivel superior de este repositorio, ejecute `helm install -f agones-default-values.yaml agones agones/agones`.
 Esto dice instalar un servicio llamado 'agones' del paquete 'agones' en el gráfico 'agones', y configurarlo con
-un archivo que se encuentra en /packages/ops/configs/agones-default-values.yaml.
+un archivo que se encuentra en https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml.
 
 ### Instalar redis para cada implementación
 
@@ -332,11 +332,11 @@ Cada implementación de redis debe tener el mismo nombre que la implementación 
 Implementación de Ethereal Engine denominada 'dev', la implementación de redis correspondiente tendría que llamarse
 'dev-redis'.
 
-Correr `helm install  -f packages/ops/configs/redis-values.yaml <deployment_name>-redis redis/redis` para instalar, por ejemplo,
-`helm install  -f packages/ops/configs/redis-values.yaml dev-redis redis/redis`.
+Correr `helm install -f redis-values.yaml <deployment_name>-redis redis/redis` para instalar, por ejemplo,
+`helm install -f redis-values.yaml dev-redis redis/redis`.
 Si ha denominado al grupo de nodos redis algo distinto de 'ng-redis-1', tendrá que modificar el valor en
-packages/ops/configs/redis-values.yaml en dos lugares con el nombre del grupo de nodos de redis.
-Si no creó un grupo de nodos solo para redis, debe omitir el `-f packages/ops/configs/redis-values.yaml`,
+https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/redis-values.yaml en dos lugares con el nombre del grupo de nodos de redis.
+Si no creó un grupo de nodos solo para redis, debe omitir el `-f redis-values.yaml`,
 ya que esa configuración hace que los pods de redis se ejecuten en un grupo de nodos específico.
 
 #### Instalación de redis como parte de la tabla Ethereal Engine (no se recomienda para producción)
@@ -354,7 +354,7 @@ bajará inmediatamente.
 ### Instalar ingress-nginx
 
 **Este paso no puede finalizar hasta que el certificado de ACM asociado esté completamente validado**
-Abrir el archivo `packages/ops/configs/nginx-ingress-aws-values.yml`. Toma nota de la línea
+Abrir el archivo [nginx-ingress-aws-values.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml). Toma nota de la línea
 `service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<ACM Certificate ARN for SSL>"`
 Reemplace el bit en corchetes angulares, incluidos los corchetes angulares, por el ARN del certificado
 ha creado para el dominio de nivel superior y todos los subdominios comodín, por ejemplo.
@@ -363,9 +363,9 @@ ha creado para el dominio de nivel superior y todos los subdominios comodín, po
 No confirme este archivo con el ARN insertado; Una vez que haya completado este paso, revierta el archivo
 al estado en el que se comprometió.
 
-Desde el nivel superior de este repositorio, ejecute `helm install -f ./packages/ops/configs/nginx-ingress-aws-values.yml nginx ingress-nginx/ingress-nginx`
+Desde el nivel superior de este repositorio, ejecute `helm install -f nginx-ingress-aws-values.yml nginx ingress-nginx/ingress-nginx`
 Esto dice instalar un servicio llamado 'nginx' desde el paquete 'ingress-nginx' en el gráfico 'ingress-nginx', y configurarlo con
-un archivo que se encuentra en /packages/ops/configs/nginx-ingress-aws-values.yml.
+un archivo que se encuentra en https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml.
 
 ## Configurar el servicio de correo electrónico simple
 
@@ -544,7 +544,7 @@ desencadenar el flujo de trabajo insertando código nuevo en la rama de desarrol
 
 De forma predeterminada, solo el usuario de IAM que configuró un clúster de EKS puede acceder a él.
 Para permitir que otros usuarios accedan al clúster, debe aplicar un aws-auth configmap al clúster
-conceder acceso a usuarios específicos de IAM. Puede encontrar una plantilla para este archivo en packages/ops/config/aws-auth-template.yml.
+conceder acceso a usuarios específicos de IAM. Puede encontrar una plantilla para este archivo en https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/aws-auth-template.yml.
 
 Deberá proporcionar algunos valores para este archivo. Buscar `<rolearn>`, en AWS, vaya a EKS->Clusters->
 `<your cluster>`->Compute->Seleccione un grupo de nodos.  En los detalles debe estar 'Node IAM Role ARN'; copie esto
@@ -575,7 +575,7 @@ valores de configuración y, a continuación, dejar que el proceso de implementa
 
 ### Rellene el archivo de configuración de Helm con variables
 
-Los archivos de configuración de Template Helm para implementaciones de desarrollo y productos se pueden encontrar en packages/ops/configs/\<dev/prod>.template.values.yaml.
+Los archivos de configuración de Template Helm para implementaciones de desarrollo y productos se pueden encontrar en [configs](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/configs/) \<dev/prod>.template.values.yaml.
 Antes de rellenarlos, haga una copia en otro lugar, llame a eso '\<dev/prod>.values.yaml' y edite esa copia.
 Tanto el constructor como las implementaciones principales deben usar el mismo archivo de configuración. Cuando el constructor siembra la base de datos,
 Necesita una serie de valores que solo deben configurarse para los demás servicios, por lo que todos los valores
