@@ -49,50 +49,91 @@ When you launch the app for the first time, you will see below screen:
 
 Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#31-hotbar)) of the screen. Following are the different sections of create custer dialog:
 
-### Step 1 - Cluster Information
+### 2.1. Cluster Information
 
-![Create Cluster - Step 1](./images/create-cluster-1.jpg)
+![Create Cluster - Cluster Information](./images/create-cluster-1.jpg)
 
 In this step, you will need to provide following information:
 
 - **Cluster Name:** This can be any name you want to give your cluster. i.e. Local, my-metaverse, etc.
 
-- **Cluster Type:** This will be the local kubernetes distribution you want to use. MicroK8s is recommended.
+- **Cluster Type:** This will be the kubernetes distribution you want to use. Currently there are 2 local distributions, MicroK8s(recommended) & Minikube. There is also a Custom type which allows you to connect to an existing Ethereal Engine cluster.
 
     > Currently, `MicroK8s` is supported on Windows & Linux while `Minikube` is supported on Linux only.
 
 - **Prerequisites:** These are the set of items that should be manually configured by the user. If an item is correctly setup then its status will be green tick, else it will have a red cross with details and link to docs for the corrective measures.
-    > Currently, there are no prerequisites for native Linux.
+    > Currently, there are prerequisites for MicroK8s in Windows only.
 
-### Step 2 - Authentication
+### 2.2. Cluster Type: MicroK8s or Minikube
 
-![Create Cluster - Step 2](./images/create-cluster-2.jpg)
+If you selected cluster type as MicroK8s or Minikube, then you will see below options.
+
+### 2.2.1. Authentication
+
+![Create Cluster - Authentication](./images/create-cluster-2.jpg)
 
 <StepAuthentication />
 
-### Step 3 - Configurations
+### 2.2.2. Configurations
 
-![Create Cluster - Step 3](./images/create-cluster-3.jpg)
+![Create Cluster - Configurations](./images/create-cluster-3.jpg)
 
 <StepConfigurations />
 
-### Step 4 - Variables
+### 2.2.3. Variables
 
-![Create Cluster - Step 4](./images/create-cluster-4.jpg)
+![Create Cluster - Variables](./images/create-cluster-4.jpg)
 
 <StepVariables />
 
-### Step 5 - Summary
+### 2.2.4. Summary
 
-![Create Cluster - Step 5](./images/create-cluster-5.jpg)
+![Create Cluster - Summary](./images/create-cluster-5.jpg)
 
 <StepSummary />
 
-- **Create:** By default you should go with this option as it will create the cluster entry and show the current status of things.
+- **Create:** By default you should go with this option as it will create the cluster entry and show the [cluster screen](#3-cluster-screen) of this cluster.
 
 - **Create & Configure:** This will create the cluster entry and show the current status of things. And afterwards it will automatically start the configuration script to ensure things are setup.
 
 >> If you use 'Create' option, then you can still run the Configure script as discussed later in this [guide](#4-configure-cluster).
+
+### 2.3. Cluster Type: Custom
+
+If you selected Custom cluster type, then you will see below options. Custom cluster allows to connect to an existing kubernetes cluster.
+
+### 2.3.1. Kubeconfig
+
+![Create Cluster - Kubeconfig](./images/create-cluster-6.jpg)
+
+In this step, you will need to provide following information regarding desired cluster's kubeconfig:
+
+- **Config Type - Default:** This will load the default kubeconfig file of your system.
+
+- **Config Type - File:** This will allow to load kubeconfig from a file of your system.
+
+- **Config Type - Text:** This will allow to load kubeconfig from a text.
+
+- **Context:** This is the selected kube context of cluster in which your ethereal engine deployment exists. The dropdown will show all contexts that exist in selected config type.
+
+### 2.3.2. Deployment
+
+![Create Cluster - Deployment](./images/create-cluster-7.jpg)
+
+In this step, you will need to provide following deployment information:
+
+- **Deployment Name:** This is the name of your release in selected kubernetes deployment. It can be 'dev', 'prod', 'local', etc. You can use check release button to verify release name.
+  > Release name is used to prefix the workloads in your cluster like:
+  <br />
+  `{RELEASE_NAME}-etherealengine-client`. i.e. `prod-etherealengine-client`
+
+### 2.3.3. Summary
+
+![Create Cluster - Summary](./images/create-cluster-8.jpg)
+
+<StepSummary />
+
+- **Create:** This option will create the cluster entry and show the [workloads screen](#6-workloads) of this cluster.
 
 ## 3. Cluster Screen
 
@@ -196,27 +237,27 @@ On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick
 
 > Its always recommended to clear your logs before running configure script in order to trace outputs easily.
 
-### Step 1 - Authentication
+### 4.1. Authentication
 
-![Configure Cluster - Step 1](./images/configure-cluster-1.jpg)
+![Configure Cluster - Authentication](./images/configure-cluster-1.jpg)
 
 <StepAuthentication />
 
-### Step 2 - Configurations
+### 4.2. Configurations
 
-![Configure Cluster - Step 2](./images/configure-cluster-2.jpg)
+![Configure Cluster - Configurations](./images/configure-cluster-2.jpg)
 
 <StepConfigurations />
 
-### Step 3 - Variables
+### 4.3. Variables
 
-![Configure Cluster - Step 3](./images/configure-cluster-3.jpg)
+![Configure Cluster - Variables](./images/configure-cluster-3.jpg)
 
 <StepVariables />
 
-### Step 4 - Summary
+### 4.4. Summary
 
-![Configure Cluster - Step 4](./images/configure-cluster-4.jpg)
+![Configure Cluster - Summary](./images/configure-cluster-4.jpg)
 
 <StepSummary />
 
