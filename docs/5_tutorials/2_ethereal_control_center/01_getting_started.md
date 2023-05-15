@@ -124,7 +124,6 @@ In this step, you will need to provide following deployment information:
 
 - **Deployment Name:** This is the name of your release in selected kubernetes deployment. It can be 'dev', 'prod', 'local', etc. You can use check release button to verify release name.
   > Release name is used to prefix the workloads in your cluster like:
-  <br />
   `{RELEASE_NAME}-etherealengine-client`. i.e. `prod-etherealengine-client`
 
 ### 2.3.3. Summary
