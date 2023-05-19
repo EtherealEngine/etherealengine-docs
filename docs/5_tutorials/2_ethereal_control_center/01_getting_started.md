@@ -47,7 +47,7 @@ When you launch the app for the first time, you will see below screen:
 
 ![Home Screen](./images/home-screen.jpg)
 
-Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#31-hotbar)) of the screen. Following are the different sections of create custer dialog:
+Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#31-hotbar)) of the screen. Following are the different sections of create cluster dialog:
 
 ### 2.1. Cluster Information
 
@@ -232,7 +232,7 @@ This section will show all the logs of current session. The logs are of the diff
 
 ## 4. Configure Cluster
 
-On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the [options panel](#33-options-panel). Following are the different sections of configure custer dialog:
+On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the [options panel](#33-options-panel). Following are the different sections of configure cluster dialog:
 
 > Its always recommended to clear your logs before running configure script in order to trace outputs easily.
 
