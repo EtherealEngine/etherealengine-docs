@@ -206,7 +206,11 @@ This section shows various actions against currently selected cluster. Following
 
 This section will show the current status of whether the system requirements are meet or not. On Windows, it will also show the status of prerequisites.
 
-The status against each item will be displayed. You can find more details by hovering over ![Settings Icon](./images/status-info.jpg) info icon. This info icon is useful when some item is not configured correctly.
+The status against each item will be displayed. You can find more details by hovering over ![Info Icon](./images/status-info.jpg) info icon. This info icon is useful when some item is not configured correctly.
+
+Additionally, for some items you will see ![Fix Icon](./images/status-fix.png) auto fix icon. Clicking this button will try to auto fix the problem. Though if it fails, you can try using configure dialog which is [discussed](#4-configure-cluster) later.
+
+> Usually, auto fix button should only be used if previously you were able to run the cluster successfully. Otherwise, use configure dialog.
 
 ### 3.5. Apps Status
 
