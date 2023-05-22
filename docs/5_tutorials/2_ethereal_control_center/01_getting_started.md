@@ -122,7 +122,7 @@ In this step, you will need to provide following information regarding desired c
 
 In this step, you will need to provide following deployment information:
 
-- **Deployment Name:** This is the name of your release in selected kubernetes deployment. It can be 'dev', 'prod', 'local', etc. You can use check release button to verify release name.
+- **Release Name:** This is the name of your release in selected kubernetes deployment. It can be 'dev', 'prod', 'local', etc.
   > Release name is used to prefix the workloads in your cluster like:
   `{RELEASE_NAME}-etherealengine-client`. i.e. `prod-etherealengine-client`
 
