@@ -97,6 +97,37 @@ Type in terminal
      npm i <packagename> -w @etherealengine/editor
 ```
 
+### Accessing MinIO S3 storage provider running in local docker
+
+**Using [MinIO Console](https://min.io/docs/minio/linux/administration/minio-console.html):**
+
+- When MinIO contain is running in your docker, navigate to [http://127.0.0.1:9090/](http://127.0.0.1:9090/) in your browser.
+- Login using username as `server` and password as `password`.
+  > You can find these credentials in `scripts/docker-compose.yml` as `MINIO_ROOT_USER` & `MINIO_ROOT_PASSWORD`
+
+**Using [S3 Browser](https://s3browser.com/) (Windows Only):**
+
+- Download & install S3 Browser from [https://s3browser.com/download.aspx](https://s3browser.com/download.aspx).
+- Launch and connect using following details:
+  - Account Type: **S3 Compatible Storage**
+  - REST Endpoint: **127.0.0.1:9000**
+  - Access Key ID: **server**
+  - Secret Access Key: **password**
+  - Use secure transfer (SSL/TLS): **Uncheck / Off / False**
+
+### Clear all data from MinIO S3 storage provider running in local docker
+
+Run following commands in your terminal:
+
+```bash
+  docker container stop etherealengine_minio_s3
+  docker container rm etherealengine_minio_s3
+  docker container prune --force
+  docker volume prune --force
+  npm run dev-docker
+  npm run dev-reinit
+```
+
 ### DB not seeding routes (E.g. Error: No project installed- please contact site admin)
 
 Try
