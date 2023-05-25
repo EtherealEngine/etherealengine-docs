@@ -321,7 +321,7 @@ Ethereal Engine由SQL服务器提供支持。我们在开发中使用MariaDB，�
 
 ### 安装阿贡斯
 
-从此存储库的顶层，运行`helm install -f agones-default-values.yaml agones agones/agones`.
+从此存储库的顶层，运行`helm install -f agones-default-values.yaml agones agones/agones --version "1.31.0"`.
 这表示从“agones”图表中的“agones”包中安装一个名为“agones”的服务，并将其配置为
 在 https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml 找到的文件。
 

@@ -321,7 +321,7 @@ Si alguna vez sospecha que un gráfico está desactualizado, ejecute `helm repo 
 
 ### Instalar Agones
 
-Desde el nivel superior de este repositorio, ejecute `helm install -f agones-default-values.yaml agones agones/agones`.
+Desde el nivel superior de este repositorio, ejecute `helm install -f agones-default-values.yaml agones agones/agones --version "1.31.0"`.
 Esto dice instalar un servicio llamado 'agones' del paquete 'agones' en el gráfico 'agones', y configurarlo con
 un archivo que se encuentra en https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml.
 

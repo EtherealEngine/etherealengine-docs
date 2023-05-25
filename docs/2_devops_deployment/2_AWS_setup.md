@@ -329,7 +329,7 @@ You should also at this time add Ethereal Engine's repo via ```helm repo add eth
 If you ever suspect that a chart is out-of-date, run ```helm repo update``` to update all of them to the latest.
 
 ### Install Agones
-From the top level of this repo, run ```helm install -f </path/to/agones-default-values.yaml> agones agones/agones```.
+From the top level of this repo, run ```helm install -f </path/to/agones-default-values.yaml> agones agones/agones --version "1.31.0"```.
 This says to install a service called 'agones' from the 'agones' package in the 'agones' chart, and to configure it with
 [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) that can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
