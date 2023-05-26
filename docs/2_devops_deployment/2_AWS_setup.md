@@ -732,3 +732,57 @@ Using ```-f <config_file>``` and ```--set <variables>``` after it will apply any
 carryover values.
 
 If you're not deploying a new build of the codebase, you can skip the entirety of the ```--set *.image.tag=<SHA>```.
+
+## Ways of serving client files in production
+
+There are multiple ways to serve built client files in a production environment:
+
+* From client pods (separate from API pods)
+* From API pods
+* From the storage provider, such as S3/Cloudfront
+
+### Serve client files from client pods
+This is the default method. The Helm charts assume that the deployment will have client pods
+to serve client files, the client ingress will point traffic to the client pods.
+
+This option gives you slightly more flexibility in scaling a deployed cluster than serving
+from the API pods, since you can scale the number of API and client pods independently.
+
+### Serve client files from API pods
+This will make your builder build and serve the client service from the API pods. The Helm
+chart will not have a client deployment, serviceaccount, configmap, etc., and the client
+ingress will point to the API pods.
+
+To enable this, in your Helm config file set client.serverFromApi to `true`.
+This change needs to be applied to both the builder deployment and the main deployment.
+
+This option can save you some money by requiring fewer nodes in order to host all of the
+API+client pods you desire, as you do not need capacity for separate client pods. It offers
+slightly less flexibility in scaling since you cannot scale the number of API and client pods
+separately; more client capacity would require more API capacity, and vice versa. It also
+will result in slightly longer deployment times, as the combined API+client Docker images
+are larger than an API-only or client-only image (though smaller than the sum of the two
+separate images), which will mean a few more seconds to download to each node.
+
+### Serve client files from Storage Provider
+This will configure various parts of the client build process to point to all client files
+on the storage provider rather than the client's domain. It is currently separate from
+whether to serve the client process from the API pods or client pods, since the initial call
+to get the index.html page for the client will go to the client/API pod, and then every other
+client file will be fetched from the storage provider. 
+
+As of this writing there are plans to serve the client solely from the storage provider, 
+removing the need to serve the client from any Kubernetes pod at all, but this has not
+been implemented.
+
+Also as of this writing, only Amazon S3/Cloudfront is supported as a storage provider
+in a cloud environment.
+
+To enable this, set builder.extraEnv.SERVE_CLIENT_FROM_STORAGE_PROVIDER to `true` in the
+Helm config file. Also make sure that builder.extraEnv.STORAGE_PROVIDER is set to `aws`,
+and that builder.extraEnv.STORAGE_CLOUDFRONT_DOMAIN is set to the subdomain you are
+using for your CloudFront distribution.
+
+This option can greatly speed up the time it takes for users to fully load your worlds,
+since almost every client file can be served from a CDN close to them, rather than
+having to fetch them all from the closest physical server. 
