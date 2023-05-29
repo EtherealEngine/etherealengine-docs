@@ -27,7 +27,7 @@ The Ethereal Engine Control Center app provides access to various functionalitie
 
 ## 1. Downloading Control Center App
 
-In order to download Ethereal Engine Control Center App, navigate to [releases](https://github.com/EtherealEngine/etherealengine-control-center/releases) page and download the latest version of the App. On Windows, you will need to download `.exe` while for linux download `AppImage`.
+In order to download Ethereal Engine Control Center App, navigate to [releases](https://github.com/EtherealEngine/etherealengine-control-center/releases) page and download the latest version of the App. On Windows (and for WSL), you will need to download `.exe` while for linux download `AppImage`.
 
 > On Windows, you will need to allow permission for executing ps1 scripts. You can do so by running following command in Powershell with admin privileges ([reference](https://github.com/EtherealEngine/etherealengine-control-center#2-windows-permission-to-run-ps1-scripts)).
 > ```Powershell
