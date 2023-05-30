@@ -19,30 +19,13 @@ To build the Ethereal Engine Docker image locally, and to have a pre-tested way 
 services, you'll need to get the Ethereal Engine repo on your machine. This is most easily
 done by running `git clone https://github.com/etherealengine/etherealengine.git`
 
-## Start MariaDB server locally via Docker
-For simplicity, we recommend running a MariaDB server on your local machine outside of minikube.
-Later instructions will set up minikube so that it can access this server
+## Start MinIO & MariaDB server locally via Docker
 
-If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will
-start up multiple MariaDB docker images (as well as a redis server, which is not needed). One, intended
-for local development, runs on port 3306; another, intended for automated testing purposes, runs on 
-port 3305; and the last one, intended for minikube testing, runs on port 3304. Once the
-minikube MariaDB Docker image is stopped, you can start it again by running 
-`docker start etherealengine_minikube_db`. 
+For simplicity, we recommend running MinIO & MariaDB server on your local machine outside of MicroK8s.
 
-Alternatively, if you want to just run MariaDB on its own without Docker, that's fine too.
-You'll just have to configure the Helm config file to have the appropriate SQL server configuration,
-and possibly change the script `./scripts/build_minikube.sh`.
+If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will start up MinIO & multiple MariaDB docker containers (as well as a redis server, which is not needed). For mariadb containers, one is intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the docker container is stopped, you can start it again by running `npm run dev-docker`.
 
-## Start local file server
-If you're going to have the minikube deployment use a local storage provider, rather than a cloud
-storage provider like AWS S3, you'll need to have the local file server running on your machine
-outside of minikube.
-
-Run `npm install` (or `yarn install` if `npm install` isn't working right;
-you'd need to install yarn in that case) from the root of the Ethereal Engine repo. When that's finished,
-go to packages/server and run `npm run serve-local-files`. This will start a local file server
-on port 8642, and will create and serve those files from `packages/server/upload`.
+Alternatively, if you want to just run MinIO & MariaDB on its own without Docker, that's fine too. You'll just have to configure the Helm config file to have the appropriate S3 & SQL server configuration, and possibly change the script `./scripts/build_minikube.sh`.
 
 ## Create minikube cluster
 Run the following command:
