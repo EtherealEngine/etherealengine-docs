@@ -183,4 +183,6 @@ The API pods will restart and will now not attempt to reinit the database on boo
 
 > [db-refresh-false.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-false.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
+## Accept invalid certs
+
 <AcceptCertificates />
