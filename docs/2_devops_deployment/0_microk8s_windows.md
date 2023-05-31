@@ -366,4 +366,6 @@ After a minute or so, running `kubectl get pods` should show one or more instanc
 
 > [db-refresh-false.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-false.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
+## Accept invalid certs
+
 <AcceptCertificates />
