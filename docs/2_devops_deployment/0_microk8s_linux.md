@@ -1,3 +1,5 @@
+import AcceptCertificates from './_accept_certificates.md'
+
 # Ethereal Engine on MicroK8s (Linux)
 
 This guide is intended for local environment and currently tested on Ubuntu.
@@ -238,10 +240,4 @@ After a minute or so, running `kubectl get pods` should show one or more instanc
 
 > [db-refresh-false.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-false.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
-## Accept invalid certs
-
-Since there are no valid certificates for this domain, you'll have to tell your browser to ignore the insecure connections when you try to load the application.
-
-Go to <https://local.etherealengine.org/> You should see a warning about an invalid certificate; accept this invalid cert to get to the login page. You'll next have to open the dev tools for your browser and go to the console and/or Network tab. There should be errors on <https://api-local.etherealengine.org>; open that link in a new tab and accept the invalid certificate for that, too.
-
-When you go to <https://local.etherealengine.org/location/default>, you'll have to open the console again, find the erroring <https://instanceserver-local.etherealengine.org>, open that link in a new tab, and accept the invalid certificate for that domain, as well.
+<AcceptCertificates />
