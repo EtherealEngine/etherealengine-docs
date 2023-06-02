@@ -571,6 +571,9 @@ You should make the following 'A' records to the loadbalancer, substituting your
 * instanceserver-dev.etherealengine.org
 
 You also need to make an 'A' record pointing 'resources.etherealengine.org' to the CloudFront distribution you made earlier.
+Instead of 'Alias to Network Load Balancer', select 'Alias to Cloudfront distribution', then click the text box that appears
+that says 'Choose distribution'. A selector should appear with the subdomain you're routing as well as the Cloudfront
+distribution's domain name, which you should click on. Then click Define simple record.
 
 ## Create GitHub fork of Ethereal Engine repository.
 The Ethereal Engine codebase is most easily deployed by forking it and configuring some Secrets so that the included GitHub
