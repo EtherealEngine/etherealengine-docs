@@ -47,7 +47,7 @@ export NVM_DIR="$HOME/.nvm"
 You can verify nvm by using `nvm --version` command. Afterwards, install Node (version between 16.0 and 18.0 both inclusive) by using:
 
 ```bash
-nvm install 16.19
+nvm install --lts
 ```
 
 You can verify node version by using `node --version` command.

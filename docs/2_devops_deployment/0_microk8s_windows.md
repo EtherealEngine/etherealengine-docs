@@ -89,7 +89,7 @@ export NVM_DIR="$HOME/.nvm"
 You can verify nvm by using `nvm --version` command. Afterwards, install node by using:
 
 ```bash
-nvm install node
+nvm install --lts
 ```
 
 You can verify nvm by using `node --version` command.
