@@ -526,11 +526,11 @@ Keep a note of the stem you have picked; it will be entered later into the value
 deployment, as `CACHE_BUCKET_STEM`.
 
 Next, make the following five buckets in S3:
-* <stem>-api-cache
-* <stem>-client-cache
-* <stem>-instanceserver-cache
-* <stem>-root-cache
-* <stem>-taskserver-cache
+* `<stem>-api-cache`
+* `<stem>-client-cache`
+* `<stem>-instanceserver-cache`
+* `<stem>-root-cache`
+* `<stem>-taskserver-cache`
 
 These buckets can be left at the default S3 settings, including being private. They will only be accessed
 internally by the builder service.
