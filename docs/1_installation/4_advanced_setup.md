@@ -68,7 +68,7 @@ Server EXIT
 
 At this point, the database has been seeded.
 
-### 5. Local file server configuration
+### 5. Local file server configuration (Optional)
 If the .env.local file you have has the line
 ```STORAGE_PROVIDER=local```
 then the scene editor will save components, models, scenes, etc. locally
