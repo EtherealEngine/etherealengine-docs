@@ -101,7 +101,7 @@ Type in terminal
 
 **Using [MinIO Console](https://min.io/docs/minio/linux/administration/minio-console.html):**
 
-- When MinIO contain is running in your docker, navigate to [https://127.0.0.1:9001/](https://127.0.0.1:9001/) in your browser.
+- When MinIO contain is running in your docker, navigate to [https://localhost:9001/](https://localhost:9001/) in your browser.
   > Make sure to accept invalid certificate warning.
 
 - Login using username as `server` and password as `password`.
