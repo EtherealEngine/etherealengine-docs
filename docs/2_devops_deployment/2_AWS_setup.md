@@ -239,7 +239,7 @@ grant them:
 * SNS: `AmazonSNSFullAccess`
 
 You'll also need to create an IAM user that GitHub Actions can use to access the cluster and push/pull
-Docker images from ECR. By convention, we call this user 'Github-Actions-User', and it needs these
+Docker images from ECR. By convention, we call this user 'EKSUser', and it needs these
 permissions: `AmazonEKSClusterPolicy, AmazonEKSWorkerNodePolicy, AmazonEKSServicePolicy, AmazonElasticContainerRegistryPublicFullAccess, AmazonEC2ContainerRegistryFullAccess`
 
 ### Creating new credentials for an IAM user
@@ -665,9 +665,9 @@ Permissions.
 Next click on Secrets under Settings. There should be none by default. Click on New Repository Secret near the top of
 this page to make a new one. You will need to make several Secrets with the following Names and Values:
 
-* AWS_ACCESS_KEY -> The public Key of the Github-Actions-User IAM user
+* EKS_AWS_ACCESS_KEY -> The public Key of the EKSUser IAM user
 * AWS_REGION -> The region of your ECR repos and EKS cluster
-* AWS_SECRET -> The secret key of the Github-Actions-User IAM user
+* EKS_AWS_SECRET -> The secret key of the EKSUser IAM user
 * CLUSTER_NAME -> The name of the EKS cluster
 * DEPLOYMENTS_ENABLED -> Set to `true`
 * DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `etherealengine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
@@ -683,7 +683,7 @@ re-running it will trigger a deployment.
 If you're asked to enable actions when going to the tab, and there are no runs listed after enabling actions, then you'll have to 
 trigger the workflow by pushing new code to the dev branch.
 
-## Grant Github-Actions-User access to cluster
+## Grant EKSUser access to cluster
 By default, only the IAM user who set up an EKS cluster may access it.
 In order to let other users access the cluster, you must apply an aws-auth configmap to the cluster
 granting access to specific IAM users. A template of [aws-auth-template.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/aws-auth-template.yml) file can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
@@ -693,7 +693,7 @@ You'll need to provide a few values for this file. To find `<rolearn>`, in AWS g
 and replace `<rolearn>` in the aws-auth file. `<account_id>` is the ID of your AWS account; in the upper
 right corner of the AWS client should be `<your_username>@<abcd-1234-efgh>`. The 12-character string
 after the @ is the account ID. Make sure to remove the `-`'s from the account ID when pasting it in.
-`<IAM_username>` is the username of the IAM user you want to give access, e.g. `Github-Actions-User`.
+`<IAM_username>` is the username of the IAM user you want to give access, e.g. `EKSUser`.
 
 You can add multiple users by copying the `- groups:` section under `mapUsers`, e.g.
 
@@ -701,8 +701,8 @@ You can add multiple users by copying the `- groups:` section under `mapUsers`, 
   mapUsers: |
     - groups:
       - system:masters
-      userarn: arn:aws:iam::abcd1234efgh:user/Github-Actions-User
-      username: Github-Actions-User
+      userarn: arn:aws:iam::abcd1234efgh:user/EKSUser
+      username: EKSUser
     - groups:
       - system:masters
       userarn: arn:aws:iam::acbd1234efgh:user/FSmith
