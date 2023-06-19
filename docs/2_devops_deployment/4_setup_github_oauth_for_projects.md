@@ -25,8 +25,12 @@ The specifics you'll need to enter are as follows:
 
 * Application name: Anything you want
 * Homepage URL: Whatever you want, this is just what is linked to from the OAuth authorization page
-* Authorization callback URL: enter `https://api.<domain>/oauth/github/callback`, e.g. `https://api.example.com/oauth/github/callback`
+* Authorization callback URL: enter `https://api.<domain>/oauth/github/callback`, e.g. `https://api.example.com/oauth/github/callback`. ^ 
 * Enable Device Flow: Leave unchecked
+
+^If you are running this locally off of localhost, this should be `https://localhost:3030/oauth/github/callback`. 
+If you are using an explicit IP address instead of `localhost`, then use that IP address here, but keep the `:3030`, 
+as that is the port that the API server runs on, and GitHub needs to call back to the API server.
 
 ## Create client secret, note Client ID
 
