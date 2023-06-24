@@ -49,3 +49,7 @@ The Project API is the core of what makes Ethereal Engine shine - the ability to
 
 
 ![](./images/project-api.jpg)
+
+### Stack Overview
+
+![](./images/stack.png)
