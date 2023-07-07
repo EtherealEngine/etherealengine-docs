@@ -28,7 +28,7 @@ const TransformComponent = defineComponent({
 Array of Structures is an implementation unique to Ethereal Engine, using React and Hookstate under the hood, it allows for reactive data binding. This means that when a property is changed, all effects depending on it will be triggered. It is a good choice for data that is accessed infrequently and in an unpredictable way, especially when react style logic is associated with it.
 
 ```ts
-export const DebugArrowComponent = defineComponent({
+const DebugArrowComponent = defineComponent({
   name: 'DebugArrowComponent',
 
   onInit: (entity) => {
@@ -55,22 +55,33 @@ export const DebugArrowComponent = defineComponent({
 
 **onInit** is a function that is called when **setComponent** is called on an entity that does not have the component in question. It is passed the entity number and should return an object with the initial values for the component.
 
+
 ### onSet
 
 `entity: Entity, component: ComponentType<C>, json: SerializedComponentType<C>) => void`
 
 **onSet** is a function that is called each time **setComponent** is called. It is passed the entity number, the component object and json object. This is how reactive data can be updated in batch, allowing for tighter data flow, such as deserializing scene data.
 
+
 ### onRemove
 `(entity: Entity, component: ComponentType<C>) => void`
 
 **onRemove** is a function that is called when **removeComponent** is called on an entity that has the component in question. It is passed the entity number and the component object. This is where you would clean up any resources associated with the component.
+
 
 ### toJSON
   
 `(entity: Entity, component: ComponentType<C>) => SerializedComponentType<C>`
 
 **toJSON** is a function that is called when **serializeComponent** is called on an entity that has the component in question. It is passed the entity number and the component object. This is where serialized data can be generated, such as for saving a scene.
+
+
+## jsonID
+
+`string`
+
+**jsonID** is a string that is used to identify the component in json. It is used when deserializing and serializing scenes.
+
 
 ### reactor
 
@@ -125,26 +136,20 @@ const TimerComponent = defineComponent({
   }
 })
 
-export default async function TimerSystem() {
-  const myEntity = createEntity()
-  setComponent(myEntity, TimerComponent)
+const timerQuery = defineQuery([TimerComponent])
 
-  const timerQuery = defineQuery([TimerComponent])
+const execute = () => {
+  const { deltaSeconds } = getState(EngineState)
 
-  const execute = () => {
-    const { delta } = Engine.instance
-
-    for (const entity of timerQuery()) {
+  for (const entity of timerQuery()) {
       TimerComponent.time[entity] += delta
-    }
   }
-
-  const cleanup = async () => {
-    removeQuery(timerQuery)
-  }
-
-  return { execute, cleanup }
 }
+
+export const TimerSystem = defineSystem({
+  uuid: 'TimerSystem',
+  execute
+})
 
 ```
 
@@ -168,28 +173,22 @@ const TimerComponent = defineComponent({
   }
 })
 
-export default async function TimerSystem() {
+const timerQuery = defineQuery([TimerComponent])
 
-  const myEntity = createEntity()
-  setComponent(myEntity, TimerComponent)
+const execute = () => {
+  const { elapsedSeconds } = getState(EngineState)
 
-  const timerQuery = defineQuery([TimerComponent])
-
-  const execute = () => {
-    const { elapsedSeconds } = Engine.instance
-
-    for (const entity of timerQuery()) {
-      const timerComponent = getMutableComponent(entity, TimerComponent)
-      timerComponent.time.set(Math.floor(elapsedSeconds))
-    }
+  for (const entity of timerQuery()) {
+    const timerComponent = getMutableComponent(entity, TimerComponent)
+    timerComponent.time.set(Math.floor(elapsedSeconds))
   }
-
-  const cleanup = async () => {
-    removeQuery(timerQuery)
-  }
-
-  return { execute, cleanup }
 }
+
+export const TimerSystem = defineSystem({
+  uuid: 'TimerSystem',
+  execute
+})
+
 ```
 
 ## References

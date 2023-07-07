@@ -1,5 +1,7 @@
 # Asset Pipeline
 
+## WARNING: This page is out of date
+
 The simplest pipeline uses Blender & the Studio's inbuilt transformation tool. 
 
 Scenes that contain colliders should have these colliders exported separately.

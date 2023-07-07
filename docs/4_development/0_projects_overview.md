@@ -130,9 +130,7 @@ Feathers services, or whatever other functionality they made need.
 
 The `databaseSeed` property is a relative path that points to a file which must 
 return type `ServicesSeedConfig` from `../packages/common/src/interfaces/ServicesSeedConfig.ts`
-which is run when the database seeder is run. This can be useful for setting 
-custom locations, which can be seen in the 
-[Ethereal Engine demo project](https://github.com/etherealengine/demo-etherealengine-project).
+which is run when the database seeder is run.
 
 ### i18n
 
