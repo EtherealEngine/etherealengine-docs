@@ -15,6 +15,8 @@ npm run dev-reinit
 You should not need to use sudo in any case.
 
 Error with mediasoup? https://mediasoup.org/documentation/v3/mediasoup/installation/
+- Check your version of python is up to date
+- Ensure your install path has no whitespaces
 
 ### 2. Make sure you have a mysql database installed and running -- our recommendation is Mariadb.
 
