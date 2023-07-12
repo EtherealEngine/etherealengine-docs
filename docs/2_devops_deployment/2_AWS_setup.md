@@ -2,6 +2,70 @@
 
 The value `RELEASE_NAME` referenced throughout this guide is the name of the deployment, e.g. `dev` or `prod`.
 
+## Ways of serving client files in production
+
+There are multiple ways to serve built client files in a production environment.
+You should decide how you want to serve them now, because a few later steps will be affected
+by that choice, and changing your AWS configuration after everything has been set up one way
+is a little tricky:
+
+* From client pods (separate from API pods)
+* From API pods
+* From the storage provider, such as S3/Cloudfront
+
+### Serve client files from client pods
+This is the default method. The Helm charts assume that the deployment will have client pods
+to serve client files, and the client ingress will point traffic to the client pods. The client
+URL will be pointed to the EKS Load Balancer, and you will not need a separate client certificate.
+
+This option gives you slightly more flexibility in scaling a deployed cluster than serving
+from the API pods, since you can scale the number of API and client pods independently.
+
+Note that, as of this writing, this is tentatively going to be deprecated by a future re-architecture
+of how projects are built and served, and serving from the Storage Provider may end up being the only
+allowable option.
+
+### Serve client files from API pods
+This will make your builder build and serve the client service from the API pods. The Helm
+chart will not have a client deployment, serviceaccount, configmap, etc., and the client
+ingress will point to the API pods. The client URL will be pointed to the EKS Load Balancer,
+and you will not need a separate client certificate.
+
+To enable this, set client.serveFromApi to `true` in your Helm config file when you are configuring it.
+This needs to be applied to both the builder deployment and the main deployment, but if you set this
+before deploying anything, it will be applied to both.
+
+This option can save you some money by requiring fewer nodes in order to host all of the
+API+client pods you desire, as you do not need capacity for separate client pods. It offers
+slightly less flexibility in scaling since you cannot scale the number of API and client pods
+separately; more client capacity would require more API capacity, and vice versa. It also
+will result in slightly longer deployment times, as the combined API+client Docker images
+are larger than an API-only or client-only image (though smaller than the sum of the two
+separate images), which will mean a few more seconds to download to each node.
+
+Note that, as of this writing, this is tentatively going to be deprecated by a future re-architecture
+of how projects are built and served, and serving from the Storage Provider may end up being the only
+allowable option.
+
+### Serve client files from Storage Provider (S3 + Cloudfront)
+This will make the client build process push all of its built files to S3 and serve them via
+Cloudfront. Static resources will also be served from the client domain instead of a separate
+resources domain. The client URL will be pointed to the Cloudfront distribution, not the EKS Load
+Balancer; only API and instanceserver traffic will go to the EKS cluster. You will need a separate
+client certificate, but you will not need a resources domain certificate.
+
+As of this writing, only Amazon S3/Cloudfront is supported as a storage provider
+in a cloud environment.
+
+To enable this, set builder.extraEnv.SERVE_CLIENT_FROM_STORAGE_PROVIDER to `true` in the
+Helm config file when you are configuring it. Also make sure that builder.extraEnv.STORAGE_PROVIDER is set to `s3`.
+
+This option can greatly speed up the time it takes for users to fully load your worlds,
+since every client file can be served from a CDN close to them, rather than
+having to fetch them all from the closest physical server. It will also slightly speed up build times and deployment
+times since the client build does not need to be pushed to a Docker repo (though a cache of the build will still
+be pushed to speed up future builds).
+
 ## Create EKS cluster with four nodegroups
 You first need to set up an EKS cluster for Ethereal Engine to run on.
 While this can be done via AWS' web interface, the ```eksctl``` CLI 
@@ -175,7 +239,7 @@ grant them:
 * SNS: `AmazonSNSFullAccess`
 
 You'll also need to create an IAM user that GitHub Actions can use to access the cluster and push/pull
-Docker images from ECR. By convention, we call this user 'Github-Actions-User', and it needs these
+Docker images from ECR. By convention, we call this user 'EKSUser', and it needs these
 permissions: `AmazonEKSClusterPolicy, AmazonEKSWorkerNodePolicy, AmazonEKSServicePolicy, AmazonElasticContainerRegistryPublicFullAccess, AmazonEC2ContainerRegistryFullAccess`
 
 ### Creating new credentials for an IAM user
@@ -192,7 +256,6 @@ the Helm config file.
 
 Ethereal Engine is backed by a SQL server. We use MariaDB in development, but it has also been run on AWS with
 Aurora without issue. Most other versions of SQL should work but have not been explicitly tested.
-
 
 ### Accessing RDS box from an external machine
 By default, an RDS box is only accessible from within the VPC it's located.
@@ -310,7 +373,13 @@ If you open the details of this certificate, there should be a field 'ARN' with 
 something like ```arn:aws:acm:<region>:<AWS account ID>:certificate/<a UUID>```. Take note of this for later,
 when you go to install ingress-nginx.
 
+#### If you are serving client files from client or API pods
 You should follow the above instructions to make a second certificate for ```resources.<domain>```.
+Note that this certificate MUST be made in us-east-1, regardless of which region everything else is
+set up in; as of this writing, CloudFront can only use certificates in us-east-1.
+
+#### If you are serving client files from the Storage Provider
+You should follow the above instructions to make a second certificate for ```<RELEASE_NAME>.<domain>```.
 Note that this certificate MUST be made in us-east-1, regardless of which region everything else is
 set up in; as of this writing, CloudFront can only use certificates in us-east-1.
 
@@ -423,7 +492,8 @@ Give it a name, and selected 'Standard' as the type, then click Create Topic.
 
 ## Set up S3 bucket for static resources and Cloudfront distribution
 
-Various static files are stored in S3 behind a Cloudfront distribution.
+Various static files are stored in S3 behind a Cloudfront distribution. If you are serving the client files
+from the Storage Provider, then all client files will be stored and served from these as well.
 
 ### Create S3 bucket
 In the AWS web client, go to S3 -> Buckets and click Create Bucket.
@@ -498,8 +568,12 @@ appear in the selector at the bottom of the list under the header `Custom`. Sele
 
 Under `Settings`, you can change `Price class` to 'Use Only North America and Europe' to save some money.
 For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g.
-```resources.etherealengine.org```. Under `Custom SSL Certificate`, click on the selector that says
-'Choose certificate', then select the 'resources.`<domain>`' certificate you made earlier.
+```resources.etherealengine.org```, or '<RELEASE_NAME>.`<domain>`', e.g. ```dev.etherealengine.org```, depending on
+whether you are serving the client files from client/API pods or the Storage Provider, respectively. 
+Under `Custom SSL Certificate`, click on the selector that says 'Choose certificate', then select the 
+'resources.`<domain>`'/'`<RELEASE_NAME>.<domain>`' certificate you made earlier. If you are serving the client
+files from the Storage Provider, under `Default root object`, enter `client/index.html`; if you are serving
+the client files from client/API pods, leave this blank.
 
 Everything else can be left at the default values, click Create Distribution.
 
@@ -566,11 +640,12 @@ You should make the following 'A' records to the loadbalancer, substituting your
 * @.etherealengine.org
 * api-dev.etherealengine.org
 * api.etherealengine.org
-* dev.etherealengine.org
+* dev.etherealengine.org -- Only if serving client files from client/API pods
 * instanceserver.etherealengine.org
 * instanceserver-dev.etherealengine.org
 
-You also need to make an 'A' record pointing 'resources.etherealengine.org' to the CloudFront distribution you made earlier.
+You also need to make an 'A' record pointing 'resources.etherealengine.org' or '<RELEASE_NAME>.etheralengine.org' to the
+CloudFront distribution you made earlier.
 Instead of 'Alias to Network Load Balancer', select 'Alias to Cloudfront distribution', then click the text box that appears
 that says 'Choose distribution'. A selector should appear with the subdomain you're routing as well as the Cloudfront
 distribution's domain name, which you should click on. Then click Define simple record.
@@ -590,9 +665,9 @@ Permissions.
 Next click on Secrets under Settings. There should be none by default. Click on New Repository Secret near the top of
 this page to make a new one. You will need to make several Secrets with the following Names and Values:
 
-* AWS_ACCESS_KEY -> The public Key of the Github-Actions-User IAM user
+* EKS_AWS_ACCESS_KEY -> The public Key of the EKSUser IAM user
 * AWS_REGION -> The region of your ECR repos and EKS cluster
-* AWS_SECRET -> The secret key of the Github-Actions-User IAM user
+* EKS_AWS_SECRET -> The secret key of the EKSUser IAM user
 * CLUSTER_NAME -> The name of the EKS cluster
 * DEPLOYMENTS_ENABLED -> Set to `true`
 * DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `etherealengine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
@@ -608,7 +683,7 @@ re-running it will trigger a deployment.
 If you're asked to enable actions when going to the tab, and there are no runs listed after enabling actions, then you'll have to 
 trigger the workflow by pushing new code to the dev branch.
 
-## Grant Github-Actions-User access to cluster
+## Grant EKSUser access to cluster
 By default, only the IAM user who set up an EKS cluster may access it.
 In order to let other users access the cluster, you must apply an aws-auth configmap to the cluster
 granting access to specific IAM users. A template of [aws-auth-template.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/aws-auth-template.yml) file can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
@@ -618,7 +693,7 @@ You'll need to provide a few values for this file. To find `<rolearn>`, in AWS g
 and replace `<rolearn>` in the aws-auth file. `<account_id>` is the ID of your AWS account; in the upper
 right corner of the AWS client should be `<your_username>@<abcd-1234-efgh>`. The 12-character string
 after the @ is the account ID. Make sure to remove the `-`'s from the account ID when pasting it in.
-`<IAM_username>` is the username of the IAM user you want to give access, e.g. `Github-Actions-User`.
+`<IAM_username>` is the username of the IAM user you want to give access, e.g. `EKSUser`.
 
 You can add multiple users by copying the `- groups:` section under `mapUsers`, e.g.
 
@@ -626,8 +701,8 @@ You can add multiple users by copying the `- groups:` section under `mapUsers`, 
   mapUsers: |
     - groups:
       - system:masters
-      userarn: arn:aws:iam::abcd1234efgh:user/Github-Actions-User
-      username: Github-Actions-User
+      userarn: arn:aws:iam::abcd1234efgh:user/EKSUser
+      username: EKSUser
     - groups:
       - system:masters
       userarn: arn:aws:iam::acbd1234efgh:user/FSmith
@@ -728,10 +803,11 @@ The full build and deployment process works like this:
     seeds the default project into the database and storage provider, and seeds various types.
 6. The builder downloads any Ethereal Engine projects that the deployment has added.
 7. The builder builds the Docker image for each service concurrently using these projects, building them into the client files as well as copying them so that the api and instanceservers have access to them.
-8. The builder pushes these final Docker images to the repos `etherealengine-<release>-<service>` in ECR
+    If serving client files from the Storage Provider, the client files will be pushed to S3
+8. The builder pushes these final Docker images to the repos `etherealengine-<release>-<service>` in ECR (not the client image if serving client files from the Storage Provider)
 9. The builder caches all of the layers of each Docker file in S3 for faster build times on subsequent builds
-9. The builder updates the main deployment to point to the final images it just created.
-10. The main deployment spins up the final Docker images for the api, client, instanceserver and taskserver services.
+10. The builder updates the main deployment to point to the final images it just created.
+11. The main deployment spins up the final Docker images for the api, client (optional), instanceserver and taskserver services.
 
 ## Install Elastic Search and Kibana using Helm for Server Logs
 
@@ -770,57 +846,3 @@ Using ```-f <config_file>``` and ```--set <variables>``` after it will apply any
 carryover values.
 
 If you're not deploying a new build of the codebase, you can skip the entirety of the ```--set *.image.tag=<SHA>```.
-
-## Ways of serving client files in production
-
-There are multiple ways to serve built client files in a production environment:
-
-* From client pods (separate from API pods)
-* From API pods
-* From the storage provider, such as S3/Cloudfront
-
-### Serve client files from client pods
-This is the default method. The Helm charts assume that the deployment will have client pods
-to serve client files, the client ingress will point traffic to the client pods.
-
-This option gives you slightly more flexibility in scaling a deployed cluster than serving
-from the API pods, since you can scale the number of API and client pods independently.
-
-### Serve client files from API pods
-This will make your builder build and serve the client service from the API pods. The Helm
-chart will not have a client deployment, serviceaccount, configmap, etc., and the client
-ingress will point to the API pods.
-
-To enable this, in your Helm config file set client.serverFromApi to `true`.
-This change needs to be applied to both the builder deployment and the main deployment.
-
-This option can save you some money by requiring fewer nodes in order to host all of the
-API+client pods you desire, as you do not need capacity for separate client pods. It offers
-slightly less flexibility in scaling since you cannot scale the number of API and client pods
-separately; more client capacity would require more API capacity, and vice versa. It also
-will result in slightly longer deployment times, as the combined API+client Docker images
-are larger than an API-only or client-only image (though smaller than the sum of the two
-separate images), which will mean a few more seconds to download to each node.
-
-### Serve client files from Storage Provider
-This will configure various parts of the client build process to point to all client files
-on the storage provider rather than the client's domain. It is currently separate from
-whether to serve the client process from the API pods or client pods, since the initial call
-to get the index.html page for the client will go to the client/API pod, and then every other
-client file will be fetched from the storage provider. 
-
-As of this writing there are plans to serve the client solely from the storage provider, 
-removing the need to serve the client from any Kubernetes pod at all, but this has not
-been implemented.
-
-Also as of this writing, only Amazon S3/Cloudfront is supported as a storage provider
-in a cloud environment.
-
-To enable this, set builder.extraEnv.SERVE_CLIENT_FROM_STORAGE_PROVIDER to `true` in the
-Helm config file. Also make sure that builder.extraEnv.STORAGE_PROVIDER is set to `aws`,
-and that builder.extraEnv.STORAGE_CLOUDFRONT_DOMAIN is set to the subdomain you are
-using for your CloudFront distribution.
-
-This option can greatly speed up the time it takes for users to fully load your worlds,
-since almost every client file can be served from a CDN close to them, rather than
-having to fetch them all from the closest physical server. 
