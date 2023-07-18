@@ -97,7 +97,7 @@ your terminal:
 Example:
 `npm run make-user-admin -- --id=c06b0210-453e-11ec-afc3-c57a57eeb1ac`
 
-![image](./../images/userid.png)
+![image](./images/userid.png)
 
 #### Alternate Method:
 Look up in User table and change userRole to 'admin' 

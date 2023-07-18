@@ -138,7 +138,7 @@ const config = {
         entryPoints: [process.env.ENGINE_PATH + 'packages/server'],
         entryPointStrategy: 'expand',
         tsconfig: process.env.ENGINE_PATH + 'packages/server/tsconfig.json',
-        exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload}/**'],
+        exclude: [...commonExcludePaths, '**/packages/server/{public,scripts,upload,upload_test}/**'],
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
