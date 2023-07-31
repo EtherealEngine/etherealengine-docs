@@ -92,7 +92,7 @@ that kubectl has been configured to run; the current one will have a '*' under t
 'current' column.
 
 Once kubectl is pointed to minikube, from the top of the Ethereal Engine repo, run
-`helm install -f </path/to/agones-default-values.yaml> agones agones/agones --version "1.31.0"` to install Agones
+`helm install -f </path/to/agones-default-values.yaml> agones agones/agones` to install Agones
 and `helm install local-redis redis/redis` to install redis.
 
 > [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.

@@ -166,7 +166,7 @@ After adding those Helm repos, you'll start installing deployments using Helm re
 Make sure that kubectl is pointed at MicroK8s by running `kubectl config current-context`, which should say 'microk8s'. You can also run `kubectl config get-contexts` to get all contexts that kubectl has been configured to run; the current one will have a '*' under the left-most
 'current' column.
 
-Once kubectl is pointed to microk8s, from the top of the Ethereal Engine repo, run `helm install -f </path/to/agones-default-values.yaml> agones agones/agones --version "1.31.0"` to install Agones and `helm install local-redis redis/redis` to install redis.
+Once kubectl is pointed to microk8s, from the top of the Ethereal Engine repo, run `helm install -f </path/to/agones-default-values.yaml> agones agones/agones` to install Agones and `helm install local-redis redis/redis` to install redis.
 
 > [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
