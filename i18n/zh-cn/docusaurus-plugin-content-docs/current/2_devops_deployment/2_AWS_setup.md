@@ -142,7 +142,7 @@ URI 应采用以下形式`public.ecr.aws/<identifier>/xrengine-<deployment_name>
 记下所有内容之前`/xrengine-<deployment_name>`- 您需要在后续步骤中将其添加为变量。
 它将被称为`ECR_URL`那里。
 
-## 为 S3/SES/SNS/Route53 创建 IAM 角色（或单个管理员角色）
+## 为 S3/SES/SNS 创建 IAM 角色（或单个管理员角色）
 
 Ethereal Engine 与多个 AWS 服务接口，并且需要凭证来实现这些目的。你可以使
 一个管理员角色，具有对所有 AWS 服务的完全访问权限，但我们建议为
@@ -166,7 +166,6 @@ Ethereal Engine 与多个 AWS 服务接口，并且需要凭证来实现这些�
 以下是您要为其创建 IAM 管理员用户的服务，以及您想要的关联权限
 授予他们：
 
-*   53号公路：`AmazonRoute53FullAccess`
 *   S3：`AmazonS3FullAccess, CloudFrontFullAccess`
 *   社交网络：`AmazonSNSFullAccess`
 
