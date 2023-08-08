@@ -212,7 +212,7 @@ repos, the URIs should be in the form `<AWS_account_id>.dkr.ecr.<AWS_region>.ama
 Take note of everything before the `/etherealengine-<RELEASE_NAME>` - you'll need to add that as a variable in later steps.
 It will be called `ECR_URL` there.
 
-## Create IAM Roles for S3/SES/SNS/Route53 (or a single admin role)
+## Create IAM Roles for S3/SES/SNS (or a single admin role)
 
 Ethereal Engine interfaces with several AWS services and requires credentials for these purposes. You could make
 one admin role with full access to all AWS services, but we recommend making separate, scoped roles for
@@ -233,8 +233,7 @@ into the Helm config file later.
 ### IAM Roles to create
 Here are the services you want to create IAM admin users for, and the associated permissions you want to
 grant them:
-
-* Route53: `AmazonRoute53FullAccess` 
+ 
 * S3: `AmazonS3FullAccess, CloudFrontFullAccess`
 * SNS: `AmazonSNSFullAccess`
 
