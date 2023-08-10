@@ -582,37 +582,6 @@ If for some reason `Cache policy and origin request policy` is not available for
 click on the selector titled 'Select headers', and in the menu that opens, check 'Host', 'Origin',
 'Access-Control-Request-Method', and 'Access-Control-Request-Headers', then click away.
 
-## Create S3 buckets for Docker build caches
-As of this writing, the builder process is configured to cache its Docker builds to and from S3 buckets.
-You must create S3 buckets for it to cache against, or else the build process will error out.
-
-First pick a name stem for the buckets. The scripts in the build process assume that all of the buckets
-have similar names, e.g. `my-deployment-prod-api-cache`, `my-deployment-prod-client-cache`, etc. The part of the
-name before `-<service>-cache` is the stem. The stem can be anything that's valid for an S3 bucket name,
-but S3 bucket names are unique across all of S3; using `etherealengine-dev` or `etherealengine-prod` will
-not be allowed, for example, since the Ethereal Engine team already has those buckets names in use
-for its own deployments. The bucket name stem can include `dev` or `prod`, or whatever you are naming your
-deployment internally, but it does not have to; `my-deployment` would be a valid name stem. 
-If you make multiple deployments, you will need to pick a separate name stem for each one.
-
-Keep a note of the stem you have picked; it will be entered later into the values.yaml file for your
-deployment, as `CACHE_BUCKET_STEM`.
-
-Next, make the following five buckets in S3:
-* `<stem>-api-cache`
-* `<stem>-client-cache`
-* `<stem>-instanceserver-cache`
-* `<stem>-root-cache`
-* `<stem>-taskserver-cache`
-
-These buckets can be left at the default S3 settings, including being private. They will only be accessed
-internally by the builder service.
-
-If you are wondering why there is a `root` cache while there isn't a `root` service, the build process
-first creates a root Docker image containing packages and files that are common to all of the services. 
-Each service then starts from the root image to install and build packages and files specific to that service. 
-Not having to install those shared dependencies for each individual service speeds up the build times.
-
 ## Set up DNS records
 **The Nginx Load Balancer must be fully set up and running before this step can be completed**
 
@@ -757,9 +726,6 @@ that service will be running on, e.g. if you create a nodegroup for the instance
 If your EKS setup created a nodegroup for you, and you want to use that for the api, client, and
 task servers, make sure to change the affinity value for them to whatever EKS named the
 initial nodegroup.
-
-#### builder.extraEnv.CACHE_BUCKET_STEM
-This needs to be set to the S3 bucket name stem you selected and used for your S3 buckets 
 
 #### builder.extraEnv.PRIVATE_ECR
 If you're using a private ECR repo, set this to "true" in the builder config file.
