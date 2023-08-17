@@ -2,41 +2,40 @@
 
 Ethereal Engine Studio
 UI Overview 
+![image6](https://github.com/EtherealEngine/etherealengine-docs/assets/5104160/a26ad154-64f4-4681-a011-70af9f4213e1)
 
 
-#1: Toolbar
-#2: Scene and File Directory 
-#3: Preview
-#4: Viewport
-#5: Hierarchy, Material Library, Node Graph
-#6: Properties 
-#7: Assembly Menu
-#8: User Profile  
+1: Toolbar
+
+2: Scene and File Directory 
+
+3: Preview
+
+4: Viewport
+
+5: Hierarchy, Material Library, Node Graph
+
+6: Properties 
+
+7: Assembly Menu
+
+8: User Profile  
 ___________________________________________________________________________
 
-#1 Toolbar	
+## 1 Toolbar	
 
-
-
-
-
-1. File Menu
+### 1. File Menu
 Create new scenes, import files, and save or export existing scenes.  
 
 
-
-2: Advanced 
+### 2: Advanced 
 Toggle advanced options on Model or Avatar components. 
 Add and remove components in the Properties tab 
 
-
-
-3. Active Instances 
+### 3. Active Instances 
 Active Instances shown here
 
-
-
-4. Transform Gizmo:  Scale, Rotate, Move 
+### 4. Transform Gizmo:  Scale, Rotate, Move 
   [ Y ] Scale
  [ R ] Rotate
  [ T ] Move
