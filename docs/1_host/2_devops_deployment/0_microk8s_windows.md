@@ -342,6 +342,12 @@ If you are using local file server as explained couple of steps earlier then, up
 
 ## Deploy Ethereal Engine Helm chart
 
+Before this step, ensure that all the agones and redis pods are in "Running" state. You can check pods status using the below command.
+
+```bash
+kubectl get pods
+```
+
 Run the following command:
 
 ```bash
