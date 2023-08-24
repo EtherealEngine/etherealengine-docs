@@ -142,7 +142,7 @@ repos, los URI deben tener la forma `<AWS_account_id>.dkr.ecr.<AWS_region>.amazo
 Toma nota de todo antes de la `/xrengine-<deployment_name>` - deberá agregarlo como variable en pasos posteriores.
 Se llamará `ECR_URL` allí.
 
-## Crear roles de IAM para S3/SES/SNS/Route53 (o un único rol de administrador)
+## Crear roles de IAM para S3/SES/SNS (o un único rol de administrador)
 
 Ethereal Engine interactúa con varios servicios de AWS y requiere credenciales para estos fines. Podrías hacer
 un rol de administrador con acceso completo a todos los servicios de AWS, pero se recomienda crear roles separados y con ámbito para
@@ -166,7 +166,6 @@ en el archivo de configuración de Helm más tarde.
 Estos son los servicios para los que desea crear usuarios administradores de IAM y los permisos asociados que desea
 concederles:
 
-*   Ruta53: `AmazonRoute53FullAccess`
 *   S3: `AmazonS3FullAccess, CloudFrontFullAccess`
 *   SNS: `AmazonSNSFullAccess`
 
@@ -321,7 +320,7 @@ Si alguna vez sospecha que un gráfico está desactualizado, ejecute `helm repo 
 
 ### Instalar Agones
 
-Desde el nivel superior de este repositorio, ejecute `helm install -f agones-default-values.yaml agones agones/agones --version "1.31.0"`.
+Desde el nivel superior de este repositorio, ejecute `helm install -f agones-default-values.yaml agones agones/agones`.
 Esto dice instalar un servicio llamado 'agones' del paquete 'agones' en el gráfico 'agones', y configurarlo con
 un archivo que se encuentra en https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml.
 
