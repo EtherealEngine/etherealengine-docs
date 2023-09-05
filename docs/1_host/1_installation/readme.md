@@ -85,6 +85,10 @@ type ```badidea``` or ```thisisunsafe``` when on that page. You don't enter
 that into the address bar or into a text box, Chrome is just passively listening
 for those commands.
 
+Once the location loads successfully, the media server may not load.  If this happens, bring up the browser console and look for a websocket
+error.  If you find this error, copy the link of the URL and paste into a new browser tab.  Delete wss:// and replace it with https:// and press
+enter.  Follow the same instructions to accept the risk in the browser as above.
+
 ### Admin System and User Setup
 You can administrate many features from the admin panel at https://localhost:3000/admin
 
