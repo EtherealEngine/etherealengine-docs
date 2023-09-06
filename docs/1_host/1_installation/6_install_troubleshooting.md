@@ -97,11 +97,21 @@ Type in terminal
      npm i <packagename> -w @etherealengine/editor
 ```
 
+### Using Local Storage instead of MinIO
+
+Currently MinIO is used as default storage for local development. If you want to use local storage then do following steps:
+
+- Uncomment the values under `# Use following value for local file server` and comment out the values above it. i.e. `VITE_FILE_SERVER` & `STORAGE_PROVIDER`
+- Instead of `npm run dev` use `npm run dev-fs`.
+- To reinitialize database use `npm run dev-reinit-fs` instead of `npm run dev-reinit`.
+
 ### Accessing MinIO S3 storage provider running in local docker
 
 **Using [MinIO Console](https://min.io/docs/minio/linux/administration/minio-console.html):**
 
-- When MinIO contain is running in your docker, navigate to [http://127.0.0.1:9090/](http://127.0.0.1:9090/) in your browser.
+- When MinIO contain is running in your docker, navigate to [https://localhost:9001/](https://localhost:9001/) in your browser.
+  > Make sure to accept invalid certificate warning.
+
 - Login using username as `server` and password as `password`.
   > You can find these credentials in `scripts/docker-compose.yml` as `MINIO_ROOT_USER` & `MINIO_ROOT_PASSWORD`
 
@@ -113,7 +123,7 @@ Type in terminal
   - REST Endpoint: **127.0.0.1:9000**
   - Access Key ID: **server**
   - Secret Access Key: **password**
-  - Use secure transfer (SSL/TLS): **Uncheck / Off / False**
+  - Use secure transfer (SSL/TLS): **Check / On / True**
 
 ### Clear all data from MinIO S3 storage provider running in local docker
 
