@@ -1,5 +1,4 @@
-
-#  Logging with Opensearch on Docker
+# Logging with Opensearch on Docker
 
 If you want to quickstart with detailed logging using opensearch, Please follow this guide. 
 
