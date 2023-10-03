@@ -112,5 +112,12 @@ You can run Ethereal Engine stack by running:
 npm run dev
 ```
 Now run Ethereal Engine in browser by navigating to [this link](https://127.0.0.1:3000/location/default).   
-> If it keeps displaying 'loading routes' progress for a long time, it is due to the fact that you have to allow certificates.   
-> Open Developer tools in Chrome by clicking the side menu with three dots, then `More tools > Developer tools` (or use `Ctrl+Shift+I`) and then go to the 'Console' tab. You will see some errors in URL address starting with 'wss'. Replace 'wss' with 'https' and open it in new tab. Accept the certificate and reload your Ethereal Engine tab.
+
+## Accept Certificates
+
+You'll have to tell your browser to ignore the insecure connections when you try to load the website.
+
+ 1. If it keeps displaying 'loading routes' progress for a long time, it is due to the fact that you have to allow certificates.
+ 2. Open Developer tools in your browser by clicking the side menu with three dots, then `More tools > Developer tools` (or use `Ctrl+Shift+I`) and then go to the 'Console' tab.
+ 3. You will see some errors in URL address starting with 'wss'. Replace 'wss' with 'https' and open it in new tab. Accept the certificate and reload your Ethereal Engine tab.
+ 4. You will see some errors in URL address starting with 'https://localhost:9000'. Open of the that URL and accept the certificate afterwards reload your Ethereal Engine tab.
