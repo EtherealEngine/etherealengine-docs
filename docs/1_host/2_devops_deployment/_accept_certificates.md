@@ -4,5 +4,6 @@ Go to <https://local.etherealengine.org/>, you should see a warning about an inv
 
 - wss://api-local.etherealengine.org -> https://api-local.etherealengine.org
 - wss://instanceserver-local.etherealengine.org -> https://instanceserver-local.etherealengine.org
+- https://localhost:9000
 
 > You can open Developer tools in Chrome by clicking the side menu with three dots, then More tools > Developer tools (or use Ctrl+Shift+I)
