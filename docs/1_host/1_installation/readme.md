@@ -62,7 +62,7 @@ npm run dev
 
 Now run Ethereal Engine in browser by navigating to [this link](https://127.0.0.1:3000/location/default).   
 
-## Accept Certificates
+### Accept Certificates
 
 You'll have to tell your browser to ignore the insecure connections when you try to load the website.
 
