@@ -60,34 +60,16 @@ npm run dev-reinit
 npm run dev
 ```
 
-### Setup Elastic Search & Kibana
+Now run Ethereal Engine in browser by navigating to [this link](https://127.0.0.1:3000/location/default).   
 
-Elastic Search and Kibana will be automatically launched with `npm run dev`.
+## Accept Certificates
 
-Elasticsearch & Kibana will be running on localhost port 9200 & 5601 respectively.
+You'll have to tell your browser to ignore the insecure connections when you try to load the website.
 
-This will automatically set up and run Redis/MariaDB docker
-containers, and Ethereal Engine client/server/instance-server instances.
-
-In a browser, navigate to https://127.0.0.1:3000/location/default
-
-The database seeding process creates an empty location called 'default', as well as some template scenes 'sky-station' and 'apartment'.
-It can be navigated to by going to 'https://127.0.0.1:3000/location/default'
-
-As of this writing, the cert provided in the etherealengine package for local use is
-not adequately signed. Browsers will throw up warnings about going to insecure
-pages. You should be able to tell the browser to ignore it, usually by clicking
-on some sort of 'advanced options' button or link and then something along the
-lines of 'go there anyway'.
-
-Chrome sometimes does not show a clickable option on the warning. If so, just
-type ```badidea``` or ```thisisunsafe``` when on that page. You don't enter
-that into the address bar or into a text box, Chrome is just passively listening
-for those commands.
-
-Once the location loads successfully, the media server may not load.  If this happens, bring up the browser console and look for a websocket
-error.  If you find this error, copy the link of the URL and paste into a new browser tab.  Delete wss:// and replace it with https:// and press
-enter.  Follow the same instructions to accept the risk in the browser as above.
+ 1. If it keeps displaying 'loading routes' progress for a long time, it is due to the fact that you have to allow certificates.
+ 2. Open Developer tools in your browser by clicking the side menu with three dots, then `More tools > Developer tools` (or use `Ctrl+Shift+I`) and then go to the 'Console' tab.
+ 3. You will see some errors in URL address starting with 'wss'. Replace 'wss' with 'https' and open it in new tab. Accept the certificate and reload your Ethereal Engine tab.
+ 4. You will see some errors in URL address starting with 'https://localhost:9000'. Open of the that URL and accept the certificate afterwards reload your Ethereal Engine tab.
 
 ### Admin System and User Setup
 You can administrate many features from the admin panel at https://localhost:3000/admin
@@ -108,6 +90,8 @@ Look up in User table and change userRole to 'admin'
 (It helps to use a graphical database explorer, we recommend [beekeeperstudio.io](https://beekeeperstudio.io/))
 
 Test user Admin privileges by going to `/admin`
+
+
 
 ## Advanced Installation and Troubleshooting
 
