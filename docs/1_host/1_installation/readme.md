@@ -13,7 +13,7 @@ for your environment.
   other build tools. See the [Mediasoup install instructions](https://mediasoup.org/documentation/v3/mediasoup/installation/)
   for full details.
 * [ ] Install Docker
-  * [ ] (Optionally) If you're NOT using docker, install MariaDB, Redis and MinIO.
+  * (Optionally) If you're NOT using docker, install MariaDB, Redis and MinIO manually and update repo's `.env.local` accordingly.
 
 You should now be ready to follow the [Quick Start](#quick-start) instructions.
 
