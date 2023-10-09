@@ -12,8 +12,8 @@ for your environment.
 * [ ] Install Python >=3.6 + [PIP](https://pypi.org/project/pip/), C++, and
   other build tools. See the [Mediasoup install instructions](https://mediasoup.org/documentation/v3/mediasoup/installation/)
   for full details.
-* [ ] Install Docker (optional but highly recommended)
-* [ ] (Optional) If you're NOT using docker, install MariaDB and Redis.
+* [ ] Install Docker
+  * [ ] (Optionally) If you're NOT using docker, install MariaDB, Redis and MinIO.
 
 You should now be ready to follow the [Quick Start](#quick-start) instructions.
 
