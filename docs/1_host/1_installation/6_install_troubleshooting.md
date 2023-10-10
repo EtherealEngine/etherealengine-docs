@@ -101,9 +101,8 @@ Type in terminal
 
 Currently MinIO is used as default storage for local development. If you want to use local storage then do following steps:
 
-- Uncomment the values under `# Use following value for local file server` and comment out the values above it. i.e. `VITE_FILE_SERVER` & `STORAGE_PROVIDER`
-- Instead of `npm run dev` use `npm run dev-fs`.
-- To reinitialize database use `npm run dev-reinit-fs` instead of `npm run dev-reinit`.
+- set `VITE_FILE_SERVER` to the commented values under `# Use following value for local file server` and comment out the values above it.
+- set `STORAGE_PROVIDER` to `local`
 
 ### Accessing MinIO S3 storage provider running in local docker
 
