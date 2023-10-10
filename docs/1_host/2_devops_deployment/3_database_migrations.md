@@ -3,17 +3,17 @@
 ## Create Migration File
 
 1. In your ethereal engine repo run following command
-  ```
+```
   cd packages/server-core
-  ```
+```
 2. Afterward run following command to generate migration file:  `TIMESTAMP_NAME.ts` i.e. `20230418102549_eks-column.ts` in `server-core` folder.
-  ```
+```
   npm run migrate:make -- {NAME}
-  ```
+```
 i.e.
-  ```
+```
   npm run migrate:make -- eks-column
-  ```
+```
 3. Move the migration file to your service's `migrations` folder. i.e. `packages/server-core/src/setting/aws-setting/migrations`
 4. Update that file with code to match your needs.
 
