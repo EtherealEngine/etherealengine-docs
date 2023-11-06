@@ -15,7 +15,7 @@ console.log(process.env.ENGINE_PATH, 'packages/client')
 const config = {
   title: 'etherealengine',
   tagline:
-    'An end-to-end solution for hosting humans and AI in a virtual space, built on top of react, three.js and express/feathers.',
+    'An open source solution for hosting, creating and developing immersive social spaces, built on top of WebXR, React & Feathers.',
   url: 'https://etherealengine.github.io',
   baseUrl: '/etherealengine-docs/',
   onBrokenLinks: 'warn',
