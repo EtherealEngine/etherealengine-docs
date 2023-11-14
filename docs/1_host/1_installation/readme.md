@@ -104,3 +104,4 @@ If you run into any trouble with the Quick Start instructions:
   - [Installing on Mac OS X](2_mac_os_x.md)
 * [Installation Troubleshooting](6_install_troubleshooting.md)
 * [Advanced Setup](4_advanced_setup.md)
+* [Vite dev server is stalling](https://vitejs.dev/guide/troubleshooting.html#dev-server)
