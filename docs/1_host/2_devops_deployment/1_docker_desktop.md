@@ -120,7 +120,7 @@ though later builds should take less time as things are cached.
 This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
 a [template](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.dockerdesktop.template.values.yaml) for this file in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
-If you are using local file server as explained a couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value e.g. '/hosthome/<OS_USER_NAME>/<ENGINE_FOLDER>/packages/server/upload'. The folder must be in home folder and make sure to use /hosthome/ instead of home in path. It's mandatory to point to `/packages/server/upload` folder of your engine folder.
+If you are using local file server as explained a couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value e.g. '/hosthome/\<OS_USER_NAME\>/\<ENGINE_FOLDER\>/packages/server/upload'. The folder must be in home folder and make sure to use /hosthome/ instead of home in path. It's mandatory to point to `/packages/server/upload` folder of your engine folder.
 
 ## Deploy Ethereal Engine Helm chart
 Run the following command: `helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine`.

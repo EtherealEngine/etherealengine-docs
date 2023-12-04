@@ -462,7 +462,7 @@ says a user has been created successfully. Click on 'Show User SMTP Security Cre
 
 You will see a Username and Password. These credentials will go into the Helm config file, under
 AWS_SMTP_USER and AWS_SMTP_PASS, respectively. You must also fill in the region that you've created these credentials 
-in, replacing <SES_REGION> in api.extraEnv.SMTP_HOST.
+in, replacing \<SES_REGION\> in api.extraEnv.SMTP_HOST.
 
 ### Move SES out of Sandbox
 By default, SES domains are in Sandbox mode, where they can only send emails to verified email addresses.
@@ -567,7 +567,7 @@ appear in the selector at the bottom of the list under the header `Custom`. Sele
 
 Under `Settings`, you can change `Price class` to 'Use Only North America and Europe' to save some money.
 For Alternate Domain Names, click 'Add item', then in the text box that appears, enter 'resources.`<domain>`', e.g.
-```resources.etherealengine.org```, or '<RELEASE_NAME>.`<domain>`', e.g. ```dev.etherealengine.org```, depending on
+```resources.etherealengine.org```, or '\<RELEASE_NAME\>.`<domain>`', e.g. ```dev.etherealengine.org```, depending on
 whether you are serving the client files from client/API pods or the Storage Provider, respectively. 
 Under `Custom SSL Certificate`, click on the selector that says 'Choose certificate', then select the 
 'resources.`<domain>`'/'`<RELEASE_NAME>.<domain>`' certificate you made earlier. If you are serving the client
@@ -612,7 +612,7 @@ You should make the following 'A' records to the loadbalancer, substituting your
 * instanceserver.etherealengine.org
 * instanceserver-dev.etherealengine.org
 
-You also need to make an 'A' record pointing 'resources.etherealengine.org' or '<RELEASE_NAME>.etheralengine.org' to the
+You also need to make an 'A' record pointing 'resources.etherealengine.org' or '\<RELEASE_NAME\>.etheralengine.org' to the
 CloudFront distribution you made earlier.
 Instead of 'Alias to Network Load Balancer', select 'Alias to Cloudfront distribution', then click the text box that appears
 that says 'Choose distribution'. A selector should appear with the subdomain you're routing as well as the Cloudfront
@@ -686,8 +686,8 @@ There's a couple of steps to this, which will involve deploying things with most
 configuration values, and then letting the deployment process fill in the rest.
 
 ### Fill in Helm config file with variables
-Template Helm config files for dev and prod deployments can be found in [configs](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs) <dev/prod>.template.values.yaml.
-Before filling them in, make a copy elsewhere, call that '<dev/prod>.values.yaml', and edit that copy.
+Template Helm config files for dev and prod deployments can be found in [configs](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs) \<dev/prod\>.template.values.yaml.
+Before filling them in, make a copy elsewhere, call that '\<dev/prod\>.values.yaml', and edit that copy.
 Both the builder and main deployments should use the same config file. When the builder seeds the database,
 it needs a number of values that only need to be configured for the other services, so all of the values
 need to be defined in one config file.
@@ -698,13 +698,13 @@ using social login, for instance, you don't need credentials for Github/Google/F
 ### Configuration variables of note
 Here are some configuration variables that you'll probably need to change based on your specific setup
 
-#### <api/instanceserver/taskserver>.extraEnv.AUTH_SECRET
+#### \<api/instanceserver/taskserver\>.extraEnv.AUTH_SECRET
 This is a secret value that is used to sign the JWTs that authenticate users.
 You can use any string for this value, and a randomly-generated one of sufficient length,
 i.e. 32 or more characters, will suffice. If this is changed after some users have signed
 in, their login credentials won't work any more.
 
-#### <api/client/taskserver>.affinity.nodeAffinity
+#### \<api/client/taskserver\>.affinity.nodeAffinity
 Within the sections of the config for the api, client, instanceserver, etc., is a section that looks 
 something like this:
 ```
@@ -731,7 +731,7 @@ initial nodegroup.
 If you're using a private ECR repo, set this to "true" in the builder config file.
 
 #### (everything).image.repository
-You'll need to replace every <repository_name> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/etherealengine-dev-api`.
+You'll need to replace every \<repository_name\> with the full ECR_URL of your non-builder repos, e.g. `abcd1234efgh.dkr.ecr.us-west-1.amazonaws.com/etherealengine-dev-api`.
 Each service has to have the proper `-<service>` suffix on it, e.g. `-api`, `-client`, etc.
 
 #### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
@@ -744,7 +744,7 @@ more information, and enter the appropriate ID/secret in these variables.
 Run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME>-builder etherealengine/etherealengine-builder```
 and then run ```helm install -f </path/to/<RELEASE_NAME>.values.yaml> <RELEASE_NAME> etherealengine/etherealengine```
 
-This will spin up the main and builder deployments using the Helm config file, <dev/prod>.values.yaml.
+This will spin up the main and builder deployments using the Helm config file, \<dev/prod\>.values.yaml.
 Neither will fully work yet, since there's no valid image in the repos yet. The GitHub
 Actions and builder processes will make those images and update the deployments with the tags of the images they've built
 so that they can pull down and use those images.
