@@ -10,7 +10,7 @@ This section covers testing/debugging on phone/headset when engine stack hosted 
 
 2. Open a location i.e. `https://localhost:3000/location/apartment` through Windows 11 chrome. It should work fine.
 
-3. Connect your device (currently tested on Samsung S22 Ultra) with PC and enabled USB debugging and access prompts as mentioned on <https://developer.chrome.com/docs/devtools/remote-debugging/>
+3. Connect your device (currently tested on Samsung S22 Ultra) with PC and enabled USB debugging and access prompts as mentioned on ["https://developer.chrome.com/docs/devtools/remote-debugging"](https://developer.chrome.com/docs/devtools/remote-debugging)
 
 4. Once your device is connected, then you can see your device's browser tabs in PC's Chrome as show in below image. `chrome://inspect/#devices`
 ![Device connected to PC Chrome](./images/debugging_device_wsl_1.png)
