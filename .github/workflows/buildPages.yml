@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v4
         with:
-          repository: 'https://github.com/EtherealEngine/etherealengine'
+          repository: 'EtherealEngine/etherealengine'
           path: '/etherealengine'
       - name: Setup Pages
         id: pages
@@ -44,7 +44,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm run build
-          npm run typedoc
+          ENGINE_PATH=/etherealengine npm run typedoc
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
