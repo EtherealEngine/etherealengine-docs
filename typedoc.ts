@@ -1,12 +1,8 @@
 #!/usr/bin/env ts-node
 
 const { spawn } = require("child_process");
-const appRootPath = require('app-root-path')
-const dotenv = require('dotenv').config({
-    path: appRootPath.path + '/.env.local'
-  })
 
-const typedoc = spawn("npx", ["typedoc", process.env.ENGINE_PATH, "--options", `${process.env.ENGINE_PATH}/typedoc.json`, "--out", "./build/typedoc"])
+const typedoc = spawn("npx", ["typedoc", "/etherealengine", "--options", `/etherealengine/typedoc.json`, "--out", "./build/typedoc"])
 
 typedoc.stdout.on("data", data => {
     console.log(`stdout: ${data}`);
