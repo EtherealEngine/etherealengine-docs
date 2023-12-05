@@ -7,7 +7,7 @@ for your environment.
 ## Pre-Install Checklist
 
 * [ ] Ensure you have at least 16GB of RAM - you may run into issues running the full development setup with less
-* [ ] Clone the repository
+* [ ] Clone the repository to a location whose path __contains no spaces__.
 * [ ] Install Node.js 16 or 18 (earlier versions not guaranteed to work)
 * [ ] Install Python >=3.6 + [PIP](https://pypi.org/project/pip/), C++, and
   other build tools. See the [Mediasoup install instructions](https://mediasoup.org/documentation/v3/mediasoup/installation/)
