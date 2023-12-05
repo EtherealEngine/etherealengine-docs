@@ -45,7 +45,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm run build
-          ENGINE_PATH=/etherealengine npm run typedoc
+          ENGINE_PATH=./etherealengine npm run typedoc
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
