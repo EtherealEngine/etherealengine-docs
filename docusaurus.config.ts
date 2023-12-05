@@ -72,6 +72,11 @@ const config: Config = {
           position: 'left'
         },
         {
+          href: 'https://etherealengine.github.io/etherealengine-docs/typedoc',
+          label: 'API',
+          position: 'left'
+        },
+        {
           href: 'https://etherealengine.org/',
           label: 'Ethereal Engine',
           position: 'right'

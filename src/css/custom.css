@@ -36,10 +36,6 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-.button.button--secondary.button--outline:not(.button--active):not(:hover) {
-  color: #ffffff !important;
-}
-
 .markdown a {
   text-decoration: underline;
   font-weight: 500;
