@@ -1,7 +1,7 @@
 ---
-id: overview
-title: Overview
-sidebar_label: Overview
+id: intro
+title: Introduction
+sidebar_label: Introduction
 slug: /
 sidebar_position: 0
 ---
