@@ -1,7 +1,6 @@
 --- 
 hide_table_of_contents: true
 ---
-
 # Writing Reasonable & Testable Code
 
 Writing tests for code is one thing, but writing testable code is another! Testable code comes from abstracting control flows and operations on data with functions in order to avoid side effects and reduce, or at least have better control over, the mutation of state in your application.

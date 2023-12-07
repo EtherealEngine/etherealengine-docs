@@ -1,4 +1,7 @@
-# Debugging Deployed Instanceservers (and other Kubernetes pods)
+--- 
+hide_table_of_contents: true
+---
+# Debugging Deployed InstanceServers (and other Kubernetes pods)
 
 Because of the nature of Kubernetes, logs of fatal errors on instanceserver or API pods can sometimes disappear
 before one has a chance to view them, as the pods that they were on are deleted, along with their logs.

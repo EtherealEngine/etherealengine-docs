@@ -1,0 +1,8 @@
+{
+  "label": "Debugging",
+  "position": 08,
+  "link": {
+    "type": "doc",
+    "id": "manual/developer/debugging/intro"
+  }
+}
