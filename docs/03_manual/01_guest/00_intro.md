@@ -1,8 +1,7 @@
 ---
-id: guest
 title: User | Introduction
 sidebar_label: Introduction
-slug: /manual/guest/introduction
-sidebar_position: 0
 ---
+Whether you're a gamer, a shopper or just here to explore, Ethereal Engine has something for you.
+
 This section will explain everything that there is to know about using Ethereal Engine.

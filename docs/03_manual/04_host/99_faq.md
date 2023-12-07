@@ -1,21 +1,18 @@
 ---
-id: faq
-title: Host | Frequently Asked Questions
 sidebar_label: Hosting FAQ
-slug: /manual/hosting/faq
-sidebar_position: 99
 ---
+# Frequently Asked Questions
 
 _Hosting FAQ. Each Manual has its own independent FAQ_
 
-# What is the maximum concurrent users?
+## What is the maximum concurrent users?
 The maximum concurrent users depends on the complexity and fidelity of your environment and avatars. Ethereal Engine can support up to several thousand users with scaled avatars, or just a dozen for a high-definition intimate experience. 
 
-# Are you a game engine?	
-# Are you a metaverse?	
-# Is Ethereal Engine web3?	
+## Are you a game engine?	
+## Are you a metaverse?	
+## Is Ethereal Engine web3?	
 
-# Catch small lizards, bring them into house, then unable to find them on carpet licks paws
+## Catch small lizards, bring them into house, then unable to find them on carpet licks paws
 Cat ipsum dolor sit amet, rub my belly hiss so purr like a car engine oh yes, there is my human slave woman she does best pats ever that all i like about her hiss meow . Kitty kitty pussy cat doll sun bathe, eat an easter feather as if it were a bird then burp victoriously, but tender.
 
 Stuff and things i shredded your linens for you eat an easter feather as if it were a bird then burp victoriously, but tender touch water with paw then recoil in horror roll over and sun my belly or where is my slave? I'm getting hungry. Growl at dogs in my sleep hate dog, for run as fast as i can into another room for no reason yet sit as close as possible to warm fire without sitting on cold floor yet meoooow leave fur on owners clothes for kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff.

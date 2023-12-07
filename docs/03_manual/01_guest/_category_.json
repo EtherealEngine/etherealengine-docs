@@ -1,9 +1,7 @@
 {
-    "label": "User",
-    "position": 1,
-    "link": {
-      "type": "generated-index",
-      "description": "Whether you're a gamer, a shopper or just here to explore, Ethereal Engine has something for you."
-    }
+  "label": "User",
+  "link": {
+    "type": "doc",
+    "id": "manual/guest/intro"
   }
-  
+}

@@ -1,9 +1,7 @@
 {
-    "label": "Manual",
-    "position": 3,
-    "link": {
-      "type": "generated-index",
-      "description": "Learn everything that Ethereal Engine has to offer."
-    }
+  "label": "Manual",
+  "link": {
+    "type": "generated-index",
+    "description": "Learn everything that Ethereal Engine has to offer."
   }
-  
+}

@@ -52,12 +52,15 @@ const config: Config = {
   ],
 
   themeConfig: {
-      algolia: {
-        appId: "N5OIDFHT9B",
-        apiKey: "06604779928fc73656c9ae03fae1f0b1",
-        indexName: "etherealengine",
-        contextualSearch: true,
-      },
+    docs: {
+      sidebar: { autoCollapseCategories: true }
+    },
+    algolia: {
+      appId: "N5OIDFHT9B",
+      apiKey: "06604779928fc73656c9ae03fae1f0b1",
+      indexName: "etherealengine",
+      contextualSearch: true,
+    },
     navbar: {
       title: 'Ethereal Engine',
       logo: {

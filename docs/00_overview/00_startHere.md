@@ -1,9 +1,7 @@
 ---
-id: intro
-title: Introduction
-sidebar_label: Introduction
+id: overview.intro
+title: Overview
 slug: /
-sidebar_position: 0
 ---
 
 # Ethereal Engine

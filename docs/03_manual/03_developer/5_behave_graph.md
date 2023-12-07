@@ -1,4 +1,4 @@
-# Introduction
+# Behave Graph
 
 * Overview
 * Audience
@@ -30,7 +30,7 @@ Behavior graphs are expressive, deterministic, and extensible state machines tha
 
 Behavior graphs are a popular choice for implementing visual scripting languages. Prominent game engines like Unreal Engine and Unity have adopted behavior graphs as an essential component of their visual scripting systems. For example, Unreal Engine's Blueprints, Unity's Visual Scripting, and NVIDIA Omniverse's OmniGraph rely on behavior graphs to enable game designers and developers to create complex behaviors without writing code directly.
 
-Within the Ethereal Engine, the Behavior Graphs feature plays a pivotal role by providing a no-code interface to the engine and by interacting with the engine while modeling, organizing, controlling and assigning complex behaviors on entities, with ease.
+Within Ethereal Engine, the Behavior Graphs feature plays a pivotal role by providing a no-code interface to the engine and by interacting with the engine while modeling, organizing, controlling and assigning complex behaviors on entities, with ease.
 
 ### 1.2 Audience
 

@@ -1,9 +1,6 @@
 ---
-id: guest
 title: User | Frequently Asked Questions
 sidebar_label: Frequently Asked Questions
-slug: /manual/guest/faq
-sidebar_position: 99
 ---
 
 ## Is it free to play?

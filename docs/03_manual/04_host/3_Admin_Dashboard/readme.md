@@ -1,4 +1,4 @@
-# Ethereal Engine Admin Panel Guide
+# Admin Panel Guide
 ## Dashboard
 ### Usage Dashboard
 ### Usage Time Series
