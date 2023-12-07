@@ -1,8 +1,98 @@
-import AcceptCertificates from './_accept_certificates.md'
+import AcceptCertificates from './_acceptCertificates.md'
 
-# Ethereal Engine on MicroK8s (Linux)
+# Ethereal Engine on MicroK8s (Windows)
 
-This guide is intended for local environment and currently tested on Ubuntu.
+This guide is intended for local environment and currently tested on Windows 11.
+
+## Install Windows Subsystem for Linux (WSL)
+
+Install Ubuntu distribution of Linux from Microsoft Store by using guide [here](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+Alternatively, you can follow these instructions as well:
+
+- [How to install WSL](https://pureinfotech.com/install-wsl-windows-11/)
+- [Manual installation steps for WSL](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+
+Once WSL is installed, make sure to:
+
+- [Set up your Linux username and password](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
+- [Update and upgrade packages](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#update-and-upgrade-packages)
+
+### Set Ubuntu as default WSL distribution
+
+In powershell/cmd run following command to see the list of distributions:
+
+```shell
+wsl -l
+```
+
+In the list you should be able to see `Ubuntu` listed. Afterwards, run following command to set Ubuntu as default distribution:
+
+```shell
+wsl -s Ubuntu
+```
+
+![WSL Ubuntu Default Distribution](./images/wsl-ubuntu-default.jpg)
+
+## Install Docker Desktop
+
+Install docker desktop with WSL 2 backend. You can find the instructions [here](https://docs.docker.com/desktop/install/windows-install/).
+
+Once docker desktop is installed and running make sure to enable your WSL distribution. You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`. Make sure to hit 'Apply & Restart'.
+
+![Docker Desktop WSL Distro](./images/docker-desktop-wsl-distro.jpg)
+
+## Enable systemd in WSL
+
+Inside your Ubuntu instance, add the following modification to `/etc/wsl.conf`.
+
+```conf
+[boot]
+systemd=true
+```
+
+Then restart your instance by running `wsl --shutdown` in PowerShell and relaunching Ubuntu. Upon launch you should have systemd running. You can check this with the command `systemctl list-unit-files --type=service` which should show your services status.
+
+You can read more about this on [Ubuntu blog](https://ubuntu.com/blog/ubuntu-wsl-enable-systemd) & [Microsoft blog](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/).
+
+## Enable localhostForwarding in WSL
+
+Create or update `.wslconfig` file located at `C:\Users\{USER_NAME}\.wslconfig` (Or `%UserProfile%\.wslconfig`) with following content:
+
+```conf
+[wsl2]
+localhostForwarding=true
+```
+
+This requires WSL shutdown and reboot. Shutting down your terminal is insufficient. Also machine boot is not required. Simply run:
+
+```bash
+wsl --shutdown (in Powershell) or 
+wsl.exe --shutdown (within Ubuntu)
+```
+
+Reference: [Custom hostname for servers running in WSL 2](https://stackoverflow.com/a/65707003/2077741)
+
+## Install Node
+
+In your WSL Ubuntu terminal, if node (`node --version`) isn't already installed on your machine. You can do so by first installing `nvm` by running following commands:
+
+```bash
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+source ~/.profile
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+```
+
+You can verify nvm by using `nvm --version` command. Afterwards, install node by using:
+
+```bash
+nvm install --lts
+```
+
+You can verify nvm by using `node --version` command.
 
 ## Install Python 3
 
@@ -13,7 +103,7 @@ sudo apt-get update -y
 sudo apt-get install -y python3-pip
 ```
 
-You can verify pip3 by using `pip3 --version` command.
+You can verify python3 by using `python3 --version` command.
 
 ## Install Make
 
@@ -26,15 +116,15 @@ sudo apt-get install -y build-essential
 
 You can verify make by using `make --version` command.
 
-## Install kubectl, Helm and Docker
+## Install kubectl and Helm
 
-If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/) and [Docker](https://docs.docker.com/get-docker/) aren't already installed on your machine, install them.
+In your WSL Ubuntu terminal, if [kubectl](https://kubernetes.io/docs/tasks/tools/) & [Helm](https://helm.sh/docs/intro/install/) aren't already installed on your machine, install them.
 
-You may also need to install [Docker Compose](https://docs.docker.com/compose/install/)
+Docker & Docker Compose should be installed if you successfully completed "[Install Docker Desktop](#install-docker-desktop)" step. You can verify by running `docker --version` & `docker-compose --version` commands in WSL Ubuntu terminal.
 
 ## Download and install MicroK8s
 
-Instructions can be found [here](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview)
+Make sure to install MicroK8s in your WSL Ubuntu terminal. Instructions can be found [here](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview)
 
 ```bash
 sudo snap install microk8s --classic --channel=1.26/stable
@@ -64,13 +154,15 @@ Alternatively, if you want to just run MinIO & MariaDB on its own without Docker
 
 ## Enabling MicroK8s Addons
 
-Execute following command in your terminal to enable MicroK8s addons
+Execute following command in your WSL Ubuntu terminal to enable MicroK8s addons
 
-`sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3`
+```bash
+sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3
+```
 
 ## Add MicroK8s to Kubectl
 
-First make sure there is no existing configuration for microk8s in your kubectl config. To do so you run `kubectl config get-contexts` command in terminal and see if the output contains microk8s. You can remove the existing configurations using following commands:
+First make sure there is no existing configuration for microk8s in your kubectl config. To do so you run `kubectl config get-contexts` command in WSL Ubuntu terminal and see if the output contains microk8s. You can remove the existing configurations using following commands:
 
 ```bash
 kubectl config delete-context microk8s
@@ -78,7 +170,7 @@ kubectl config delete-cluster microk8s-cluster
 kubectl config delete-user microk8s-admin
 ```
 
-Now, we will add microk8s configuration to kubectl config. We can do this by using following commands. [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)
+Now, we will add microk8s configuration to kubectl config. We can do this by using following commands in WSL Ubuntu terminal. [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)
 
 ```bash
 kubectl config set-cluster microk8s --server=https://127.0.0.1:16443/ --certificate-authority=/var/snap/microk8s/current/certs/ca.crt
@@ -86,7 +178,11 @@ kubectl config set-credentials microk8s-admin --token="$(sudo microk8s kubectl c
 kubectl config set-context microk8s --cluster=microk8s --namespace=default --user=microk8s-admin
 ```
 
-Afterwards you can use this newly create context by executing `kubectl config use-context microk8s`
+Afterwards you can use this newly create context by executing:
+
+```bash
+kubectl config use-context microk8s
+```
 
 Now if you run `kubectl config get-contexts` command then microk8s should be current context.
 
@@ -94,58 +190,72 @@ Now if you run `kubectl config get-contexts` command then microk8s should be cur
 
  If the previous step was performed successfully then you should be able to see MicroK8s cluster in GUI tool [Lens](https://k8slens.dev/). Else you can print the configuration using following command:
 
-`microk8s config`
+```bash
+microk8s config
+```
 
-Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.  
-Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
+In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
 
 ## Enable MicroK8s access for local docker
 
 For MicroK8s we will be using MicroK8s local [registry](https://microk8s.io/docs/registry-built-in)
 
-Add the following lines to `/etc/docker/daemon.json`. On Linux, this is done by running `sudo gedit /etc/docker/daemon.json`.  
+Option 1: In Windows, add the following lines to `%userprofile%\.docker\daemon.json`. Create this file if it does not already exists.
 
 ```json
 { 
-    "insecure-registries" : ["localhost:32000"]  
+    "insecure-registries" : ["http://microk8s.registry:32000", "microk8s.registry:32000"]  
 }
 ```
 
-Afterwards, restart docker with: `sudo systemctl restart docker`
+Afterwards, restart docker from Powershell: `restart-service *docker*`
+
+Option 2: Edit configuration as shown in below image. Make sure to hit 'Apply & Restart' after making changes.
+
+![Docker Desktop Configuration](./images/docker-desktop-configuration.jpg)
+
+Reference:
+
+- [daemon.json file in W1indows](https://stackoverflow.com/a/55352883/2077741)
+- [When using buildkit, http needs to be added](https://github.com/docker/docs/blob/62adddbb6b1f8d861c72f6ade2c50977fd57f481/registry/insecure.md#troubleshoot-insecure-registry)
+- [Restart Docker service from command line](https://forums.docker.com/t/restart-docker-service-from-command-line/27331/2)
 
 ## Verify and troubleshoot MicroK8s
 
-Run `sudo microk8s inspect` and check if there is any warning. Its recommended to fixed the warning for MicroK8s to work properly. Following are some of the warnings and their possible fixes:
+Run following command and check if there is any warning. Its recommended to fix the warnings for MicroK8s to work properly.
 
-1. WARNING:  This machine's hostname contains capital letters and/or underscores. This is not a valid name for a Kubernetes node, causing node registration to fail. Please change the machine's hostname or refer to the documentation for more details.
-
-    Possible Fix: [https://askubuntu.com/a/87687/1558816](https://askubuntu.com/a/87687/1558816)
-
-2. WARNING:  The memory cgroup is not enabled. The cluster may not be functioning properly. Please ensure cgroups are enabled  
-
-    Possible Fix: [https://github.com/canonical/microk8s/issues/1691#issuecomment-1265788228](https://github.com/canonical/microk8s/issues/1691#issuecomment-1265788228)
-
-3. WARNING: IPtables FORWARD policy is DROP. Consider enabling traffic forwarding with: `sudo iptables -P FORWARD ACCEPT`
-
-    The change can be made persistent with: `sudo apt-get install iptables-persistent`
-
-4. MicroK8s is not running. Use microk8s inspect for a deeper inspection.
-
-    Possible Fix: [https://lightrun.com/answers/canonical-microk8s-microk8s-is-not-running-microk8sinspect-showing-no-error](https://lightrun.com/answers/canonical-microk8s-microk8s-is-not-running-microk8sinspect-showing-no-error)
-
-    Here this error cloud be due to conflicting kubectl being installed. Use this command to remove kubectl `sudo rm -rf /usr/local/bin/kubectl`
+```bash
+sudo microk8s inspect
+```
 
 ## Update system hostfile to point to MicroK8s
 
-You'll need to edit your hostfile to point certain domains to host machine IP address. On Linux, this is done by running `sudo gedit /etc/hosts`.
+You'll need to edit your hostfile to point certain domains to host machine IP address. First you need to find the IP address of your WSL. Run `wsl hostname -I` in powershell/cmd. For example:
 
-Add/Update the following lines:
+```shell
+C:\Users\hanzl>wsl hostname -I
+172.31.89.133 10.1.215.0
+```
 
-`127.0.0.1 local.etherealengine.org api-local.etherealengine.org instanceserver-local.etherealengine.org 00000.instanceserver-local.etherealengine.org 00001.instanceserver-local.etherealengine.org 00002.instanceserver-local.etherealengine.org 00003.instanceserver-local.etherealengine.org`
+> Note: If you face issue while running above command, make sure that 'Ubuntu' distribution is selected as default. You can do so by running `wsl /l` to view distributions and then run `wslconfig /s Ubuntu` to select distribution.
+
+From the above output, use `172.31.89.133` as `{WSL_IP}`.
+
+> Note: Your ip would be different, this is just for example.
+
+Next, edit your Windows hostfile, this is done by editing `C:\Windows\System32\drivers\etc\hosts`. Add/Update the following lines:
+
+```conf
+{WSL_IP} local.etherealengine.org api-local.etherealengine.org instanceserver-local.etherealengine.org 00000.instanceserver-local.etherealengine.org 00001.instanceserver-local.etherealengine.org 00002.instanceserver-local.etherealengine.org 00003.instanceserver-local.etherealengine.org
+
+{WSL_IP} microk8s.registry
+```
+
+Make sure to replace `{WSL_IP}` with ip address from `wsl hostname -I` command.
 
 The first line says to point several *-local.etherealengine.org domains internally to the host machine, where the nginx ingress server will redirect the traffic to the appropriate pod.
 
-Make sure to save this file after you've edited it. On Linux, at least, you need root permissions to edit it.
+Make sure to save this file after you've edited it. Also, you will need to update hostfile with updated ip address after every Windows/WSL reboot.
 
 ## Add Helm repos
 
@@ -202,13 +312,13 @@ In order to connect logger with elasticsearch, update `local.microk8s.template.v
 
 ## Run build_microk8s.sh
 
-When microk8s is running, run the following command from the root of the Ethereal Engine repo:
+When microk8s is running, run the following command from the root of the Ethereal Engine repo in WSL Ubuntu terminal:
 
 ```bash
-./scripts/build_microk8s.sh
+export REGISTRY_HOST=microk8s.registry; export MYSQL_HOST=kubernetes.docker.internal;bash ./scripts/build_microk8s.sh
 ```
 
-> If you face issue related to `"packages/projects/projects/" does not exist` then run following commands in your terminal:
+> If you face issue related to `"packages/projects/projects/" does not exist` then run following commands in your WSL terminal:
 
 ```bash
 export MYSQL_HOST=localhost
@@ -221,7 +331,7 @@ The script builds the full-repo Docker image using several build arguments. Vite
 
 This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for different services, it will only run the parts needed for that service. This may take up to 15 minutes, though later builds should take less time as things are cached.
 
-Once the images are build. It will push it to MicroK8s local registry. You can verify that images are pushed to registry by visiting [http://localhost:32000/v2/_catalog](http://localhost:32000/v2/_catalog).
+Once the images are build. It will push it to MicroK8s local registry. You can verify that images are pushed to registry by visiting [http://microk8s.registry:32000/v2/_catalog](http://microk8s.registry:32000/v2/_catalog).
 
 ## Update Helm Values File
 
@@ -232,7 +342,17 @@ If you are using local file server as explained couple of steps earlier then, up
 
 ## Deploy Ethereal Engine Helm chart
 
-Run the following command: `helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine`.
+Before this step, ensure that all the agones and redis pods are in "Running" state. You can check pods status using the below command.
+
+```bash
+kubectl get pods
+```
+
+Run the following command:
+
+```bash
+helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine
+```
 
 > [db-refresh-true.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-true.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 

@@ -1,4 +1,4 @@
-import AcceptCertificates from './_accept_certificates.md'
+import AcceptCertificates from './_acceptCertificates.md'
 
 # Ethereal Engine on Minikube
 

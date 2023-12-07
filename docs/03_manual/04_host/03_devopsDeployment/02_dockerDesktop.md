@@ -1,14 +1,10 @@
-import AcceptCertificates from './_accept_certificates.md'
+import AcceptCertificates from './_acceptCertificates.md'
 
 # Ethereal Engine on Docker Desktop
-
-## NOTE: UDP networking does not work properly on Docker Desktop as of this writing, as Docker Desktop does not expose the IP addresses/ports of the node publicly, so mediasoup cannot connect over UDP. If you want to test audio/video calling or networked movements, please use minikube.
+**NOTE**: _UDP networking does not work properly on Docker Desktop as of this writing, as Docker Desktop does not expose the IP addresses/ports of the node publicly, so mediasoup cannot connect over UDP. If you want to test audio/video calling or networked movements, please use minikube._
 
 ## Install kubectl, Helm, and Docker Desktop
-If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/),
-and/or [Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)
-aren't already installed on your machine, install them. Windows and Mac Docker Desktop installation instructions
-can be found [here](https://docs.docker.com/desktop/install/windows-install/) and [here](https://docs.docker.com/desktop/install/mac-install/).
+If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/), and/or [Docker Desktop](https://docs.docker.com/desktop/install/linux-install/) aren't already installed on your machine, install them. Windows and Mac Docker Desktop installation instructions can be found [here](https://docs.docker.com/desktop/install/windows-install/) and [here](https://docs.docker.com/desktop/install/mac-install/).
 
 You may also need to install [Docker Compose](https://docs.docker.com/compose/install/)
 

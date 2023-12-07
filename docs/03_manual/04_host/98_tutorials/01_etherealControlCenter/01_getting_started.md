@@ -1,7 +1,3 @@
---- 
-hide_table_of_contents: true
----
-
 import StepAuthentication from './_step_authentication.md'
 import StepConfigurations from './_step_configurations.md'
 import StepVariables from './_step_variables.md'
@@ -9,14 +5,14 @@ import StepSummary from './_step_summary.md'
 
 # Getting Started
 
-The Ethereal Engine Control Center is a self-contained Metaverse world in a box. Take what you need or launch the full stack. Ethereal Engine Control Center is a desktop app to manage an Ethereal Engine cluster.
+Ethereal Engine's Control Center is a self-contained Metaverse world in a box. Take what you need or launch the full stack.  
+The Control Center is a desktop app to manage an Ethereal Engine cluster.
 
 We know it's been complicated to build with Ethereal Engine and we've made this tool to give the community easy access to the engine. We would love to see your creations and invite you all to come build with us.
 
-## App Overview
+## Overview
 
 The Ethereal Engine Control Center app provides access to various functionalities which includes:
-
 - Configure your Ethereal Engine in a cluster in just a few clicks.
 - View status of Ethereal Engine dependencies on your local system.
 - Manage an Ethereal Engine deployment through admin panel.
@@ -347,3 +343,4 @@ You can run various commands against `rippled` server and view their outputs. Ri
 ## 11. Updating the App
 
 Every time you launch control center app it will check for the latest version of the app. If there is an update, then it will prompt to update. Its always recommend to use the latest version of the app.
+

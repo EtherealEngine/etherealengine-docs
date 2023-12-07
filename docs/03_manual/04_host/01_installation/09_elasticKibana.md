@@ -19,7 +19,7 @@ on some sort of 'advanced options' button or link and then something along the
 lines of 'go there anyway'.
 
 Chrome sometimes does not show a clickable option on the warning. If so, just
-type ```badidea``` or ```thisisunsafe``` when on that page. You don't enter
+type `badidea` or `thisisunsafe` when on that page. You don't enter
 that into the address bar or into a text box, Chrome is just passively listening
 for those commands.
 

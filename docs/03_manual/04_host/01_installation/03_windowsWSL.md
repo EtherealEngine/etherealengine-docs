@@ -28,7 +28,7 @@ Install docker desktop with WSL 2 backend. You can find the instructions [here](
 
 Once docker desktop is installed and running make sure to enable your WSL distribution. You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`. Enable integration with Ubuntu. Make sure to hit 'Apply & Restart'.
 
-![Docker Desktop WSL Distro](../2_devops_deployment/images/docker-desktop-wsl-distro.jpg)
+![Docker Desktop WSL Distro](../02_devopsDeployment/images/docker-desktop-wsl-distro.jpg)
 
 ## Install Node. 
 Run Powershell in Administrator mode. Run Ubuntu using command : `wsl`. After logging on run the following command: `cd ~/` to ensure that the installation of Node and other packages mentioned below is done in Ubuntu.
