@@ -25,11 +25,12 @@
 - Always assign a valid coding language to code blocks _(necessary for syntax highlighting)_.
 
 ## Docusaurus: Routing
-- Rely on folder/file names for document ordering.
 - Always name files/folder with the format: `NN_theFile.md`
   - Prefix dictates file position.
   - Prefix always starts with 2digits+underscore (`NN_`, eg: 00_intro.md)
   - Use camelCase for file/folder names.
+- Rely on folder/file names for document ordering.
+  Note: Folders will (sometimes) need a `_category_.json` that defines a `"position": "NN"` property for them to be correctly ordered.
 - Do not rely on `readme.md` files for declaring a folder's root file.
   - Use a `_category_.json` file for each new section, instead of `readme.md` files.
 - The `00_` file of a folder should always contain introductory information about the section.
