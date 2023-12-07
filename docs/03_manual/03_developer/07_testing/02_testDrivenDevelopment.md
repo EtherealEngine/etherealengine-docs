@@ -1,6 +1,3 @@
---- 
-hide_table_of_contents: true
----
 # Writing Good Tests
 
 Now that our code has been thoughtfully organized into stateless functions we can easily put them to the test with three simple steps:
@@ -44,7 +41,7 @@ The cycle above is repeated for each new piece of functionality.
 Tests should be small and incremental, and commits made often. That way, if new code fails some tests, the programmer can simply undo or revert rather than debug excessively. When using external libraries, it is important not to write tests that are so small as to effectively test merely the library itself, unless there is some reason to believe that the library is buggy or not feature-rich enough to serve all the needs of the software under development.
 
 
-### Antipatterns
+## Antipatterns
 Practices to avoid, or "anti-patterns"
 - Having test cases depend on system state manipulated from previously executed test cases (i.e., you should always start a unit test from a known and pre-configured state).
 - Dependencies between test cases. A test suite where test cases are dependent upon each other is brittle and complex. Execution order should not be presumed. Basic refactoring of the initial test cases or structure of the UUT causes a spiral of increasingly pervasive impacts in associated tests.
