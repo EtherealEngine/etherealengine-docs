@@ -1,9 +1,3 @@
----
-id: contributing.intro
-title: Get Involved
-sidebar_label: Get Involved
-slug: /contributing
----
 # Get Involved
 
 ## Entry1

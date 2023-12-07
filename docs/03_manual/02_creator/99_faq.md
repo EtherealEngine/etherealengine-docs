@@ -1,10 +1,7 @@
 ---
-id: faq
-title: Creator | Frequently Asked Questions
 sidebar_label: Creator FAQ
-slug: /manual/creator/faq
-sidebar_position: 99
 ---
+# Frequently Asked Questions
 
 _Creator FAQ. Each Manual has its own independent FAQ_
 

@@ -1,7 +1,3 @@
----
-id: community.intro
-slug: /community
----
 # Community
 _current : Community channels._  
 _future : Community content and assets_

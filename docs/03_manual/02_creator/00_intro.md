@@ -1,2 +1,2 @@
 # Creator Manual
-Learn how to create, code and customize projects with Ethereal Engine.
+Learn how to create and customize projects for Ethereal Engine.
