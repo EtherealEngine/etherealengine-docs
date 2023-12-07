@@ -1,26 +1,21 @@
 # Behave Graph
-
-* Overview
-* Audience
+- Overview
+- Audience
 
 Getting Started
-
-* Installation
-* Configuration
+- Installation
+- Configuration
 
 Code Overview:
-
-* High-Level Architecture
-* Key Concepts
-* Engine Nodes
+- High-Level Architecture
+- Key Concepts
+- Engine Nodes
 
 Usage
-
-* Examples
+- Examples
 
 Configuration and Customization
-
-* Making new nodes
+- Making new nodes
 
 ## 1. Introduction
 
@@ -60,8 +55,8 @@ Step 2:
 
 The behave graph properties panel has two properties:
 
-* Run graph: runs the graph in headless mode as part of the engine
-* Disable graph: disable graph from playing
+- Run graph: runs the graph in headless mode as part of the engine
+- Disable graph: disable graph from playing
 
 ### 2.3 Creating your First graph
 
@@ -147,31 +142,27 @@ TODO: add pictures
 
 Node Types
 
-* Events You can implement arbitrary events that start execution: Start, Tick
-* Actions You can implement actions that trigger animations, scene scene variations, or update internal state: Log, Play Gltf animation, Play Audio, Play Video, etc
-* Logic You can do arithmetic, trigonometry as well as vector operations and string manipulation: Add, Subtract, Multiply, Divide, Pow, Exp, Log, Log2, Log10, Min, Max, Round, Ceil, Floor, Sign, Abs, Trunc, Sqrt, Negate, A# Introduction
+- Events You can implement arbitrary events that start execution: Start, Tick
+- Actions You can implement actions that trigger animations, scene scene variations, or update internal state: Log, Play Gltf animation, Play Audio, Play Video, etc
+- Logic You can do arithmetic, trigonometry as well as vector operations and string manipulation: Add, Subtract, Multiply, Divide, Pow, Exp, Log, Log2, Log10, Min, Max, Round, Ceil, Floor, Sign, Abs, Trunc, Sqrt, Negate, A# Introduction
 
-* Overview
-* Audience
+- Overview
+- Audience
 
 Getting Started
-
-* Installation
-* Configuration
+- Installation
+- Configuration
 
 Code Overview:
-
-* High-Level Architecture
-* Key Concepts
-* Engine Nodes
+- High-Level Architecture
+- Key Concepts
+- Engine Nodes
 
 Usage
-
-* Examples
+- Examples
 
 Configuration and Customization
-
-* Making new nodes
+- Making new nodes
 
 ## 1. Introduction
 
@@ -298,13 +289,13 @@ TODO: add pictures
 
 Node Types
 
-* Events You can implement arbitrary events that start execution: Start, Tick
-* Actions You can implement actions that trigger animations, scene scene variations, or update internal state: Log, Play Gltf animation, Play Audio, Play Video, etc
-* Logic You can do arithmetic, trigonometry as well as vector operations and string manipulation: Add, Subtract, Multiply, Divide, Pow, Exp, Log, Log2, Log10, Min, Max, Round, Ceil, Floor, Sign, Abs, Trunc, Sqrt, Negate, And, Or, Not, ==, >, >=, \<, \<=, isNan, isInfinity, concat, includes.
-* Queries You can query the state from the system.
-* Flow Control Control execution flow using familiar structures: Branch, Delay, Debounce, Throttle, FlipFlop, Sequence, Gate, MultiGate, DoOnce, DoN, ForLoop
-* Variables You can create, set and get variable values.
-* Custom Events You can create, listen to and trigger custom events.
+- Events You can implement arbitrary events that start execution: Start, Tick
+- Actions You can implement actions that trigger animations, scene scene variations, or update internal state: Log, Play Gltf animation, Play Audio, Play Video, etc
+- Logic You can do arithmetic, trigonometry as well as vector operations and string manipulation: Add, Subtract, Multiply, Divide, Pow, Exp, Log, Log2, Log10, Min, Max, Round, Ceil, Floor, Sign, Abs, Trunc, Sqrt, Negate, And, Or, Not, ==, >, >=, \<, \<=, isNan, isInfinity, concat, includes.
+- Queries You can query the state from the system.
+- Flow Control Control execution flow using familiar structures: Branch, Delay, Debounce, Throttle, FlipFlop, Sequence, Gate, MultiGate, DoOnce, DoN, ForLoop
+- Variables You can create, set and get variable values.
+- Custom Events You can create, listen to and trigger custom events.
 
 ### 3.2 Key Concepts
 
@@ -380,10 +371,10 @@ Making Function node
 
 Extending Dependencies  
 nd, Or, Not, ==, >, >=, \<, \<=, isNan, isInfinity, concat, includes.
-* Queries You can query the state from the system.
-* Flow Control Control execution flow using familiar structures: Branch, Delay, Debounce, Throttle, FlipFlop, Sequence, Gate, MultiGate, DoOnce, DoN, ForLoop
-* Variables You can create, set and get variable values.
-* Custom Events You can create, listen to and trigger custom events.
+- Queries You can query the state from the system.
+- Flow Control Control execution flow using familiar structures: Branch, Delay, Debounce, Throttle, FlipFlop, Sequence, Gate, MultiGate, DoOnce, DoN, ForLoop
+- Variables You can create, set and get variable values.
+- Custom Events You can create, listen to and trigger custom events.
 
 ### 3.2 Key Concepts
 
