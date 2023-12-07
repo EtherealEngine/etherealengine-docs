@@ -16,11 +16,14 @@
 ## Contributing Guidelines: Documentation Repository
 ```md
 # Markdown style guide
+
 ## General Markdown
 - Dash `-` for bullet points and todo entries
 - Asterisk `*` for bold
 - Underscore `_` for italics
 - End lines with double space `  ` for newline breaks within the same paragraph.
+- Always assign a valid coding language to code blocks _(necessary for syntax highlighting)_.
+
 ## Docusaurus: Routing and Formatting
 - Always name files/folder with the format: `NN_theFile.md`
   - Prefix dictates file position.
@@ -31,13 +34,17 @@
   - The `00_` file of a folder should always contain introductory information about the section.
     (It replaces the use of `readme.md` files)
 - Rely on folder/file names for document ordering.
+
+### Docusaurus: Metadata
 - Never add a metadata header to files that do not need it.
   _Explicit per-file metadata is tedious, brittle and very difficult to maintain_
-  - Only give files the `sidebar_label` metatag when the title differs from the desired sidebar name. 
-    _(eg: FAQ vs Frequently Asked Questions)_
-  - Only give files a `title` metatag when the first `# Title` header in the file differs from the desired file title.
-  - Always give a `# Title` to every file, and rely on it for file metadata.
-  - Use filename routing for identifying files
-    - eg: Use `/path/to/file/intro` instead of `id: /path/to/file.intro`
-    - Only give files an `id` metatag when other methods of identification would not work.
+- Only give files the `sidebar_label` metatag when the title differs from the desired sidebar name. 
+  _(eg: FAQ vs Frequently Asked Questions)_
+- Only give files a `title` metatag when the first `# Title` header in the file differs from the desired file title.
+- Always give a `# Title` to every file, and rely on it for file metadata.
+- Use filename routing for identifying files
+  - eg: Use `/path/to/file/intro` instead of `id: /path/to/file.intro`
+  - Only give files an `id` metatag when other methods of identification would not work.
+- Never use explicit slugs, unless strictly necessary
+  _(eg: when file path identification does not work correctly)_.
 ```
