@@ -24,16 +24,18 @@
 - End lines with double space `  ` for newline breaks within the same paragraph.
 - Always assign a valid coding language to code blocks _(necessary for syntax highlighting)_.
 
-## Docusaurus: Routing and Formatting
+## Docusaurus: Routing
+- Rely on folder/file names for document ordering.
 - Always name files/folder with the format: `NN_theFile.md`
   - Prefix dictates file position.
   - Prefix always starts with 2digits+underscore (`NN_`, eg: 00_intro.md)
   - Use camelCase for file/folder names.
 - Do not rely on `readme.md` files for declaring a folder's root file.
   - Use a `_category_.json` file for each new section, instead of `readme.md` files.
-  - The `00_` file of a folder should always contain introductory information about the section.
-    (It replaces the use of `readme.md` files)
-- Rely on folder/file names for document ordering.
+- The `00_` file of a folder should always contain introductory information about the section.
+  (It replaces the use of `readme.md` files)
+- Folders that do not need an introductory page should not add a `00_intro.md`, `_category_.json` or `readme.md` files
+  When neither of these files exist, docusaurus will just make the category clickable/expandable with no routing redirection.
 
 ### Docusaurus: Metadata
 - Never add a metadata header to files that do not need it.
