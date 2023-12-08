@@ -1,0 +1,43 @@
+name: Prepare Algolia Search
+
+on:
+    workflow_run:
+      workflows:
+        - "DeployDocs"
+      types:
+        - completed
+
+    workflow_dispatch:
+        inputs:
+            dispatch_name:
+                description: 'Dispatch Name'
+                required: false
+                default: '<anything to note down>'
+    
+    push:
+      branches:
+        - "feat/prepare-search"
+      
+
+jobs:
+    algolia_index:
+      runs-on: ubuntu-latest
+
+      # if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 1
+
+        - name: show algolia config
+          run: |
+            cat algolia-config.json
+
+        - name: run index and upload to algolia
+          uses: darrenjennings/algolia-docsearch-action@master
+          with:
+            algolia_application_id: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+            algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}
+            file: algolia-config.json

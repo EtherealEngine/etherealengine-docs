@@ -57,7 +57,7 @@ const config: Config = {
     },
     algolia: {
       appId: "N5OIDFHT9B",
-      apiKey: "06604779928fc73656c9ae03fae1f0b1",
+      apiKey: "e27783cb4ed9bfc6a011eb7026868c20",
       indexName: "etherealengine",
       contextualSearch: true,
     },
