@@ -31,6 +31,7 @@ jobs:
           ref: ${{vars.ENGINEBRANCH}}
       - name: Setup Pages
         id: pages
+        if: github.event_name == 'push'
         uses: actions/configure-pages@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -46,6 +47,7 @@ jobs:
           npm run build
           ENGINE_PATH=./etherealengine npm run typedoc
       - name: Upload artifact
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v2
         with:
           path: "build/"
