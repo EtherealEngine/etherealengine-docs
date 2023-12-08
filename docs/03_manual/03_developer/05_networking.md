@@ -6,7 +6,7 @@ Networks are a way of sharing topic specific data between certain peers. There a
 
 ## Users & Peers
 
-Users are unique accounts created in a particular Ethereal Engine deployment. Users can connect to multiple instances, and have multiple peers connected to each instance.
+Users are unique accounts created in a particular Ethereal Engine deployment. Users can connect to multiple instances, and have multiple peers connected to each instance. Only a single avatar will be loaded for a user, but it can be controlled by any of that user's peers.
 
 ## Ownership and Authority
 
