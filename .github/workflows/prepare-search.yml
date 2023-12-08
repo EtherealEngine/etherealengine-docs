@@ -33,6 +33,6 @@ jobs:
 
         - name: start a reindex task on algolia crawler
           run: |
-            curl --http1.1 --location --request POST "https://crawler.algolia.com/api/1/crawlers/${{ secrets.ALGOLIA_CRAWLER_ID }}/reindex" \
+            curl --http1.1 --location --request POST -d "" "https://crawler.algolia.com/api/1/crawlers/${{ secrets.ALGOLIA_CRAWLER_ID }}/reindex" \
             --header "Content-Type: application/json" \
             --header "Authorization: Basic ${{ secrets.ALGOLIA_CRAWLER_AUTH }}"
