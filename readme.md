@@ -46,7 +46,7 @@
 - Only give files a `title` metatag when the first `# Title` header in the file differs from the desired file title.
 - Always give a `# Title` to every file, and rely on it for file metadata.
 - Use filename routing for identifying files
-  - eg: Use `/path/to/file/intro` instead of `id: /path/to/file.intro`
+  - eg: Use `/path/to/file/intro` instead of `id: file.intro`
   - Only give files an `id` metatag when other methods of identification would not work.
 - Never use explicit slugs, unless strictly necessary
   _(eg: when file path identification does not work correctly)_.
