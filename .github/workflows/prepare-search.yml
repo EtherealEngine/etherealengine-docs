@@ -31,13 +31,8 @@ jobs:
           with:
             fetch-depth: 1
 
-        - name: show algolia config
+        - name: start a reindex task on algolia crawler
           run: |
-            cat algolia-config.json
-
-        - name: run index and upload to algolia
-          uses: darrenjennings/algolia-docsearch-action@master
-          with:
-            algolia_application_id: ${{ secrets.ALGOLIA_APPLICATION_ID }}
-            algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}
-            file: algolia-config.json
+            curl --http1.1 --location --request POST "https://crawler.algolia.com/api/1/crawlers/${{ secrets.ALGOLIA_CRAWLER_ID }}/reindex" \
+            --header "Content-Type: application/json" \
+            --header "Authorization: Basic ${{ secrets.ALGOLIA_CRAWLER_AUTH }}"
