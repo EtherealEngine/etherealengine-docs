@@ -51,7 +51,7 @@ jobs:
           path: "build/"
         
   deploy:
-    if: github.ref == 'refs/remotes/origin/main'
+    if: github.event_name == 'push'
     permissions:
       contents: read
       pages: write
