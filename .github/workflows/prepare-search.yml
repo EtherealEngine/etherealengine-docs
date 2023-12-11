@@ -1,0 +1,34 @@
+name: Prepare Algolia Search
+
+on:
+    workflow_run:
+      workflows:
+        - "DeployDocs"
+      types:
+        - completed
+
+    workflow_dispatch:
+        inputs:
+            dispatch_name:
+                description: 'Dispatch Name'
+                required: false
+                default: '<anything to note down>'
+      
+
+jobs:
+    algolia_index:
+      runs-on: ubuntu-latest
+
+      if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 1
+
+        - name: start a reindex task on algolia crawler
+          run: |
+            curl --http1.1 --location --request POST -d "" "https://crawler.algolia.com/api/1/crawlers/${{ secrets.ALGOLIA_CRAWLER_ID }}/reindex" \
+            --header "Content-Type: application/json" \
+            --header "Authorization: Basic ${{ secrets.ALGOLIA_CRAWLER_AUTH }}"
