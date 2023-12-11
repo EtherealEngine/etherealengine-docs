@@ -1,7 +1,4 @@
-# Debugging
-This section covers different techniques for debugging source code.
-
-## Basic Debugging
+# Basic Debugging
 This setup can be used to debug instance server & backend server code.  
 1. Navigate to `Run & Debug` tab of vscode.
 2. Add a breakpoint to the desired line of code.

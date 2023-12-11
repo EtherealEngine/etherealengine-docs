@@ -2,7 +2,7 @@
   "label": "Debugging",
   "position": 08,
   "link": {
-    "type": "doc",
-    "id": "manual/developer/debugging/intro"
+    "type": "generated-index",
+    "description": "This section covers different techniques for debugging Ethereal Engine's source code and any projects created with it."
   }
 }
