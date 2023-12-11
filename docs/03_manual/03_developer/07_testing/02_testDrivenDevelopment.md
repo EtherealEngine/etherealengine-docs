@@ -43,10 +43,15 @@ Tests should be small and incremental, and commits made often. That way, if new 
 
 ## Antipatterns
 Practices to avoid, or "anti-patterns"
-- Having test cases depend on system state manipulated from previously executed test cases (i.e., you should always start a unit test from a known and pre-configured state).
-- Dependencies between test cases. A test suite where test cases are dependent upon each other is brittle and complex. Execution order should not be presumed. Basic refactoring of the initial test cases or structure of the UUT causes a spiral of increasingly pervasive impacts in associated tests.
-- Interdependent tests. Interdependent tests can cause cascading false negatives. A failure in an early test case breaks a later test case even if no actual fault exists in the UUT, increasing defect analysis and debug efforts.
+- Having test cases depend on system state manipulated from previously executed test cases  
+  (i.e., you should always start a unit test from a known and pre-configured state)
+- Dependencies between test cases  
+  A test suite where test cases are dependent upon each other is brittle and complex. Execution order should not be presumed. Basic refactoring of the initial test cases or structure of the UUT causes a spiral of increasingly pervasive impacts in associated tests.
+- Interdependent tests  
+  Interdependent tests can cause cascading false negatives. A failure in an early test case breaks a later test case even if no actual fault exists in the UUT, increasing defect analysis and debug efforts.
 - Testing precise execution behavior timing or performance.
-- Building "all-knowing oracles". An oracle that inspects more than necessary is more expensive and brittle over time. This very common error is dangerous because it causes a subtle but pervasive time sink across the complex project.
+- Building "all-knowing oracles"  
+  An oracle that inspects more than necessary is more expensive and brittle over time. This very common error is dangerous because it causes a subtle but pervasive time sink across complex projects.
 - Testing implementation details.
 - Slow running tests.
+
