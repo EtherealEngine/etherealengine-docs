@@ -1,2 +1,2 @@
-# Avatars Introduction
-_This page will contain an introduction to the Avatars section._  
+# Avatars
+<!-- TODO: This page will contain an introduction to the Avatars section -->
