@@ -3,38 +3,34 @@
 This guide is currently tested on Windows 10 (22H2) and Windows 11.
 
 ## Install Windows Subsystem for Linux (WSL). 
-Remember to run Powershell in Administrator mode either by right clicking and selecting 'Run as administrator' or by typing PowerShell in 'Run' dialog box of Windows and pressing `Ctrl+Shift+Enter` key combination.
+Remember to run Powershell in Administrator mode either by right clicking and selecting `Run as administrator` or by typing PowerShell in `Run` dialog box of Windows and pressing `Ctrl+Shift+Enter` key combination.
 
-Install Ubuntu distribution of Linux by executing the command:
-`wsl --install --distribution Ubuntu`
-or
-Install Ubuntu distribution of Linux from Microsoft Store by using guide [here](https://learn.microsoft.com/en-us/windows/wsl/install).
-
-Alternatively, you can follow these instructions as well:
-
-- [How to install WSL](https://pureinfotech.com/install-wsl-windows-11/)
+Install Ubuntu distribution of Linux with one of these options:
+- `wsl --install --distribution Ubuntu`
+- Follow the [WSL installation guide](https://learn.microsoft.com/en-us/windows/wsl/install)
+- [How to install WSL in Windows 11](https://pureinfotech.com/install-wsl-windows-11/)
 - [Manual installation steps for WSL](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 
 Once WSL is installed, make sure to:
-
 - [Set up your Linux username and password](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
 - [Update and upgrade packages](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#update-and-upgrade-packages)
-- Verify Ubuntu distribution using the command: 'lsb_release -a'
-- You can verify WSL and Ubuntu  installation by using the command in PowerShell: 'wsl -l -v'
+- Verify Ubuntu distribution executing the command: `lsb_release -a`
+- You can verify your WSL/Ubuntu installation by executing this command in PowerShell: `wsl -l -v`
 
 ## Install Docker Desktop
+Install docker desktop with the WSL 2 backend.
+You can find the instructions [here](https://docs.docker.com/desktop/install/windows-install/).
 
-Install docker desktop with WSL 2 backend. You can find the instructions [here](https://docs.docker.com/desktop/install/windows-install/).
-
-Once docker desktop is installed and running make sure to enable your WSL distribution. You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`. Enable integration with Ubuntu. Make sure to hit 'Apply & Restart'.
+Make sure to enable your WSL distribution once docker desktop is installed and running.  
+You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`.
+Enable integration with Ubuntu, and make sure to hit `Apply & Restart`.
 
 ![Docker Desktop WSL Distro](../03_devopsDeployment/images/docker-desktop-wsl-distro.jpg)
 
-## Install Node. 
+## Install Node.
 Run Powershell in Administrator mode. Run Ubuntu using command : `wsl`. After logging on run the following command: `cd ~/` to ensure that the installation of Node and other packages mentioned below is done in Ubuntu.
 
-In your WSL Ubuntu terminal, if node (`node --version`) isn't already installed on your machine. You can do so by first installing `nvm` by running following commands:
-
+If Node is not already installed on your machine _(check with `node --version`)_, you can install it by first installing `nvm` by running following commands in your WSL Ubuntu terminal:
 ```bash
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 source ~/.profile
