@@ -1,17 +1,17 @@
 # Documentation
 
-* [Why are we building Ethereal Engine?](docs/0_start_here.md)
-* [Installation instructions](docs/1_installation/readme.md)
-* [Projects API](docs/3_concepts/1_projects_api.md)
-* [Scene Editor, Locations and Instances](docs/3_concepts/2_editor_scenes_locations.md)
-* [Entity Component System Overview (ECS)](docs/3_concepts/3_ecs.md)
-* [Testing guide](docs/4_testing/readme.md)
-  - [Writing Reasonable & Testable Code](docs/4_testing/2_reasonable_code.md)
-  - [Test-driven Development](docs/4_testing/3_test_driven_development.md)
-* DevOps
-  - [Database Migration](docs/2_devops_deployment/3_feathers_sequelize.md)
-  - [Deploying Ethereal Engine on minikube](docs/2_devops_deployment/1_minikube.md)
-* See also [Ethereal Engine Wiki](https://github.com/etherealengine/etherealengine/wiki/)
+- [Why are we building Ethereal Engine?](./docs/01_gettingStarted/00_intro.md)
+- [Installation instructions](./docs/03_manual/04_host/01_installation/00_intro.md)
+- [Projects API](./docs/03_manual/03_developer/01_projectsOverview.md)
+- [Scene Editor, Locations and Instances](./docs/03_manual/02_creator/01_concepts/)
+- [Entity Component System Overview (ECS)](./docs/03_manual/03_developer/04_ecs.md)
+- [Testing guide](./docs/03_manual/03_developer/07_testing/00_intro.md)
+  - [Writing Reasonable & Testable Code](./docs/03_manual/03_developer/07_testing/01_reasonableCode.md)
+  - [Test-driven Development](./docs/03_manual/03_developer/07_testing/02_testDrivenDevelopment.md)
+- DevOps
+  - [Database Migration](./docs/03_manual/04_host/03_devopsDeployment/04_databaseMigrations.md)
+  - [Deploying Ethereal Engine on minikube](./docs/03_manual/04_host/03_devopsDeployment/02_minikube.md)
+- See also [Ethereal Engine Wiki](https://github.com/etherealengine/etherealengine/wiki/)
 
 ## Contributing Guidelines: Documentation Repository
 ```md
