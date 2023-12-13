@@ -1,5 +1,8 @@
 # Installation
 
+import CloneInstructions from './_cloneInstructions.md'
+import AcceptCertificates from './_acceptCertificates.md'
+
 Getting up and running requires just a few steps, but this can be tricky, depending on your platform and current environment.
 Please follow the directions for your specific environment.
 
@@ -19,18 +22,14 @@ You should now be ready to follow the [Quick Start](#quick-start) instructions.
 ### Clone the repository
 A lot has changed during development, and our monorepo has gotten quite large.  
 To avoid cloning everything, use this command:
-```bash
-git clone https://github.com/etherealengine/etherealengine --depth 1
-```
-> **Warning**:  
-> Adding `--depth=1` will significantly reduce the amount of data downloaded when cloning, but it will also create a `Shallow Copy` of the engine's repository.  
-If you need to download any branch other than `dev`, or go back in git history into an older commit, you will **need** to unshallow the repository first, or else any branches and older commits won't be visible to you at all. The command to undo cloning with `--depth=N` is either `git fetch --unshallow` or `git pull --unshallow`
+
+<CloneInstructions />
 
 ### Ensure you are running Node 18
 The engine to date has only been confirmed to work with Node 16.x and 18.x.  
 Earlier or later major versions are not guaranteed to work properly.
 
-Using a version manager is the best way to install and manage Node.js versions:
+The best way to install and manage Node.js versions is by using a version manager:
 1. Install [NVM](https://github.com/nvm-sh/nvm)
 2. Install Node18 with `nvm install 18`
 3. _(Optional)_ Make Node18 your default node version with `nvm alias default 18`
@@ -59,17 +58,7 @@ npm run dev
 Now run Ethereal Engine in your browser by navigating to [this link](https://localhost:3000/location/default).  
 
 ### Accept Certificates
-You'll have to tell your browser to ignore insecure connections when you try to load the website.
- 1. If it keeps displaying `loading routes` progress for a long time, it is due to the fact that you have to allow certificates.
- 2. Open the `Developer Tools` of your browser by clicking the side menu with three dots, then go to `More tools > Developer tools` (or use either `Ctrl+Shift+I` or `F12`) and then go to the `Console` tab.
- 3. You will see some errors in URL addresses starting with `wss`
-     - Replace `wss` with `https` and open that URL in a new tab.
-     - Accept the certificate
-     - Reload your Ethereal Engine tab
- 4. You will see some errors in URL addresses starting with `https://localhost:9000`
-     - Open of the that URL
-     - Accept the certificate
-     - Reload your Ethereal Engine tab.
+<AcceptCertificates />
 
 ### Admin System and User Setup
 You can administrate many features from the admin panel at the `/admin` route of your deployment.  

@@ -53,7 +53,6 @@ docker run -d --name channel --env-file .env.local.default -e "SERVER_MODE=realt
 ```
 
 ## Delete containers, if you want to run a new build, or just get rid of them
-
 ``` bash
 docker container stop serve-local
 docker container rm serve-local

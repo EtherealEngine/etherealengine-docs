@@ -1,100 +1,99 @@
+import AcceptCertificates from './_acceptCertificates.md'
+
 # Advanced Setup
 
-If you want to setup Ethereal Engine docker instances, client, server, and/or
-instance-server manually, follow these directions. The advanced setup is recommended
-for all users, in order to understand more about everything that's going on.
+The advanced setup is recommended for users who want to understand the internals of how the Ethereal Engine's deployment stack works.
+These instructions will explain how to manually setup Ethereal Engine docker instances, client, server and/or instance-server.  
 
-### 1.  Install your dependencies
-```
+## 1. Install dependencies
+```bash
 cd path/to/etherealengine
 npm install
 npm run dev-docker
 npm run dev-reinit
 ```
+_Note how you don't need to use sudo for any of these commands._
 
-You should not need to use sudo in any case.
+> If you find errors with mediasoup:
+> - Follow the [Mediasoup Installation](https://mediasoup.org/documentation/v3/mediasoup/installation/) instructions
+> - Check that your version of python is up to date: `python --version`
+> - Make sure that the path where you installed Ethereal Engine has no whitespaces
 
-Error with mediasoup? https://mediasoup.org/documentation/v3/mediasoup/installation/
-- Check your version of python is up to date
-- Ensure your install path has no whitespaces
+## 2. Start the MySQL database
+Make sure you have a MySQL database installed and running. Our recommendation is `MariaDB`.
 
-### 2. Make sure you have a mysql database installed and running -- our recommendation is Mariadb.
-
-We've provided a docker container for easy setup:
-
-```
+We provide a docker container for easily setting up the database. This command will create a Docker container of MariaDB named `etherealengine_db`:
+```bash
 cd scripts && sudo bash start-db.sh
 ```
+> Note: You must have docker installed on your machine for this script to work.  
+If you do not have Docker installed, and do not wish to install it, you will have to manually create a MariaDB server.
 
-This creates a Docker container of mariadb named etherealengine_db. You must have
-docker installed on your machine for this script to work.
-If you do not have Docker installed and do not wish to install it, you will have
-to manually create a MariaDB server.
 
-The default username is 'server', the default password is 'password', the
-default database name is 'etherealengine', the default hostname is '127.0.0.1', and
-the default port is `3306`.
+The default database information is:
+| | |
+|-|-|
+| Username | `server` |
+| Password | `password` |
+| Database | `etherealengine` |
+| Hostname | `127.0.0.1` |
+| Port     | `3306` |
+> Note: If you have errors connecting to the local database, you might need to shut off your local firewall.
 
-Seeing errors connecting to the local DB? **Try shutting off your local firewall.**
 
-### 3. Open a new tab and start the Agones sidecar in local mode
-
+## 3. Start Agones
+Open a new terminal and start the Agones sidecar in local mode
+```bash
+cd scripts && sudo bash start-agones.sh
 ```
-cd scripts
-sudo bash start-agones.sh
-```
+Alternatively, you can also go to `etherealengine/vendor/agones/` and run:
+- Linux: `./sdk-server.linux.amd64 --local`
+- Windows: `sdk-server.windows.amd64.exe --local`
+- Mac: `./sdk-server.darwin.amd64 --local`
 
-You can also go to vendor/agones/ and run
+## 4. Start the server in database seed mode
+Several tables in the database need to be seeded with default values.  
+To do so, run:
+- Unix: `npm run dev-reinit`
+- Windows: `npm run dev-reinit-windows`
 
-```./sdk-server.linux.amd64 --local```
-
-If you are using a Windows machine, run
-
-```sdk-server.windows.amd64.exe --local```
-
-and for mac, run
-
-```./sdk-server.darwin.amd64 --local```
-
-### 4. Start the server in database seed mode
-
-Several tables in the database need to be seeded with default values.
-Run ```npm run dev-reinit``` or if on windows ```npm run dev-reinit-windows```
-After several seconds, there should be no more logging.
-Some of the final lines should read like this:
-```
+There should be no more logging after several seconds.  
+If the database has been correctly seeded, some of the final lines should read like this:
+```bash
 Server Ready
 Executing (default): SET FOREIGN_KEY_CHECKS = 1
 Server EXIT
 ```
 
-At this point, the database has been seeded.
+## 5. Local file server configuration (Optional)
+If the `.env.local` file you have has this line, the Scene Editor will save components, models, scenes, etc. locally, instead of storing them on the `S3` cloud server:  
+```bash
+STORAGE_PROVIDER=local
+```
+You will need to start a local server to serve these files and make sure that your `.env.local` file has this line:
+```bash
+LOCAL_STORAGE_PROVIDER="localhost:8642"
+```
+In a new terminal, go to `packages/server` and run
+```bash
+npm run serve-local-files
+```
+This will start up the `http-server` that will serve local files from `packages/server/upload` on `localhost:8642`.  
+> Note: You may have to accept the invalid self-signed certificate in the browser the first time it is loaded. See the `Allow local file http-server connection with invalid certificate` section below.
 
-### 5. Local file server configuration (Optional)
-If the .env.local file you have has the line
-```STORAGE_PROVIDER=local```
-then the scene editor will save components, models, scenes, etc. locally
-(as opposed to storing them on S3). You will need to start a local server
-to serve these files, and make sure that .env.local has the line
-```LOCAL_STORAGE_PROVIDER="localhost:8642"```.
-In a new tab, go to ```packages/server``` and run ```npm run serve-local-files```.
-This will start up ```http-server``` to serve files from ```packages/server/upload```
-on ```localhost:8642```.
-You may have to accept the invalid self-signed certificate for it in the browser;
-see 'Allow local file http-server connection with invalid certificate' below.
+## 6. Start the API server, instance-server and client
+Open two/three separate terminals and run:
+- Run `npm run dev` inside `packages/server`.  
+  This will launch the API, world, media and file servers.  
+  _Note: If you are not using instanceservers, you can instead run `npm run dev-api-server` inside the API server folder._
+- Run `npm run dev` inside `packages/client`  
+  _Note: If you are on windows you need to use `npm run dev-windows` instead of `npm run dev`._
 
-### 6. Open two/three separate tabs and start the API server, instanceserver and client
-In /packages/server, run ```npm run dev``` which will launch the api server, world server, media server and file server.
-If you are not using instanceservers, you can instead run ```npm run dev-api-server``` in the api server.
-In the final tab, go to /packages/client and run ```npm run dev```.
-If you are on windows you need to use ```npm run dev-windows``` instead of ```npm run dev```.
+## 7. Open the Engine
+If everything went well, you can now open the engine by navigating to [this link](https://localhost:3000/location/default) in your browser.  
 
-### 7. In a browser, navigate to https://127.0.0.1:3000/location/default
-The database seeding process creates a default empty location called 'default'.
-It can be navigated to by going to 'https://127.0.0.1:3000/location/default'.
-As of this writing, the cert provided in the ethereal engine package for local use is
-not adequately signed. You can create signed certificates and replace the
-default ones, but most developers just ignore the warnings. Browsers will throw
-up warnings about going to insecure pages. You should be able to tell the browser
-to ignore it, usually by clicking on some sort of 'advanced options' button or
-link and then something along the lines of 'go there anyway'.
+The database seeding process creates a default empty location called `default`, which can be accessed by opening `https://localhost:3000/location/default`.
+
+## 8. Accept the Certificates
+<AcceptCertificates />
+
