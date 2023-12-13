@@ -1,6 +1,6 @@
 # Documentation
 
-- [Why are we building Ethereal Engine?](./docs/01_gettingStarted/00_intro.md)
+- [Why are we building Ethereal Engine?](./docs/00_overview/00_startHere.md)
 - [Installation instructions](./docs/03_manual/04_host/01_installation/00_intro.md)
 - [Projects API](./docs/03_manual/03_developer/01_projectsOverview.md)
 - [Scene Editor, Locations and Instances](./docs/03_manual/02_creator/01_concepts/)
