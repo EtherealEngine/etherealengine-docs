@@ -1,2 +1,5 @@
+import DocCardList from '@theme/DocCardList'
+
 # Admin Panel Guide
-_This page will become a section, and it will contain the Admin Panel Guide_  
+
+<DocCardList />
