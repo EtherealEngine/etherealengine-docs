@@ -61,7 +61,7 @@ Now run Ethereal Engine in your browser by navigating to [this link](https://loc
 <AcceptCertificates />
 
 ### Admin System and User Setup
-You can administrate many features from the admin panel at the `/admin` route of your deployment.  
+You can administrate many features from the admin panel found at the `/admin` route of your deployment.  
 _eg: `https://localhost:3000/admin` when working in a local deployment._
 
 To give administration rights to a user:
