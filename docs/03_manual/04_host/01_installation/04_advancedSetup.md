@@ -1,4 +1,4 @@
-import AcceptCertificates from './_acceptCertificates.md'
+import AcceptCertificates from '../partials/_acceptCertificates.md'
 
 # Advanced Setup
 

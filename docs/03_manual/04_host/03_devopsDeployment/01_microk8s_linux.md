@@ -1,103 +1,95 @@
-import AcceptCertificates from './_acceptCertificates.md'
+import AcceptCertificates from '../partials/_acceptCertificates.md'
+import PythonUbuntu from '../partials/_pythonUbuntu.md'
+import MakeUbuntu from '../partials/_makeUbuntu.md'
 
 # Ethereal Engine on MicroK8s (Linux)
 
-This guide is intended for local environment and currently tested on Ubuntu.
+This guide has been tested on Ubuntu, and it is intended for local deployment only.
 
-## Install Python 3
+<PythonUbuntu />
 
-In your WSL Ubuntu terminal, if python 3 (`pip3 --version`) isn't already installed on your machine. You can do so by running following commands:
-
-```bash
-sudo apt-get update -y
-sudo apt-get install -y python3-pip
-```
-
-You can verify pip3 by using `pip3 --version` command.
-
-## Install Make
-
-In your WSL Ubuntu terminal, if make (`make --version`) isn't already installed on your machine. You can do so by running following commands:
-
-```bash
-sudo apt-get update -y
-sudo apt-get install -y build-essential
-```
-
-You can verify make by using `make --version` command.
+<MakeUbuntu />
 
 ## Install kubectl, Helm and Docker
 
-If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/) and [Docker](https://docs.docker.com/get-docker/) aren't already installed on your machine, install them.
-
+Install [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/) and [Docker](https://docs.docker.com/get-docker/) on your device if they aren't already installed.  
 You may also need to install [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Download and install MicroK8s
-
-Instructions can be found [here](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview)
-
 ```bash
 sudo snap install microk8s --classic --channel=1.26/stable
 ```
+> Note: It is recommended to use microk8s version >=1.26 due to an issue with host storage access in version 1.25.
 
-> Due to some ongoing issue with host storage access in microk8s 1.25 version, it is recommended to use version 1.26.
+Another alternative is to follow the instructions for how to [install Kubernetes with MicroK8s](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview) in a local environment. This will help you learn more about how MicroK8s deployment works.  
 
-While you can follow the demo instructions there about starting MicroK8s, deploying some demo deployments, etc. to get a feel for it.
-
-## Clone Ethereal Engine repo to your local machine
-
-To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to get the Ethereal Engine repo on your machine. This is most easily done by running following command in WSL Ubuntu terminal.
-
+## Download Ethereal Engine
+To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to download the Ethereal Engine repository to your device. The easiest way to do this is by running the following command in your Ubuntu terminal:
 ```bash
-git clone https://github.com/etherealengine/etherealengine.git etherealengine
+git clone https://github.com/etherealengine/etherealengine.git
+```
+You can create an `.env.local` file by duplicating `.env.local.default` if it does not already exist in the root folder of Ethereal Engine's repository.
+
+## Start MinIO & MariaDB
+We recommend running MinIO & MariaDB server on your local machine via Docker and outside of MicroK8s.
+
+Running the command `docker-compose up` from the top-level `/scripts` directory of the Ethereal Engine repository will also start MinIO and multiple MariaDB docker containers _(as well as an optional redis server)_:
+1. Port **3306**: Server for local development
+2. Port **3305**: Server for automated testing
+3. Port **3304**: Server for minikube/microk8s testing
+> You can start the docker container by running `npm run dev-docker` the next time you need to start it.
+
+Alternatively, you could run MinIO & MariaDB on their own without Docker. You'll have to configure the Helm config file to have the appropriate S3 & SQL server configuration, and possibly also change the `./scripts/build_microk8s.sh` script.
+
+## Enable MicroK8s Addons
+The following command will enable the required MicroK8s addons:
+```bash
+sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3
 ```
 
-If `.env.local` file does not exist in the root of your repo folder then create it by duplicating `.env.local.default`.
-
-## Start MinIO & MariaDB server locally via Docker
-
-For simplicity, we recommend running MinIO & MariaDB server on your local machine outside of MicroK8s.
-
-If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will start up MinIO & multiple MariaDB docker containers (as well as a redis server, which is not needed). For mariadb containers, one is intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the docker container is stopped, you can start it again by running `npm run dev-docker`.
-
-Alternatively, if you want to just run MinIO & MariaDB on its own without Docker, that's fine too. You'll just have to configure the Helm config file to have the appropriate S3 & SQL server configuration, and possibly change the script `./scripts/build_microk8s.sh`.
-
-## Enabling MicroK8s Addons
-
-Execute following command in your terminal to enable MicroK8s addons
-
-`sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3`
-
 ## Add MicroK8s to Kubectl
-
-First make sure there is no existing configuration for microk8s in your kubectl config. To do so you run `kubectl config get-contexts` command in terminal and see if the output contains microk8s. You can remove the existing configurations using following commands:
-
+First make sure there is no existing configuration for microk8s in your kubectl config.  
+To do so, run the following command in your Ubuntu terminal and check if the output contains `microk8s`.
+```bash
+kubectl config get-contexts
+```
+You can remove any existing configurations using the following commands:
 ```bash
 kubectl config delete-context microk8s
 kubectl config delete-cluster microk8s-cluster
 kubectl config delete-user microk8s-admin
 ```
 
-Now, we will add microk8s configuration to kubectl config. We can do this by using following commands. [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)
-
+Next we will add microk8s configuration to kubectl config by running the following commands (from [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)):
 ```bash
 kubectl config set-cluster microk8s --server=https://127.0.0.1:16443/ --certificate-authority=/var/snap/microk8s/current/certs/ca.crt
 kubectl config set-credentials microk8s-admin --token="$(sudo microk8s kubectl config view --raw -o 'jsonpath={.users[0].user.token}')"
 kubectl config set-context microk8s --cluster=microk8s --namespace=default --user=microk8s-admin
 ```
 
-Afterwards you can use this newly create context by executing `kubectl config use-context microk8s`
+Afterwards you can use the newly created context by executing:
+```bash
+kubectl config use-context microk8s
+```
 
-Now if you run `kubectl config get-contexts` command then microk8s should be current context.
+Check that microk8s is the current context with:
+```bash
+kubectl config get-contexts
+```
 
-## (Optional) Add MicroK8s to Lens
+## Add MicroK8s to Lens (Optional)
+You should now see the MicroK8s cluster in the [K8s Lens](https://k8slens.dev/) GUI tool.  
 
- If the previous step was performed successfully then you should be able to see MicroK8s cluster in GUI tool [Lens](https://k8slens.dev/). Else you can print the configuration using following command:
-
-`microk8s config`
-
-Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.  
-Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
+Troubleshooting:  
+If you don't see it, it means that the previous step was not performed successfully.
+You can print the current configuration using the command:
+```bash
+microk8s config
+```
+- Option 1:  
+  If you have kubectl already installed, use `sudo gedit ~/.kube/config` and add the output of `microk8s config` into the file.  
+- Option 2:  
+  In [Lens](https://k8slens.dev/), goto `File` > `Add Cluster` and paste the output of `microk8s config`.
 
 ## Enable MicroK8s access for local docker
 

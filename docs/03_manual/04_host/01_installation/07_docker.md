@@ -1,29 +1,24 @@
 # Old Docker Instructions
 
-You can quickstart locally using docker, if you don't have node installed or
-just want to test the latest.
+You can quickstart locally using docker, if you don't have node installed or just want to test the latest.
 
 ## Get local IP address
 Use a tool like `ifconfig` to get your local IP address.
 
 ## Start local databases
-
 ```bash
-cd scripts
-docker-compose up
+cd scripts && docker-compose up
 ```
 
-When the logging stops, that indicates that the databases have been created and
-are running.
-
-Ctrl+c out of that, then from scripts run `./start-all-docker.sh`
-(This must be run every time you start your machine anew)
+The databases will be created and running when the logging has stopped.  
+Press `Ctrl+C` in your terminal to stop the command and then, from that same scripts folder, run:
+```bash
+./start-all-docker.sh
+```
+> Note: This must be run every time you reboot your device
 
 ## Build the image
-
-Create an empty folder at the root called `project-package-jsons` and then run
-the following command to build:
-
+Create an empty folder at the root called `project-package-jsons` and then run the following command to build:
 ``` bash
 DOCKER_BUILDKIT=1 docker build -t etherealengine --build-arg MYSQL_USER=server \
   --build-arg MYSQL_PASSWORD=password --build-arg MYSQL_HOST=127.0.0.1 \
@@ -33,8 +28,9 @@ DOCKER_BUILDKIT=1 docker build -t etherealengine --build-arg MYSQL_USER=server \
   --build-arg VITE_LOCAL_BUILD=true --build-arg CACHE_DATE="$(date)" --network="host" .
 ```
 
-## Run the server to seed the database, wait a couple minutes, then delete it
-
+## Run the server
+This step will to seed the database.  
+Wait a couple minutes after running it, then delete it.  
 ``` bash
 docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "FORCE_DB_REFRESH=true" --network host etherealengine
 docker logs server -f
@@ -43,7 +39,7 @@ docker container stop server
 docker container rm server
 ```
 
-## Run the images
+## Run the Docker images
 ``` bash
 docker run -d --name serve-local --env-file .env.local.default -e "SERVER_MODE=serve-local" --network host etherealengine
 docker run -d --name server --env-file .env.local.default -e "SERVER_MODE=api" -e "INSTANCESERVER_HOST=<local IP address>" --network host etherealengine
@@ -52,7 +48,8 @@ docker run -d --name world --env-file .env.local.default -e "SERVER_MODE=realtim
 docker run -d --name channel --env-file .env.local.default -e "SERVER_MODE=realtime" -e "INSTANCESERVER_HOST=<local IP address>" -e "INSTANCESERVER_PORT=3032" --network host etherealengine
 ```
 
-## Delete containers, if you want to run a new build, or just get rid of them
+## Delete containers
+Run this step if you want to run a new build, or just to get rid of them:
 ``` bash
 docker container stop serve-local
 docker container rm serve-local

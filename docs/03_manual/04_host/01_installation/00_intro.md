@@ -1,7 +1,7 @@
-# Installation
+import CloneInstructions from '../partials/_cloneInstructions.md'
+import AcceptCertificates from '../partials/_acceptCertificates.md'
 
-import CloneInstructions from './_cloneInstructions.md'
-import AcceptCertificates from './_acceptCertificates.md'
+# Installation
 
 Getting up and running requires just a few steps, but this can be tricky, depending on your platform and current environment.
 Please follow the directions for your specific environment.

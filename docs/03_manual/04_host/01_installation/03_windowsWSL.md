@@ -1,5 +1,7 @@
-import CloneInstructions from './_cloneInstructions.md'
-import AcceptCertificates from './_acceptCertificates.md'
+import CloneInstructions from '../partials/_cloneInstructions.md'
+import AcceptCertificates from '../partials/_acceptCertificates.md'
+import PythonUbuntu from '../partials/_pythonUbuntu.md'
+import MakeUbuntu from '../partials/_makeUbuntu.md'
 
 # Installing on Windows with WSL2
 
@@ -56,21 +58,9 @@ nvm install 18
 ```
 You can verify your Node version with the command: `node --version`.
 
-## Install Python 3
-If Python 3 (`pip3 --version`) is not already installed on your machine, you can do so by running following commands from your WSL Ubuntu terminal:
-```bash
-sudo apt-get update -y
-sudo apt-get install -y python3-pip
-```
-You can verify that Python3 is installed correctly with the command: `python3 --version`.
+<PythonUbuntu />
 
-## Install Make
-If Make (`make --version`) is not already installed on your machine, you can do so by running following commands from your WSL Ubuntu terminal:
-```bash
-sudo apt-get update -y
-sudo apt-get install -y build-essential
-```
-You can verify that Make is installed correctly with the command: `make --version`
+<MakeUbuntu />
 
 ## Clone Ethereal Engine repo to your local machine
 Clone Ethereal Engine repo on your machine by running the following command from your WSL Ubuntu terminal:
