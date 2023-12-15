@@ -1,2 +1,3 @@
 # Bots
-<!-- ![](./images/bots.png) -->
+![](./images/bots/create.png)
+![](./images/bots/list.png)

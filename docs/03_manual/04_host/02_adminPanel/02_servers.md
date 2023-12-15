@@ -2,6 +2,8 @@
 <!-- TODO: Confirm that the information given in this section is correct. -->
 The Servers page provides a list of all of the servers running in an Ethereal Engine's deployment.
 
+![](./images/severs.png)
+
 For each server, it presents:
 - **Name**: The human-readable name given to the server for easier identification.
 - **Status**:

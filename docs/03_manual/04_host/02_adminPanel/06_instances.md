@@ -1,5 +1,5 @@
 # Instances
-<!-- ![](./images/instances.png) -->
+![](./images/instances.png)
 ## Patch InstanceServer
 ## Instance Table
 ## Instance Table Actions

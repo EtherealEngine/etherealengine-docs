@@ -1,8 +1,11 @@
 # Users
+![](./images/users/list.png)
 ## Create User
+![](./images/users/create.png)
 ### Name
 ### Avatar
 ### Scopes
+![](./images/users/scopes.png)
 #### Admin:Admin
 #### Benchmarking:read/write
 #### Bot:read/write

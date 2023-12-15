@@ -1,2 +1,2 @@
 # Recordings
-<!-- ![](./images/recordings.png) -->
+![](./images/recordings.png)
