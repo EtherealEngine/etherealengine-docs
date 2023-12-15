@@ -36,9 +36,9 @@ The best way to install and manage Node.js versions is by using a version manage
 
 _Note: Polyglot [ASDF](https://github.com/asdf-vm/asdf) can also be used for managing node versions._
 
-Before running the engine, please check `node --version`  
+Please check the output of `node --version` before running the engine.  
 If you are using a node version below 16, please update or nothing will work.   
-You will know you are having issues if you try to install packages at root with `npm install` and you get package dependency errors.
+You will know that you are having issues if you try to install packages at root with `npm install` and you get package dependency errors.
 
 ### Docker is your friend
 You don't need to use [Docker](https://docs.docker.com/), but it will make your life much easier.  
