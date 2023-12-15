@@ -1,4 +1,5 @@
 # Locations
+![](./images/locations.png)
 ## Create Location
 ### Name
 ### Max Users
