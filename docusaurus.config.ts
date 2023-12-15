@@ -53,7 +53,10 @@ const config: Config = {
 
   themeConfig: {
     docs: {
-      sidebar: { autoCollapseCategories: true }
+      sidebar: {
+        autoCollapseCategories: true,
+        hideable: true
+      }
     },
     algolia: {
       appId: "N5OIDFHT9B",
