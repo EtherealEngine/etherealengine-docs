@@ -1,5 +1,5 @@
 # Routes
-The Routes page provides a list of available routes for the deployment.
+The Routes page provides a list of available routes for the deployment and projects.
 - **Project**:  
   The project that provides the route.
 - **Route**:  

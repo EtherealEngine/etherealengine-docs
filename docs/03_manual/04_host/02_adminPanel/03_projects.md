@@ -9,7 +9,7 @@ The Projects page provides a tool to add new projects and list all existing proj
   Unique and identifiable name given to the project.
 
 - **Version**:  
-  Version of the engine that the project supports.  <!-- TODO: Is this correct? -->
+  Version that is listed in the `package.json` file of the project.
 
 - **Commit SHA**:  
   `git` commit hash/ID that the project is tracking.
@@ -18,10 +18,11 @@ The Projects page provides a tool to add new projects and list all existing proj
   Date when the tracked version of the project was last updated.
 
 - **Update**:  
-  Orders the deployment to update the selected project.  <!-- TODO: How does this work? -->
+  Orders the deployment to update the selected project to the latest commit of that project.
+  _See the [Update Project](#update-project) section for more info_
 
 - **Push to GitHub**:  
-  Uploads the project to a GitHub repository into the current user GitHub account.  <!-- TODO: Is this correct? -->
+  Uploads the project to a GitHub repository into the current user GitHub account.
 
 - **GitHub Repo Link**:  
   URL of the repository where the project is stored.
@@ -39,3 +40,13 @@ The Projects page provides a tool to add new projects and list all existing proj
   Orders the deployment to delete the project from its storage _(no undoing possible)_.
 
 ## Managing Projects
+### Rebuild the Engine
+When to:
+- Updating the Engine to latest
+- Changes in any of the projects
+- Change versions (revert to older or go back to newer)
+### Update Project
+![](./images/projects/update.png)
+### Add project
+<!-- TODO: Explain and find details of this feature. (devops team) -->
+

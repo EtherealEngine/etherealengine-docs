@@ -6,6 +6,7 @@
 ### Avatar
 ### Scopes
 ![](./images/users/scopes.png)
+<!-- TODO: Write explanation to each of the permissions. -->
 #### Admin:Admin
 #### Benchmarking:read/write
 #### Bot:read/write
