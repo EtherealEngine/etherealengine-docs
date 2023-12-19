@@ -78,6 +78,7 @@ To give administration rights to a user:
 > Alternate Method:  
 > Open the `User` table of your deployment's database and change `userRole` to `admin`  
 _(It helps to use a graphical database explorer, we recommend [beekeeperstudio.io](https://beekeeperstudio.io/))_
+The location of the database can be found in your `.env.local` file.
 
 Test user Admin privileges by going to the `/admin` route of your deployment.
 
