@@ -1,5 +1,4 @@
 # Servers
-<!-- TODO: Confirm that the information given in this section is correct. -->
 The Servers page provides a list of all of the servers running in an Ethereal Engine's deployment.
 
 ![](./images/servers.png)

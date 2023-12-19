@@ -2,7 +2,7 @@
 <!-- TODO: Confirm that the information given in this section is correct. -->
 The Projects page provides a tool to add new projects and list all existing projects of an Ethereal Engine's deployment.
 
-![](./images/projects.png)
+![](./images/projects/list.png)
 
 ## Project Table
 - **Name**:  
@@ -18,35 +18,44 @@ The Projects page provides a tool to add new projects and list all existing proj
   Date when the tracked version of the project was last updated.
 
 - **Update**:  
-  Orders the deployment to update the selected project to the latest commit of that project.
-  _See the [Update Project](#update-project) section for more info_
+  Orders the deployment to update the selected project to the latest commit of its repository.  
+![](./images/projects/update.png)
 
 - **Push to GitHub**:  
   Uploads the project to a GitHub repository into the current user GitHub account.
 
 - **GitHub Repo Link**:  
-  URL of the repository where the project is stored.
+  Opens a dialog to update the URL of the repository where the project is stored.
+![](./images/projects/repositoryLink.png)
 
 - **User Access**:  
-  Opens a dialog where access can be given to new users.
+  Opens a dialog to create links for giving access to the project to new users.
 
 - **Invalidate Cache**:  
   Order the deployment to invalidate the storage provider's cache of the selected project.
 
 - **View Project Files**:  
   Opens a dialog that provides a file explorer for managing the file-tree of the selected project.
+![](./images/projects/files.png)
 
 - **Remove**:  
   Orders the deployment to delete the project from its storage _(no undoing possible)_.
 
-## Managing Projects
-### Rebuild the Engine
-When to:
-- Updating the Engine to latest
-- Changes in any of the projects
-- Change versions (revert to older or go back to newer)
-### Update Project
-![](./images/projects/update.png)
-### Add project
-<!-- TODO: Explain and find details of this feature. (devops team) -->
+## Add project
+The Add Project button opens a dialog where new projects can be added to the deployment.  
+- **Destination Repo**: .  <!-- TODO: How do these work? -->
+- **Source Repo**: .  <!-- TODO: How does these work? -->
+- **Copy from Destination Button**:  
+  Automatically copies the Destination URL into the Source URL field.
+- **Auto Update**:  
+  Enable/disable automatic updates for a project when the project's repository gets new commits.  
+
+![](./images/projects/add.png)
+
+## Update/Rebuild the Engine
+The `Update Engine / Rebuild` action should be activated in the following situations:
+- Ordering to update the engine to its latest version available.  
+- After making any changes to any of the projects stored in the deployment.  
+- After changing between engine versions.  
+  _(either when reverting to an older version, or when going back to newer one)_  
 
