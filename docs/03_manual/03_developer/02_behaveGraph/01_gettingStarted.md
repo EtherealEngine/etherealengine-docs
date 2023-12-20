@@ -1,85 +1,78 @@
-# Getting Started
+# Getting Started with Behavior Graphs
 
 ## Installation
-The Behavior Graphs are a part of the studio and thus require a user to have admin or creator privileges
+Behavior Graphs are preinstalled as a part of the ethereal engine studio. Studio access require users to have admin or creator privileges.
 
 ## Configuration
-The Behave graph is implemented as a component in the engine following the ECS (Entity component system) architecture in the engine.
+The Behave graph is implemented as a component in the engine, following the ECS (Entity Component System) architecture.
 
-Users can add and remove a behave graph component from an entity  
+Users can add or remove a Behave graph component from an entity using the following steps:
 
-Step 1: find the behave graph component under the scripting section in the component shelf in the right side of the screen
+1. Locate the Behave graph component under the scripting section in the component shelf on the right side of the screen.
+2. Perform one of the following actions:
+   - Double-click on the component or drag and drop it into the scene to add a new entity with the Behave graph component.
+   - Drag and drop it into the hierarchy panel on another entity to add it to the scene as a child of the selected entity.
+   - Drag and drop it into the properties panel of a selected entity to add the component to that entity.
 
-Step 2:
-- double click on the component tor drag and drop into scene to add a new entity with the behave graph component into the screen
-- Drag and drop into the hierarchy panel on another entity to add to scene as child of the selected entity
-- Drag and drop into properties panel of selected entity to add component to entity
+The Behave graph properties panel has two properties:
 
-The behave graph properties panel has two properties:
+- **Run Graph:** Executes the graph in headless mode as part of the engine.
+- **Disable Graph:** Prevents the graph from playing.
 
-- Run graph: runs the graph in headless mode as part of the engine
-- Disable graph: disable graph from playing
+## Creating Your First Graph
+Before delving into creating the graph, let's explore the graph panel.
 
-## Creating your First graph
-Before we dive into creating the graph let's take a look at the graph panel
+The graph panel includes the panel itself, panel buttons, nodes, and connections.
 
-The graph panel consists of the the panel itself, panel buttons, nodes and connections
-
-The default behave graph consists of:
-- On start event node
-- On tick event node
+The default Behave graph includes:
+- On Start event node
+- On Tick event node
 - Log node
 
-To navigate across the panel, drag across the surface of the panel
+To navigate the panel, drag across its surface.
 
-### buttons in the graph panel
-The buttons panel is location in the bottom left side of the screen
+### Buttons in the Graph Panel
+The buttons panel is located at the bottom-left side of the screen.
 
-The buttons are as follows
-- Zoom in: zoom into the graph viewport
-- Zoom out: zoom out of the graph viewport
-- Fit view: tries to fit all nodes into the screen at the same time, if not possible it centers the view at the center of all nodes
-- Lock graph:  Toggles ability to edit graph
-- Help: Opens an instruction modal for making graphs
-- Load Graph: Opens a modal, user can paste graph json in the input field to load the corresponding graph
-- Save Graph: Opens a model, user can copy the graph json from the text box and save into an external file
-- Play Graph: runs headful version of the graph connected to the graph editor
+The buttons include:
+- **Zoom In:** Enlarges the graph viewport.
+- **Zoom Out:** Shrinks the graph viewport.
+- **Fit View:** Attempts to fit all nodes into the screen; if not possible, centers the view at the center of all nodes.
+- **Lock Graph:** Toggles the ability to edit the graph.
+- **Help:** Opens an instructional modal for creating graphs.
+- **Load Graph:** Opens a modal where users can paste graph JSON into the input field to load the corresponding graph.
+- **Save Graph:** Opens a modal where users can copy the graph JSON from the text box and save it to an external file.
+- **Play Graph:** Executes the headful version of the graph connected to the graph editor.
 
 ### Saving Graph
-The graph has its own json which is also part of the scene json, therefore the user needs to save the graph in as its own json which then must be saved as a part of the scene
+The graph has its JSON, which is part of the scene JSON. Users need to save the graph as its own JSON, which must then be saved as part of the scene.
 
-The graph json is autosaved every 5 seconds the graph panel i open and whenever the graph panel is closed (the component unmounts)
+The graph JSON is autosaved every 5 seconds when the graph panel is open and whenever the graph panel is closed (the component unmounts).
 
-The graph and overall changes to the scene must be saved using the save scene option from the main menu
+Save the graph and overall changes to the scene using the "Save Scene" option in the main menu.
 
-### Playing a graph
-A graph can be played in two modes, headful and headless,
+### Playing a Graph
+A graph can be played in two modes: headful and headless.
 
-headful mode play - headful mode, activated by pressing the play button in the graph buttons, graph stops executing when the panel is closed or component unmounts, meant for quick testing, setting scene variables and rapid development
+**Headful Mode Play:** Activated by pressing the play button in the graph buttons. The graph stops executing when the panel is closed or the component unmounts. It's meant for quick testing, setting scene variables, and rapid development.
 
-Headless mode play - headless mode, play activated from properties panel, execution does not stop unless play is toggled off again from the properties panel
+**Headless Mode Play:** Activated from the properties panel. Execution does not stop unless play is toggled off again from the properties panel.
 
-To play all graphs in the scene the user can use the play scene button from the top toolbar
+To play all graphs in the scene, users can use the "Play Scene" button from the top toolbar.
 
-NOTE: headful and headless plays must be managed separately
+**Note:** Headful and headless plays must be managed separately.
 
-#### Ok finally with all this context, lets add a node
-To add a node, right click anywhere on the graph panel
+## Adding a Node
+To add a node, right-click anywhere on the graph panel.
 
-This will open up the node picker select window,
+This opens the node picker select window. Type in the search input to filter nodes by prefix and click on the node to add it to the panel.
 
-Type in the search input to filter nodes by prefix
-Click on the node to add to the panel
+Let's add a logger node and connect it to the On Tick event.
 
-Lets add a logger node and connect it to the on tick event
+To connect the flow of the nodes, drag from one flow socket to another. There can be only one flow output from one flow output socket, but there can be multiple inputs to a flow input socket.
 
-To connect the flow of the nodes , drag from one flow socket to another
-There can be only one flow output from one flow output  socket
+To execute the graph, click on the "Play Graph" button.
 
-But there can be multiple inputs to a flow input socket
-
-To play the graph click on the play graph button
-
-Well done, outputs to the log can be seen in the dev tools console
+Congratulations! Outputs to the log can be seen in the dev tools console.
 
 <!-- TODO: add pictures -->
