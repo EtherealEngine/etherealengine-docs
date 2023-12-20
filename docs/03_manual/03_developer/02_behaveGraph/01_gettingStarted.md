@@ -1,10 +1,9 @@
-<!-- TODO: De-duplicate the sections -->
 # Getting Started
 
-## 2.1 Installation
+## Installation
 The Behavior Graphs are a part of the studio and thus require a user to have admin or creator privileges
 
-## 2.2 Configuration
+## Configuration
 The Behave graph is implemented as a component in the engine following the ECS (Entity component system) architecture in the engine.
 
 Users can add and remove a behave graph component from an entity  
@@ -21,7 +20,7 @@ The behave graph properties panel has two properties:
 - Run graph: runs the graph in headless mode as part of the engine
 - Disable graph: disable graph from playing
 
-## 2.3 Creating your First graph
+## Creating your First graph
 Before we dive into creating the graph let's take a look at the graph panel
 
 The graph panel consists of the the panel itself, panel buttons, nodes and connections
@@ -33,7 +32,7 @@ The default behave graph consists of:
 
 To navigate across the panel, drag across the surface of the panel
 
-### 2.3.1 buttons in the graph panel
+### buttons in the graph panel
 The buttons panel is location in the bottom left side of the screen
 
 The buttons are as follows
@@ -46,14 +45,14 @@ The buttons are as follows
 - Save Graph: Opens a model, user can copy the graph json from the text box and save into an external file
 - Play Graph: runs headful version of the graph connected to the graph editor
 
-### 2.3.2 Saving Graph
+### Saving Graph
 The graph has its own json which is also part of the scene json, therefore the user needs to save the graph in as its own json which then must be saved as a part of the scene
 
 The graph json is autosaved every 5 seconds the graph panel i open and whenever the graph panel is closed (the component unmounts)
 
 The graph and overall changes to the scene must be saved using the save scene option from the main menu
 
-### 2.3.3 Playing a graph
+### Playing a graph
 A graph can be played in two modes, headful and headless,
 
 headful mode play - headful mode, activated by pressing the play button in the graph buttons, graph stops executing when the panel is closed or component unmounts, meant for quick testing, setting scene variables and rapid development
