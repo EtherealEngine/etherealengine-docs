@@ -199,12 +199,12 @@ Name, e.g. `etherealengine-dev-builder`. You shouldn't need to change any other 
 repo and want to turn on Tag Immutability, that's fine. The image tags that are generated should never collide, but it
 will prevent any manual overwriting of a tag. Click Create Repository.
 
-You will need to make four more repos for each of the services that are deployed as part of the Ethereal Engine stack -
-`api`, `client`, `instanceserver` and `taskserver`, which are also in the form `etherealengine-<RELEASE_NAME>-<service_name>`.
-e.g. `etherealengine-dev-api`, `etherealengine-dev-client`, `etherealengine-dev-instanceserver` and `etherealengine-dev-taskserver`.
+You will need to make five more repos for each of the services that are deployed as part of the Ethereal Engine stack -
+`api`, `client`, `instanceserver`, `root`, and `taskserver`, which are also in the form `etherealengine-<RELEASE_NAME>-<service_name>`.
+e.g. `etherealengine-dev-api`, `etherealengine-dev-client`, `etherealengine-dev-instanceserver`, `etherealengine-dev-root`, and `etherealengine-dev-taskserver`.
 Everything else can be left alone for those, too.
 
-On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see both of 
+On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see all of 
 the repositories you made. If you don't see any, you may be on the wrong tab up top - click Private or Public to switch
 between them. Also check that you're in the right AWS region. You'll see a column 'URI'. If you made public repos,
 the URIs should be in the form `public.ecr.aws/<identifier>/etherealengine-<RELEASE_NAME>(-builder)`; if you made private 
