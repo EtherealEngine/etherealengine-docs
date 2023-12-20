@@ -31,8 +31,8 @@ Earlier or later major versions are not guaranteed to work properly.
 
 The best way to install and manage Node.js versions is by using a version manager:
 1. Install [NVM](https://github.com/nvm-sh/nvm)
-2. Install Node18 with `nvm install 18`
-3. _(Optional)_ Make Node18 your default node version with `nvm alias default 18`
+2. Install Node.js 18 with `nvm install 18`
+3. _(Optional)_ Make Node.js 18 your default node version with `nvm alias default 18`
 
 _Note: Polyglot [ASDF](https://github.com/asdf-vm/asdf) can also be used for managing node versions._
 
@@ -46,7 +46,7 @@ If you don't wish to use Docker, you will need to setup mariadb and redis on you
 
 ## Quick Start
 If you are lucky, this will just work. However, you may encounter some issues.  
-Make sure you are running Node 16, and check your dependencies.
+Make sure you are running Node 18, and check your dependencies.
 ```
 cd path/to/etherealengine
 cp .env.local.default .env.local
