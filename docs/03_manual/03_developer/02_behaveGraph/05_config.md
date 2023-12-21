@@ -1,5 +1,5 @@
-<!--
-# 5.Configuration and Customization
+# Configuration and Customization
+<!-- TODO:
 
 ## 5.1 Making new nodes
 Describe the creation of nodes
