@@ -1,8 +1,8 @@
 {
   "label": "Nodes",
-  "position": 04,
+  "position": 03,
   "link": {
     "type": "generated-index",
-    "description": "This section contains information relevant to all of the Behave Graph nodes currently implemented in Ethereal Engine."
+    "description": "Nodes are the basic building blocks defining program logic or processes. They represent actions or elements connected visually."
   }
 }

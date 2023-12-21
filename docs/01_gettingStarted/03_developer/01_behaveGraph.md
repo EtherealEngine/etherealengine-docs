@@ -1,12 +1,20 @@
 ---
-sidebar_label: Getting Started
+sidebar_label: Behave Graph
 ---
 # Getting Started with Behave Graph
-<!-- TODO: Move this guide to the Getting Started: Developer section -->
 <!-- TODO: Add pictures to this file -->
+<!--
+NOTE: This page should contain:
+- Hero Project: Showcase for Ethereal Engine's development tools and workflows.
+- Guide: Teaches a new user how to program the Hero Project and be comfortable with EE project development.
+- Segue: Lead the user into the Behave Graph section of the Developer Manual.
+-->
+_This guide will teach you how to get started programming with Ethereal Engine and Behave Graph._  
+_Visit the [Behave Graph: Introduction](/docs/manual/developer/behaveGraph/intro) page for an overview of what Behave Graph is._  
+<!-- TODO: Add Behave Graph intro text as a mdx partial, instead of linking to the other page -->
 
 ## Installation
-Behave Graph is preinstalled with Ethereal Engine, and can be accessed as a part of the Ethereal Engine Studio.
+Behave Graph is preinstalled with Ethereal Engine, and can be accessed as part of the Ethereal Engine Studio.
 > Note: Access to the Studio requires users to have admin or creator privileges.
 
 ## Configuration

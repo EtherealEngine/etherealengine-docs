@@ -10,5 +10,5 @@ NOTE: This page should contain:
 _This page will contain a guide on how to get started programming with Ethereal Engine._  
 
 _In the meantime, please refer to the [Manual/Developer](/docs/manual/developer/intro) section for more information._  
-_Ethereal Engine also has a NoCode alternative to programming, called [Behave Graph](/docs/manual/developer/behaveGraph)._
+_Ethereal Engine also has a NoCode alternative to programming, called [Behave Graph](/docs/manual/developer/behaveGraph/intro)._
 
