@@ -1,7 +1,7 @@
-import CloneInstructions from '../partials/_cloneInstructions.md'
-import AcceptCertificates from '../partials/_acceptCertificates.md'
-import PythonUbuntu from '../partials/_pythonUbuntu.md'
-import MakeUbuntu from '../partials/_makeUbuntu.md'
+import CloneInstructions from '../_partials/cloneInstructions.md'
+import AcceptCertificates from '../_partials/acceptCertificates.md'
+import PythonUbuntu from '../_partials/pythonUbuntu.md'
+import MakeUbuntu from '../_partials/makeUbuntu.md'
 
 # Installing on Windows with WSL2
 

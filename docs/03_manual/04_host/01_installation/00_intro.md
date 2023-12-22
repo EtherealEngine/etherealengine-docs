@@ -1,5 +1,5 @@
-import CloneInstructions from '../partials/_cloneInstructions.md'
-import AcceptCertificates from '../partials/_acceptCertificates.md'
+import CloneInstructions from '../_partials/cloneInstructions.md'
+import AcceptCertificates from '../_partials/acceptCertificates.md'
 
 # Installation
 
