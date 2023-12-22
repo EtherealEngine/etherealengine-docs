@@ -1,74 +1,9 @@
-# Admin Panel Guide
-_This page will become a section, and it will contain the Admin Panel Guide_  
-## Dashboard
-### Usage Dashboard
-### Usage Time Series
-## Projects
-### Managing Projects
-### Project Table
-#### Name
-#### Version
-#### Commit SHA
-#### Commit Date
-#### Update
-#### GitHub Integration
-#### User Access
-#### Invalidate Cache
-#### View Project Files
-## Routes
-## Location
-### Create Location
-#### Name
-#### Max Users
-#### Scene
-#### Type
-#### Media Toggles
-#### Make Lobby
-#### Featured
-### Location Table
-## Instance
-### Patch InstanceServer
-### Instance Table
-### Instance Table Actions
-## Users
-### Create User
-#### Name
-#### Avatar
-#### Scopes
-##### Admin:Admin
-##### Benchmarking:read/write
-##### Bot:read/write
-##### contentPacks:read/write
-##### Editor:write
-##### globalAvatars:read/write
-##### Groups:read/write
-##### Instance:read/write
-##### Invite:read
-##### Location:read/write
-##### Party:read/write
-##### Projects:read/write
-##### realityPacks:read/write
-##### Recording:read/write
-##### Routes:read/write
-##### Scene:read/write
-##### Server:read/write
-##### Settings:read/write
-##### Static_resource:read/write
-##### User:read/write
-### User Table
-## Invites
-## Avatar
-### Create Avatar
-#### Avatar Name
-#### File Source
-#### Avatar Thumbnail
-### Avatar Table
-## Resources
-### Create Resource
-#### Name
-#### Project
-#### File Source
-## Benchmarking
-In work
-## Bots
-In work 
+import DocCardList from '@theme/DocCardList'
+
+# Admin Panel Overview
+The Ethereal Engine's `Admin Panel` is a graphical interface (GUI) tool for managing administration tasks of an Ethereal Engine deployment.
+
+The Admin Panel can be accessed by navigating to the `/admin` route of the desired deployment.  
+_eg: `https://localhost:3000/admin` when working with a local deployment_
+
+<DocCardList />
