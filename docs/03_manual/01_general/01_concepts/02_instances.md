@@ -1,4 +1,4 @@
-# Locations & Instances
+# Instances & Locations
 
 **Locations** can be thought of as instantiations of a scene.  
 They allow scenes to be connected to a session that can be shared between multiple devices at the same time.
