@@ -1,0 +1,8 @@
+{
+  "label": "Become a Developer",
+  "position": 03,
+  "link": {
+    "type": "doc",
+    "id": "gettingStarted/developer/intro",
+  }
+}

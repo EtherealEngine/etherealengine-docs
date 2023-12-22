@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 # Ethereal Engine Bridge - Unreal
 
-https://github.com/etherealengine/XRE-Bridge-Unreal
+https://github.com/EtherealEngine/EE-Bridge-Unreal
 
 Unreal SDK Ethereal Engine Alpha
 - User Management API
@@ -18,7 +18,7 @@ Unreal SDK Ethereal Engine Alpha
 
 CMS and marketplace services coming soon
 
-EXAMPLE https://github.com/etherealengine/Ethereal-Engine-Bridge-Unreal-Example
+EXAMPLE https://github.com/EtherealEngine/EE-Bridge-Unreal-Example
 
 ![Screenshot 2022-06-06 193750](https://user-images.githubusercontent.com/5104160/172299848-3e1c6a5f-ecd2-4562-a894-0d8b55e5b9e5.png)
 
@@ -65,7 +65,7 @@ Targeting support for 4.26 and 4.27
 
 Trial implementations on epic games unreal examples for the Ethereal Engine bridge for Unreal
 
-https://github.com/etherealengine/XRE-Bridge-Unreal/
+https://github.com/EtherealEngine/EE-Bridge-Unreal
 
 This bridge is wrapping OpenAPI endpoints presented by Ethereal Engine 
 
@@ -123,7 +123,7 @@ Agones Actions
 
 # Ethereal-Engine-Bridge-Unreal-Example
 
-https://github.com/etherealengine/Ethereal-Engine-Bridge-Unreal-Example
+https://github.com/EtherealEngine/EE-Bridge-Unreal-Example
 
 Preinstall Requirements
 
@@ -141,7 +141,7 @@ Targeting support for 4.26 and 4.27
 
 Trial implementations on epic games unreal examples for the Ethereal Engine bridge for Unreal
 
-https://github.com/etherealengine/XRE-Bridge-Unreal/
+https://github.com/EtherealEngine/EE-Bridge-Unreal
 
 This bridge is wrapping OpenAPI endpoints presented by Ethereal Engine 
 
@@ -159,7 +159,7 @@ https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Networking/Bluep
 
 Modeled after an updated version of
 
-https://www.unrealengine.com/marketplace/en-US/product/multiplayer-shootout 
+https://www.unrealengine.com/marketplace/en-US/product/multiplayer-shootout  
 https://docs.unrealengine.com/4.27/en-US/Basics/Projects/UIProjectConversion/
 
 https://docs.unrealengine.com/4.27/en-US/Resources/Showcases/BlueprintMultiplayer/
