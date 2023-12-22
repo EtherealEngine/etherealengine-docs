@@ -1,9 +1,13 @@
-import StepAuthentication from './_step_authentication.md'
-import StepConfigurations from './_step_configurations.md'
-import StepVariables from './_step_variables.md'
-import StepSummary from './_step_summary.md'
+---
+sidebar_label: Control Center
+---
 
-# Getting Started
+import StepAuthentication from '../_partials/controlCenter/step_authentication.md'
+import StepConfigurations from '../_partials/controlCenter/step_configurations.md'
+import StepVariables from '../_partials/controlCenter/step_variables.md'
+import StepSummary from '../_partials/controlCenter/step_summary.md'
+
+# Control Center: Getting Started
 
 Ethereal Engine's Control Center is a self-contained Metaverse world in a box. Take what you need or launch the full stack.  
 The Control Center is a desktop app to manage an Ethereal Engine cluster.
@@ -41,13 +45,13 @@ In order to download Ethereal Engine Control Center App, navigate to [releases](
 
 When you launch the app for the first time, you will see below screen:
 
-![Home Screen](./images/home-screen.jpg)
+![Home Screen](./images/controlCenter/home-screen.jpg)
 
 Here you need to create a cluster. You can do so by clicking on `Create` button in the center or anytime using round plus button on left bottom corner (in [hotbar](#31-hotbar)) of the screen. Following are the different sections of create cluster dialog:
 
 ### 2.1. Cluster Information
 
-![Create Cluster - Cluster Information](./images/create-cluster-1.jpg)
+![Create Cluster - Cluster Information](./images/controlCenter/create-cluster-1.jpg)
 
 In this step, you will need to provide following information:
 
@@ -66,25 +70,25 @@ If you selected cluster type as MicroK8s or Minikube, then you will see below op
 
 ### 2.2.1. Authentication
 
-![Create Cluster - Authentication](./images/create-cluster-2.jpg)
+![Create Cluster - Authentication](./images/controlCenter/create-cluster-2.jpg)
 
 <StepAuthentication />
 
 ### 2.2.2. Configurations
 
-![Create Cluster - Configurations](./images/create-cluster-3.jpg)
+![Create Cluster - Configurations](./images/controlCenter/create-cluster-3.jpg)
 
 <StepConfigurations />
 
 ### 2.2.3. Variables
 
-![Create Cluster - Variables](./images/create-cluster-4.jpg)
+![Create Cluster - Variables](./images/controlCenter/create-cluster-4.jpg)
 
 <StepVariables />
 
 ### 2.2.4. Summary
 
-![Create Cluster - Summary](./images/create-cluster-5.jpg)
+![Create Cluster - Summary](./images/controlCenter/create-cluster-5.jpg)
 
 <StepSummary />
 
@@ -100,7 +104,7 @@ If you selected Custom cluster type, then you will see below options. Custom clu
 
 ### 2.3.1. Kubeconfig
 
-![Create Cluster - Kubeconfig](./images/create-cluster-6.jpg)
+![Create Cluster - Kubeconfig](./images/controlCenter/create-cluster-6.jpg)
 
 In this step, you will need to provide following information regarding desired cluster's kubeconfig:
 
@@ -114,7 +118,7 @@ In this step, you will need to provide following information regarding desired c
 
 ### 2.3.2. Deployment
 
-![Create Cluster - Deployment](./images/create-cluster-7.jpg)
+![Create Cluster - Deployment](./images/controlCenter/create-cluster-7.jpg)
 
 In this step, you will need to provide following deployment information:
 
@@ -124,7 +128,7 @@ In this step, you will need to provide following deployment information:
 
 ### 2.3.3. Summary
 
-![Create Cluster - Summary](./images/create-cluster-8.jpg)
+![Create Cluster - Summary](./images/controlCenter/create-cluster-8.jpg)
 
 <StepSummary />
 
@@ -132,27 +136,27 @@ In this step, you will need to provide following deployment information:
 
 ## 3. Cluster Screen
 
-![Cluster Screen](./images/cluster-screen.jpg)
+![Cluster Screen](./images/controlCenter/cluster-screen.jpg)
 
 Once you have created a cluster you will be navigated to its screen also know as config page. Lets explain various sections of this screen:
 
 ### 3.1. Hotbar
 
-![Hotbar](./images/hotbar.jpg)
+![Hotbar](./images/controlCenter/hotbar.jpg)
 
 It will show you a list of all clusters you have created. You can click on each of them to view the cluster screen of them.
 
-![Add Cluster Icon](./images/hotbar-add.jpg) The plus icon at the bottom of this bar is used to create a new cluster.
+![Add Cluster Icon](./images/controlCenter/hotbar-add.jpg) The plus icon at the bottom of this bar is used to create a new cluster.
 
 ### 3.2. Navbar
 
-![Navbar](./images/navbar.jpg)
+![Navbar](./images/controlCenter/navbar.jpg)
 
 This section allows navigation and various utility options. Following are the various options in it:
 
-- **App Icon:** ![App Icon](./images/navbar-icon.jpg) Logo of this application.
+- **App Icon:** ![App Icon](./images/controlCenter/navbar-icon.jpg) Logo of this application.
 
-- **Home Icon:** ![Home Icon](./images/navbar-home.jpg) Navigate to home.
+- **Home Icon:** ![Home Icon](./images/controlCenter/navbar-home.jpg) Navigate to home.
 
 - **Config:** Navigates to [cluster](#3-cluster-screen) screen of selected cluster.
 
@@ -166,101 +170,101 @@ This section allows navigation and various utility options. Following are the va
 
 - **Rippled CLI:** Navigates to rippled [server cli](#10-rippled-cli) of selected cluster. This option is visible only if ripple stack is enabled.
 
-- **Change Theme Icon:** ![Change Theme Icon](./images/navbar-theme.jpg) Allows to toggle between vaporware, light & dark themes. The color scheme of these themes are similar to ethereal engine.
+- **Change Theme Icon:** ![Change Theme Icon](./images/controlCenter/navbar-theme.jpg) Allows to toggle between vaporware, light & dark themes. The color scheme of these themes are similar to ethereal engine.
 
-- **Support Icon:** ![Support Icon](./images/navbar-support.jpg) Opens a dropdown menu to allow reaching out to support via Discord or Github.
+- **Support Icon:** ![Support Icon](./images/controlCenter/navbar-support.jpg) Opens a dropdown menu to allow reaching out to support via Discord or Github.
 
-- **User Icon:** ![User Icon](./images/navbar-user.jpg) The functionality for this button is coming soon.
+- **User Icon:** ![User Icon](./images/controlCenter/navbar-user.jpg) The functionality for this button is coming soon.
 
 ### 3.3. Options Panel
 
-![Options Panel](./images/options-panel.jpg)
+![Options Panel](./images/controlCenter/options-panel.jpg)
 
 This section shows various actions against currently selected cluster. Following are the options in it:
 
-- **Cluster Icon:** ![Cluster Icon](./images/options-panel-cluster-icon.jpg) Logo of the selected cluster type. It can be MicroK8s or Minikube logo.
+- **Cluster Icon:** ![Cluster Icon](./images/controlCenter/options-panel-cluster-icon.jpg) Logo of the selected cluster type. It can be MicroK8s or Minikube logo.
 
 - **Cluster Name:** This is the cluster name that you entered in create cluster dialog. i.e. Local.
 
-- **Engine Git Status:** ![Cluster Icon](./images/options-panel-git-engine.jpg) This is used to view current status of local ethereal engine github repo. You can view & change current branch, view & pull incoming changes, view & push outgoing changes.
+- **Engine Git Status:** ![Cluster Icon](./images/controlCenter/options-panel-git-engine.jpg) This is used to view current status of local ethereal engine github repo. You can view & change current branch, view & pull incoming changes, view & push outgoing changes.
 
-- **Ops Git Status:** ![Cluster Icon](./images/options-panel-git-ops.jpg) This is used to view current status of local ethereal engine ops github repo. You can perform all actions as explained for engine git status.
+- **Ops Git Status:** ![Cluster Icon](./images/controlCenter/options-panel-git-ops.jpg) This is used to view current status of local ethereal engine ops github repo. You can perform all actions as explained for engine git status.
 
-- **Refresh Icon:** ![Refresh Icon](./images/options-panel-refresh.jpg) This will recheck the status of prerequisites, system, apps & engine. It also, recheck the status of engine and ops git repos. If a refresh is already in process then it will be disabled until its finished.
+- **Refresh Icon:** ![Refresh Icon](./images/controlCenter/options-panel-refresh.jpg) This will recheck the status of prerequisites, system, apps & engine. It also, recheck the status of engine and ops git repos. If a refresh is already in process then it will be disabled until its finished.
 
-- **Delete Icon:** ![Delete Icon](./images/options-panel-delete.jpg) This will delete a clusters. It would not make any changes in associated local kubernetes, app, etc.
+- **Delete Icon:** ![Delete Icon](./images/controlCenter/options-panel-delete.jpg) This will delete a clusters. It would not make any changes in associated local kubernetes, app, etc.
 
-- **Settings Icon:** ![Settings Icon](./images/options-panel-settings.jpg) This will open settings dialog. It contains some selected cluster specific settings in addition to general app settings.
+- **Settings Icon:** ![Settings Icon](./images/controlCenter/options-panel-settings.jpg) This will open settings dialog. It contains some selected cluster specific settings in addition to general app settings.
 
-- **Configure Button:** ![Configure Button](./images/options-panel-configure.jpg) This will open the configure dialog which is [discussed](#4-configure-cluster) later. If a configuration is already running then this button will be disabled and have a spinner in it.
+- **Configure Button:** ![Configure Button](./images/controlCenter/options-panel-configure.jpg) This will open the configure dialog which is [discussed](#4-configure-cluster) later. If a configuration is already running then this button will be disabled and have a spinner in it.
 
-- **Launch Button:** ![Launch Button](./images/options-panel-launch.jpg) This button will open Ethereal Engine's default location in your browser as [discussed](#5-launch-ethereal-engine) later.
+- **Launch Button:** ![Launch Button](./images/controlCenter/options-panel-launch.jpg) This button will open Ethereal Engine's default location in your browser as [discussed](#5-launch-ethereal-engine) later.
 
 ### 3.4. System Status
 
-![System Status](./images/status-system.jpg)
+![System Status](./images/controlCenter/status-system.jpg)
 
 This section will show the current status of whether the system requirements are meet or not. On Windows, it will also show the status of prerequisites.
 
-The status against each item will be displayed. You can find more details by hovering over ![Info Icon](./images/status-info.jpg) info icon. This info icon is useful when some item is not configured correctly.
+The status against each item will be displayed. You can find more details by hovering over ![Info Icon](./images/controlCenter/status-info.jpg) info icon. This info icon is useful when some item is not configured correctly.
 
-Additionally, for some items you will see ![Fix Icon](./images/status-fix.png) auto fix icon. Clicking this button will try to auto fix the problem. Though if it fails, you can try using configure dialog which is [discussed](#4-configure-cluster) later.
+Additionally, for some items you will see ![Fix Icon](./images/controlCenter/status-fix.png) auto fix icon. Clicking this button will try to auto fix the problem. Though if it fails, you can try using configure dialog which is [discussed](#4-configure-cluster) later.
 
 > Usually, auto fix button should only be used if previously you were able to run the cluster successfully. Otherwise, use configure dialog.
 
 ### 3.5. Apps Status
 
-![Apps Status](./images/status-apps.jpg)
+![Apps Status](./images/controlCenter/status-apps.jpg)
 
 This section will show the current status of all the apps required to run ethereal engine deployment.
 
 ### 3.6. Engine Status
 
-![Engine Status](./images/status-engine.jpg)
+![Engine Status](./images/controlCenter/status-engine.jpg)
 
 This section will show the current status of various components of ethereal engine deployment in your local kubernetes distribution.
 
 ### 3.7. Logs
 
-![Logs](./images/logs.jpg)
+![Logs](./images/controlCenter/logs.jpg)
 
 This section will show all the logs of current session. The logs are of the different actions being performed by control center and their output.
 
-- **Download Button:** ![Download Button](./images/logs-download.jpg) This will download all displayed logs.
+- **Download Button:** ![Download Button](./images/controlCenter/logs-download.jpg) This will download all displayed logs.
 
-- **Clear Button:** ![Clear Button](./images/logs-clear.jpg) This will clear all displayed logs.
+- **Clear Button:** ![Clear Button](./images/controlCenter/logs-clear.jpg) This will clear all displayed logs.
 
 ## 4. Configure Cluster
 
-On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/options-panel-configure.jpg)) button in the [options panel](#33-options-panel). Following are the different sections of configure cluster dialog:
+On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick then it means you need to run the configure script to fix them automatically. To do so use the Configure (![Configure Button](./images/controlCenter/options-panel-configure.jpg)) button in the [options panel](#33-options-panel). Following are the different sections of configure cluster dialog:
 
 > Its always recommended to clear your logs before running configure script in order to trace outputs easily.
 
 ### 4.1. Authentication
 
-![Configure Cluster - Authentication](./images/configure-cluster-1.jpg)
+![Configure Cluster - Authentication](./images/controlCenter/configure-cluster-1.jpg)
 
 <StepAuthentication />
 
 ### 4.2. Configurations
 
-![Configure Cluster - Configurations](./images/configure-cluster-2.jpg)
+![Configure Cluster - Configurations](./images/controlCenter/configure-cluster-2.jpg)
 
 <StepConfigurations />
 
 ### 4.3. Variables
 
-![Configure Cluster - Variables](./images/configure-cluster-3.jpg)
+![Configure Cluster - Variables](./images/controlCenter/configure-cluster-3.jpg)
 
 <StepVariables />
 
 ### 4.4. Summary
 
-![Configure Cluster - Summary](./images/configure-cluster-4.jpg)
+![Configure Cluster - Summary](./images/controlCenter/configure-cluster-4.jpg)
 
 <StepSummary />
 
-- **Configure:** This will start the configuration script which will ensure things are setup. You can track output of various things in [logs](#37-logs). Depending on your system and status of apps, it can take a while to setup things. As the configure script is executing, the Configure (![Configure Button](./images/options-panel-configure.jpg)) button will be disabled and have a spinner in it.
+- **Configure:** This will start the configuration script which will ensure things are setup. You can track output of various things in [logs](#37-logs). Depending on your system and status of apps, it can take a while to setup things. As the configure script is executing, the Configure (![Configure Button](./images/controlCenter/options-panel-configure.jpg)) button will be disabled and have a spinner in it.
 
     > Once the script finished its execution, the cluster status will be automatically refreshed.
 
@@ -268,7 +272,7 @@ On ([cluster screen](#3-cluster-screen)), if any of the status is not green tick
 
 ## 5. Launch Ethereal Engine
 
-![Launch Ethereal Engine](./images/engine-launch.jpg)
+![Launch Ethereal Engine](./images/controlCenter/engine-launch.jpg)
 
 Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Launch` button in [options panel](#33-options-panel). This button will open Ethereal Engine's default location in your browser.
 
@@ -276,19 +280,19 @@ Once, everything is configured correctly and all ticks are green on config page 
 
 ## 6. Workloads
 
-![Workloads](./images/workloads-screen.jpg)
+![Workloads](./images/controlCenter/workloads-screen.jpg)
 
 This page will show current state of workloads for selected cluster. The workloads are mainly the k8s pods of various components of ethereal engine. In addition to [options panel](#33-options-panel), following the sections of this screen:
 
 ### 6.1. Workload Tabs
 
-![Workload Tabs](./images/workloads-screen-tabs.jpg)
+![Workload Tabs](./images/controlCenter/workloads-screen-tabs.jpg)
 
 This section allows to filter based on various workload types. Default tab will be `All`, which displays all workloads. The number below each tab's label will display the currently ready count followed by slash and then total count.
 
 ### 6.2. Workloads Table
 
-![Workloads Table](./images/workloads-screen-table.jpg)
+![Workloads Table](./images/controlCenter/workloads-screen-table.jpg)
 
 This section will display data based on selected workload [tab](#61-workload-tabs). For each workload, it will contain pod name and other details. Hovering over a container's circle will display further details. Moreover, there is a `Logs` button to view kubernetes container logs as discussed in next [section](#63-workload-logs). `Delete` button will allow to remove the pod from current kubernetes distribution.
 
@@ -296,7 +300,7 @@ Additionally, there is refresh icon button on right top of this table. This will
 
 ### 6.3. Workload Logs
 
-![Workload Logs](./images/workloads-screen-logs.jpg)
+![Workload Logs](./images/controlCenter/workloads-screen-logs.jpg)
 
 This section will by default display cluster [logs](#37-logs). Though if user clicked `Logs` button as discussed in previous [section](#62-workloads-table), then the logs of that workload will be displayed. The cluster [logs](#37-logs) will then be displayed under `Config` log tab. User can toggle between these log tabs, while workload logs can be closed as well.
 
@@ -306,7 +310,7 @@ Beside these icons there is also a container drop down through which user can se
 
 ## 7. Admin Dashboard
 
-![Admin Dashboard](./images/admin-dashboard.jpg)
+![Admin Dashboard](./images/controlCenter/admin-dashboard.jpg)
 
 Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Admin` button in [navbar](#32-navbar). This will show the admin dashboard of ethereal engine deployed in your local k8s cluster.
 
@@ -314,19 +318,19 @@ You can perform various actions from admin dashboard including installing projec
 
 ## 8. K8 Dashboard
 
-![K8 Dashboard](./images/k8s-dashboard.jpg)
+![K8 Dashboard](./images/controlCenter/k8s-dashboard.jpg)
 
 Once, your selected local k8s distribution (Microk8s or Minikube) has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `K8 Dashboard` button in [navbar](#32-navbar). This will show the k8s dashboard.
 
 For MicroK8s, when you launch it for the first time then you will be asked regarding token configurations. You can use `Skip` button to pass through it.
 
-![K8 Dashboard Token](./images/k8s-dashboard-token.jpg)
+![K8 Dashboard Token](./images/controlCenter/k8s-dashboard-token.jpg)
 
 You can perform various actions from k8s dashboard including managing pods, jobs, deployments, services, etc.
 
 ## 9. IPFS
 
-![IPFS Web UI](./images/ipfs-web-ui.jpg)
+![IPFS Web UI](./images/controlCenter/ipfs-web-ui.jpg)
 
 If ripple stack is enabled and once, IPFS has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `IPFS` button in [navbar](#32-navbar). This will show the IPFS web UI.
 
@@ -334,7 +338,7 @@ You can view and manage various aspects of the IPFS running in your local cluste
 
 ## 10. Rippled CLI
 
-![Rippled CLI](./images/rippled-cli.jpg)
+![Rippled CLI](./images/controlCenter/rippled-cli.jpg)
 
 If ripple stack is enabled and once, Rippled has a green tick on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Rippled CLI` button in [navbar](#32-navbar). This will show the Rippled CLI page.
 
