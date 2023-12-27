@@ -94,14 +94,14 @@ In PaddleSystem.ts we see a good example of this reactive state pattern. The app
 ```
 export const PaddleState = defineState({
   name: 'ee.pong.PaddleState',
-  initial: {} as Record
+  initial: {} as Record\<
     EntityUUID,
     {
       owner: UserID
       handedness: 'left' | 'right'
       gameEntityUUID: EntityUUID
     }
-  
+  \>
   ...
 ```
 
