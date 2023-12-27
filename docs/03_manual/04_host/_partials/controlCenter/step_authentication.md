@@ -1,3 +1,6 @@
-In this step, you need to provide sudo password for linux terminal. This is because Control Center App will perform various actions on your system with admin privileges.
+In this step you will need to provide sudo password for your linux terminal.  
+This is because the Control Center App will perform various actions on your system that require administration privileges.
 
-> On Windows, this is the password of your WSL Ubuntu distribution's sudo user.
+:::info[windows]
+This is the password of your WSL Ubuntu distribution's sudo user.
+:::

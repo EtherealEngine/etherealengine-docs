@@ -1,5 +1,8 @@
-This step will show a summary of all the previous steps. User can review them before proceeding ahead.
+This step shows a summary of all of the previous steps.  
+Please review them before proceeding ahead.
 
-> Please make sure to read `Note` on this screen.
+:::important
+Make sure to read all of the `Note`s on this screen.
+:::
 
-Afterwards, there are following option(s):
+These are your options to proceed ahead:  
