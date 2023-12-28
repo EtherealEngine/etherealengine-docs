@@ -23,6 +23,11 @@
 - Underscore `_` for italics
 - End lines with double space `  ` for newline breaks within the same paragraph.
 - Always assign a valid coding language to code blocks _(necessary for syntax highlighting)_.
+- Always use `N. Text` for numbered bullet points.  (eg: 1. First point)
+- Align newline subtext of bullet points to the text of the bullet point, so that the subtext becomes a part of the bullet point alignment rules.
+- Align the first paragraph after a title right next to their title, without an empty newline in between the text and the title.
+  (preferable, not mandatory. easier to pattern/block skim-read internally, and doesn't affect the rendered html)
+  
 
 ## Docusaurus: Routing
 - Always name files/folder with the format: `NN_theFile.md`
