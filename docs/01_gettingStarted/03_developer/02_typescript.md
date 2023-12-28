@@ -8,12 +8,15 @@ NOTE: This page should contain:
 - Guide: Teaches a new user how to program the Hero Project and be comfortable with EE project development.
 - Segue: Lead the user into the Developer Manual
 -->
+_This guide will teach you how to get started programming with Ethereal Engine using Typescript._  
+_Visit the [Typescript: Introduction](/docs/manual/developer/typescript/intro) page for more details._  
+<!-- TODO: Add intro text as a mdx partial, instead of linking to the other page -->
 
 ## Overview
 
-'Pong' is a simple multiplayer game in Ethereal Engine built using Typescript. It is an example of best practices for developers.
+We're going to look at 'Pong', a multiplayer game that we've built in Ethereal Engine using Typescript. It is an example of best practices for developers.
 
-## Installation and Running
+## Installation and Running Pong
 
 1) Ethereal Engine scans for projects mounted in the /packages/projects/projects sub-folder of Ethereal Engine. From scratch we can install Ethereal Engine itself and also register a sub project using the following:
 
@@ -94,18 +97,18 @@ In PaddleSystem.ts we see a good example of this reactive state pattern. The app
 ```
 export const PaddleState = defineState({
   name: 'ee.pong.PaddleState',
-  initial: {} as Record\<
+  initial: {} as Record<
     EntityUUID,
     {
       owner: UserID
       handedness: 'left' | 'right'
       gameEntityUUID: EntityUUID
     }
-  \>
+  >
   ...
 ```
 
-The defineState() method registers a collection of Record<> objects. A Record is a schema in a third party runtime schema definition language that Ethereal Engine uses. In this case the Record declares that this state object is a hashed collection of EntityUUID to { owner, handedness, gamEntityUUID } objects.
+The defineState() method registers a collection of Record objects. A Record is a schema in a third party runtime schema definition language that Ethereal Engine uses.
 
 ### PaddleSystem: Introduction to Event Sourced State
 
@@ -208,12 +211,9 @@ The general flow is like so:
 
 ## PlateComponent
 
-[tbd]
 
 ### PongComponent, PongGameSystem and PongPhysicsSystem
 
-[tbd]
 
-### Segue
+### Summary
 
-[tbd]

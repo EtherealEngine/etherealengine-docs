@@ -8,6 +8,6 @@ TODO: This page should contain:
 -->
 _This page will contain an introduction to the Getting Started: Developer guides._  
 
-_Programming in Ethereal Engine can be done through [Typescript](/docs/manual/developer/intro)._  
+_Programming in Ethereal Engine can be done through [Typescript](/docs/manual/developer/typescript/intro)._
 _But the engine also has a NoCode alternative to programming, called [Behave Graph](/docs/manual/developer/behaveGraph/intro)._  
 
