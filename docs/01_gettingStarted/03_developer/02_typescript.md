@@ -8,57 +8,64 @@ NOTE: This page should contain:
 - Guide: Teaches a new user how to program the Hero Project and be comfortable with EE project development.
 - Segue: Lead the user into the Developer Manual
 -->
-_This guide will teach you how to get started programming with Ethereal Engine using Typescript._  
-_Visit the [Typescript: Introduction](/docs/manual/developer/typescript/intro) page for more details._  
-<!-- TODO: Add intro text as a mdx partial, instead of linking to the other page -->
 
-## Overview
+This guide will teach you how to get started programming with Ethereal Engine.  
 
-We're going to look at 'Pong', a multiplayer game that we've built in Ethereal Engine using Typescript. It is an example of best practices for developers.
+You will learn how to create **Pong**, a multiplayer game built with Ethereal Engine using Typescript.  
 
-## Installation and Running Pong
+> _This is an introductory guide._  
+> _Visit the [Developer Manual](/docs/manual/developer/intro) page for more information about programming with Ethereal Engine._  
 
-1) Ethereal Engine scans for projects mounted in the /packages/projects/projects sub-folder of Ethereal Engine. From scratch we can install Ethereal Engine itself and also register a sub project using the following:
-
-```
-gh repo clone EtherealEngine/EtherealEngine
-cd EtherealEngine
+## Installation and Running the project
+### 1. Install Pong
+<!-- TODO: This should be an MDX partial that contains its own section, instead of just a quick sidenote. -->
+Ethereal Engine scans for projects in its `/packages/projects/projects` sub-folder.  
+We can install Ethereal Engine from scratch and also register a sub project using the following commands:
+```bash
+git clone https://github.com/EtherealEngine/etherealengine
+cd etherealengine
 cd packages/projects/projects
-gh repo clone EtherealEngine/ee-tutorial-pong
+git clone https://github.com/EtherealEngine/ee-tutorial-pong
 cd ../../../
 ```
 
-2) A fresh install of Ethereal Engine can be run like so:
-
-```
+### 2. Run the engine
+A fresh install of Ethereal Engine can be run with:
+```bash
 npm install
 npm run dev
 ```
 
-3) Once Ethereal Engine itself is running, from the web admin panel of Ethereal Engine create a 'location' for the project. See https://localhost:3000/admin . Map the project to the name 'pong'.
+### 3. Configure the Location
+Go to the Admin Panel, create a `Location` for the project and map the project to the name `pong`.
+:::info[link]
+https://localhost:3000/admin .
+:::
+
+:::important
+Ethereal Engine must be running for this step and the rest of this guide.
+:::
 
 4) Run the project on the web by visiting it with the URL you created. See https://localhost:3000/location/pong
 
 ## Understanding Pong
 
-### A 10000 foot overview
+### Quick Overview
+A Pong world can have several separate pong tables at once.  
+Each pong table has four pong plates and can handle four players at once.
 
-Pong has several files which are roughly represent parts of the experience:
-
-- PaddleSystem -> a paddle 'system' for managing the player paddles specifically.
-- PlateComponent -> each pong game has one or more plates that represent player positions in a game. In our case we have 4 player games.
-- PongComponent -> each pong game in a larger pong world has a concept of a game starting or stopping; this is managed here.
-- PongGameSystem -> a game 'system' for managing each game instance; starting and stopping play and dealing with players.
-- PongPhysicsSystem -> a ball spawner and scoring 'system' for the pong game overall
-- worldinjection -> bootstraps the game
-
-A 'Pong' world can have several separate pong tables at once. Each pong table has four pong plates and can handle four players at once.
+Pong has several files which represent parts of the experience:
+- **PaddleSystem**: A paddle 'system' for managing the player paddles.
+- **PlateComponent**: Each pong game has one or more plates that represent player positions in a game. This example creates 4 player games.
+- **PongComponent**: Each pong game in has the concept of a game starting or stopping; this is managed here.
+- **PongGameSystem**: A game system for managing each game instance; starting and stopping play and dealing with players.
+- **PongPhysicsSystem**: A ball spawner and scoring 'system' for the pong game overall
+- **worldinjection**: Connects the project's code with the engine's code.
 
 ### World Injection
-
-Ethereal Engine projects typically have a worldinjection.ts file to bootstrap a project. In Pong this file registers and starts three 'systems', and does little else:
-
-```
+Ethereal Engine projects have a `worldinjection.ts` file to connect the project code to with the engine so it can be run _(aka bootstrapping / injection)_.  
+For Pong this file registers and starts three systems, and does little else:
+```ts
 import './PaddleSystem'
 import './PongGameSystem'
 import './PongPhysicsSystem'
@@ -66,35 +73,44 @@ export default async function worldInjection() {}
 ```
 
 ### Entities, Components and Systems
+Ethereal Engine uses an ECS (Entity Component System).  
+**Entities** in a game are entirely defined by their **Components** or 'capabilities'.  
+**Systems** drive the state of the entire application over time by running every frame over those components.   
 
-Ethereal Engine uses an ECS (Entity Component System). Entities in a game are entirely defined by their Components or 'capabilities', and systems driven the state of the entire application over time by running every frame over those components. One benefit of an ECS is that it allows a highly granular 'vocabulary' for designers to express game ideas with.
+A great benefit of the ECS pattern is that it allows a highly granular 'vocabulary' for designers to express game ideas with.
 
-The ECS we use currently BitECS. Another good ECS is Flecs:
+:::info
+Ethereal Engine currently uses [bitECS](https://github.com/NateTheGreatt/bitECS) for its ECS implementation.  
+Another great ECS library to look into is [Flecs](https://news.ycombinator.com/item?id=35434374).  
+:::
 
-- https://github.com/NateTheGreatt/bitECS
-- https://news.ycombinator.com/item?id=35434374
+Pong imports three systems via worldInjection. Each one is responsible for a different part of the Pong experience:
+1. PaddleSystem
+2. PongPhysicsSystem
+3. PongGameSystem
 
-In Pong there are three systems imported via worldInjection above. Each is responsible for a different part of the experience:
-
-1) PaddleSystem
-2) PongPhysicsSystem
-3) PongGameSystem
-
-We will look at the PaddleSystem.ts first.
+We will look at `PaddleSystem.ts` first.
 
 ### PaddleSystem: Introduction to State and Reactivity
+In Pong each active player has two paddles (one for the left hand and one for the right hand), and paddles are spawned or destroyed as players come and go.  
 
-Ethereal Engine uses the React pattern of allowing state observers to 'react' to state changes. This is done for a couple of different reasons. Philosophically it separates the 'what' from the 'how', and technically it helps decouple game components from each other, allowing developers to scale work horizontally, reducing dependencies.
+We will use Ethereal Engine's best practices and separate our concerns.  
+What this means for us, at this level of abstraction, is that we don't yet need to think about how the paddles are manifested.
 
-The React website has several good discussions on reactivity as a whole:
+We will separate the 'what' from the 'how' of the paddles:
+- **what**: There are some set of paddles. _(Entities)_  
+- **how**:  The paddles happen to be 3D objects with collision hulls. _(Components)_  
+  > We will get into the details of how this works later.
 
-- https://react.dev/learn/reacting-to-input-with-state
+:::info[advanced]
+Ethereal Engine uses the React pattern of allowing state observers to 'react' to state changes.  
+You can read more in depth about this in the [ECS section](/docs/manual/developer/ecs) of the manual.
+:::
 
-In Pong each active player has two paddles (one for the left hand and one for the right hand), and paddles are spawned or destroyed as players come and go. In this case the 'what' is that there are some set of paddles. And the 'how' (which we will get to later) is that the paddles happen to be 3d objects with collision hulls. But at this level of scope we can separate our concerns and we don't have to think about how the paddles are manifested.
 
-In PaddleSystem.ts we see a good example of this reactive state pattern. The approach we've taken here is to track the enumeration of active paddles like so:
-
-```
+In `PaddleSystem.ts` we can see a good example of the reactive state pattern that Ethereal Engine follows.  
+The basic idea here is to track the list of active paddles:
+```ts
 export const PaddleState = defineState({
   name: 'ee.pong.PaddleState',
   initial: {} as Record<
@@ -108,15 +124,19 @@ export const PaddleState = defineState({
   ...
 ```
 
-The defineState() method registers a collection of Record objects. A Record is a schema in a third party runtime schema definition language that Ethereal Engine uses.
+:::info[advanced]
+The `defineState()` method registers a collection of Record objects.  
+A `Record` is a schema in a third party runtime schema definition language that Ethereal Engine uses.
+:::
 
 ### PaddleSystem: Introduction to Event Sourced State
+Ethereal Engine uses an event sourced state paradigm.  
+Sourcing state and responding to that state is asynchronous but a single 'effect' or outcome results, rather than having to propagate potentially thousands of successive state changes.
 
-Ethereal Engine uses an event sourced state paradigm. Sourcing state and responding to that state is asynchronous but a single 'effect' or outcome results, rather than having to propagate potentially thousands of successive state changes.
-
-A good discussion of Event Sourcing can be found here:
-
+:::info
+A good discussion about Event Sourcing can be found here:  
 https://domaincentric.net/blog/event-sourcing-snapshotting
+:::
 
 In an Event Sourced system, the current state of an aggregate is usually reconstituted from the full history of events. It means that before handling a command we need to do a full read of a single fine-grained stream and transport the events over the network. This allows late joiners to synchronize with the overall game state.
 
