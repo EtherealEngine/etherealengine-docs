@@ -140,9 +140,8 @@ https://domaincentric.net/blog/event-sourcing-snapshotting
 
 In an Event Sourced system, the current state of an aggregate is usually reconstituted from the full history of events. It means that before handling a command we need to do a full read of a single fine-grained stream and transport the events over the network. This allows late joiners to synchronize with the overall game state.
 
-In PaddleSystem we define a set of actions explicitly like so:
-
-```
+In `PaddleSystem.ts` we define a set of actions explicitly like so:
+```ts
 export class PaddleActions {
   static spawnPaddle = defineAction({
     ...WorldNetworkAction.spawnObject.actionShape,
@@ -157,7 +156,7 @@ export class PaddleActions {
 
 And we then allow the registration of 'receptors' on state objects to catch dispatched events over the network, and in this case we're entirely focused on updating the state records above:
 
-```
+```ts
   ...
   receptors: [
     [
@@ -188,15 +187,15 @@ With the state management out of the way, now we're left with the details of mak
 
 PaddleReactor defines a React component that has a useEffect() to observe state changes on a given PaddleState entry. When the PaddleState changes it sets up an entity to reflect that owner. Inside the useEffect() we see several typical 3d and game related components being setup:
 
-	- UUIDComponent
-	- TransformComponent
-	- VisibleComponent
-	- DistanceFromCameraComponent
-	- FrustrumCullComponent
-	- NameComponent
-	- PrimitiveGeometryComponent
-	- ColliderComponent
-	- GrabbableComponent
+- UUIDComponent
+- TransformComponent
+- VisibleComponent
+- DistanceFromCameraComponent
+- FrustrumCullComponent
+- NameComponent
+- PrimitiveGeometryComponent
+- ColliderComponent
+- GrabbableComponent
 
 Most of these components are self descriptive, and this typically reflects the core set of components you'll see in many Ethereal Engine 3d entities that represent objects in a game.
 
