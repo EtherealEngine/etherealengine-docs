@@ -9,16 +9,18 @@ NOTE: This page should contain:
 - Segue: Lead the user into the Developer Manual
 -->
 
-This guide will teach you how to get started programming with Ethereal Engine.  
+:::important
+This guide teaches some of the Ethereal Engine recommended best practices for developers.  
+As such, the level of knowledge required will be higher than if it was just an introductory guide.
 
-You will learn how to create **Pong**, a multiplayer game built with Ethereal Engine using Typescript.  
+_Visit the [Developer Manual](/docs/manual/developer/intro) page for in-depth information about programming with Ethereal Engine._  
+:::
 
-> _This is an introductory guide._  
-> _Visit the [Developer Manual](/docs/manual/developer/intro) page for more information about programming with Ethereal Engine._  
+This guide will teach you how to create **Pong**, a multiplayer game built with Ethereal Engine using Typescript.  
 
 ## Installation and Running the project
 ### 1. Install Pong
-<!-- TODO: This should be an MDX partial that contains its own section, instead of just a quick sidenote. -->
+<!-- TODO: This should be an MDX partial that sends the user to the developer quick-start guide for running projects with a local environment. -->
 Ethereal Engine scans for projects in its `/packages/projects/projects` sub-folder.  
 We can install Ethereal Engine from scratch and also register a sub project using the following commands:
 ```bash
@@ -37,24 +39,28 @@ npm run dev
 ```
 
 ### 3. Configure the Location
-Go to the Admin Panel, create a `Location` for the project and map the project to the name `pong`.
-:::info[link]
-https://localhost:3000/admin .
+Go to the Admin Panel page, create a `Location` for the project and change the project's name to `pong`.
+:::note[Admin Panel]
+https://localhost:3000/admin
 :::
 
 :::important
-Ethereal Engine must be running for this step and the rest of this guide.
+Ethereal Engine must be running for this step and the rest of this guide to work.
 :::
 
-4) Run the project on the web by visiting it with the URL you created. See https://localhost:3000/location/pong
+### 4. Run Pong
+Run the project on the web by visiting it with the URL you just created.
+:::note[Pong]
+https://localhost:3000/location/pong
+:::
 
 ## Understanding Pong
 
-### Quick Overview
+### High Level Overview
 A Pong world can have several separate pong tables at once.  
 Each pong table has four pong plates and can handle four players at once.
 
-Pong has several files which represent parts of the experience:
+Pong has several files which represent different parts of the experience:
 - **PaddleSystem**: A paddle 'system' for managing the player paddles.
 - **PlateComponent**: Each pong game has one or more plates that represent player positions in a game. This example creates 4 player games.
 - **PongComponent**: Each pong game in has the concept of a game starting or stopping; this is managed here.
@@ -102,7 +108,7 @@ We will separate the 'what' from the 'how' of the paddles:
 - **how**:  The paddles happen to be 3D objects with collision hulls. _(Components)_  
   > We will get into the details of how this works later.
 
-:::info[advanced]
+:::info
 Ethereal Engine uses the React pattern of allowing state observers to 'react' to state changes.  
 You can read more in depth about this in the [ECS section](/docs/manual/developer/ecs) of the manual.
 :::
@@ -124,23 +130,27 @@ export const PaddleState = defineState({
   ...
 ```
 
-:::info[advanced]
+:::info
 The `defineState()` method registers a collection of Record objects.  
 A `Record` is a schema in a third party runtime schema definition language that Ethereal Engine uses.
 :::
 
 ### PaddleSystem: Introduction to Event Sourced State
 Ethereal Engine uses an event sourced state paradigm.  
-Sourcing state and responding to that state is asynchronous but a single 'effect' or outcome results, rather than having to propagate potentially thousands of successive state changes.
 
 :::info
 A good discussion about Event Sourcing can be found here:  
 https://domaincentric.net/blog/event-sourcing-snapshotting
 :::
+Sourcing state and responding to that state is asynchronous.  
+But, rather than having to propagate potentially thousands of successive state changes, a single 'effect' or outcome will result from this process.
 
-In an Event Sourced system, the current state of an aggregate is usually reconstituted from the full history of events. It means that before handling a command we need to do a full read of a single fine-grained stream and transport the events over the network. This allows late joiners to synchronize with the overall game state.
+In an Event Sourced system, the current state of an aggregate is usually reconstituted from the full history of events.  
+This means that, before handling a command, we need to do a full read of a single fine-grained stream and transport the events over the network.  
 
-In `PaddleSystem.ts` we define a set of actions explicitly like so:
+This design allows late joiners of the game to synchronize with the overall game state.
+
+We define a set of actions explicitly in `PaddleSystem.ts`:
 ```ts
 export class PaddleActions {
   static spawnPaddle = defineAction({
@@ -154,8 +164,8 @@ export class PaddleActions {
 }
 ```
 
-And we then allow the registration of 'receptors' on state objects to catch dispatched events over the network, and in this case we're entirely focused on updating the state records above:
-
+We then allow the registration of 'receptors' on state objects to catch dispatched events over the network.  
+In this case, we're entirely focused on updating the state records defined above:
 ```ts
   ...
   receptors: [
@@ -178,15 +188,17 @@ And we then allow the registration of 'receptors' on state objects to catch disp
   ]
 })
 ```
+`WorldNetworkAction.destroyObject` is an observer that we have injected to make sure that we update our state tables appropriately.  
 
-The WorldNetworkAction.destroyObject is an observer we've injected here to catch here to make sure that we update our state tables appropriately. Although we have custom state on the object creation, we don't have any custom state on paddle destruction.
+Although we have custom state on the object creation, we don't have any custom state on paddle destruction.
+
 
 ### PaddleState: Introduction to Components
+With the state management out of the way, we are now left with the details of making sure that our visual representations reflect our state.
 
-With the state management out of the way, now we're left with the details of making sure our visual representations reflect our state.
+`PaddleReactor.ts` defines a React component that has a `useEffect()` to observe state changes on a given `PaddleState` entry. The reactor sets up an entity to reflect that owner when PaddleState changes.  
 
-PaddleReactor defines a React component that has a useEffect() to observe state changes on a given PaddleState entry. When the PaddleState changes it sets up an entity to reflect that owner. Inside the useEffect() we see several typical 3d and game related components being setup:
-
+Inside `useEffect()` we see several typical 3D and game related components being setup:
 - UUIDComponent
 - TransformComponent
 - VisibleComponent
@@ -197,19 +209,26 @@ PaddleReactor defines a React component that has a useEffect() to observe state 
 - ColliderComponent
 - GrabbableComponent
 
-Most of these components are self descriptive, and this typically reflects the core set of components you'll see in many Ethereal Engine 3d entities that represent objects in a game.
+These components reflect the core set of components that you will find in many Ethereal Engine 3D entities used to represent objects in a game.
 
-The GrabbableComponent is notable in that it's a good example of where components are more than just 'state'; they can be used to form an expressive 'vocabulary' of high level intentions. In this case we want the paddle to stay attached to the owner avatar at a specified attachment point. If we didn't have this concept we would have to fire rigid body physics target position events every frame to keep the paddle synchronized with the player.
+:::important
+The `GrabbableComponent` is notable because it is a good example of components being more than just 'state'.  
+They can also be used to form an expressive 'vocabulary' of the high level intentions of the developer.  
+
+In this case, we want the paddle to stay attached to the owner's avatar at a specified attachment point.  
+If we didn't have this concept we would have to fire rigid body physics target position events every frame to keep the paddle synchronized with the player.
+:::
 
 ### PaddleState: Introduction to Reactors
+Both PaddleReactor and Reactor in `PaddleSystem.ts` demonstrate reactivity to state:  
+- The reactor is updated whenever state changes
+- Game entities that exist are a reflection of that larger state.
 
-Both PaddleReactor and Reactor in PaddleSystem demonstrate reactivity to state. The reactor is updated whenever state changes, and the game entities that exist are a reflection of that larger state.
 
 ### PaddleState: System
-
-Tying everything together in PaddleSystem is the PaddleSystem itself. It registers and runs an execute() handler every frame and it also registers the reactor:
-
-```
+Tying everything together in `PaddleSystem.ts` is the PaddleSystem itself.  
+It registers and runs an execute() handler every frame and it also registers the reactor:
+```ts
 export const PaddleSystem = defineSystem({
   uuid: 'pong.paddle-system',
   execute,
@@ -219,20 +238,15 @@ export const PaddleSystem = defineSystem({
 ```
 
 ### PaddleState: Overall Flow
+The general flow of Pong is:
+1. The execute handler catches and handles PaddleActions using `receiveActions(PaddleState)`
+2. PaddleActions respond to network events and applies them to the PaddleState.
+3. The reactor executes its process based on changes to PaddleState.
 
-The general flow is like so:
-
-1) The execute handler catches and handles PaddleActions using ```receiveActions(PaddleState)```
-
-2) The PaddleActions respond to network events and applies them to the PaddleState.
-
-3) The reactor reacts to any state changes on PaddleState.
 
 ## PlateComponent
 
-
 ### PongComponent, PongGameSystem and PongPhysicsSystem
-
 
 ### Summary
 
