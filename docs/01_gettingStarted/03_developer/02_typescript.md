@@ -238,7 +238,7 @@ export const PaddleSystem = defineSystem({
 ```
 
 ### PaddleState: Overall Flow
-The general flow of Pong is:
+The general flow of PaddleState is:
 1. The execute handler catches and handles PaddleActions using `receiveActions(PaddleState)`
 2. PaddleActions respond to network events and applies them to the PaddleState.
 3. The reactor executes its process based on changes to PaddleState.
