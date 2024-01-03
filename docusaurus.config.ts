@@ -42,8 +42,27 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}'],
-          editUrl: 'https://github.com/EtherealEngine/etherealengine-docs/blob/master/'
-        },
+          editUrl: 'https://github.com/EtherealEngine/etherealengine-docs/blob/master/',
+          // async sidebarItemsGenerator({
+          //   defaultSidebarItemsGenerator,
+          //   numberPrefixParser,
+          //   item,
+          //   version,
+          //   docs,
+          //   categoriesMetadata,
+          //   isCategoryIndex,
+          // }) {
+          //   // Example: return an hardcoded list of static sidebar items
+          //   const def = defaultSidebarItemsGenerator({numberPrefixParser,
+          //     item,
+          //     version,
+          //     docs,
+          //     categoriesMetadata,
+          //     isCategoryIndex,})
+          //   console.log(JSON.stringify(def))
+          //   return def;
+          // }
+          },  
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
@@ -72,9 +91,13 @@ const config: Config = {
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
+          to: 'docs/overview/locations',
+          label: 'Overview',
+          position: 'left'
+        },
+        {
+          to: 'docs/gettingStarted/guest',
+          label: 'Getting Started',
           position: 'left'
         },
         {

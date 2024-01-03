@@ -1,0 +1,628 @@
+[
+    {
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "overview/locations"
+        },
+        {
+          "type": "doc",
+          "id": "overview/features"
+        },
+        {
+          "type": "doc",
+          "id": "overview/faq",
+          "label": "FAQ"
+        }
+      ],
+      "link": {
+        "type": "doc",
+        "id": "overview/overview.intro"
+      }
+    },
+    {
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "gettingStarted/guest"
+        },
+        {
+          "type": "doc",
+          "id": "gettingStarted/creator"
+        },
+        {
+          "type": "category",
+          "label": "Become a Developer",
+          "items": [
+            {
+              "type": "doc",
+              "id": "gettingStarted/developer/behaveGraph",
+              "label": "Behave Graph"
+            },
+            {
+              "type": "doc",
+              "id": "gettingStarted/developer/typescript",
+              "label": "Typescript"
+            }
+          ],
+          "link": {
+            "type": "doc",
+            "id": "gettingStarted/developer/intro"
+          }
+        },
+        {
+          "type": "doc",
+          "id": "gettingStarted/host"
+        }
+      ],
+      "link": {
+        "type": "doc",
+        "id": "gettingStarted/intro"
+      }
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        {
+          "type": "doc",
+          "id": "examples/example1"
+        },
+        {
+          "type": "doc",
+          "id": "examples/example2"
+        }
+      ],
+      "link": {
+        "type": "generated-index",
+        "description": "Examples of what you can achieve with Ethereal Engine."
+      }
+    },
+    {
+      "type": "category",
+      "label": "Manual",
+      "items": [
+        {
+          "type": "category",
+          "label": "General",
+          "items": [
+            {
+              "type": "category",
+              "label": "Concepts",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/general/concepts/instances"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Studio",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/toolbar",
+                  "label": "Toolbar"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/files",
+                  "label": "Scene and Files Directory"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/preview",
+                  "label": "The Preview Panel"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/viewport",
+                  "label": "Viewport"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/hierarchy",
+                  "label": "Hierarchy & Material Library"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/properties",
+                  "label": "Properties"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/assembly",
+                  "label": "Assembly Menu"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/studio/profile",
+                  "label": "User Profile"
+                }
+              ],
+              "link": {
+                "type": "doc",
+                "id": "manual/general/studio/intro"
+              }
+            },
+            {
+              "type": "category",
+              "label": "Admin Panel",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/dashboard"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/servers"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/projects"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/routes"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/locations"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/instances"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/avatars"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/benchmarking"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/bots"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/channels"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/invites"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/recordings"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/resources"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/settings"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/general/adminPanel/users"
+                }
+              ],
+              "link": {
+                "type": "doc",
+                "id": "manual/general/adminPanel/intro"
+              }
+            },
+            {
+              "type": "doc",
+              "id": "manual/general/glossary",
+              "label": "Glossary"
+            },
+            {
+              "type": "doc",
+              "id": "manual/general/faq"
+            }
+          ],
+          "link": {
+            "type": "doc",
+            "id": "manual/general/intro"
+          }
+        },
+        {
+          "type": "category",
+          "label": "Creator",
+          "items": [
+            {
+              "type": "category",
+              "label": "Assets",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/creator/assets/intro"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Avatars",
+              "items": [],
+              "link": {
+                "type": "doc",
+                "id": "manual/creator/avatars/intro"
+              }
+            },
+            {
+              "type": "category",
+              "label": "Project Management",
+              "items": [],
+              "link": {
+                "type": "doc",
+                "id": "manual/creator/project/intro"
+              }
+            },
+            {
+              "type": "category",
+              "label": "Tutorials",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/creator/tutorials/unity_bridge"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/creator/tutorials/unreal_bridge"
+                }
+              ]
+            },
+            {
+              "type": "doc",
+              "id": "manual/creator/faq",
+              "label": "Creator FAQ"
+            }
+          ],
+          "link": {
+            "type": "doc",
+            "id": "manual/creator/intro"
+          }
+        },
+        {
+          "type": "category",
+          "label": "Developer",
+          "items": [
+            {
+              "type": "doc",
+              "id": "manual/developer/projectsOverview"
+            },
+            {
+              "type": "category",
+              "label": "Behave Graph",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/developer/behaveGraph/concepts"
+                },
+                {
+                  "type": "category",
+                  "label": "Nodes",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "manual/developer/behaveGraph/nodes/types"
+                    },
+                    {
+                      "type": "category",
+                      "label": "Entity Nodes",
+                      "items": [],
+                      "link": {
+                        "type": "doc",
+                        "id": "manual/developer/behaveGraph/nodes/entity/intro"
+                      }
+                    },
+                    {
+                      "type": "category",
+                      "label": "Component Nodes",
+                      "items": [],
+                      "link": {
+                        "type": "doc",
+                        "id": "manual/developer/behaveGraph/nodes/component/intro"
+                      }
+                    },
+                    {
+                      "type": "category",
+                      "label": "State Nodes",
+                      "items": [],
+                      "link": {
+                        "type": "doc",
+                        "id": "manual/developer/behaveGraph/nodes/state/intro"
+                      }
+                    },
+                    {
+                      "type": "category",
+                      "label": "Event Nodes",
+                      "items": [],
+                      "link": {
+                        "type": "doc",
+                        "id": "manual/developer/behaveGraph/nodes/events/intro"
+                      }
+                    },
+                    {
+                      "type": "category",
+                      "label": "Action Nodes",
+                      "items": [],
+                      "link": {
+                        "type": "doc",
+                        "id": "manual/developer/behaveGraph/nodes/actions/intro"
+                      }
+                    },
+                    {
+                      "type": "category",
+                      "label": "Custom Nodes",
+                      "items": [],
+                      "link": {
+                        "type": "doc",
+                        "id": "manual/developer/behaveGraph/nodes/custom/intro"
+                      }
+                    }
+                  ],
+                  "link": {
+                    "type": "generated-index",
+                    "description": "Nodes are the basic building blocks defining program logic or processes. They represent actions or elements connected visually."
+                  }
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/developer/behaveGraph/usage"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/developer/behaveGraph/config"
+                }
+              ],
+              "link": {
+                "type": "doc",
+                "id": "manual/developer/behaveGraph/intro"
+              }
+            },
+            {
+              "type": "doc",
+              "id": "manual/developer/stateManagement"
+            },
+            {
+              "type": "doc",
+              "id": "manual/developer/ecs",
+              "label": "ECS"
+            },
+            {
+              "type": "doc",
+              "id": "manual/developer/networking"
+            },
+            {
+              "type": "doc",
+              "id": "manual/developer/actionsEventSourcing"
+            },
+            {
+              "type": "category",
+              "label": "Testing",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/developer/testing/reasonableCode"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/developer/testing/testDrivenDevelopment"
+                }
+              ],
+              "link": {
+                "type": "doc",
+                "id": "manual/developer/testing/intro"
+              }
+            },
+            {
+              "type": "category",
+              "label": "Debugging",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/developer/debugging/basic"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/developer/debugging/deviceWSL"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/developer/debugging/deployedInstanceServers"
+                }
+              ],
+              "link": {
+                "type": "generated-index",
+                "description": "This section covers different techniques for debugging Ethereal Engine's source code and any projects created with it."
+              }
+            },
+            {
+              "type": "doc",
+              "id": "manual/developer/faq",
+              "label": "Developer FAQ"
+            }
+          ],
+          "link": {
+            "type": "doc",
+            "id": "manual/developer/intro"
+          }
+        },
+        {
+          "type": "category",
+          "label": "Hosting",
+          "items": [
+            {
+              "type": "category",
+              "label": "Installation",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/macOSX"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/windows"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/windowsWSL"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/advancedSetup"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/runningOnStaticIP"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/troubleshooting"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/docker"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/opensearch"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/installation/elasticKibana"
+                }
+              ],
+              "link": {
+                "type": "doc",
+                "id": "manual/host/installation/intro"
+              }
+            },
+            {
+              "type": "category",
+              "label": "DevOps Deployment",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/microk8s_linux"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/microk8s_windows"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/dockerDesktop"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/minikube"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/AWSSetup"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/installingProjects"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/databaseMigrations"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/setupGithubOAuth"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/managingRemoteKubernetes"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/releaseHelmChart"
+                },
+                {
+                  "type": "doc",
+                  "id": "manual/host/devopsDeployment/upgradeHelmDeployment"
+                }
+              ],
+              "link": {
+                "type": "doc",
+                "id": "manual/host/devopsDeployment/intro"
+              }
+            },
+            {
+              "type": "category",
+              "label": "DevOps Tutorials",
+              "items": [
+                {
+                  "type": "category",
+                  "label": "Control Center App",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "manual/host/tutorials/etherealControlCenter/getting_started"
+                    }
+                  ],
+                  "link": {
+                    "type": "generated-index",
+                    "description": "In this section you will find tutorials for Ethereal Engine's Control Center App."
+                  }
+                }
+              ],
+              "link": {
+                "type": "generated-index",
+                "description": "In this section you will find tutorials for hosting Ethereal Engine and its tech stack."
+              }
+            },
+            {
+              "type": "doc",
+              "id": "manual/host/faq",
+              "label": "Hosting FAQ"
+            }
+          ],
+          "link": {
+            "type": "doc",
+            "id": "manual/host/intro"
+          }
+        },
+        {
+          "type": "doc",
+          "id": "manual/license"
+        }
+      ],
+      "link": {
+        "type": "generated-index",
+        "description": "Learn everything that Ethereal Engine has to offer."
+      }
+    },
+    {
+      "type": "category",
+      "label": "Get Involved",
+      "items": [],
+      "link": {
+        "type": "doc",
+        "id": "contributing/intro"
+      }
+    },
+    {
+      "type": "category",
+      "label": "Community",
+      "items": [],
+      "link": {
+        "type": "doc",
+        "id": "community/intro"
+      }
+    }
+  ]
