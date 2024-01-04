@@ -10,29 +10,26 @@ const dotenv = require('dotenv').config({
 const orgTitle         = 'Ethereal Engine'
 const orgName          = 'etherealengine'
 const projectName      = 'etherealengine-docs'
-const siteURL          = 'https://etherealengine.github.io'
 const editURL          = `https://github.com/EtherealEngine/${projectName}/blob/master/`
+const siteURL          = 'https://etherealengine.github.io'
+const siteTitle        = `${orgTitle} Documentation`
+const siteTagline      = `${orgTitle} is an open source solution for hosting, creating and developing immersive social spaces.`
+const siteIcon         = 'img/favicon.ico'
 const visualScriptName = 'Behave Graph'
 
 // Docusaurus Configuration
 const config: Config = {
-  title: orgTitle,
-  tagline: 'An open source solution for hosting, creating and developing immersive social spaces, built on top of WebXR, React & Feathers.',
-  favicon: 'img/favicon.ico',
+  title: siteTitle,
+  tagline: siteTagline,
+  favicon: siteIcon,
+  url: siteURL,  // Set the production url of your site here
+  baseUrl: `/${projectName}/`, // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
+  organizationName: orgName,   // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
+  projectName: projectName,    // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
 
-  // Set the production url of your site here
-  url: siteURL,
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: `/${projectName}/`,
+  // Broken Links behavior
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: orgName, // Usually your GitHub org/user name.
-  projectName: projectName, // Usually your repo name.
-
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
