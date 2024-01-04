@@ -7,6 +7,7 @@ const dotenv = require('dotenv').config({
 })
 
 // General Configuration
+const orgTitle         = 'Ethereal Engine'
 const orgName          = 'etherealengine'
 const projectName      = 'etherealengine-docs'
 const siteURL          = 'https://etherealengine.github.io'
@@ -15,7 +16,7 @@ const visualScriptName = 'Behave Graph'
 
 // Docusaurus Configuration
 const config: Config = {
-  title: orgName,
+  title: orgTitle,
   tagline: 'An open source solution for hosting, creating and developing immersive social spaces, built on top of WebXR, React & Feathers.',
   favicon: 'img/favicon.ico',
 
@@ -80,17 +81,15 @@ const config: Config = {
         src: 'img/logo.svg'
       },
       items: [
-        { label: 'Creators', position: 'left', to: 'creator' },
-        {
-          label: 'Developers',
-          position: 'left',
-          type: 'dropdown',
-          items: [
-            { to: 'developer/visualscript', label: visualScriptName },
-            { to: 'developer/typescript',   label: 'Typescript' },
-          ]
-        },
-        { label: 'Examples', position: 'left', to: 'examples', },
+        // TODO: Uncomment when the learning sites are presentable
+        //{ label: 'Creators', position: 'left', to: 'creator' },
+        //{ label: 'Developers', position: 'left', type: 'dropdown',
+        //  items: [
+        //    { label: visualScriptName, to: 'developer/visualscript' },
+        //    { label: 'Typescript', to: 'developer/typescript'  },
+        //  ]
+        //},
+        //{ label: 'Examples', position: 'left', to: 'examples', },  // TODO: Uncomment when the examples pages is ready
         { label: 'Manual', position: 'left', to: 'manual', },
         //{ label: 'API', position: 'left', href: 'https://etherealengine.github.io/etherealengine-docs/typedoc' },
         { label: 'Ethereal Engine', position: 'right',  href: 'https://etherealengine.org/' },
