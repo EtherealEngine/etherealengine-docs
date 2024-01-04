@@ -52,6 +52,9 @@ const config: Config = {
   ],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+    },
     docs: {
       sidebar: {
         autoCollapseCategories: true,
@@ -72,16 +75,41 @@ const config: Config = {
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
+          to: 'docs/creator',
+          label: 'Creators',
           position: 'left'
         },
         {
-          href: 'https://etherealengine.github.io/etherealengine-docs/typedoc',
-          label: 'API',
+          type: 'dropdown',
+          label: 'Developers',
+          position: 'left',
+          items: [
+            {
+              to: 'docs/developer/behaveGraph',
+              label: 'Behave Graph',
+            },
+            {
+              to: 'docs/developer/typescript',
+              label: 'Typescript',
+            },
+          ]
+        },
+        {
+          to: 'examples',
+          label: 'Examples',
           position: 'left'
         },
+        {
+          to: 'docs/manual',
+          label: 'Manual',
+          position: 'left'
+        },
+        //{
+        //  href: 'https://etherealengine.github.io/etherealengine-docs/typedoc',
+        //  label: 'API',
+        //  position: 'left'
+        //},
+
         {
           href: 'https://etherealengine.org/',
           label: 'Ethereal Engine',
