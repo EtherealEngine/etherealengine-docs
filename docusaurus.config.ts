@@ -6,23 +6,31 @@ const dotenv = require('dotenv').config({
   path: appRootPath.path + '/.env.local'
 })
 
+// General Configuration
+const orgName          = 'etherealengine'
+const projectName      = 'etherealengine-docs'
+const siteURL          = 'https://etherealengine.github.io'
+const editURL          = `https://github.com/EtherealEngine/${projectName}/blob/master/`
+const visualScriptName = 'Behave Graph'
+
+// Docusaurus Configuration
 const config: Config = {
-  title: 'etherealengine',
-  tagline:     'An open source solution for hosting, creating and developing immersive social spaces, built on top of WebXR, React & Feathers.',
+  title: orgName,
+  tagline: 'An open source solution for hosting, creating and developing immersive social spaces, built on top of WebXR, React & Feathers.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://etherealengine.github.io',
+  url: siteURL,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/etherealengine-docs/',
+  baseUrl: `/${projectName}/`,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'etherealengine', // Usually your GitHub org/user name.
-  projectName: 'etherealengine-docs', // Usually your repo name.
+  organizationName: orgName, // Usually your GitHub org/user name.
+  projectName: projectName, // Usually your repo name.
 
 
   // Even if you don't use internationalization, you can use this field to set
@@ -38,11 +46,10 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.ts'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}'],
-          editUrl: 'https://github.com/EtherealEngine/etherealengine-docs/blob/master/'
+          exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_partials/**'],
+          editUrl: editURL, // Remove this to remove the "edit this page" links.
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -52,15 +59,14 @@ const config: Config = {
   ],
 
   themeConfig: {
-    colorMode: {
-      defaultMode: 'dark',
-    },
+    colorMode: { defaultMode: 'dark' },
     docs: {
       sidebar: {
         autoCollapseCategories: true,
         hideable: true
       }
     },
+    blog: null, // Explicitly disable the default blog plugin
     algolia: {
       appId: "N5OIDFHT9B",
       apiKey: "e27783cb4ed9bfc6a011eb7026868c20",
@@ -74,51 +80,21 @@ const config: Config = {
         src: 'img/logo.svg'
       },
       items: [
+        { label: 'Creators', position: 'left', to: 'creator' },
         {
-          to: 'docs/creator',
-          label: 'Creators',
-          position: 'left'
-        },
-        {
-          type: 'dropdown',
           label: 'Developers',
           position: 'left',
+          type: 'dropdown',
           items: [
-            {
-              to: 'docs/developer/behaveGraph',
-              label: 'Behave Graph',
-            },
-            {
-              to: 'docs/developer/typescript',
-              label: 'Typescript',
-            },
+            { to: 'developer/visualscript', label: visualScriptName },
+            { to: 'developer/typescript',   label: 'Typescript' },
           ]
         },
-        {
-          to: 'examples',
-          label: 'Examples',
-          position: 'left'
-        },
-        {
-          to: 'docs/manual',
-          label: 'Manual',
-          position: 'left'
-        },
-        //{
-        //  href: 'https://etherealengine.github.io/etherealengine-docs/typedoc',
-        //  label: 'API',
-        //  position: 'left'
-        //},
-
-        {
-          href: 'https://etherealengine.org/',
-          label: 'Ethereal Engine',
-          position: 'right'
-        },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
+        { label: 'Examples', position: 'left', to: 'examples', },
+        { label: 'Manual', position: 'left', to: 'manual', },
+        //{ label: 'API', position: 'left', href: 'https://etherealengine.github.io/etherealengine-docs/typedoc' },
+        { label: 'Ethereal Engine', position: 'right',  href: 'https://etherealengine.org/' },
+        { type: 'localeDropdown', position: 'right' },
       ]
     },
 
@@ -128,48 +104,27 @@ const config: Config = {
         {
           title: 'Social',
           items: [
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/xr_engine'
-            },
-            {
-              label: 'Facebook',
-              href: 'https://www.facebook.com/xrengine/'
-            },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/xrf'
-            }
+            { label: 'Twitter', href: 'https://twitter.com/xr_engine' },
+            { label: 'Facebook', href: 'https://www.facebook.com/xrengine/' },
+            { label: 'Discord', href: 'https://discord.gg/xrf' }
           ]
         },
         {
           title: 'Resources',
           items: [
-            {
-              label: 'Github',
-              href: 'https://github.com/etherealengine/etherealengine'
-            },
-            {
-              label: 'Npm',
-              href: 'https://www.npmjs.com/search?q=%40etherealengine'
-            }
+            { label: 'Github', href: 'https://github.com/etherealengine/etherealengine' },
+            { label: 'Npm', href: 'https://www.npmjs.com/search?q=%40etherealengine' }
           ]
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Ethereal Engine',
-              href: 'https://www.etherealengine.org/'
-            },
-            {
-              label: 'Open Collective',
-              href: 'https://opencollective.com/etherealengine'
-            }
+            { label: 'Ethereal Engine', href: 'https://www.etherealengine.org/' },
+            { label: 'Open Collective', href: 'https://opencollective.com/etherealengine' }
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Ethereal Engine.`
+      copyright: `Copyright © ${new Date().getFullYear()} Ethereal Engine.`,
     },
   prism: {
       theme: prismThemes.github,
