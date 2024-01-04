@@ -1,0 +1,8 @@
+{
+  "label": "Topic1",
+  "position": 02,
+  "link": {
+    "type": "doc",
+    "id": "developer/visualscript/topic1/intro"
+  }
+}

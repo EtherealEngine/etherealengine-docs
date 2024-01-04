@@ -1,0 +1,8 @@
+{
+  "label": "Event Nodes",
+  "position": 05,
+  "link": {
+    "type": "doc",
+    "id": "manual/developer/visualscript/nodes/events/intro"
+  }
+}
