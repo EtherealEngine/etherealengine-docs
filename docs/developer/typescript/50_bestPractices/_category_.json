@@ -1,0 +1,8 @@
+{
+  "label": "Best Practices",
+  "position": 50,
+  "link": {
+    "type": "doc",
+    "id": "developer/typescript/bestPractices/intro"
+  }
+}
