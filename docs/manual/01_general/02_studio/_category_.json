@@ -1,0 +1,8 @@
+{
+  "label": "Studio",
+  "position": 02,
+  "link": {
+    "type": "doc",
+    "id": "manual/general/studio/intro"
+  }
+}
