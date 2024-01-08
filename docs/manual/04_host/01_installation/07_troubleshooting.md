@@ -1,19 +1,15 @@
 # Troubleshooting
 
 ### Browser Debug
-
-```p key``` debug colliders view
+`p key` debug colliders view
 
 ### Invalid Certificate errors in local environment
+As of this writing, the cert provided in the ethereal engine package for local use is not adequately signed.  
+Browsers will throw up warnings about going to insecure pages.  
+You should be able to tell the browser to ignore it, usually by clicking on some sort of 'advanced options' button or link and then something along the lines of 'go there anyway'.
 
-As of this writing, the cert provided in the ethereal engine package for local use
-is not adequately signed. Browsers will throw up warnings about going to insecure pages.
-You should be able to tell the browser to ignore it, usually by clicking on some sort
-of 'advanced options' button or link and then something along the lines of 'go there anyway'.
-
-Chrome sometimes does not show a clickable option on the warning. If so, just
-type ```badidea``` or ```thisisunsafe``` when on that page. You don't enter that into the
-address bar or into a text box, Chrome is just passively listening for those commands.
+Chrome sometimes does not show a clickable option on the warning. If so, just type `badidea` or `thisisunsafe` when on that page.  
+You don't enter that into the address bar or into a text box, Chrome is just passively listening for those commands.
 
 ### Allow instanceserver address connection via installing local Certificate Authority
 
@@ -125,38 +121,32 @@ Currently MinIO is used as default storage for local development. If you want to
   - Use secure transfer (SSL/TLS): **Check / On / True**
 
 ### Clear all data from MinIO S3 storage provider running in local docker
-
 Run following commands in your terminal:
-
 ```bash
-  docker container stop etherealengine_minio_s3
-  docker container rm etherealengine_minio_s3
-  docker container prune --force
-  docker volume prune --force
-  npm run dev-docker
-  npm run dev-reinit
+docker container stop etherealengine_minio_s3
+docker container rm etherealengine_minio_s3
+docker container prune --force
+docker volume prune --force
+npm run dev-docker
+npm run dev-reinit
 ```
 
 ### DB not seeding routes (E.g. Error: No project installed- please contact site admin)
 
 Try
-
 ```bash
-  npm run dev-reinit 
+npm run dev-reinit 
 ```
-
 or
-
 ```bash
-  docker container stop etherealengine_db
-  docker container rm etherealengine_db
-  docker container prune --force
-  npm run dev-docker
-  npm run dev-reinit
+docker container stop etherealengine_db
+docker container rm etherealengine_db
+docker container prune --force
+npm run dev-docker
+npm run dev-reinit
 ```
 
 ### Weird issues with your database?
-
 Try
 
 ```bash
@@ -164,7 +154,6 @@ npm run dev-reinit
 ```
 
 Or if on windows
-
 ```bash
 npm run dev-reinit-windows
 ```
