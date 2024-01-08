@@ -1,121 +1,119 @@
-import AcceptCertificates from './_acceptCertificates.md'
+import AcceptCertificates from '../_partials/acceptCertificates.md'
+import PythonUbuntu from '../_partials/pythonUbuntu.md'
+import MakeUbuntu from '../_partials/makeUbuntu.md'
 
 # Ethereal Engine on MicroK8s (Linux)
 
-This guide is intended for local environment and currently tested on Ubuntu.
+This guide has been tested on Ubuntu, and it is intended for local deployment only.
 
-## Install Python 3
+<PythonUbuntu />
 
-In your WSL Ubuntu terminal, if python 3 (`pip3 --version`) isn't already installed on your machine. You can do so by running following commands:
-
-```bash
-sudo apt-get update -y
-sudo apt-get install -y python3-pip
-```
-
-You can verify pip3 by using `pip3 --version` command.
-
-## Install Make
-
-In your WSL Ubuntu terminal, if make (`make --version`) isn't already installed on your machine. You can do so by running following commands:
-
-```bash
-sudo apt-get update -y
-sudo apt-get install -y build-essential
-```
-
-You can verify make by using `make --version` command.
+<MakeUbuntu />
 
 ## Install kubectl, Helm and Docker
 
-If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/) and [Docker](https://docs.docker.com/get-docker/) aren't already installed on your machine, install them.
-
+Install [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/) and [Docker](https://docs.docker.com/get-docker/) on your device if they aren't already installed.  
 You may also need to install [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Download and install MicroK8s
-
-Instructions can be found [here](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview)
-
 ```bash
 sudo snap install microk8s --classic --channel=1.26/stable
 ```
+> Note: It is recommended to use microk8s version >=1.26 due to an issue with host storage access in version 1.25.
 
-> Due to some ongoing issue with host storage access in microk8s 1.25 version, it is recommended to use version 1.26.
+Another alternative is to follow the instructions for how to [install Kubernetes with MicroK8s](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview) in a local environment. This will help you learn more about how MicroK8s deployment works.  
 
-While you can follow the demo instructions there about starting MicroK8s, deploying some demo deployments, etc. to get a feel for it.
-
-## Clone Ethereal Engine repo to your local machine
-
-To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to get the Ethereal Engine repo on your machine. This is most easily done by running following command in WSL Ubuntu terminal.
-
+## Download Ethereal Engine
+To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to download the Ethereal Engine repository to your device. The easiest way to do this is by running the following command in your Ubuntu terminal:
 ```bash
-git clone https://github.com/etherealengine/etherealengine.git etherealengine
+git clone https://github.com/etherealengine/etherealengine.git
+```
+You can create an `.env.local` file by duplicating `.env.local.default` if it does not already exist in the root folder of Ethereal Engine's repository.
+
+## Start MinIO & MariaDB
+We recommend running MinIO & MariaDB server on your local machine via Docker and outside of MicroK8s.
+
+Running the command `docker-compose up` from the top-level `/scripts` directory of the Ethereal Engine repository will also start MinIO and multiple MariaDB docker containers _(as well as an optional redis server)_:
+1. Port **3306**: Server for local development
+2. Port **3305**: Server for automated testing
+3. Port **3304**: Server for minikube/microk8s testing
+> You can start the docker container by running `npm run dev-docker` the next time you need to start it.
+
+Alternatively, you could run MinIO & MariaDB on their own without Docker. You'll have to configure the Helm config file to have the appropriate S3 & SQL server configuration, and possibly also change the `./scripts/build_microk8s.sh` script.
+
+## Enable MicroK8s Addons
+The following command will enable the required MicroK8s addons:
+```bash
+sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3
 ```
 
-If `.env.local` file does not exist in the root of your repo folder then create it by duplicating `.env.local.default`.
-
-## Start MinIO & MariaDB server locally via Docker
-
-For simplicity, we recommend running MinIO & MariaDB server on your local machine outside of MicroK8s.
-
-If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will start up MinIO & multiple MariaDB docker containers (as well as a redis server, which is not needed). For mariadb containers, one is intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the docker container is stopped, you can start it again by running `npm run dev-docker`.
-
-Alternatively, if you want to just run MinIO & MariaDB on its own without Docker, that's fine too. You'll just have to configure the Helm config file to have the appropriate S3 & SQL server configuration, and possibly change the script `./scripts/build_microk8s.sh`.
-
-## Enabling MicroK8s Addons
-
-Execute following command in your terminal to enable MicroK8s addons
-
-`sudo microk8s enable dashboard dns registry host-access ingress rbac hostpath-storage helm3`
-
 ## Add MicroK8s to Kubectl
-
-First make sure there is no existing configuration for microk8s in your kubectl config. To do so you run `kubectl config get-contexts` command in terminal and see if the output contains microk8s. You can remove the existing configurations using following commands:
-
+First make sure there is no existing configuration for microk8s in your kubectl config.  
+To do so, run the following command in your Ubuntu terminal and check if the output contains `microk8s`.
+```bash
+kubectl config get-contexts
+```
+You can remove any existing configurations using the following commands:
 ```bash
 kubectl config delete-context microk8s
 kubectl config delete-cluster microk8s-cluster
 kubectl config delete-user microk8s-admin
 ```
 
-Now, we will add microk8s configuration to kubectl config. We can do this by using following commands. [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)
-
+Next we will add microk8s configuration to kubectl config by running the following commands (from [Reference](https://discuss.kubernetes.io/t/use-kubectl-with-microk8s/5313/6)):
 ```bash
 kubectl config set-cluster microk8s --server=https://127.0.0.1:16443/ --certificate-authority=/var/snap/microk8s/current/certs/ca.crt
 kubectl config set-credentials microk8s-admin --token="$(sudo microk8s kubectl config view --raw -o 'jsonpath={.users[0].user.token}')"
 kubectl config set-context microk8s --cluster=microk8s --namespace=default --user=microk8s-admin
 ```
 
-Afterwards you can use this newly create context by executing `kubectl config use-context microk8s`
-
-Now if you run `kubectl config get-contexts` command then microk8s should be current context.
-
-## (Optional) Add MicroK8s to Lens
-
- If the previous step was performed successfully then you should be able to see MicroK8s cluster in GUI tool [Lens](https://k8slens.dev/). Else you can print the configuration using following command:
-
-`microk8s config`
-
-Option 1: If you have kubectl already installed, use `sudo gedit ~/.kube/config` as add the above output in it.  
-Option 2: In Lens, goto `File` > `Add Cluster` and paste the output of above command to add cluster.
-
-## Enable MicroK8s access for local docker
-
-For MicroK8s we will be using MicroK8s local [registry](https://microk8s.io/docs/registry-built-in)
-
-Add the following lines to `/etc/docker/daemon.json`. On Linux, this is done by running `sudo gedit /etc/docker/daemon.json`.  
-
-```json
-{ 
-    "insecure-registries" : ["localhost:32000"]  
-}
+Afterwards you can use the newly created context by executing:
+```bash
+kubectl config use-context microk8s
 ```
 
-Afterwards, restart docker with: `sudo systemctl restart docker`
+Check that microk8s is the current context with:
+```bash
+kubectl config get-contexts
+```
 
-## Verify and troubleshoot MicroK8s
+## Add MicroK8s to Lens (Optional)
+You should now see the MicroK8s cluster in the [K8s Lens](https://k8slens.dev/) GUI tool.  
 
-Run `sudo microk8s inspect` and check if there is any warning. Its recommended to fixed the warning for MicroK8s to work properly. Following are some of the warnings and their possible fixes:
+Troubleshooting:  
+If you don't see it, it means that the previous step was not performed successfully.
+You can print the current configuration using the command:
+```bash
+microk8s config
+```
+- Option 1:  
+  If you have kubectl already installed, use `sudo gedit ~/.kube/config` and add the output of `microk8s config` into the file.  
+- Option 2:  
+  In [Lens](https://k8slens.dev/), goto `File` > `Add Cluster` and paste the output of `microk8s config`.
+
+## Enable MicroK8s access for local docker
+For MicroK8s we will use MicroK8s local [registry](https://microk8s.io/docs/registry-built-in)
+
+Add the following lines to `/etc/docker/daemon.json`.  
+> On Linux, this is can be done by running `sudo gedit /etc/docker/daemon.json`.  
+```json
+{
+  "insecure-registries": ["localhost:32000"]  
+}
+```
+Afterwards, restart docker with:
+```bash
+sudo systemctl restart docker
+```
+
+## Troubleshooting MicroK8s
+Its recommended to fix all MicroK8s warnings for it to work properly.  
+You can check if there are any warnings by running:
+```bash
+sudo microk8s inspect
+```
+
+These are some possible warnings and their potential fixes:
 
 1. WARNING:  This machine's hostname contains capital letters and/or underscores. This is not a valid name for a Kubernetes node, causing node registration to fail. Please change the machine's hostname or refer to the documentation for more details.
 
@@ -135,110 +133,161 @@ Run `sudo microk8s inspect` and check if there is any warning. Its recommended t
 
     Here this error cloud be due to conflicting kubectl being installed. Use this command to remove kubectl `sudo rm -rf /usr/local/bin/kubectl`
 
-## Update system hostfile to point to MicroK8s
+## Update the hosts file
+You'll need to edit your `hosts` file to redirect certain domains to your host machine IP address.  
+Add or update the following line into your `/etc/hosts` file:  
+```
+127.0.0.1 local.etherealengine.org api-local.etherealengine.org instanceserver-local.etherealengine.org 00000.instanceserver-local.etherealengine.org 00001.instanceserver-local.etherealengine.org 00002.instanceserver-local.etherealengine.org 00003.instanceserver-local.etherealengine.org
+```
+> On Linux this can be done by running `sudo gedit /etc/hosts`  
+> Make sure to save the file after editing. You will need administrator permissions to do so.
 
-You'll need to edit your hostfile to point certain domains to host machine IP address. On Linux, this is done by running `sudo gedit /etc/hosts`.
+This will redirect several `*-local.etherealengine.org` domains internally to the host machine. `nginx` ingress server will now be able to redirect the traffic to the appropriate Ethereal Engine pod.
 
-Add/Update the following lines:
-
-`127.0.0.1 local.etherealengine.org api-local.etherealengine.org instanceserver-local.etherealengine.org 00000.instanceserver-local.etherealengine.org 00001.instanceserver-local.etherealengine.org 00002.instanceserver-local.etherealengine.org 00003.instanceserver-local.etherealengine.org`
-
-The first line says to point several *-local.etherealengine.org domains internally to the host machine, where the nginx ingress server will redirect the traffic to the appropriate pod.
-
-Make sure to save this file after you've edited it. On Linux, at least, you need root permissions to edit it.
-
-## Add Helm repos
-
-You'll need to add a few Helm repos. Run the following:
-
+## Add Helm repositories
+You'll need to add a few Helm chart repositories. You can do so by running the following commands:
 ```bash
 helm repo add agones https://agones.dev/chart/stable
 helm repo add redis https://charts.bitnami.com/bitnami
 helm repo add etherealengine https://helm.etherealengine.org
 ```
-
-This will add the Helm charts for Agones, Redis, and Ethereal Engine, respectively.
+This will add the Helm charts for Agones, Redis and Ethereal Engine, respectively.
 
 ## Install Agones and Redis deployments
+From here on, deployments will be installed using Helm repositories.
 
-After adding those Helm repos, you'll start installing deployments using Helm repos.
+Make sure that kubectl is pointed at MicroK8s by running this command:
+```bash
+kubectl config current-context
+```
+> It should say `microk8s`
 
-Make sure that kubectl is pointed at MicroK8s by running `kubectl config current-context`, which should say 'microk8s'. You can also run `kubectl config get-contexts` to get all contexts that kubectl has been configured to run; the current one will have a '*' under the left-most
-'current' column.
+You can also run this command to get all contexts that kubectl has been configured to run:
+```bash
+kubectl config get-contexts
+```
+> The current context will have a `*` under the left-most `current` column.
 
-Once kubectl is pointed to microk8s, from the top of the Ethereal Engine repo, run `helm install -f </path/to/agones-default-values.yaml> agones agones/agones` to install Agones and `helm install local-redis redis/redis` to install redis.
+Once kubectl is pointed to MicroK8s, run these commands from the top of the Ethereal Engine repo to install Agones and Redis:  
+```bash
+helm install -f </path/to/agones-default-values.yaml> agones agones/agones
+helm install local-redis redis/redis
+```
+> Important:  
+> Make sure to change `/path/to/agones-default-values.yaml` with the actual path of the file.  
+> The [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) file can be found in the [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repository.
 
-> [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
+After a minute or so, all of these pods should be in the `Running` state.
+You can run this command to list all of the pods running in MicroK8s.
+```bash
+kubectl get pods -A
+```
 
-You can run `kubectl get pods -A` to list all of the pods running in microk8s. After a minute or so, all of these pods should be in the Running state.
+## Install Elastic Search and Kibana (Optional)
+Install Elasticsearch by adding the `elastic` repository with Helm:
+```bash
+helm repo add elastic https://helm.elastic.co
+```
 
-## (Optional) Install Elastic Search and Kibana using Helm for Server Logs
+Download the `values.yaml` file containing Elasticsearch's configuration information using `curl`:
+```bash
+curl -O https://raw.githubusercontent.com/elastic/helm-charts/master/elasticsearch/examples/minikube/values.yaml
+```
 
-To install Elasticsearch, add the elastic repository in Helm: `helm repo add elastic https://helm.elastic.co`
+Install the Elasticsearch Helm chart with `helm install` and pass the `values.yaml` file that we just downloaded to the command:
+```bash
+helm install elasticsearch elastic/elasticsearch -f ./values.yaml
+```
+> The -f option allows specifying the yaml file with the template.
 
-Now, use the curl command to download the values.yaml file containing configuration information:
+> You can add the `-n` option, followed by a name, to install Elasticsearch in a specific namespace:
+> ```bash
+> helm install elasticsearch elastic/elasticsearch -n [namespace] -f ./values.yaml
+> ```
 
-`curl -O https://raw.githubusercontent.com/elastic/helm-charts/master/elasticsearch/examples/minikube/values.yaml`
+Check if the cluster members are running:
+```bash
+kubectl get pods --namespace=default -l app=elasticsearch-master -w
+```
+> Another option is to use the helm test command to examine the cluster’s health:
+> ```bash
+> helm test elasticsearch
+> ```
 
-Use the helm install command and the values.yaml file to install the Elasticsearch helm chart:
+Install Kibana on top of Elasticsearch:
+```bash
+helm install kibana elastic/kibana
+```
 
-`helm install elasticsearch elastic/elasticsearch -f ./values.yaml`
+Check if all of the pods are ready:
+```bash
+kubectl get pods
+```
 
-The -f option allows specifying the yaml file with the template. If you wish to install Elasticsearch in a specific namespace, add the -n option followed by the name of the namespace: `helm install elasticsearch elastic/elasticsearch -n [namespace] -f ./values.yaml`
+After port-forwarding has been setup, Elasticsearch and the Kibana GUI can be accessed by navigating to http://localhost:5601 in your browser.
 
-Now check if the cluster members are up: `kubectl get pods --namespace=default -l app=elasticsearch-master -w`
+Edit the file `local.microk8s.template.values.yaml` and update the env variable `api.extraEnv.ELASTIC_HOST` to connect the logger with Elasticsearch:  
+```bash
+http://<username>:<password>@<host>:<port>
+```
+> The file [local.microk8s.template.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.microk8s.template.values.yaml) can be found in the [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
-The other option is to use the helm test command to examine the cluster’s health: `helm test elasticsearch`
-
-To install Kibana on top of Elasticsearch : `helm install kibana elastic/kibana`
-
-Check if all the pods are ready: `kubectl get pods`
-
-After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by typing `http://localhost:5601` in your browser
-
-In order to connect logger with elasticsearch, update `local.microk8s.template.values.yaml` env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
-
-> [local.microk8s.template.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.microk8s.template.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
-
-## Run build_microk8s.sh
-
-When microk8s is running, run the following command from the root of the Ethereal Engine repo:
-
+## Build MicroK8s
+Run the following command from the root of the Ethereal Engine repository after MicroK8s is running:
 ```bash
 ./scripts/build_microk8s.sh
 ```
+> Note: If you get the error `"packages/projects/projects/" does not exist`, run the following commands in your terminal:
+> ```bash
+> export MYSQL_HOST=localhost
+> npm run dev-docker
+> npm run dev-reinit
+> npm run install-projects
+> ```
 
-> If you face issue related to `"packages/projects/projects/" does not exist` then run following commands in your terminal:
+This _build_microK8s_ script will build an image of the entire Ethereal Engine repository into a single Docker file.
 
-```bash
-export MYSQL_HOST=localhost
-npm run dev-docker
-npm run dev-reinit
-npm run install-projects
-```
+Vite builds the client files using some information from the MariaDB database created for MicroK8s deployments to fill in some variables, and it needs database credentials.  
+The script will supply default values for all of the `MYSQL_*` variables if they are not provided to the script, as well as `VITE_CLIENT_HOST`, `VITE_SERVER_HOST`, and `VITE_INSTANCESERVER_HOST`.
+> The latter three will make your MicroK8s deployment accessible on `(local/api-local/instanceserver-local).etherealengine.org`;
+> If you want to run it on a different domain, then you'll have to set those three environment variables to what you want them to be (and also change the `hosts` file records you made to redirect to those subdomains.
 
-The script builds the full-repo Docker image using several build arguments. Vite, which builds he client files, uses some information from the MariaDB database created for microk8s deployments to fill in some variables, and needs database credentials. The script will supply default values for all of the MYSQL_* variables if they are not provided to the script, as well as VITE_CLIENT_HOST, VITE_SERVER_HOST, and VITE_INSTANCESERVER_HOST. The latter three will make your microk8s deployment accessible on `(local/api-local/instanceserver-local).etherealengine.org`; if you want to run it on a different domain, then you'll have to set those three environment variables to what you want them to be (and also change the hostfile records you made pointing those subdomains)
+> This process may take up to 15 minutes when run for the first time.  
+> Consecutive builds will take less time. The process has caching support.
 
-This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for different services, it will only run the parts needed for that service. This may take up to 15 minutes, though later builds should take less time as things are cached.
+> When built for targeting multiple services, the resulting docker file will only deploy and run the parts needed for each individual service.
 
-Once the images are build. It will push it to MicroK8s local registry. You can verify that images are pushed to registry by visiting [http://localhost:32000/v2/_catalog](http://localhost:32000/v2/_catalog).
+Once the images are built, the script will push the result to the MicroK8s local registry.  
+You can verify that the images are pushed correctly by visiting http://localhost:32000/v2/_catalog
 
 ## Update Helm Values File
+This will use a Helm config file titled `local.values.yaml` to configure the deployment.  
+There is a [template](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.microk8s.template.values.yaml) for this file in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
-This will use a Helm config file titled 'local.values.yaml' to configure the deployment. There is
-a [template](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.microk8s.template.values.yaml) for this file in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
-
-If you are using local file server as explained couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value similar to '\<ENGINE_FULL_PATH\>/packages/server/upload' e.g. '/home/\<OS_USER_NAME\>/\<ENGINE_FOLDER\>/packages/server/upload'. Its mandatory to point to `/packages/server/upload` folder of your engine folder.
+If you are using a local file server, as explained in one of the previous steps, you will need to update the variable `api.fileServer.hostUploadFolder` in the `local.values.yaml` file with a value similar to `ENGINE_FULL_PATH/packages/server/upload`.  
+_e.g. `/home/username/etherealengine/packages/server/upload`._  
+It is mandatory that it points to the `/packages/server/upload` folder of your Ethereal Engine folder.
 
 ## Deploy Ethereal Engine Helm chart
+Run the following command:
+```bash
+helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine
+```
+> Important:  
+> Make sure to change `/path/to/local.values.yaml` and `/path/to/db-refresh-true.values.yaml` with the actual path of the files.  
+> The file [db-refresh-true.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-true.values.yaml) can be found in the [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repository.
 
-Run the following command: `helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine`.
+After a minute or so, running `kubectl get pods` should show one or more instanceservers, one or more api servers, and one client server in the Running state.
 
-> [db-refresh-true.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-true.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
+Setting the option `FORCE_DB_REFRESH=true` made the api servers (re)initialize the database.  
+Since you don't want that to happen every time a new api pod starts, run the following command to restart the API pods and configure them to not reinit the database on boot.
+```bash
+helm upgrade --reuse-values -f </path/to/db-refresh-false.values.yaml> local etherealengine/etherealengine
+```
+> Important:  
+> Make sure to change `/path/to/db-refresh-true.values.yaml` with the actual path of the file.  
+> The file [db-refresh-false.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-false.values.yaml) can be found in the [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repository.
 
-After a minute or so, running `kubectl get pods` should show one or more instanceservers, one or more api servers, and one client server in the Running state. Setting `FORCE_DB_REFRESH=true` made the api servers (re)initialize the database. Since you don't want that to happen every time a new api pod starts, run `helm upgrade --reuse-values -f </path/to/db-refresh-false.values.yaml> local etherealengine/etherealengine`. The API pods will restart and will now not attempt to reinit the database on boot.
-
-> [db-refresh-false.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-false.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 ## Accept invalid certs
 
