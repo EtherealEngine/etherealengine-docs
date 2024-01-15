@@ -236,6 +236,3 @@ Using ```-f <config_file>``` and ```--set <variables>``` after it will apply any
 carryover values.
 
 If you're not deploying a new build of the codebase, you can skip the entirety of the ```--set *.image.tag=<SHA>```.
-
-
-
