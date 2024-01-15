@@ -1,3 +1,11 @@
+# Ethereal Engine on AWS
+In this section you will learn how to setup Ethereal Engine with DO.
+
+> Note:  
+The value `RELEASE_NAME` referenced throughout this guide is the name of the deployment  
+e.g. `dev` or `prod` and `DO` stands for  `Digital Ocean`
+
+
 ## Create DO Kubernetes cluster with four nodepools
 You will first need to create a DO Kubernetes cluster cluster to be able to install the EE onto it. There are three different ways in DO with which you can create a kubernetes cluster, these are as following.
 * Using DO CLI called ```doctl```.
