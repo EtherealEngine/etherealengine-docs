@@ -5,27 +5,17 @@ import * as appRootPath from 'app-root-path'
 const dotenv = require('dotenv').config({
   path: appRootPath.path + '/.env.local'
 })
-
-// General Configuration
-const orgTitle         = 'Ethereal Engine'
-const orgName          = 'etherealengine'
-const projectName      = 'etherealengine-docs'
-const editURL          = `https://github.com/EtherealEngine/${projectName}/blob/master/`
-const siteURL          = 'https://etherealengine.github.io'
-const siteTitle        = `${orgTitle} Documentation`
-const siteTagline      = `${orgTitle} is an open source solution for hosting, creating and developing immersive social spaces.`
-const siteIcon         = 'img/favicon.ico'
-const visualScriptName = 'Behave Graph'
+import * as cfg from './website.config.ts'
 
 // Docusaurus Configuration
 const config: Config = {
-  title: siteTitle,
-  tagline: siteTagline,
-  favicon: siteIcon,
-  url: siteURL,                // Set the production url of your site here
-  baseUrl: `/${projectName}/`, // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
-  organizationName: orgName,   // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
-  projectName: projectName,    // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
+  title: cfg.site.title,
+  tagline: cfg.site.tagline,
+  favicon: cfg.site.icon,
+  url: cfg.site.url,                      // Set the production url of your site here
+  baseUrl: `/${cfg.github.projectName}/`, // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
+  organizationName: cfg.org.name,         // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
+  projectName: cfg.github.projectName,    // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
 
   // Broken Links behavior
   onBrokenLinks: 'warn',
@@ -47,7 +37,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.ts'),
           exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_partials/**'],
-          editUrl: editURL, // Remove this to remove the "edit this page" links.
+          editUrl: cfg.github.editURL, // Remove this to remove the "edit this page" links.
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -126,7 +116,7 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Ethereal Engine.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ${cfg.org.name}.`,
     },
   prism: {
       theme: prismThemes.github,
