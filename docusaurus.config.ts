@@ -43,7 +43,7 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
+        docs: {  // Configuration for @docusaurus/plugin-content-docs (false to disable)
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.ts'),
           exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_partials/**'],
@@ -51,7 +51,13 @@ const config: Config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
-        }
+        },
+        pages: {  // Configuration for @docusaurus/plugin-content-pages (false to disable)
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',  // Do not route files starting with `_`
+            '**/_**/**',                     // Do not route folders starting with `_`
+          ],
+        },
       }
     ]
   ],
