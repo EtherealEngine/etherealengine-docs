@@ -6,67 +6,24 @@ import clsx from 'clsx'
 import React from 'react'
 
 import styles from './index.module.css'
-import { Redirect } from 'react-router-dom'
 
-const features = [
-  {
-    title: 'Ethereal Engine Embraces The Web',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: <>Reach everyone. No app stores. Open Source. <br/>Mobile - Desktop - Headsets</>
-  },
-  {
-    title: 'Focus On What Matters',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
-    description: <>A comprehensive studio, pipeline tools, endless immersive features.</>
-  },
-  {
-    title: 'Built On Well Known Web Frameworks',
-    imageUrl: 'img/undraw_docusaurus_react.svg',
-    description: <>Power your experiences immediately with React, Threejs, Feathers, Kubernetes, bitECS</>
-  }
-]
+import * as cfg from '../../website.config.ts'
+import Personas from './_landing/section/personas.tsx'
+import Hero     from './_landing/section/hero.tsx'
 
-/**
- *
- * @param {any} imageUrl
- * @param {any} title
- * @param {any} description
- * @returns
- */
-function Feature({ imageUrl, title, description }) {
-  const imgUrl = useBaseUrl(imageUrl)
-  return (
-    <div className={clsx('col col--4', styles.feature)}>
-      {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
-        </div>
-      )}
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
-  )
-}
-
-/**
- *
- * @returns
- */
 export default function Home() {
   const { siteConfig } = useDocusaurusContext()
-  const path = siteConfig.baseUrl+'docs'
-  // return <Redirect to={path} />;
   return (
-    <Layout title={`${siteConfig.title}`} description="Description will go into a meta tag in <head />">
+    <Layout title={`${siteConfig.title}`} description={cfg.meta.description}>
+      <Hero />
+      <Personas />
+      {/*
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
-            <Link
-              className={clsx('button button--outline button--secondary button--lg', styles.getStarted)}
-              to={useBaseUrl('manual/')}
-            >
+            <Link to={useBaseUrl('manual/')} className={clsx('button button--outline button--secondary button--lg', styles.getStarted)} >
               Access the Manual
             </Link>
           </div>
@@ -85,6 +42,7 @@ export default function Home() {
           </section>
         )}
       </main>
+      */}
     </Layout>
   )
 }
