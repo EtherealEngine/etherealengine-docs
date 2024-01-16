@@ -22,7 +22,7 @@ const config: Config = {
   title: siteTitle,
   tagline: siteTagline,
   favicon: siteIcon,
-  url: siteURL,  // Set the production url of your site here
+  url: siteURL,                // Set the production url of your site here
   baseUrl: `/${projectName}/`, // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
   organizationName: orgName,   // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
   projectName: projectName,    // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
@@ -128,6 +128,20 @@ const config: Config = {
       additionalLanguages: ['diff','yaml','toml','bash','powershell','c','cpp','python'],
     },
   } satisfies Preset.ThemeConfig,
+  plugins: [
+    // TailwindCSS processor plugin
+    async function tailwindProcessor(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 };
 
 export default config;
