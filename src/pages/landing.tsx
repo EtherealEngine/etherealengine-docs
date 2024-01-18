@@ -92,7 +92,7 @@ const LandingPageData = {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <Layout title={`${siteConfig.title}`} description={cfg.meta.description}>
+    <Layout title={`${cfg.meta.title}`} description={cfg.meta.description}>
       <Hero data={LandingPageData.hero} />
       <Personas data={LandingPageData.personas} />
     </Layout>
