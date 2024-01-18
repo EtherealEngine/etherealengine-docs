@@ -8,17 +8,10 @@ import React from 'react'
 import styles from './index.module.css'
 
 import * as cfg from '../../website.config.ts'
-import Personas from './_landing/section/personas.tsx'
+import { Colors } from './_colors.tsx'
 import Hero     from './_landing/section/hero.tsx'
-import { GlobalColors } from './_colors.tsx'
+import Personas from './_landing/section/personas.tsx'
 
-
-const Colors = {
-  creator      : GlobalColors.first,
-  visualscript : GlobalColors.second,
-  typescript   : GlobalColors.third,
-  manual       : GlobalColors.fourth,
-}
 const LandingPageData = {
   hero: {
     title: { l1: "Learn", l2: "Ethereal Engine" },
@@ -96,39 +89,12 @@ const LandingPageData = {
   }
 }
 
-
 export default function Home() {
   const { siteConfig } = useDocusaurusContext()
   return (
     <Layout title={`${siteConfig.title}`} description={cfg.meta.description}>
       <Hero data={LandingPageData.hero} />
       <Personas data={LandingPageData.personas} />
-      {/*
-      <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <Link to={useBaseUrl('manual/')} className={clsx('button button--outline button--secondary button--lg', styles.getStarted)} >
-              Access the Manual
-            </Link>
-          </div>
-        </div>
-      </header>
-      <main>
-        {features && features.length > 0 && (
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-      </main>
-      */}
     </Layout>
   )
 }

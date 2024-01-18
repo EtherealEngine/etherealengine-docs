@@ -4,4 +4,12 @@ const GlobalColors = {
   third  : "bg-teal-500",
   fourth : "bg-neutral-800",
 }
-export { GlobalColors };
+
+const Colors = {
+  creator      : GlobalColors.first,
+  visualscript : GlobalColors.second,
+  typescript   : GlobalColors.third,
+  manual       : GlobalColors.fourth,
+}
+
+export { GlobalColors, Colors };
