@@ -91,8 +91,12 @@ const config: Config = {
     footer: {
       logo: { ...cfg.org.logo, width: cfg.footer.iconSize, height: cfg.footer.iconSize },
       style: 'dark',
-      links: cfg.footer.links,
+      links: [...cfg.footer.links],
       copyright: cfg.footer.copyright,
+    },
+    tableOfContents: {
+      minHeadingLevel: 2, // default 2
+      maxHeadingLevel: 5, // default 3
     },
   prism: {
       theme: prismThemes.github,
