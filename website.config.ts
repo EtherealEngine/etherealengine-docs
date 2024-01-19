@@ -17,7 +17,16 @@ const GHDocsURL       = `https://github.com/${GHUsername}/${GHDocsName}`
 const GithubURL       = `https://github.com/${GHUsername}/${ProjectName}`
 const SiteURL         = `https://${OrgName}.github.io`
 const BaseURL         = `/${GHDocsName}/`
-const FullURL         = SiteURL+BaseURL
+const Links           = {
+  twitter             : 'https://twitter.com/xr_engine',
+  facebook            : 'https://www.facebook.com/xrengine/',
+  discord             : 'https://discord.gg/xrf',
+  npm                 : 'https://www.npmjs.com/search?q=%40etherealengine',
+  openCollective      : 'https://opencollective.com/etherealengine',
+  github              : GithubURL,
+  orgSite             : `https://${OrgName}.org/`,
+  comSite             : `https://${OrgName}.com/`,
+}
 
 /**
  * @description Organization Options
@@ -30,8 +39,8 @@ export const org = {
     src         : 'img/logo.svg',
   },
   url           : {
-    orgsite     : `https://${OrgName}.org/`,
-    comsite     : `https://${OrgName}.com/`,
+    orgsite     : Links.orgSite,
+    comsite     : Links.comSite,
   },
   project       : {
     name        : ProjectFullName,
@@ -45,7 +54,7 @@ export const org = {
 export const site = {
   url         : SiteURL,
   baseURL     : BaseURL,
-  fullURL     : FullURL,
+  fullURL     : SiteURL+BaseURL,
   title       : `${org.project.name} Docs`,
   tagline     : org.project.description,
   icon        : 'img/favicon.ico',
@@ -58,8 +67,8 @@ export const site = {
 export const meta = {
   title       : site.title,
   description : site.description,
-  image       : undefined, // TODO: Meta Image for linking thumbnail/etc
-  tags        : [],  // https://docusaurus.io/docs/api/themes/configuration#metadata
+  image       : undefined, // TODO: Meta Image : for linking thumbnail/etc
+  tags        : [],        // TODO: Meta tags  : https://docusaurus.io/docs/api/themes/configuration#metadata
 }
 
 /**
@@ -103,21 +112,21 @@ export const footer = {
   links     : [
     { title: 'Social',
       items: [
-        { label: 'Twitter', href: 'https://twitter.com/xr_engine' },
-        { label: 'Facebook', href: 'https://www.facebook.com/xrengine/' },
-        { label: 'Discord', href: 'https://discord.gg/xrf' }
+        { label: 'Twitter', href: Links.twitter },
+        { label: 'Facebook', href: Links.facebook },
+        { label: 'Discord', href: Links.discord }
       ]
     },
     { title: 'Resources',
       items: [
-        { label: 'Github', href: 'https://github.com/etherealengine/etherealengine' },
-        { label: 'Npm', href: 'https://www.npmjs.com/search?q=%40etherealengine' }
+        { label: 'Github', href: Links.github },
+        { label: 'Npm', href: Links.npm }
       ]
     },
     { title: 'More',
       items: [
-        { label: org.title, href: org.url.orgsite },
-        { label: 'Open Collective', href: 'https://opencollective.com/etherealengine' }
+        { label: org.title, href: Links.orgSite },
+        { label: 'Open Collective', href: Links.openCollective }
       ]
     }
   ]
