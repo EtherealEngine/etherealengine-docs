@@ -7,33 +7,35 @@
 /**
  * @description General Variables
  */
-const OrgName       = 'Ethereal Engine'
-const ProjectName   = 'Ethereal Engine'
-const OrgUsername   = 'etherealengine'
-const GHProjectName = `etherealengine-docs`
-const GHUsername    = 'EtherealEngine'
-const GHurl         = `https://github.com/${GHUsername}/${GHProjectName}`
-const SiteURL       = `https://${OrgUsername}.github.io`
-const BaseURL       = `/${GHProjectName}/`
-const FullURL       = SiteURL+BaseURL
+const OrgFullName     = 'Ethereal Engine'
+const OrgName         = 'etherealengine'
+const ProjectFullName = 'Ethereal Engine'
+const ProjectName     = 'etherealengine'
+const GHUsername      = 'EtherealEngine'
+const GHDocsName      = `${ProjectName}-docs`
+const GHDocsURL       = `https://github.com/${GHUsername}/${GHDocsName}`
+const GithubURL       = `https://github.com/${GHUsername}/${ProjectName}`
+const SiteURL         = `https://${OrgName}.github.io`
+const BaseURL         = `/${GHDocsName}/`
+const FullURL         = SiteURL+BaseURL
 
 /**
  * @description Organization Options
  */
 export const org = {
-  title         : OrgName,
-  username      : OrgUsername,
+  title         : OrgFullName,
+  username      : OrgName,
   logo          : {
-    alt         : `${OrgName} Logo`,
+    alt         : `${OrgFullName} Logo`,
     src         : 'img/logo.svg',
   },
   url           : {
-    orgsite     : `https://${OrgUsername}.org/`,
-    comsite     : `https://${OrgUsername}.com/`,
+    orgsite     : `https://${OrgName}.org/`,
+    comsite     : `https://${OrgName}.com/`,
   },
   project       : {
-    name        : ProjectName,
-    description : `${ProjectName} is an open source solution for hosting, creating and developing immersive social spaces.`,
+    name        : ProjectFullName,
+    description : `${ProjectFullName} is an open source solution for hosting, creating and developing immersive social spaces.`,
   },
 }
 
@@ -64,10 +66,11 @@ export const meta = {
  * @description GitHub repository options
  */
 export const github = {
-  username    : org.username,
-  projectName : GHProjectName,
-  url         : GHurl,
-  editURL     : `${GHurl}/blob/master/`,
+  username   : org.username,
+  docsName   : GHDocsName,
+  docsURL    : GHDocsURL,
+  editURL    : `${GHDocsURL}/blob/master/`,
+  projectURL : GithubURL,
 }
 
 /**

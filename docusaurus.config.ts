@@ -16,7 +16,7 @@ const config: Config = {
   url: cfg.site.url,                      // Set the production url of your site here
   baseUrl: cfg.site.baseURL,              // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
   organizationName: cfg.github.username,  // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
-  projectName: cfg.github.projectName,    // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
+  projectName: cfg.github.docsName,       // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
 
   // Broken Links behavior
   onBrokenLinks: 'warn',
@@ -84,7 +84,7 @@ const config: Config = {
         //{ label: 'Examples', position: cfg.navbar.menu.position, to: 'examples', },  // TODO: Uncomment when the examples pages is ready
         { label: 'Manual', position: cfg.navbar.menu.position, to: 'manual', },
         //{ label: cfg.typedoc.label, position: cfg.navbar.menu.position, href: cfg.typedoc.url },
-        { "aria-label": "GitHub", position: cfg.navbar.menu.position, className: "header-github-link", href: cfg.github.url, },
+        { "aria-label": "GitHub", position: cfg.navbar.menu.position, className: "header-github-link", href: cfg.github.projectURL, },
         //{ label: cfg.org.title, position: cfg.navbar.menu.position,  href: cfg.org.url.orgsite },
         //{ type: 'localeDropdown', position: 'right' },
       ]
