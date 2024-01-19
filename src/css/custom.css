@@ -1,38 +1,185 @@
 /**
- * Tailwind CSS directives
+ * @important
+ *  Reference List of all Docusaurus CSS variables
+ *  https://gist.github.com/abhigyantrips/b828ca46b2460c6699c73e0162f6be80
+ *
+ * @note Any CSS included here will be global.
+ * @note The Docusaurus classic template bundles the Infima CSS framework by default.
+ */
+
+/**
+ * @section Tailwind CSS directives
  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /**
- * Any CSS included here will be global. The classic template bundles Infima by default.
- * Infima is a CSS framework designed to work well for content-centric websites.
+ * @section Docusaurus CSS configuration
  */
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #01022e;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
+  /* Lightmode: Primary color */
+  --ifm-color-primary-lightest : #5a96ff;
+  --ifm-color-primary-lighter  : #2172ff;
+  --ifm-color-primary-light    : #0a63ff;
+  --ifm-color-primary          : #0054e6;
+  --ifm-color-primary-dark     : #0047c4;
+  --ifm-color-primary-darker   : #003fad;
+  --ifm-color-primary-darkest  : #002a73;
+
+  /* Override Grayscale colors with Tailwind neutral values */
+  --ifm-color-white     : #fff;
+  --ifm-color-black     : #000;
+  --ifm-color-gray-0    : var(--ifm-color-white);
+  --ifm-color-gray-100  : theme('colors.neutral.100');
+  --ifm-color-gray-200  : theme('colors.neutral.200');
+  --ifm-color-gray-300  : theme('colors.neutral.300');
+  --ifm-color-gray-400  : theme('colors.neutral.400');
+  --ifm-color-gray-500  : theme('colors.neutral.500');
+  --ifm-color-gray-600  : theme('colors.neutral.600');
+  --ifm-color-gray-700  : theme('colors.neutral.700');
+  --ifm-color-gray-800  : theme('colors.neutral.800');
+  --ifm-color-gray-900  : theme('colors.neutral.900');
+  --ifm-color-gray-1000 : var(--ifm-color-black);
+
+  /* Font configuration */
+  --ifm-font-family-base       : "Hanken Grotesk";
+  /* --ifm-font-family-monospace  : "monospace"; */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Background Color */
+  /* --ifm-color-content                       : var(--ifm-color-emphasis-900); */
+  /* --ifm-color-content-inverse               : var(--ifm-color-emphasis-0); */
+  /* --ifm-color-content-secondary             : #525860; */
+  --ifm-background-color                    : transparent;
+  /* --ifm-background-surface-color            : var(--ifm-color-content-inverse); */
+
+  --ifm-code-font-size          : 85%;
+  --ifm-code-border-radius      : var(--ifm-global-radius);
+  /* Inline Code Statements */
+  --ifm-code-padding-horizontal : 0.4rem;
+  --ifm-code-padding-vertical   : 0.1rem;
+  /* --ifm-code-background         : #ffffff; */
+
+  /* Footer Configuration */
+  --ifm-footer-title-color             : var(--ifm-color-emphasis-800);
+  --ifm-footer-color                   : inherit;
+  --ifm-footer-background-color        : var(--ifm-color-emphasis-100);
+  --ifm-footer-link-color              : var(--ifm-color-gray-300);
+  --ifm-footer-link-hover-color        : var(--ifm-color-primary);
+  --ifm-footer-link-horizontal-spacing : 0.5rem;
+  --ifm-footer-padding-horizontal      : calc(var(--ifm-spacing-horizontal)*2);
+  --ifm-footer-padding-vertical        : calc(var(--ifm-spacing-vertical)*2);
+}
+[data-theme='dark'] {
+  /* Darkmode: Primary Color */
+  --ifm-color-primary-contrast-background   : theme('colors.blue.50' );
+  --ifm-color-primary-lightest              : theme('colors.blue.100');
+  --ifm-color-primary-lighter               : theme('colors.blue.300');
+  --ifm-color-primary-light                 : theme('colors.blue.400');
+  --ifm-color-primary                       : theme('colors.blue.500');
+  --ifm-color-primary-dark                  : theme('colors.blue.600');
+  --ifm-color-primary-darker                : theme('colors.blue.700');
+  --ifm-color-primary-darkest               : theme('colors.blue.800');
+  --ifm-color-primary-contrast-foreground   : theme('colors.blue.900');
+  /* Darkmode: Secondary Color */
+  --ifm-color-secondary-contrast-background : theme('colors.pink.50' );
+  --ifm-color-secondary-lightest            : theme('colors.pink.100');
+  --ifm-color-secondary-lighter             : theme('colors.pink.300');
+  --ifm-color-secondary-light               : theme('colors.pink.400');
+  --ifm-color-secondary                     : theme('colors.pink.500');
+  --ifm-color-secondary-dark                : theme('colors.pink.600');
+  --ifm-color-secondary-darker              : theme('colors.pink.700');
+  --ifm-color-secondary-darkest             : theme('colors.pink.800');
+  --ifm-color-secondary-contrast-foreground : theme('colors.pink.900');
+  /* Darkmode: Success Color */
+  --ifm-color-success-contrast-background   : theme('colors.blue.50' );
+  --ifm-color-success-lightest              : theme('colors.blue.100');
+  --ifm-color-success-lighter               : theme('colors.blue.200');
+  --ifm-color-success-light                 : theme('colors.blue.300');
+  --ifm-color-success                       : theme('colors.blue.500');
+  --ifm-color-success-dark                  : theme('colors.blue.600');
+  --ifm-color-success-darker                : theme('colors.blue.700');
+  --ifm-color-success-darkest               : theme('colors.blue.800');
+  --ifm-color-success-contrast-foreground   : theme('colors.blue.900');
+  /* Darkmode: Info Color */
+  --ifm-color-info-contrast-background      : theme('colors.teal.50' );
+  --ifm-color-info-lightest                 : theme('colors.teal.100');
+  --ifm-color-info-lighter                  : theme('colors.teal.200');
+  --ifm-color-info-light                    : theme('colors.teal.300');
+  --ifm-color-info                          : theme('colors.teal.500');
+  --ifm-color-info-dark                     : theme('colors.teal.600');
+  --ifm-color-info-darker                   : theme('colors.teal.700');
+  --ifm-color-info-darkest                  : theme('colors.teal.800');
+  --ifm-color-info-contrast-foreground      : theme('colors.teal.900');
+  /* Darkmode: Warning Color */
+  --ifm-color-warning-contrast-background   : theme('colors.amber.50' );
+  --ifm-color-warning-lightest              : theme('colors.amber.100');
+  --ifm-color-warning-lighter               : theme('colors.amber.200');
+  --ifm-color-warning-light                 : theme('colors.amber.300');
+  --ifm-color-warning                       : theme('colors.amber.500');
+  --ifm-color-warning-dark                  : theme('colors.amber.600');
+  --ifm-color-warning-darker                : theme('colors.amber.700');
+  --ifm-color-warning-darkest               : theme('colors.amber.800');
+  --ifm-color-warning-contrast-foreground   : theme('colors.amber.900');
+  /* Darkmode: Danger Color */
+  --ifm-color-danger-contrast-background    : theme('colors.rose.50' );
+  --ifm-color-danger-lightest               : theme('colors.rose.100');
+  --ifm-color-danger-lighter                : theme('colors.rose.200');
+  --ifm-color-danger-light                  : theme('colors.rose.300');
+  --ifm-color-danger                        : theme('colors.rose.500');
+  --ifm-color-danger-dark                   : theme('colors.rose.600');
+  --ifm-color-danger-darker                 : theme('colors.rose.700');
+  --ifm-color-danger-darkest                : theme('colors.rose.800');
+  --ifm-color-danger-contrast-foreground    : theme('colors.rose.900');
+  /* Darkmode: Background Color */
+  /* --ifm-color-content                       : var(--ifm-color-emphasis-900); */
+  /* --ifm-color-content-inverse               : var(--ifm-color-emphasis-0); */
+  /* --ifm-color-content-secondary             : #525860; */
+  --ifm-background-color                    : var(--ifm-color-gray-900);
+  /* --ifm-background-surface-color            : var(--ifm-color-content-inverse); */
+
+  /* Darkmode: Other colors */
+  --ifm-navbar-background-color             : var(--ifm-color-gray-900);
+  --docusaurus-highlighted-code-line-bg     : rgba(0, 0, 0, 0.3);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #bd93f9;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
+/**
+ * @section Admonition Customization
+ * @note Colors are taken from the main --ifm-color-** variables. These are the overrides to the Docusaurus defaults.
+ */
+.alert {
+  &.alert--secondary {  /* Note Admonition */
+    --ifm-alert-foreground-color           : var(--ifm-color-gray-100);
+    --ifm-alert-background-color-highlight : var(--ifm-color-gray-200);
+    --ifm-alert-background-color           : var(--ifm-color-gray-800);
+    --ifm-alert-border-color               : var(--ifm-color-primary);
+  };
+  &.alert--success {  /* Tip Admonition */
+    --ifm-alert-foreground-color           : var(--ifm-color-success-lightest);
+    --ifm-alert-background-color-highlight : var(--ifm-color-success-light);
+    --ifm-alert-border-color               : var(--ifm-color-success-dark);
+    --ifm-alert-background-color           : var(--ifm-color-success-darkest);
+  };
+  &.alert--info {  /* Info Admonition */
+    --ifm-alert-foreground-color           : var(--ifm-color-info-lightest);
+    --ifm-alert-background-color-highlight : var(--ifm-color-info-light);
+    --ifm-alert-border-color               : var(--ifm-color-info-dark);
+    --ifm-alert-background-color           : var(--ifm-color-info-darkest);
+  };
+  &.alert--warning {  /* Warning Admonition */
+    --ifm-alert-foreground-color           : var(--ifm-color-warning-lightest);
+    --ifm-alert-background-color-highlight : var(--ifm-color-warning-light);
+    --ifm-alert-border-color               : var(--ifm-color-warning-dark);
+    --ifm-alert-background-color           : var(--ifm-color-warning-darkest);
+  };
+  &.alert--danger {  /* Danger Admonition */
+    --ifm-alert-foreground-color           : var(--ifm-color-danger-lightest);
+    --ifm-alert-background-color-highlight : var(--ifm-color-danger-light);
+    --ifm-alert-border-color               : var(--ifm-color-danger-dark);
+    --ifm-alert-background-color           : var(--ifm-color-danger-darkest);
+  };
+};
 
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
@@ -88,7 +235,7 @@
 
 [data-theme='dark'] .DocSearch {
   --docsearch-text-color: var(--ifm-font-color-base);
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
+  --docsearch-muted-color: var(--ifm-color-primary-lighter);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
   /* Modal */
   --docsearch-modal-background: var(--ifm-background-color);

@@ -1,4 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+import { ethereal } from './src/themes/code/ethereal.ts';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import * as appRootPath from 'app-root-path'
@@ -90,7 +91,6 @@ const config: Config = {
     },
     footer: {
       logo: { ...cfg.org.logo, width: cfg.footer.iconSize, height: cfg.footer.iconSize },
-      style: 'dark',
       links: [...cfg.footer.links],
       copyright: cfg.footer.copyright,
     },
@@ -100,7 +100,7 @@ const config: Config = {
     },
   prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: ethereal.dark,
       additionalLanguages: ['diff','yaml','toml','bash','powershell','c','cpp','python'],
     },
   } satisfies Preset.ThemeConfig,
