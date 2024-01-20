@@ -118,6 +118,12 @@ const config: Config = {
       };
     },
   ],
+  headTags: [
+    // Add Hanken Grotesk font globally to the site
+    { tagName: 'link', attributes: { rel:"preconnect", href: "https://fonts.googleapis.com" } },
+    { tagName: 'link', attributes: { rel:"preconnect", href: "https://fonts.gstatic.com", crossorigin: 'true' } },
+    { tagName: 'link', attributes: { rel:"stylesheet", href: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" } },
+  ],
 };
 
 export default config;
