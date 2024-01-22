@@ -156,16 +156,16 @@
     --ifm-alert-border-color               : var(--ifm-color-primary);
   };
   &.alert--success {  /* Tip Admonition */
-    --ifm-alert-foreground-color           : var(--ifm-color-success-lightest);
-    --ifm-alert-background-color-highlight : var(--ifm-color-success-light);
-    --ifm-alert-border-color               : var(--ifm-color-success-dark);
-    --ifm-alert-background-color           : var(--ifm-color-success-darkest);
-  };
-  &.alert--info {  /* Info Admonition */
     --ifm-alert-foreground-color           : var(--ifm-color-info-lightest);
     --ifm-alert-background-color-highlight : var(--ifm-color-info-light);
     --ifm-alert-border-color               : var(--ifm-color-info-dark);
     --ifm-alert-background-color           : var(--ifm-color-info-darkest);
+  };
+  &.alert--info {  /* Info Admonition */
+    --ifm-alert-foreground-color           : var(--ifm-color-success-lightest);
+    --ifm-alert-background-color-highlight : var(--ifm-color-success-light);
+    --ifm-alert-border-color               : var(--ifm-color-success-dark);
+    --ifm-alert-background-color           : var(--ifm-color-success-darkest);
   };
   &.alert--warning {  /* Warning Admonition */
     --ifm-alert-foreground-color           : var(--ifm-color-warning-lightest);
