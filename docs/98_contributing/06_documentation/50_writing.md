@@ -1,5 +1,5 @@
 # Writing Style
-**TODO**
+<!-- TODO: Properly extend this page -->
 
 ## Avoid Long Paragraphs
 Avoid really long paragraphs at all costs.  

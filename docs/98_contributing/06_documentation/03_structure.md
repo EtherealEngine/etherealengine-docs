@@ -1,5 +1,6 @@
 # Website Structure
-**TODO**
+<!-- TODO: Format this page properly -->
+
 ## Docusaurus Rules and Requirements
 ### Document Routing
 ```md
