@@ -1,0 +1,8 @@
+{
+  "label": "Community",
+  "position": 99,
+  "link": {
+    "type": "doc",
+    "id": "manual/community/intro"
+  }
+}
