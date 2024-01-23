@@ -1,4 +1,6 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import {clsx as mergex} from 'clsx'
 import { Colors } from '../../colors.tsx'
 
@@ -9,22 +11,22 @@ function Title(props) {
 
 function PersonaCTA(props) {
   const Data   = props.data
-  const Align  = "flex flex-col justify-center p-5 static absolute"
+  const { siteConfig } = useDocusaurusContext()
+  const handleOnClick  = () => { return <Redirect to={siteConfig.baseUrl+Data.link} />; }
+  const Align  = "flex flex-col justify-center p-5"
   const Width  = "w-1/4"
-  const Hover  = "hover:bg-blue-600"
+  const Hover  = "hover:bg-blue-600 hover:cursor-pointer"
   const FColor = Data.color == "bg-teal-400" ? "text-black " : "";
   const Top    = mergex(FColor, "font-light")
   const Mid    = mergex(FColor, "font-normal text-4xl")
   const Bot1   = mergex(FColor, "font-light text-1xl")
   const Bot2   = mergex(FColor, "font-normal text-2xl")
   return <React.Fragment>
-    <a href={mergex("font-bold", Data.link)}>
-    <div className={mergex(Align, Width, Data.color, Hover)}>
+    <div className={mergex(Align, Width, Data.color, Hover)} onClick={handleOnClick} >
       <div className={Top}>{Data.title.top}<br/></div>
       <div className={Mid}>{Data.title.mid}<br/></div>
       <div><span className={Bot1}>{Data.title.bot.l1}</span> <span className={Bot2}>{Data.title.bot.l2}</span><br/></div>
     </div>
-    </a>
   </React.Fragment>
 }
 

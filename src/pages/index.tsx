@@ -10,9 +10,6 @@ import { SimplePersonas } from './_landing/section/personas.tsx'
 import { LandingPageData } from './landing.tsx'
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext()
-  const path = siteConfig.baseUrl+'docs'
-  // return <Redirect to={path} />;
   return (
     <Layout title={`${cfg.meta.title}`} description={cfg.meta.description}>
       <header>

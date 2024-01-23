@@ -7,13 +7,14 @@ import { clsx as mergex } from 'clsx'
 function Persona (props) {
   const Data      = props.data
   const CardBoxes = mergex("grid grid-cols-2 grid-flow-col h-64 order-first", Data.color)
+  const CardHover = "hover:cursor-pointer hover:scale-105"
   const CardText  = "flex flex-col px-12 py-6"
   const CardImage = mergex("w-full h-full", Data.image, "bg-center bg-cover bg-no-repeat")
   const Label     = "font-normal underline"
   const Title     = "font-normal text-4xl"
   const Content   = "font-light pt-4"
   return <React.Fragment>
-    <div className={CardBoxes}>
+    <div className={mergex(CardHover,CardBoxes)}>
       <div className={CardText}>
         <span className={Label}>{Data.label}</span>
         <span className={Title}>{Data.title}</span>
