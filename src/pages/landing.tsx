@@ -20,18 +20,22 @@ export const LandingPageData = {
       creator: {
         color: Colors.creator,
         title: { top: "Become a", mid: "Creator", bot: { l1: "", l2: "" } },
+        link: "creator",
       },
       visualscript: {
         color: Colors.visualscript,
         title: { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Visualscript" } },
+        link: "visualscript",
       },
       typescript: {
         color: Colors.typescript,
         title: { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Typescript" } },
+        link: "typescript",
       },
       manual: {
         color: Colors.manual,
         title: { top: "Open the", mid: "Manual", bot: { l1: "", l2: "" } },
+        link: "manual",
       },
     },
   },
