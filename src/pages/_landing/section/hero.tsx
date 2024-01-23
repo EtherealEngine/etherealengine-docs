@@ -36,7 +36,6 @@ function PersonaCTAs(props) {
     </div>
   </React.Fragment>
 }
-
 export default function Hero (props) {
   const Data        = props.data
   const HeroSection = ""
@@ -45,7 +44,33 @@ export default function Hero (props) {
   return <React.Fragment>
     <section className={mergex(HeroSection, HeroAlign, HeroImage)}>
       <Title data={Data.title} />
-      <PersonaCTAs data={Data.CTAs} />
+      <SimplePersonaCTAs data={Data.CTAs} />
+    </section>
+  </React.Fragment>
+}
+
+
+//__________________________________________________________
+// @section Simplified MVP version of the LandingPage
+//______________________________________
+function SimplePersonaCTAs(props) {
+  const Data = props.data
+  return <React.Fragment>
+    <div className="flex w-full h-30 py-10">
+      <PersonaCTA data={Data.manual} />
+    </div>
+  </React.Fragment>
+}
+//______________________________________
+export function SimpleHero (props) {
+  const Data        = props.data
+  const HeroSection = ""
+  const HeroAlign   = "flex flex-col justify-between p-28"
+  const HeroImage   = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
+  return <React.Fragment>
+    <section className={mergex(HeroSection, HeroAlign, HeroImage)}>
+      <Title data={Data.title} />
+      <SimplePersonaCTAs data={Data.CTAs} />
     </section>
   </React.Fragment>
 }

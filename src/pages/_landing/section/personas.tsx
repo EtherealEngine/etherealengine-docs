@@ -42,3 +42,18 @@ export default function Personas (props) {
   </React.Fragment>
 }
 
+//____________________________
+export function SimplePersonas (props) {
+  const Data              = props.data
+  const PersonasContainer = "p-16 space-y-10 w-full"
+  const PersonasTitle     = "font-normal justify-items-center text-center text-4xl"
+  const PersonasDescr     = "font-normal justify-items-center text-left text-xl"
+  return <React.Fragment>
+    <section className={PersonasContainer}>
+      <div className={PersonasTitle}>{Data.title}</div>
+      <Persona data={Data.manual} />
+      <div className={PersonasDescr}>{Data.description}</div>
+    </section>
+  </React.Fragment>
+}
+

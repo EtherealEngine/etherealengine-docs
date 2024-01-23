@@ -12,7 +12,7 @@ import { Colors } from './_colors.tsx'
 import Hero     from './_landing/section/hero.tsx'
 import Personas from './_landing/section/personas.tsx'
 
-const LandingPageData = {
+export const LandingPageData = {
   hero: {
     title: { l1: "Learn", l2: "Ethereal Engine" },
     image: "bg-[url('@site/static/images/landing/hero.jpg')]",
@@ -93,8 +93,12 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext()
   return (
     <Layout title={`${cfg.meta.title}`} description={cfg.meta.description}>
-      <Hero data={LandingPageData.hero} />
-      <Personas data={LandingPageData.personas} />
+      <header>
+        <Hero data={LandingPageData.hero} />
+      </header>
+      <main>
+        <Personas data={LandingPageData.personas} />
+      </main>
     </Layout>
   )
 }
