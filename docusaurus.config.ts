@@ -54,7 +54,11 @@ const config: Config = {
 
   themeConfig: {
     image: cfg.meta.image,
-    colorMode: { defaultMode: 'dark' },
+    colorMode: {
+      defaultMode: 'dark',              // Default to darkmode, as it fits the engine brand identity better
+      disableSwitch: true,              // TODO: Reenable light mode. Disabled until its designed is properly developed
+      respectPrefersColorScheme: false, // Make it so that we decide the theme, not the browser
+    },
     docs: {
       sidebar: {
         autoCollapseCategories: true,
