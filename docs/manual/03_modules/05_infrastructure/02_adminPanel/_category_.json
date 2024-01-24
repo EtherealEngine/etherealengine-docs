@@ -1,0 +1,8 @@
+{
+  "label": "Admin Panel",
+  "position": 03,
+  "link": {
+    "type": "doc",
+    "id": "manual/modules/infrastructure/adminPanel/intro"
+  }
+}
