@@ -6,6 +6,9 @@
  * @note Any CSS included here will be global.
  * @note The Docusaurus classic template bundles the Infima CSS framework by default.
  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /**
  * @section Tailwind CSS directives
