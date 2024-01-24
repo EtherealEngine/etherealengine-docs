@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import {clsx as mergex} from 'clsx'
 import { Colors } from '../../colors.tsx'
@@ -10,9 +10,10 @@ function Title(props) {
 }
 
 function PersonaCTA(props) {
+  const history = useHistory();
   const Data   = props.data
   const { siteConfig } = useDocusaurusContext()
-  const handleOnClick  = () => { return <Redirect to={siteConfig.baseUrl+Data.link} />; }
+  const handleOnClick  = () => { history.push(siteConfig.baseUrl+Data.link);}
   const Align  = "flex flex-col justify-center p-5"
   const Width  = "w-1/4"
   const Hover  = "hover:bg-blue-600 hover:cursor-pointer"
