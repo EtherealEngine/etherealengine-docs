@@ -5,8 +5,10 @@ import {clsx as mergex} from 'clsx'
 import { Colors } from '../../colors.tsx'
 
 function Title(props) {
-  const Data = props.data
-  return <h1 className="mt-0 text-7xl font-bold">{Data.l1}<br/>{Data.l2}</h1>
+  const Data    = props.data
+  const Phone   = "sm:text-base"
+  const Desktop = "mt-0 lg:text-7xl font-bold"
+  return <h1 className={mergex(Desktop, Phone)}>{Data.l1}<br/>{Data.l2}</h1>
 }
 
 function PersonaCTA(props) {
@@ -45,7 +47,7 @@ function PersonaCTAs(props) {
 export default function Hero (props) {
   const Data        = props.data
   const HeroSection = ""
-  const HeroAlign   = "flex flex-col justify-between p-28 h-dvh"
+  const HeroAlign   = "flex flex-col justify-between lg:p-28 sm:p-0 h-dvh"
   const HeroImage   = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
   return <React.Fragment>
     <section className={mergex(HeroSection, HeroAlign, HeroImage)}>
