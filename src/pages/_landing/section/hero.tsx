@@ -16,7 +16,7 @@ function PersonaCTA(props) {
   const handleOnClick  = () => { history.push(siteConfig.baseUrl+Data.link);}
   const Align  = "flex flex-col justify-center p-5"
   const Width  = "w-1/4"
-  const Hover  = "hover:bg-blue-600 hover:cursor-pointer"
+  const Hover  = "hover:bg-blue-600 hover:cursor-pointer transition-all"
   const FColor = Data.color == "bg-teal-400" ? "text-black " : "";
   const Top    = mergex(FColor, "font-light")
   const Mid    = mergex(FColor, "font-normal text-4xl")
