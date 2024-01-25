@@ -46,6 +46,7 @@ export const LandingPageData = {
     At the end of your journey you will have gained all the skills that you need to create the project of your dreams.
     `,
     creator: {
+      link        : "creator",
       rightSide   : false,
       color       : Colors.creator,
       image       : "bg-[url('@site/static/images/landing/creator1.jpg')]",
@@ -57,6 +58,7 @@ export const LandingPageData = {
       `,
     },
     visualscript: {
+      link        : "developer/visualscript",
       rightSide   : true,
       color       : Colors.visualscript,
       image       : "bg-[url('@site/static/images/landing/visualscript1.jpg')]",
@@ -68,6 +70,7 @@ export const LandingPageData = {
       `,
     },
     typescript: {
+      link        : "developer/typescript",
       rightSide   : false,
       color       : Colors.typescript,
       image       : "bg-[url('@site/static/images/landing/typescript1.jpg')]",
@@ -79,6 +82,7 @@ export const LandingPageData = {
       `,
     },
     manual: {
+      link        : "manual",
       rightSide   : true,
       color       : Colors.manual,
       image       : "bg-[url('@site/static/images/landing/manual1.jpg')]",

@@ -12,9 +12,9 @@ function Title(props) {
 }
 
 function PersonaCTA(props) {
-  const history = useHistory();
-  const Data   = props.data
+  const Data = props.data
   const { siteConfig } = useDocusaurusContext()
+  const history        = useHistory();
   const handleOnClick  = () => { history.push(siteConfig.baseUrl+Data.link);}
   const Align  = "flex flex-col justify-center p-5"
   const Width  = "w-1/4"
