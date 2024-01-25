@@ -25,12 +25,12 @@ export const LandingPageData = {
       visualscript: {
         color: Colors.visualscript,
         title: { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Visualscript" } },
-        link: "visualscript",
+        link: "developer/visualscript",
       },
       typescript: {
         color: Colors.typescript,
         title: { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Typescript" } },
-        link: "typescript",
+        link: "developer/typescript",
       },
       manual: {
         color: Colors.manual,
