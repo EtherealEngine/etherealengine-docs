@@ -7,25 +7,42 @@ import { clsx as mergex } from 'clsx'
 // @section Components
 //____________________________
 function Persona (props) {
-  const Data      = props.data
+  const Data = props.data
+  // Click Event
   const { siteConfig } = useDocusaurusContext()
   const history        = useHistory();
   const handleOnClick  = () => { history.push(siteConfig.baseUrl+Data.link);}
-  const CardBoxes = mergex("grid grid-cols-2 grid-flow-col h-64 order-first", Data.color)
-  const CardHover = "hover:cursor-pointer hover:scale-105 transition-all"
-  const CardText  = "flex flex-col px-12 py-6"
-  const CardImage = mergex("w-full h-full", Data.image, "bg-center bg-cover bg-no-repeat")
+  // Card
+  const Boxes = mergex(
+    /* Base    */ mergex("order-first", Data.color),
+    /* Phone   */ "flex flex-col",
+    /* Desktop */ "lg:grid lg:grid-col-2 lg:w-full lg:grid-cols-2 lg:grid-flow-col lg:h-64",
+    ) // << Card.Boxes
+  const Hover = "hover:cursor-pointer hover:scale-105 transition-all"
+  // Elements
+  const PersonaCard = mergex(Hover, Boxes)
+  const CardText    = mergex(
+    /* Base    */ "flex flex-col",
+    /* Phone   */ "px-8 py-6",
+    /* Desktop */ "lg:px-12 lg:py-6",
+    ) // << CardText
   const Label     = "font-normal underline"
   const Title     = "font-normal text-4xl"
   const Content   = "font-light pt-4"
+  const CardImage = mergex(
+    /* Base    */ mergex(Data.image, "bg-cover bg-center bg-no-repeat"),
+    /* Phone   */ "h-40 order-first",
+    /* Desktop */ mergex("lg:w-full lg:h-full", Data.rightSide ? "lg:order-first":"lg:order-last"),
+    ) // << CardImage
+  // Apply
   return <React.Fragment>
-    <div className={mergex(CardHover,CardBoxes)} onClick={handleOnClick} >
+    <div className={PersonaCard} onClick={handleOnClick} >
       <div className={CardText}>
         <span className={Label}>{Data.label}</span>
         <span className={Title}>{Data.title}</span>
         <span className={Content}>{Data.description}</span>
       </div>
-      <div className={mergex(CardImage, Data.rightSide ? "order-first":"order-last")}>
+      <div className={CardImage}>
       </div>
     </div>
   </React.Fragment>

@@ -5,10 +5,13 @@ import {clsx as mergex} from 'clsx'
 import { Colors } from '../../colors.tsx'
 
 function Title(props) {
-  const Data    = props.data
-  const Phone   = "sm:text-base"
-  const Desktop = "mt-0 lg:text-7xl font-bold"
-  return <h1 className={mergex(Desktop, Phone)}>{Data.l1}<br/>{Data.l2}</h1>
+  const Data  = props.data
+  const Style = mergex(
+    /* Base    */ "mt-0 font-bold",
+    /* Phone   */ "text-4xl",
+    /* Desktop */ "lg:text-7xl",
+    ) // Style
+  return <h1 className={Style}>{Data.l1}<br/>{Data.l2}</h1>
 }
 
 function PersonaCTA(props) {
@@ -16,16 +19,24 @@ function PersonaCTA(props) {
   const { siteConfig } = useDocusaurusContext()
   const history        = useHistory();
   const handleOnClick  = () => { history.push(siteConfig.baseUrl+Data.link);}
-  const Align  = "flex flex-col justify-center p-5"
-  const Width  = "w-1/4"
+  const Align  = mergex(
+    /* Base    */ "flex flex-col justify-center p-5",
+    /* Phone   */ "",
+    /* Desktop */ "",
+    ) // << Align
+  const Width  = mergex(
+    /* Phone   */ "w-full",
+    /* Desktop */ "lg:w-1/4 lg:h-full",
+    ) // << Width
   const Hover  = "hover:bg-blue-600 hover:cursor-pointer transition-all"
   const FColor = Data.color == "bg-teal-400" ? "text-black " : "";
   const Top    = mergex(FColor, "font-light")
   const Mid    = mergex(FColor, "font-normal text-4xl")
   const Bot1   = mergex(FColor, "font-light text-1xl")
   const Bot2   = mergex(FColor, "font-normal text-2xl")
+  const PersonaCTA = mergex(Align, Width, Data.color, Hover)
   return <React.Fragment>
-    <div className={mergex(Align, Width, Data.color, Hover)} onClick={handleOnClick} >
+    <div className={PersonaCTA} onClick={handleOnClick} >
       <div className={Top}>{Data.title.top}<br/></div>
       <div className={Mid}>{Data.title.mid}<br/></div>
       <div><span className={Bot1}>{Data.title.bot.l1}</span> <span className={Bot2}>{Data.title.bot.l2}</span><br/></div>
@@ -35,8 +46,13 @@ function PersonaCTA(props) {
 
 function PersonaCTAs(props) {
   const Data = props.data
+  const PersonaCTAs = mergex(
+    /* Base    */ "w-full",
+    /* Phone   */ "flex flex-col space-y-5",
+    /* Desktop */ "lg:flex-row lg:h-40 lg:space-y-0 lg:space-x-20",
+    ) // << PersonaCTAs
   return <React.Fragment>
-    <div className="flex w-full h-40 space-x-20">
+    <div className={PersonaCTAs}>
       <PersonaCTA data={Data.creator} />
       <PersonaCTA data={Data.visualscript} />
       <PersonaCTA data={Data.typescript} />
@@ -45,12 +61,16 @@ function PersonaCTAs(props) {
   </React.Fragment>
 }
 export default function Hero (props) {
-  const Data        = props.data
-  const HeroSection = ""
-  const HeroAlign   = "flex flex-col justify-between lg:p-28 sm:p-0 h-dvh"
-  const HeroImage   = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
+  const Data  = props.data
+  const Style = mergex(
+    /* Base    */ "flex flex-col justify-between",
+    /* Phone   */ "p-16",
+    /* Desktop */ "lg:p-28 lg:pb-44 lg:h-dvh",
+    ) // << Align
+  const StyleImage  = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
+  const HeroSection = mergex(Style, StyleImage)
   return <React.Fragment>
-    <section className={mergex(HeroSection, HeroAlign, HeroImage)}>
+    <section className={HeroSection}>
       <Title data={Data.title} />
       <PersonaCTAs data={Data.CTAs} />
     </section>
@@ -71,12 +91,16 @@ function SimplePersonaCTAs(props) {
 }
 //______________________________________
 export function SimpleHero (props) {
-  const Data        = props.data
-  const HeroSection = ""
-  const HeroAlign   = "flex flex-col justify-between p-28"
-  const HeroImage   = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
+  const Data  = props.data
+  const Style = mergex(
+    /* Base    */ "flex flex-col justify-between",
+    /* Phone   */ "p-16",
+    /* Desktop */ "lg:p-28 lg:h-dvh",
+    ) // << Align
+  const StyleImage  = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
+  const HeroSection = mergex(Style, StyleImage)
   return <React.Fragment>
-    <section className={mergex(HeroSection, HeroAlign, HeroImage)}>
+    <section className={HeroSection}>
       <Title data={Data.title} />
       <SimplePersonaCTAs data={Data.CTAs} />
     </section>
