@@ -1,4 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+import { ethereal } from './src/themes/code/ethereal.ts';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import * as appRootPath from 'app-root-path'
@@ -13,17 +14,16 @@ const config: Config = {
   tagline: cfg.site.tagline,
   favicon: cfg.site.icon,
   url: cfg.site.url,                      // Set the production url of your site here
-  baseUrl: `/${cfg.github.projectName}/`, // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
-  organizationName: cfg.org.name,         // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
-  projectName: cfg.github.projectName,    // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
+  baseUrl: cfg.site.baseURL,              // The /<baseUrl>/ pathname under which your site is served. For GitHub pages it is often '/<projectName>/'
+  organizationName: cfg.github.username,  // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
+  projectName: cfg.github.docsName,       // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
 
   // Broken Links behavior
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Even if you don't use internationalization, you can use this field to set useful metadata like html lang.
+  // For example, if your site is Chinese, you may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'/*, 'zh-cn'*/],
@@ -53,7 +53,12 @@ const config: Config = {
   ],
 
   themeConfig: {
-    colorMode: { defaultMode: 'dark' },
+    image: cfg.meta.image,
+    colorMode: {
+      defaultMode: 'dark',              // Default to darkmode, as it fits the engine brand identity better
+      disableSwitch: true,              // TODO: Reenable light mode. Disabled until its designed is properly developed
+      respectPrefersColorScheme: false, // Make it so that we decide the theme, not the browser
+    },
     docs: {
       sidebar: {
         autoCollapseCategories: true,
@@ -64,63 +69,42 @@ const config: Config = {
     algolia: {
       appId: "N5OIDFHT9B",
       apiKey: "e27783cb4ed9bfc6a011eb7026868c20",
-      indexName: "etherealengine",
+      indexName: cfg.org.username,
       contextualSearch: true,
     },
     navbar: {
-      title: 'Ethereal Engine',
-      logo: {
-        alt: 'Ethereal Engine Logo',
-        src: 'img/logo.svg'
-      },
+      title: cfg.site.title,
+      logo: cfg.org.logo,
       items: [
+        { type: 'search', position: cfg.navbar.search.position, className: cfg.navbar.search.css },
         // TODO: Uncomment when the learning sites are presentable
-        //{ label: 'Creators', position: 'left', to: 'creator' },
-        //{ label: 'Developers', position: 'left', type: 'dropdown',
+        //{ label: 'Creators', position: cfg.navbar.menu.position, to: 'creator' },
+        //{ label: 'Developers', position: cfg.navbar.menu.position, type: 'dropdown',
         //  items: [
-        //    { label: visualScriptName, to: 'developer/visualscript' },
+        //    { label: cfg.VisualscriptName, to: 'developer/visualscript' },
         //    { label: 'Typescript', to: 'developer/typescript'  },
         //  ]
         //},
-        //{ label: 'Examples', position: 'left', to: 'examples', },  // TODO: Uncomment when the examples pages is ready
-        { label: 'Manual', position: 'left', to: 'manual', },
-        //{ label: 'API', position: 'left', href: 'https://etherealengine.github.io/etherealengine-docs/typedoc' },
-        { label: 'Ethereal Engine', position: 'right',  href: 'https://etherealengine.org/' },
-        { type: 'localeDropdown', position: 'right' },
+        //{ label: 'Examples', position: cfg.navbar.menu.position, to: 'examples', },  // TODO: Uncomment when the examples pages is ready
+        { label: 'Manual', position: cfg.navbar.menu.position, to: 'manual', },
+        //{ label: cfg.typedoc.label, position: cfg.navbar.menu.position, href: cfg.typedoc.url },
+        { "aria-label": "GitHub", position: cfg.navbar.menu.position, className: "header-github-link", href: cfg.github.projectURL, },
+        //{ label: cfg.org.title, position: cfg.navbar.menu.position,  href: cfg.org.url.orgsite },
+        //{ type: 'localeDropdown', position: 'right' },
       ]
     },
-
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Social',
-          items: [
-            { label: 'Twitter', href: 'https://twitter.com/xr_engine' },
-            { label: 'Facebook', href: 'https://www.facebook.com/xrengine/' },
-            { label: 'Discord', href: 'https://discord.gg/xrf' }
-          ]
-        },
-        {
-          title: 'Resources',
-          items: [
-            { label: 'Github', href: 'https://github.com/etherealengine/etherealengine' },
-            { label: 'Npm', href: 'https://www.npmjs.com/search?q=%40etherealengine' }
-          ]
-        },
-        {
-          title: 'More',
-          items: [
-            { label: 'Ethereal Engine', href: 'https://www.etherealengine.org/' },
-            { label: 'Open Collective', href: 'https://opencollective.com/etherealengine' }
-          ]
-        }
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} ${cfg.org.name}.`,
+      logo: { ...cfg.org.logo, width: cfg.footer.iconSize, height: cfg.footer.iconSize },
+      links: [...cfg.footer.links],
+      copyright: cfg.footer.copyright,
+    },
+    tableOfContents: {
+      minHeadingLevel: 2, // default 2
+      maxHeadingLevel: 5, // default 3
     },
   prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: ethereal.dark,
       additionalLanguages: ['diff','yaml','toml','bash','powershell','c','cpp','python'],
     },
   } satisfies Preset.ThemeConfig,
@@ -137,6 +121,12 @@ const config: Config = {
         },
       };
     },
+  ],
+  headTags: [
+    // Add Hanken Grotesk font globally to the site
+    { tagName: 'link', attributes: { rel:"preconnect", href: "https://fonts.googleapis.com" } },
+    { tagName: 'link', attributes: { rel:"preconnect", href: "https://fonts.gstatic.com", crossorigin: 'true' } },
+    { tagName: 'link', attributes: { rel:"stylesheet", href: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" } },
   ],
 };
 
