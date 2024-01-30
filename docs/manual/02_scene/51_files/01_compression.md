@@ -1,1 +1,1 @@
-# Compression
+# KTX2 & Compression
