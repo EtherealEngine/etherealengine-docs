@@ -8,8 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-color: #44475A; /* var(--ifm-color-primary-contrast-background); */
-  color: #F8F8F2; /* var(--ifm-color-primary); */
+  background-color: var(--ifm-color-primary-darkest);
+  color: #FFF; /* var(--ifm-color-primary); */
 }
 
 @media screen and (max-width: 996px) {
