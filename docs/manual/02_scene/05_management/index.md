@@ -1,6 +1,6 @@
-# Project Management
-<!-- TODO: Extend this file into a full section (Project Management) -->
-## Creating a Project
+# Scene Management
+<!-- TODO: Extend this file into a full section (Scene Management) -->
+## Creating a Scene
 ### Importing Assets
 There are two ways to import files:
 - Using the File menu to import them
@@ -18,7 +18,7 @@ The Engine can accept the following file types:
 - **Videos**: .mp4m, .mkv, .avi
 - **Audio**: .mp3, .mpeg, .m4a
 
-### Saving a Project
+### Saving a Scene
 In the File menu, click the save or save as button to save your scene.
 Some projects require time to save so don't exit this window until a few minutes have passed.
 
@@ -100,7 +100,8 @@ You can choose between Color, Skybox, Cubemap, and Equirectangular
 2. With the model in your Hierarchy, select it and scroll down in its Properties tab.  
 3. Re-name to your desired description with a .glb or .gltf extension.  
 
-You can find your saved model in your Assets tab in the Project Files directory scene should be determined by what your scene is composed of. Successful optimization is achieved by leveraging the appropriate use of detail per model.
+You can find your saved model in the Assets tab.  
+Successful optimization is achieved by leveraging the appropriate use of detail per model.
 
 ### Converting Models
 _Note: It is recommended to convert .gltf into .glb for easier importing._
@@ -133,7 +134,7 @@ We recommended using basic materials for all basic metal, glass, emissive, and p
 > It is recommended to simply drag a native material from your chosen DCC or game engine prior to export, and correctly name the basic material before exporting the .glb file.  
 > Names given before import are the names the engine will inherit.  
 
-## Saving Your Project
+## Saving Your Scene
 `Save As` and `Save Scene` can be found in the File Menu.
 Allow the Engine a few minutes to save your file.
 
