@@ -1,3 +1,6 @@
+---
+sidebar_label: Ethereal Engine
+---
 # Installing and running Ethereal Engine
 
 Etherealengine itself can be installed and run like so from a bash shell:

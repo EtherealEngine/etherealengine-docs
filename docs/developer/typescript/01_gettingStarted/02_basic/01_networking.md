@@ -1,5 +1,4 @@
-# Adding networking to a basic project
-
+# Adding networking
 We're going to add networking to the 'basic' example from the previous section so that we can deliver a shared collaborative experience to many players at once.
 
 ## Actions

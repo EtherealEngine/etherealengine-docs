@@ -1,5 +1,4 @@
-# Authoring a basic project
-
+# Creating a project
 This is the source code for 'basic' - a simple project in our repository - you can find the original source at https://github.com/EtherealEngine/ee-tutorial-basic . To install it see the previous section.
 
 From a typescript programming perspective projects typically have these pieces:

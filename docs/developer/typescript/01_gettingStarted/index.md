@@ -1,3 +1,6 @@
+---
+sidebar_label: Getting Started
+---
 # Getting Started with Typescript
 <!--
 NOTE: This page should contain:

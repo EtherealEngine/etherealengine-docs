@@ -1,4 +1,7 @@
-# Installation and running sub projects
+---
+sidebar_label: Sub Projects
+---
+# Installing and running sub projects
 
 Ethereal Engine can run sub-projects or 'locations'. This pattern is different from what you may be used to because Ethereal Engine runs on the 'outside' and the sub-project is kept in a folder of Ethereal Engine.
 
