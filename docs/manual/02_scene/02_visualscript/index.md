@@ -1,4 +1,4 @@
-# Behave Graph
+# VisualScript
 <!-- TODO: Add pictures to the whole section -->
 
 ## Overview
@@ -8,10 +8,10 @@ Widely embraced for implementing visual scripting languages, behavior graphs hav
 Notable examples include Unreal Engine's Blueprints, Unity's Visual Scripting, and NVIDIA Omniverse's OmniGraph.
 These engines leverage behavior graphs to empower game designers and developers in crafting sophisticated behaviors without delving into direct code writing.
 
-In the context of Ethereal Engine, Behavior Graphs hold a pivotal role by offering a no-code interface to the engine.
+In the context of Ethereal Engine, Behavior Graphs hold a pivotal role by offering a visual scripting interface to the engine.
 It provides seamless interaction with the engine, facilitating the modeling, organization, control, and assignment of intricate behaviors to entities with unparalleled ease.
 
 ## Audience
-Behave Graph is designed for developers, designers, artists, and non-technical users.
+VisualScript is designed for developers, designers, artists, and non-technical users.
 This visual scripting feature streamlines the implementation of complex logic and actions for entities without script writing.
 It promotes collaboration and empowers a diverse range of individuals to craft immersive experiences and interactive content for Ethereal Engine.

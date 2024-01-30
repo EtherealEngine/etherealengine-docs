@@ -15,7 +15,7 @@ const siteURL          = 'https://etherealengine.github.io'
 const siteTitle        = `${orgTitle} Documentation`
 const siteTagline      = `${orgTitle} is an open source solution for hosting, creating and developing immersive social spaces.`
 const siteIcon         = 'img/favicon.ico'
-const visualScriptName = 'Behave Graph'
+const visualScriptName = 'VisualScript'
 
 // Docusaurus Configuration
 const config: Config = {
