@@ -25,3 +25,6 @@ Ethereal Engine is built to be compatible across all devices including desktop, 
 ## The world is not loading, what do I do?
 Try turning off ad blocker, and make sure your browser is up to date.
 
+## What is the maximum concurrent users?
+The maximum concurrent users depends on the complexity and fidelity of your environment and avatars. Ethereal Engine can support up to several thousand users with scaled avatars, or just a dozen for a high-definition intimate experience. 
+
