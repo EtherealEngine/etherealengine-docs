@@ -1,30 +1,30 @@
-# Getting Started with Behave Graph
+# Getting Started with VisualScript
 <!-- TODO: Add pictures to this file -->
 <!--
 NOTE: This page should contain:
 - Hero Project: Showcase for Ethereal Engine's development tools and workflows.
 - Guide: Teaches a new user how to program the Hero Project and be comfortable with EE project development.
-- Segue: Lead the user into the Behave Graph section of the Developer Manual.
+- Segue: Lead the user into the VisualScript section of the Developer Manual.
 -->
-_This guide will teach you how to get started programming with Ethereal Engine and Behave Graph._  
-_Visit the [Behave Graph: Introduction](/docs/manual/developer/behaveGraph/intro) page for an overview of what Behave Graph is._  
-<!-- TODO: Add Behave Graph intro text as a mdx partial, instead of linking to the other page -->
+_This guide will teach you how to get started programming with Ethereal Engine and VisualScript._  
+_Visit the [VisualScript: Introduction](/docs/manual/developer/visualscript) page for an overview of what VisualScript is._  
+<!-- TODO: Add VisualScript intro text as a mdx partial, instead of linking to the other page -->
 
 ## Installation
-Behave Graph is preinstalled with Ethereal Engine, and can be accessed as part of the Ethereal Engine Studio.
+VisualScript is preinstalled with Ethereal Engine, and can be accessed as part of the Ethereal Engine Studio.
 > Note: Access to the Studio requires users to have admin or creator privileges.
 
 ## Configuration
-Behave graph is implemented as a component of the engine, following the ECS (Entity Component System) architecture.
+VisualScript is implemented as a component of the engine, following the ECS (Entity Component System) architecture.
 
-Users can add or remove a Behave graph component from an entity using the following steps:
-1. Locate the Behave graph component under the scripting section in the component shelf on the right side of the screen.
+Users can add or remove a VisualScript component from an entity using the following steps:
+1. Locate the VisualScript component under the scripting section in the component shelf on the right side of the screen.
 1. Perform one of the following actions:
-   1. Double-click on the component or drag and drop it into the scene to add a new entity with the Behave graph component.
+   1. Double-click on the component or drag and drop it into the scene to add a new entity with the VisualScript component.
    1. Drag and drop it into the hierarchy panel on another entity to add it to the scene as a child of the selected entity.
    1. Drag and drop it into the properties panel of a selected entity to add the component to that entity.
 
-The Behave graph properties panel has two properties:
+The VisualScript properties panel has two properties:
 - **Run Graph:** Executes the graph in headless mode as part of the engine.
 - **Disable Graph:** Prevents the graph from playing.
 
@@ -33,7 +33,7 @@ Before delving into creating the graph, let's explore the graph panel.
 
 The graph panel includes the panel itself, panel buttons, nodes, and connections.
 
-Each Behave graph, by default, includes:
+Each VisualScript, by default, includes:
 - On Start event node
 - On Tick event node
 - Log node
