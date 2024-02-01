@@ -1,4 +1,4 @@
-# Adding networking
+# Networking
 We're going to add networking to the `basic` example from the previous section.  
 Our goal is to deliver a shared and collaborative experience to many players at once.
 
@@ -73,5 +73,6 @@ const ArtifactReactor = ({ entityUUID }: { entityUUID: EntityUUID }) => {
 ```
 
 ## Closing
-Although this example is simple, these are the basic foundations for richer experiences.  
-The source code for this example from https://github.com/etherealengine/ee-basic-tutorial
+This example is simple, but these are the building blocks and foundations for creating richer and more complex experiences.  
+The source code for this example from https://github.com/etherealengine/ee-tutorial-basic
+
