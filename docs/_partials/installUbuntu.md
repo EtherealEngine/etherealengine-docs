@@ -11,12 +11,3 @@ wget -qO- https://raw.githubusercontent.com/EtherealEngine/etherealengine/instal
 npm run dev
 ```
 You can now open Ethereal Engine on your web browser by navigating to https://localhost:3000 
-
-### Install and run the tutorial project
-The previous command will have the engine running.  
-Lets stop it by pressing `Ctrl+C`, and then run these commands to install and run the Tutorial example template:
-```bash
-git clone https://github.com/EtherealEngine/ee-tutorial-basic packages/projects/packages/ee-tutorial-basic
-npm install
-npm run dev
-```
