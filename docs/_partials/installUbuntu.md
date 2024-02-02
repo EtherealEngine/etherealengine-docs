@@ -4,10 +4,9 @@ You can find alternative _(and more advanced)_ installation instructions for [Wi
 :::
 
 ### Install Ethereal Engine and its Pre-requisites
-Ethereal Engine can be installed with:
-<!-- TODO: Fix this link once the PR is merged -->
+Ethereal Engine can be installed and run with:
 ```bash
-wget -qO- https://raw.githubusercontent.com/EtherealEngine/etherealengine/install.sh | bash -i
+wget -qO- https://raw.githubusercontent.com/EtherealEngine/etherealengine/dev/scripts/ubuntu-install.sh | bash -i
 npm run dev
 ```
-You can now open Ethereal Engine on your web browser by navigating to https://localhost:3000 
+You can now open Ethereal Engine on your web browser by navigating to https://localhost:3000
