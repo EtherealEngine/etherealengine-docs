@@ -17,3 +17,13 @@ git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/
 npm install
 npm run dev
 ```
+
+You should now be able to see the `ee-tutorial-hello` project listed in Ethereal Engine's Studio by navigating to https://localhost:3000/studio
+
+### Confirm the installation
+Lets make sure that our `hello world` code is running:
+1. Open the project from the Studio by double clicking on its card
+2. Create a new empty scene
+
+You will know that the code is running if you can see a white sphere in the middle of the scene.
+
