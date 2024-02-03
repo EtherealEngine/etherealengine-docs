@@ -10,6 +10,20 @@ ECS refers to the "**Entity Component System**" architecture paradigm, that is c
   They allow data to be structured with composition instead of inheritance.  
 - **Systems** are functions that operate on these entities and components.  
 
+<!--
+TODO: Explain the concept of "controlled context"
+
+## Controlled Context
+There are two types of controlled contexts: Synchronous and Asynchronous  
+Execute runs every frame (or fixed frame)  
+Reactors run as per the react scheduler, asynchronously  
+Reactors come in 3 types:
+- UI _(aka "normal" react)_
+- Component reactors
+- System reactors  
+  _(and custom reactors, which are functionally equivalent to system reactors)_  
+-->
+
 ## Component Definitions
 Components support two types of data:
 - Structure of Arrays
