@@ -1,3 +1,5 @@
+import { TechnicalNote } from '@site/src/components/TechnicalNote';
+
 # Systems
 If you have a keen eye you may have noticed something really important.  
 We are using the `Entity Component System` pattern, and so far:
@@ -21,9 +23,7 @@ In the quickstart tutorial we used a simplified code example for brevity and eas
 But we also broke Ethereal Engine's best practices in order to achieve that simplicity.  
 So, lets fix that.
 
-<details className="bg-neutral-900">
-<summary>Technical Info</summary>
-<div>
+<TechnicalNote>
 The root of the problem is that we have created and modified our data inside the `worldInjection` function.  
 Mutation of data should always occur in a [Controlled Context](/manual/modules/engine/ecs), and the `worldInjection` function is not such.
 
@@ -47,8 +47,7 @@ ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
 
 export default async function worldInjection() {}
 ```
-</div>
-</details>
+</TechnicalNote>
 
 ## Our first System
 and then add the system in step1 first thing

@@ -1,3 +1,5 @@
+import { TechnicalNote } from '@site/src/components/TechnicalNote';
+
 # The ECS Pattern
 The [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system) is a pattern used to organize our code when writing software.  
 In this pattern:
@@ -7,14 +9,11 @@ In this pattern:
 - An `Entity` is an identifier.  
   Each entity is essentially a "name" that groups components into a single "thing" (an object).
 
-<details className="bg-neutral-900">
-<summary>Technical Summary</summary>
-<div>
+<TechnicalNote title="Technical Summary">
 The ECS pattern represents [Objects](https://en.wikipedia.org/wiki/Object_(computer_science)) by attaching Components (data) to an Entity (identifiers) without behavior.  
 The behavior of the application is then controlled by having separate Systems (logic) that process that data.  
 Systems don't need to know where that data is coming from. They only know what data is stored in the Components that they can operate on.
-</div>
-</details>
+</TechnicalNote>
 
 
 ## Creating an Entity
@@ -28,14 +27,11 @@ const entity = ECS.createEntity()
 Components represent data that has no behavior or identification.  
 The way to attach Components to Entities is by calling the `setComponent` function from Ethereal Engine's `ECS`.
 
-<details className="bg-neutral-900">
-<summary>Technical Note</summary>
-<div>
+<TechnicalNote>
 The `setComponent` function will not return anything, but it will:
 - Add the given Component to the Entity.
 - Store the Component's data in the internal records of the ECS, so it can used by the engine or accessed through the API (eg: with `getComponent` and similar functions).
-</div>
-</details>
+</TechnicalNote>
 
 Ethereal Engine requires a specific set of Components in order to create an object that can be presented on the screen:
 - **VisibleComponent**
@@ -50,14 +46,11 @@ They are not mandatory, but it is good practice to add them to all your entities
 ```ts
 ECS.setComponent(entity, NameComponent, 'hello-world')
 ```
-<details className="bg-neutral-900">
-<summary>Clarification</summary>
-<div>
+<TechnicalNote title="Clarification">
 We said that an entity is just a "name" for a "thing", but we are also giving that "name" a `NameComponent`.  
 Every Entity represents its "name" as an [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), which does not need to be human-readable.  
 And `NameComponent`s give a human-readable identifier to an Entity, no matter what its internal UUID name is.  
-</div>
-</details>
+</TechnicalNote>
 
 
 ### `VisibleComponent`
