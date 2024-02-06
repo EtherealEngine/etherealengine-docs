@@ -58,7 +58,7 @@ import { PrimitiveGeometryComponent } from '@etherealengine/engine/src/scene/com
 ```
 We will be adding these Components to our Entity, and Components are part of the ECS pattern.  
 As such, we will need to use the Ethereal Engine ECS management functions.   
-The engine provides a convenient way to import all ECS related functions at once through `ECS` [namespace](https://www.typescriptlang.org/docs/handbook/namespaces.html).
+The engine provides a convenient way to import all ECS related functions at once through the `ECS` [namespace](https://www.typescriptlang.org/docs/handbook/namespaces.html).
 ```ts title="ee-tutorial-hello/src/Hello.ts"
 import { ECS } from '@etherealengine/ecs'
 ```
