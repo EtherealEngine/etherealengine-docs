@@ -7,7 +7,7 @@ We are using the `Entity Component System` pattern, and so far:
 ```ts
 const entity = ECS.createEntity()
 ```
-- We added `Component`s to our Entity...  
+- We added `Components` to our Entity...  
 ```ts
 ECS.setComponent(entity, NameComponent, 'hello-world')
 ECS.setComponent(entity, VisibleComponent)

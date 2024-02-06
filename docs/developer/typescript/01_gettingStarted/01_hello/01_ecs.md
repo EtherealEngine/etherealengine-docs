@@ -18,7 +18,7 @@ Systems don't need to know where that data is coming from. They only know what d
 
 ## Creating an Entity
 Creating an Entity is as simple as calling the `createEntity()` function from Ethereal Engine's `ECS`.  
-This function will return a identifier that can be used to group Components into a unique and distinct Object.
+This function will return an identifier that can be used to group Components into a unique and distinct Object.
 ```ts
 const entity = ECS.createEntity()
 ```
@@ -30,7 +30,7 @@ The way to attach Components to Entities is by calling the `setComponent` functi
 <TechnicalNote>
 The `setComponent` function will not return anything, but it will:
 - Add the given Component to the Entity.
-- Store the Component's data in the internal records of the ECS, so it can used by the engine or accessed through the API (eg: with `getComponent` and similar functions).
+- Store the Component's data in the internal records of the ECS, so it can used by the engine or accessed through the API _(eg: with `getComponent` and similar functions)_.
 </TechnicalNote>
 
 Ethereal Engine requires a specific set of Components in order to create an object that can be presented on the screen:
@@ -41,15 +41,15 @@ Ethereal Engine requires a specific set of Components in order to create an obje
 
 
 ### `NameComponent`
-`NameComponent`s give a human-readable identifier to an Entity.  
+Gives a human-readable identifier to an Entity.  
 They are not mandatory, but it is good practice to add them to all your entities.  
 ```ts
 ECS.setComponent(entity, NameComponent, 'hello-world')
 ```
 <TechnicalNote title="Clarification">
 We said that an entity is just a "name" for a "thing", but we are also giving that "name" a `NameComponent`.  
-Every Entity represents its "name" as an [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), which does not need to be human-readable.  
-And `NameComponent`s give a human-readable identifier to an Entity, no matter what its internal UUID name is.  
+Every Entity represents its internal "name" _(aka identifier)_ as an [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), which does not need to be human-readable.  
+And `NameComponents` give a human-readable identifier to an Entity, independent of what its UUID is.  
 </TechnicalNote>
 
 
@@ -61,12 +61,12 @@ ECS.setComponent(entity, VisibleComponent)
 ```
 
 ### `TransformComponent`
-In simple terms, `TransformComponent`s give an Entity the ability to have a [position in the world](https://en.wikipedia.org/wiki/Transformation_matrix).  
+In simple terms, `TransformComponents` give an Entity the ability to have a [position in the world](https://en.wikipedia.org/wiki/Transformation_matrix).  
 There would be no way to position the Entity in 3D space without attaching this Component to the Entity.  
 ```ts
 ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
 ```
-> In more technical terms, `TransformComponent`s give the Entity the ability to be affected by [linear transformations](https://en.wikipedia.org/wiki/Linear_transformation).  
+> In more technical terms, `TransformComponents` give the Entity the ability to be affected by [linear transformations](https://en.wikipedia.org/wiki/Linear_transformation).  
 
 ### `PrimitiveGeometryComponent`
 This Component gives Entities a primitive "visual body".  
@@ -74,6 +74,6 @@ Entities without it would not have any [3D geometry](https://en.wikipedia.org/wi
 ```ts
 ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
 ```
-> The `1` here means that we are creating a `SphereGeometry` object.  
+> The `1` here means that we are creating a [`SphereGeometry`](https://github.com/EtherealEngine/etherealengine/blob/dev/packages/engine/src/scene/constants/GeometryTypeEnum.ts#L28) object.  
 > We will create the component using a more readable name in the following tutorials.
 
