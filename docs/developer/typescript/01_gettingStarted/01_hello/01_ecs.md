@@ -3,10 +3,23 @@ The [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_sys
 In this pattern:
 - Logic is represented as `System`s, and they define the behavior of the application.
 - Data is represented as `Component`s that have no behavior or identifiers attached to them.
-- Components are attached to `Entities`.
-- An `Entity` is essentially a "name" that can be used to connect a group of components into a single "thing".
+- Components are attached to Entities.
+- An `Entity` is an identifier.  
+  Each entity is essentially a "name" that groups components into a single "thing" (an object).
+
+<details>
+<summary>Technical Summary</summary>
+<div>
+The ECS pattern represents [Objects](https://en.wikipedia.org/wiki/Object_(computer_science)) by attaching Components (data) to an Entity (identifiers) without behavior.  
+The behavior of the application is then controlled by having separate Systems (logic) that process that data.  
+Systems don't need to know where that data is coming from. They only know what data is stored in the Components that they can operate on.
+</div>
+</details>
+
 
 ## Creating an Entity
+Creating an Entity is a simple as calling the `createEntity()` function from Ethereal Engine's `ECS`.  
+This function will return an object that can will identify other things.
 ```ts
 const entity = ECS.createEntity()
 ```
