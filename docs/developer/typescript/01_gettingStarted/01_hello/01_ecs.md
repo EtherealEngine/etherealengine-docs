@@ -7,7 +7,7 @@ In this pattern:
 - An `Entity` is an identifier.  
   Each entity is essentially a "name" that groups components into a single "thing" (an object).
 
-<details>
+<details className="bg-neutral-900">
 <summary>Technical Summary</summary>
 <div>
 The ECS pattern represents [Objects](https://en.wikipedia.org/wiki/Object_(computer_science)) by attaching Components (data) to an Entity (identifiers) without behavior.  
@@ -18,18 +18,31 @@ Systems don't need to know where that data is coming from. They only know what d
 
 
 ## Creating an Entity
-Creating an Entity is a simple as calling the `createEntity()` function from Ethereal Engine's `ECS`.  
-This function will return an object that can will identify other things.
+Creating an Entity is as simple as calling the `createEntity()` function from Ethereal Engine's `ECS`.  
+This function will return a identifier that can be used to group Components into a unique and distinct Object.
 ```ts
 const entity = ECS.createEntity()
 ```
 
 ## Adding Components
-Ethereal Engine requires a specific set of Components in order to make an Entity show up on the screen:
+Components represent data that has no behavior or identification.  
+The way to attach Components to Entities is by calling the `setComponent` function from Ethereal Engine's `ECS`.
+
+<details className="bg-neutral-900">
+<summary>Technical Note</summary>
+<div>
+The `setComponent` function will not return anything, but it will:
+- Add the given Component to the Entity.
+- Store the Component's data in the internal records of the ECS, so it can used by the engine or accessed through the API (eg: with `getComponent` and similar functions).
+</div>
+</details>
+
+Ethereal Engine requires a specific set of Components in order to create an object that can be presented on the screen:
 - **VisibleComponent**
 - **TransformComponent**
 - **PrimitiveGeometryComponent** or **MeshComponent**
 - _(optional)_ **NameComponent**: Not required, but good practice.
+
 
 ### `NameComponent`
 `NameComponent`s give a human-readable identifier to an Entity.  
@@ -63,9 +76,8 @@ ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
 > In more technical terms, `TransformComponent`s give the Entity the ability to be affected by [linear transformations](https://en.wikipedia.org/wiki/Linear_transformation).  
 
 ### `PrimitiveGeometryComponent`
-In simple terms, `TransformComponent`s give an Entity the ability to have a [position in the world](https://en.wikipedia.org/wiki/Transformation_matrix).  
-In more technical terms, they give the Entity the ability to be affected by [linear transformations](https://en.wikipedia.org/wiki/Linear_transformation).  
-There would be no way to position the Entity in 3D space without attaching this Component to the Entity.  
+This Component gives Entities a primitive "visual body".  
+Entities without it would not have any [3D geometry](https://en.wikipedia.org/wiki/Polygon_mesh), so the renderer would not be able to draw them on the screen.  
 ```ts
 ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
 ```
