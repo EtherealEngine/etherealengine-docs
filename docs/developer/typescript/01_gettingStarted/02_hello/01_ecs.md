@@ -9,7 +9,7 @@ In this pattern:
 - An `Entity` is an identifier.  
   Each entity is essentially a "name" that groups components into a single "thing" (an object).
 
-identifier that points to collection of components
+<!-- TODO: identifier that points to collection of components -->
 
 <TechnicalNote title="Technical Summary">
 The ECS pattern represents [Objects](https://en.wikipedia.org/wiki/Object_(computer_science)) by attaching Components (data) to an Entity (identifiers) without behavior.  
