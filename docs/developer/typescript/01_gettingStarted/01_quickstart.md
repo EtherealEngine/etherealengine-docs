@@ -1,9 +1,9 @@
 ---
-sidebar_label: Getting Started
+sidebar_label: Quickstart
 ---
 import UbuntuInstall from '../../../_partials/installUbuntu.md'
 
-# Getting Started with Typescript
+# Typescript Quickstart
 This QuickStart guide will teach you the basics of Ethereal Engine, and how to run the engine for the first time.  
 
 ## Installation
