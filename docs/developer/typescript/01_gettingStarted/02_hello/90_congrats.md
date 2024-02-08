@@ -1,3 +1,6 @@
+---
+pagination_next: developer/typescript/gettingStarted/basics/physics
+---
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Congratulations!
@@ -8,8 +11,9 @@ But Ethereal Engine has a lot more features to explore!
 
 ## What's Next?
 #### Beginner
-If this is your first time using Ethereal Engine, we have prepared a [Basics](../basics) section for you.  
+If this is your first time using Ethereal Engine, we have prepared an `Etheral Engine Basics` tutorial for you.  
 It will teach you how to start expanding your knowledge of the engine without getting overwhelmed by its complexity.  
+Go to the bottom of this page, and click on "Next" to continue with your learning journey!
 
 #### Intermediate
 If you are feeling confident already, you could jump right into the intermediate tutorials.  
