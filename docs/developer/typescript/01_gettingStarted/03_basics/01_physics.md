@@ -4,15 +4,34 @@ sidebar_label: Physics
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
 
 # Adding Physics
-So far we have learned how to create an `Entity`, how to tell the engine what we want that engine to be.  
-In simple terms, we have told the engine how we want our sphere to be **created**.  
+So far we have learned how to create an `Entity`, and how to tell the engine what we want that entity to be.  
+In simple terms, we have told the engine how to **create** our sphere.  
 
-We added some components to our sphere, so that the engine can draw the sphere into the screen so we can see it.  
-But right now it is only an "empty shell" that sits there doing nothing, which is a bit boring.
-We cannot even use it as a platform to walk on!
+## Our problem
+We added some components to our sphere, so that the engine can draw the sphere into the screen and we can see it.  
+But right now it is only an "empty shell" that sits there doing nothing, which is a bit boring.  
+We cannot even use it as a platform to walk on!  
+Lets fix that.
 
-Lets fix that! We are now going to:
-- Add a `RigidBodyComponent` of type `dynamic`
+## Our solution
+We are going to add a Collider and a RigidBody to our sphere object.  
+
+Physics properties are tricky to test, as they are not readily visible. So lets get a point of reference of how our project currently behaves.  
+In order to test our changes in a simple way, we will run our project from the studio and walk around the scene with an Avatar.  
+
+These are the steps needed to accomplish that:
+- Open the scene we created before, or click on `Create Scene` if don't have it
+- Press the `Play` button in the studio
+- Move your Avatar around the scene by either:
+  - Pressing `WASD` in your keyboard
+  - Clicking anywhere on the ground with your mouse
+
+You may notice that, if you try to hit the sphere with your avatar... you will instead walk right through it!
+This happens because our Sphere doesn't have any Physics properties yet, so it can be "seen" but not "collided against".
+
+## Physics Properties
+In order to correct our problem, we are now going to:
+- Add a `RigidBodyComponent` of type `dynamic` to our entity
 - Add a `ColliderComponent` with the shape of a `sphere`
 
 Here are your hints for this tutorial:
@@ -24,6 +43,10 @@ Here are your hints for this tutorial:
 // We can specify the shape with:
 { shape: 'sphere' }
 ```
+
+You will know that your code is correct if:
+- You try to go through the ball with the Avatar, but the engine stops you.
+<!-- TODO: Write proper instructions for this -->
 
 <TechnicalNote title="Solution">
 
