@@ -1,3 +1,5 @@
+import { TechnicalNote } from '@site/src/components/TechnicalNote';
+
 # Networking
 
 

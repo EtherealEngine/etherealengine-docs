@@ -1,6 +1,8 @@
 ---
 sidebar_label: Physics
 ---
+import { TechnicalNote } from '@site/src/components/TechnicalNote';
+
 # Adding Physics
 
 
