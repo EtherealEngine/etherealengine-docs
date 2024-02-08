@@ -4,7 +4,39 @@ sidebar_label: Physics
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
 
 # Adding Physics
+So far we have learned how to create an `Entity`, how to tell the engine what we want that engine to be.  
+In simple terms, we have told the engine how we want our sphere to be **created**.  
 
+We added some components to our sphere, so that the engine can draw the sphere into the screen so we can see it.  
+But right now it is only an "empty shell" that sits there doing nothing, which is a bit boring.
+We cannot even use it as a platform to walk on!
+
+Lets fix that! We are now going to:
+- Add a `RigidBodyComponent` of type `dynamic`
+- Add a `ColliderComponent` with the shape of a `sphere`
+
+Here are your hints for this tutorial:
+```ts
+// Both the RigidBody and Collider components are part of the `Spatial/physics` engine module
+'@etherealengine/spatial/src/physics/components/.....'
+// We can specify the dynamic type with:
+{ type: 'dynamic' }
+// We can specify the shape with:
+{ shape: 'sphere' }
+```
+
+<TechnicalNote title="Solution">
+
+```ts
+// Import both components from the Spatial/physics module
+import { RigidBodyComponent } from '@etherealengine/spatial/src/physics/components/RigidBodyComponent'
+import { ColliderComponent } from '@etherealengine/spatial/src/physics/components/ColliderComponent'
+```
+```ts
+// Set both components to our entity
+ECS.setComponent(entity, RigidBodyComponent, { type: 'dynamic' })
+ECS.setComponent(entity, ColliderComponent, { shape: 'sphere' })
+```
 
 <TechnicalNote title="Full Solution">
 
@@ -50,4 +82,7 @@ export const HelloWorldSystem = ECS.defineSystem({
 export default async function worldInjection() {}
 ```
 </TechnicalNote>
+<!-- Full Solution End -->
+</TechnicalNote>
+<!-- Solution End -->
 
