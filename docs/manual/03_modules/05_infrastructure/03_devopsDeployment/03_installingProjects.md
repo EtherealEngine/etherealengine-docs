@@ -30,7 +30,7 @@ and authorizing it to have access to your GitHub organizations.
 
 Click the 'Add Project' button:
 
-![](./images/projects-admin-install-new.png)
+![](../../../../images/devops/projects-admin-install-new.png)
 
 You will see text fields for entering the source and destination repositories.
 When you click away from the text fields, the URL will be checked both for the
@@ -40,7 +40,7 @@ always available), and write or admin permission for the destination repo. If
 you have never logged into GitHub with your current account, you will not be
 allowed to add or update projects.
 
-![](./images/projects-admin-install-invalid-source.png)
+![](../../../../images/devops/projects-admin-install-invalid-source.png)
 
 For the source repository, after entering the URL, you will also need to select
 a branch to pull from. Your options are either the main branch for that repository,
@@ -49,13 +49,13 @@ a deployment with the environment variable `RELEASE_NAME=dev`. If `RELEASE_NAME`
 `local` is used; this could lead to multiple local installations of the platform conflicting,
 but one can set `RELEASE_NAME` locally to something else in your .env.local file.
 
-![](./images/projects-admin-install-select-branch.png)
+![](../../../../images/devops/projects-admin-install-select-branch.png)
 
 After the branch is selected, you also need to select a tagged commit from that branch, 
 or the most recent commit. As of this writing, you must manually tag project commits yourself, 
 though tags are copied over from the source repository when installing or updating a project.
 
-![](./images/projects-admin-install-select-tag.png)
+![](../../../../images/devops/projects-admin-install-select-tag.png)
 
 The backend checks that the source and destination repos have the same project.
 The project name is the `name` field in the project's package.json file.
@@ -65,18 +65,18 @@ then it can only be updated with different versions of that project. For example
 if the destination branch has project `example1` in it, you will not be allowed to
 overwrite it with a project `test3`, only other projects named `example1`.
 
-![](./images/projects-admin-install-mismatched-projects.png)
+![](../../../../images/devops/projects-admin-install-mismatched-projects.png)
 
 You can only install a project with a given name once, and names are **case-insensitive**;
 `example1` is seen as the same name as `ExamplE1`. You would need to remove an existing project
 in order to install a different project that has the same name, or rename one of the projects.
 
-![](./images/projects-admin-install-project-exists.png)
+![](../../../../images/devops/projects-admin-install-project-exists.png)
 
 When everything is valid, you will be able to click the Submit button, which will install
 the project.
 
-![](./images/projects-admin-install-valid-submit.png)
+![](../../../../images/devops/projects-admin-install-valid-submit.png)
 
 Adding a project through this interface runs `git clone` in the background, same as above, 
 but will then upload all of the repository's files to the storage provider. These files will then be 
@@ -95,7 +95,7 @@ The Update button opens the same drawer as adding a new project, just with the d
 Assuming everything matches, it will also force-push to the `<RELEASE_NAME>-deployment` branch in the destination
 repository.
 
-![](./images/projects-admin-update-valid-submit.png)
+![](../../../../images/devops/projects-admin-update-valid-submit.png)
 
 The GitHub Repo Link button also opens this drawer, but you can only select the destination repository, not
 the source repository, and no code is pushed anywhere. 
@@ -123,16 +123,16 @@ In a production environment, click on the button `Update Engine/Rebuild`. A draw
 a selector for the engine version you want to update with. This will be an image in the builder's
 linked image repository.
 
-![](./images/projects-admin-engine-update-select-tag.png)
+![](../../../../images/devops/projects-admin-engine-update-select-tag.png)
 
 After selecting an engine version, if you click Submit now, you will just rebuild with the 
 newly-selected version of the main codebase, plus whatever versions of your projects are currently 
 in your linked repositories.
 
-![](./images/projects-admin-engine-update-solo.png)
+![](../../../../images/devops/projects-admin-engine-update-solo.png)
 
 If you click on `Update projects`,
 you can select the source commits for any installed projects that have a destination repo, same as with
 the Add/Update project drawer. The projects will be updated before the builder is restarted.
 
-![](./images/projects-admin-engine-update-with-projects.png)
+![](../../../../images/devops/projects-admin-engine-update-with-projects.png)

@@ -106,7 +106,7 @@ that shows all of the organizations you are in. If you have admin rights to that
 access. If you do not have admin rights, then you can Request access, and someone who does have admin rights
 will have to approve it.
 
-![](./images/oauth-login-screen.png)
+![](../../../../images/devops/oauth-login-screen.png)
 
 If you have already gone through the OAuth approval page, it will not be shown again - all subsequent logins
 will bypass this page[^1]. In order to grant the OAuth app access to other organizations, follow

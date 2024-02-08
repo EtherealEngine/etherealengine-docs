@@ -1,7 +1,7 @@
-import CloneInstructions from '../_partials/cloneInstructions.md'
-import AcceptCertificates from '../_partials/acceptCertificates.md'
-import PythonUbuntu from '../_partials/pythonUbuntu.md'
-import MakeUbuntu from '../_partials/makeUbuntu.md'
+import CloneInstructions from '../_partials/devops/cloneInstructions.md'
+import AcceptCertificates from '../_partials/devops/acceptCertificates.md'
+import PythonUbuntu from '../_partials/devops/pythonUbuntu.md'
+import MakeUbuntu from '../_partials/devops/makeUbuntu.md'
 
 # Installing on Windows with WSL2
 
@@ -30,7 +30,7 @@ Make sure to enable your WSL distribution once docker desktop is installed and r
 You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`.
 Enable integration with Ubuntu, and make sure to hit `Apply & Restart`.
 
-![Docker Desktop WSL Distro](../03_devopsDeployment/images/docker-desktop-wsl-distro.jpg)
+![Docker Desktop WSL Distro](../images/devops/docker-desktop-wsl-distro.jpg)
 
 ## Install Node
 If Node is not already installed on your machine _(check with `node --version`)_, you can do so by first installing `nvm` and then installing Node with nvm.

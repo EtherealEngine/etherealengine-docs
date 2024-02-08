@@ -1,7 +1,7 @@
-import CloneInstructions from '../_partials/cloneInstructions.md'
-import AcceptCertificates from '../_partials/acceptCertificates.md'
+import CloneInstructions from '../_partials/devops/cloneInstructions.md'
+import AcceptCertificates from '../_partials/devops/acceptCertificates.md'
 
-# Installation
+# Installing on Linux
 
 Getting up and running requires just a few steps, but this can be tricky, depending on your platform and current environment.
 Please follow the directions for your specific environment.
@@ -73,7 +73,7 @@ To give administration rights to a user:
 - Run the command `npm run make-user-admin -- --id={COPIED_USER_ID}` where `COPIED_USER_ID` is the key you just copied on the previous step.  
   Example: `npm run make-user-admin -- --id=c06b0210-453e-11ec-afc3-c57a57eeb1ac`
 
-![image](./images/userid.png)
+![image](../images/devops/userid.png)
 
 > Alternate Method:  
 > Open the `User` table of your deployment's database and change `userRole` to `admin`  
