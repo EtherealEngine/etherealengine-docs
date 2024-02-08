@@ -8,7 +8,11 @@ In this pattern:
 - Components are attached to Entities.
 - An `Entity` is an identifier.  
 
-<!-- TODO: identifier that points to collection of components -->
+<!--
+TODO:
+name that points to a collection of data
+identifier that points to a collection of components
+-->
 
 <TechnicalNote title="Technical Summary">
 The ECS pattern represents [Objects](https://en.wikipedia.org/wiki/Object_(computer_science)) by attaching Components (data) to an Entity (identifiers) without behavior.  
