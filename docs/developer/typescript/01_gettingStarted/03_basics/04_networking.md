@@ -1,5 +1,8 @@
 # Networking
 
+
+<TechnicalNote title="Full Solution">
+
 ```ts
 import React, { useEffect } from 'react'
 
@@ -145,3 +148,5 @@ export const BasicSystem = defineSystem({
   insert: { after: PresentationSystemGroup }
 })
 ```
+</TechnicalNote>
+

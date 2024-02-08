@@ -3,6 +3,9 @@ sidebar_label: Physics
 ---
 # Adding Physics
 
+
+<TechnicalNote title="Full Solution">
+
 ```ts
 import { ECS } from '@etherealengine/ecs'
 import { NameComponent } from '@etherealengine/spatial/src/common/NameComponent'
@@ -44,3 +47,5 @@ export const HelloWorldSystem = ECS.defineSystem({
 
 export default async function worldInjection() {}
 ```
+</TechnicalNote>
+
