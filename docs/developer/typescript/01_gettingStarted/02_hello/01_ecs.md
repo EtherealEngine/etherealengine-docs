@@ -3,8 +3,8 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 # The ECS Pattern
 The [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system) is a pattern used to organize our code when writing software.  
 In this pattern:
-- Logic is represented as `System`s, and they define the behavior of the application.
-- Data is represented as `Component`s that have no behavior or identifiers attached to them.
+- Logic is represented as `Systems`, and they define the behavior of the application.
+- Data is represented as `Components` that have no behavior or identifiers attached to them.
 - Components are attached to Entities.
 - An `Entity` is an identifier.  
   Each entity is essentially a "name" that groups components into a single "thing" (an object).
