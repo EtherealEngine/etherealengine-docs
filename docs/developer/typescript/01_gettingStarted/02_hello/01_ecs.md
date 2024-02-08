@@ -7,7 +7,6 @@ In this pattern:
 - Data is represented as `Components` that have no behavior or identifiers attached to them.
 - Components are attached to Entities.
 - An `Entity` is an identifier.  
-  Each entity is essentially a "name" that groups components into a single "thing" (an object).
 
 <!-- TODO: identifier that points to collection of components -->
 
