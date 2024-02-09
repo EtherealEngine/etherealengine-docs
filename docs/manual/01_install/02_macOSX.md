@@ -1,3 +1,6 @@
+---
+sidebar_label: Mac OS X
+---
 # Installing on Mac OS X
 
 1. Go to the root folder where Ethereal Engine is stored and run
