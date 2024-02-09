@@ -32,7 +32,7 @@ In the list you should be able to see `Ubuntu` listed. Afterwards, run following
 wsl -s Ubuntu
 ```
 
-![WSL Ubuntu Default Distribution](../../../../images/devops/wsl-ubuntu-default.jpg)
+![WSL Ubuntu Default Distribution](./images/wsl-ubuntu-default.jpg)
 
 ## Install Docker Desktop
 
@@ -40,7 +40,7 @@ Install docker desktop with WSL 2 backend. You can find the instructions [here](
 
 Once docker desktop is installed and running make sure to enable your WSL distribution. You can do so from Docker Desktop App by visiting `Settings > Resources > WSL Integration`. Make sure to hit 'Apply & Restart'.
 
-![Docker Desktop WSL Distro](../../../../images/devops/docker-desktop-wsl-distro.jpg)
+![Docker Desktop WSL Distro](./images/docker-desktop-wsl-distro.jpg)
 
 ## Enable systemd in WSL
 
@@ -212,7 +212,7 @@ Afterwards, restart docker from Powershell: `restart-service *docker*`
 
 Option 2: Edit configuration as shown in below image. Make sure to hit 'Apply & Restart' after making changes.
 
-![Docker Desktop Configuration](../../../../images/devops/docker-desktop-configuration.jpg)
+![Docker Desktop Configuration](./images/docker-desktop-configuration.jpg)
 
 Reference:
 
