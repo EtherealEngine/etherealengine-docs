@@ -17,7 +17,7 @@ Lets fix that.
 We are going to add a Collider and a RigidBody to our sphere object.  
 
 Physics properties are tricky to test, as they are not readily visible. So lets get a point of reference of how our project currently behaves.  
-In order to test our changes in a simple way, we will run our project from the studio and walk around the scene with an Avatar.  
+In order to test our changes in a simple way, we are going to run our project from the studio and walk around the scene with an Avatar.  
 
 These are the steps needed to accomplish that:
 - Open the scene we created before, or click on `Create Scene` if don't have it
