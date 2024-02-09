@@ -1,3 +1,7 @@
+---
+sidebar_label: Windows 10+
+---
+
 # Installing on Windows 10+
 1. Install Python 3 and add python installation directory path to `PATH` env variable.
 2. Install Node.js 18
