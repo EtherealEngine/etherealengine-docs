@@ -4,7 +4,7 @@ sidebar_label: Physics
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
 
 # Adding Physics
-So far we have learned how to create an `Entity`, and how to tell the engine what we want that entity to be.  
+So far we have learned how to create an `Entity`, and how to tell the engine what we want our entity to be.  
 In simple terms, we have told the engine how to **create** our sphere.  
 
 ## Our problem
@@ -16,17 +16,18 @@ Lets fix that.
 ## Our solution
 We are going to add a Collider and a RigidBody to our sphere object.  
 
-Physics properties are tricky to test, as they are not readily visible. So lets get a point of reference of how our project currently behaves.  
-In order to test our changes in a simple way, we are going to run our project from the studio and walk around the scene with an Avatar.  
+Physics properties are tricky to test, as they may not be readily visible.  
+Lets get a point of reference of how our project currently behaves, so we can be certain that the changes we make to our code are working as we expect them.  
+In order to do that, we are going to run our project from the studio and walk around the scene with an Avatar.  
 
 These are the steps needed to accomplish that:
-- Open the scene we created before, or click on `Create Scene` if don't have it
+- Open the scene we created before, or click on `Create Scene` if you don't have it
 - Press the `Play` button in the studio
 - Move your Avatar around the scene by either:
   - Pressing `WASD` in your keyboard
   - Clicking anywhere on the ground with your mouse
 
-You may notice that, if you try to hit the sphere with your avatar... you will instead walk right through it!
+You may notice that, if you try to hit the sphere with your avatar... you will instead walk right through it!  
 This happens because our Sphere doesn't have any Physics properties yet, so it can be "seen" but not "collided against".
 
 ## Physics Properties
@@ -42,11 +43,13 @@ Here are your hints for this tutorial:
 { type: 'dynamic' }
 // We can specify the shape with:
 { shape: 'sphere' }
+// Make the ball spawn 3units above the ground
+Vector3(/* X */,  /* Y */,  /* Z */)
 ```
 
 You will know that your code is correct if:
-- You try to go through the ball with the Avatar, but the engine stops you.
-<!-- TODO: Write proper instructions for this -->
+- The ball has gravity and falls to the ground
+- You try to go through the ball with the Avatar, but the engine stops you and you push the ball instead.
 
 <TechnicalNote title="Solution">
 
@@ -59,6 +62,10 @@ import { ColliderComponent } from '@etherealengine/spatial/src/physics/component
 // Set both components to our entity
 ECS.setComponent(entity, RigidBodyComponent, { type: 'dynamic' })
 ECS.setComponent(entity, ColliderComponent, { shape: 'sphere' })
+```
+```ts
+// Make the ball spawn 3 units along the Y axis (aka 3u above the ground)
+ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 3, 0) })
 ```
 
 <TechnicalNote title="Full Solution">
@@ -87,7 +94,9 @@ const hello = () => {
   const entity = ECS.createEntity()
   ECS.setComponent(entity, NameComponent, 'hello-world')
   ECS.setComponent(entity, VisibleComponent)
-  ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
+  // highlight-start
+  ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 3, 0) })
+  // highlight-end
   ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: GeometryTypeEnum.SphereGeometry })
 
   // highlight-start
