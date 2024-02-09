@@ -86,6 +86,7 @@ const config: Config = {
         //  ]
         //},
         //{ label: 'Examples', position: cfg.navbar.menu.position, to: 'examples', },  // TODO: Uncomment when the examples pages is ready
+        { label: 'Install', position: cfg.navbar.menu.position, href: '/manual/install' },
         { label: 'Manual', position: cfg.navbar.menu.position, to: 'manual', },
         //{ label: cfg.typedoc.label, position: cfg.navbar.menu.position, href: cfg.typedoc.url },
         { "aria-label": "GitHub", position: cfg.navbar.menu.position, className: "header-github-link", href: cfg.github.projectURL, },
