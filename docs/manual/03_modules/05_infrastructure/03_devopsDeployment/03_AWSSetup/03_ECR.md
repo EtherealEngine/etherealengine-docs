@@ -18,7 +18,7 @@ You will need to make four more repos for each of the services that are deployed
 e.g. `etherealengine-dev-api`, `etherealengine-dev-client`, `etherealengine-dev-instanceserver` and `etherealengine-dev-taskserver`.
 Everything else can be left alone for those, too.
 
-On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see both of 
+On the [repositories page](https://us-west-1.console.aws.amazon.com/ecr/repositories), you should see all of 
 the repositories you made. If you don't see any, you may be on the wrong tab up top - click Private or Public to switch
 between them. Also check that you're in the right AWS region. You'll see a column 'URI'. If you made public repos,
 the URIs should be in the form `public.ecr.aws/<identifier>/etherealengine-<RELEASE_NAME>(-builder)`; if you made private 
