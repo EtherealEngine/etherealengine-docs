@@ -45,52 +45,65 @@ for other users to have access to the cluster, the aws-auth ConfigMap in the clu
 modified to explicitly grant them permission to access the cluster.
 
 In the ethereal-engine-ops repository, there is a template aws-auth.yaml file at
-configs/aws-auth-template.yml. Make a copy of this template, and shorten its name to `aws-auth.yml`. Run 
-`kubectl describe configmap aws-auth -n kube-system` to get the current copy of the aws-auth ConfigMap.
+configs/aws-auth-template.yml. Make a copy of this template, and shorten its name to `aws-auth.yml`. Run
+this command to get the current copy of the aws-auth ConfigMap:
+> ```bash
+> kubectl describe configmap aws-auth -n kube-system
+> ```
+> 
 It should look something like this:
 
-```
-Data
-====
-mapRoles:
-----
-- groups:
-  - system:bootstrappers
-  - system:nodes
-  rolearn: arn:aws:iam::<accountId>:role/eksctl-etherealengine-test-nodegro-NodeInstanceRole-dXwOpisgTD1e
-  username: system:node:{{EC2PrivateDNSName}}
+>```yaml title="aws-auth"
+>Data
+>====
+>mapRoles:
+>----
+>- groups:
+>  - system:bootstrappers
+>  - system:nodes
+>  rolearn: arn:aws:iam::<accountId>:role/eksctl-etherealengine-test-nodegro-NodeInstanceRole-dXwOpisgTD1e
+>  username: system:node:{{EC2PrivateDNSName}}
+>
+>mapUsers:
+>----
+>- groups:
+>  - system:masters
+>  userarn: arn:aws:iam::<accountId>:user/etherealengine-eks
+>  username: etherealengine-eks
+>```
 
-mapUsers:
-----
-- groups:
-  - system:masters
-  userarn: arn:aws:iam::<accountId>:user/etherealengine-eks
-  username: etherealengine-eks
+Copy the value of `rolearn` in the entry for mapRoles and paste that in the template copy to replace `<rolearn>`.
 
+In the mapUsers section, you'll need to make as many copies of the following as you want users to have access
+to the cluster:
 
-```
+>```yaml
+>- groups:
+>  - system:masters
+>  userarn: arn:aws:iam::<account_id>:user/etherealengine-eks
+>  username: etherealengine-eks
+>```
 
-Copy the value of rolearn in the entry for mapRoles in and paste that in the template copy to replace `<rolearn>`.
+:::important
+Make sure to have an entry for the user who made the cluster; in the example above, that's 'etherealengine-eks'.
+:::
 
-In the mapUsers section, you'll need to make as many copies of 
-
-```
-- groups:
-  - system:masters
-  userarn: arn:aws:iam::<account_id>:user/etherealengine-eks
-  username: etherealengine-eks
-```
-
-as you want users to have access to the cluster. Make sure to have an entry for the user who made the cluster;
-in the example above, that's `etherealengine-eks`. Replace `<account_id>` with the AWS account ID, and 
+Replace `<account_id>` with the AWS account ID, and 
 both instances of `<IAM_username>` with the username you want to grant access.
 
-Note that you should NOT put any value for `{{EC2PrivateDNSName}}`; that gets evaluated by AWS in real-time. 
+:::danger
+You should NOT put any value for \{\{EC2PrivateDNSName\}\}; that gets evaluated by AWS in real-time.
+:::
 
 After the ConfigMap is ready, run `kubectl apply -f <path/to/aws-auth.yml>`. It will update the ConfigMap
 with the contents of aws-auth.yml.
 
 If you want to add a new user to the cluster, you will need to make another entry in the mapUsers section
-with their username and run `kubectl apply -f <path/to/aws-auth.yml>`. You have to keep all of the other 
-user entries, as the contents of the ConfigMap get replaced wholesale with whatever is in aws-auth.yml.
-To remove a user's access from the cluster, remove their entry from mapUsers and `kubectl apply` the file.
+with their username and run
+> ```bash
+> kubectl apply -f <path/to/aws-auth.yml>
+> ```
+
+You have to keep all of the other user entries, as the contents of the ConfigMap get replaced wholesale with 
+whatever is in aws-auth.yml. To remove a user's access from the cluster, remove their entry from mapUsers and 
+run the above command to reapply the file.
