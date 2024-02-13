@@ -1,3 +1,4 @@
+import DocCardList from '@theme/DocCardList'
 import StudioOverview from './_studio_overview.md'
 
 # Studio Overview
@@ -22,3 +23,5 @@ Scenes can be saved by pressing `Ctrl+S` in your keyboard, or by navigating to t
 6. [Properties](./06_properties.md)  
 7. [Assembly Menu](./07_assembly.md)  
 8. [User Profile](./08_profile.md)  
+
+<DocCardList />

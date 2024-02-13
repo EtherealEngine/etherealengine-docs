@@ -1,3 +1,4 @@
+# EKS User Access
 ## Grant EKSUser access to cluster
 By default, only the IAM user who set up an EKS cluster may access it.
 In order to let other users access the cluster, you must apply an aws-auth configmap to the cluster

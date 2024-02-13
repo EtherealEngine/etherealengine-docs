@@ -1,3 +1,4 @@
+# Security Group 
 ## Edit security group to allow instanceserver traffic into VPC
 You'll need to edit the new cluster's main security group to allow instanceserver traffic.
 On the AWS web client, go to EC2 -> Security Groups. There should be three SGs that have

@@ -1,3 +1,4 @@
+# EKS Deploy
 ## Deploy to EKS using Helm
 
 With all of the networking set up, you can finally deploy the codebase to EKS.

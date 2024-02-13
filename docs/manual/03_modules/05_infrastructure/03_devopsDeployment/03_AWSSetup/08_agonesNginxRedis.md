@@ -1,3 +1,4 @@
+# Agones, ingress-nginx and Redis
 ## Install Agones, ingress-nginx, and a copy of redis for each deployment
 
 Now that the cluster is up and running, we can install everything onto it.

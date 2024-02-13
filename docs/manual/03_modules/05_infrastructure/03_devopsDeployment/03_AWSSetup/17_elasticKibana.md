@@ -1,3 +1,4 @@
+# Elastic Search & Kibana
 ## Install Elastic Search and Kibana using Helm for Server Logs
 
 To install Elasticsearch, add the elastic repository in Helm: `helm repo add elastic https://helm.elastic.co`
