@@ -6,7 +6,10 @@ const dotenv = require('dotenv').config({
     path: appRootPath.path + '/.env.local'
   })
 
-import { ApiBaseURL } from './website.config'
+// @note
+//  Should be -->   import { ApiBaseURL } from './website.config'
+//  See: https://github.com/TypeStrong/ts-node/issues/1007
+const ApiBaseURL = 'api'
 
 const typedoc = spawn("npx", ["typedoc", process.env.ENGINE_PATH, "--options", `${process.env.ENGINE_PATH}/typedoc.json`, "--out", "./build/"+ApiBaseURL])
 
