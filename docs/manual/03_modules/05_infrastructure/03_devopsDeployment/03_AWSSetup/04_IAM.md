@@ -82,8 +82,8 @@ In the mapUsers section, you'll need to make as many copies of
 ```
 
 as you want users to have access to the cluster. Make sure to have an entry for the user who made the cluster;
-in the example above, that's `etherealengine-eks`. Replace <account_id> with the AWS account ID, and 
-both instances of <IAM_username> with the username you want to grant access.
+in the example above, that's `etherealengine-eks`. Replace `<account_id>` with the AWS account ID, and 
+both instances of `<IAM_username>` with the username you want to grant access.
 
 Note that you should NOT put any value for `{{EC2PrivateDNSName}}`; that gets evaluated by AWS in real-time. 
 
