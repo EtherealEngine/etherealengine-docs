@@ -3,7 +3,7 @@
 Projects are folders that contain all your custom code, assets and scenes.
 They are version controlled using git & github, and can be installed to any deployment
 with a single click.  
-_(more information about this on the [Locations chapter](../02_creator/01_concepts/02_locations.md) of the `Creator Manual`)_
+_(more information about this on the [Locations chapter](/manual/concepts/locations) of the `Creator Manual`)_
 
 Pictured below is an example of 4 projects installed.
 By default, only the `default-project` is installed, which in a production environment is read only.

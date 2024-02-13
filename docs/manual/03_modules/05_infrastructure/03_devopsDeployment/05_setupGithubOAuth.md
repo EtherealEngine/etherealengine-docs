@@ -1,6 +1,6 @@
 # How to set up GitHub to install external projects
 
-Ethereal Engine is extensible via [Projects](../3_concepts/1_projects_api.md), which can contain
+Ethereal Engine is extensible via [Projects](/manual/concepts/projects), which can contain
 new scenes, new avatars, new static resources, additional code, and more. Ethereal Engine integrates
 with GitHub to push and pull projects for backup and restoration, and one can also install existing
 projects from GitHub. In order to install projects from private repositories, or to push local project 
@@ -121,7 +121,7 @@ In short form:
 
 # Installing Ethereal Engine projects from GitHub
 
-See [the section 'Graphical Install Flow](../3_concepts/1_projects_api.md) for more information on how to install
+See [the section 'Graphical Install Flow](/manual/concepts/projects) for more information on how to install
 projects from GitHub.
 
 # User Repo Access to GitHub (with optional webhooks)

@@ -18,9 +18,11 @@ const config: Config = {
   organizationName: cfg.github.username,  // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
   projectName: cfg.github.docsName,       // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
 
-  // Broken Links behavior
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  // Site-Building strictness behavior
+  onDuplicateRoutes: 'throw',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set useful metadata like html lang.
   // For example, if your site is Chinese, you may want to replace "en" with "zh-Hans".

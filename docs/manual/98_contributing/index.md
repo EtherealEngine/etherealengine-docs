@@ -13,14 +13,14 @@ List of things to contribute:   (This page should explain all of them)
 
 ## Participate in the community
 The easiest way to get involved is to participate in Ethereal Engine's community.  
-Join us on your favorite [community channel](../99_community/00_intro.md) and become a part of the conversation.  
+Join us on your favorite [community channel](/manual/community) and become a part of the conversation.  
 Ask any questions that you may have and/or help other users with their questions.
 
 ## Create and Host your own worlds
 Ethereal Engine is a platform aimed at helping you achieve your goals.
 And nothing showcases a great tool better than some great projects made with it!
 
-Complete the [Getting Started](../01_gettingStarted/00_intro.md) tutorials, learn to use the engine with the [Ethereal Engine Manuals](/docs/category/manual), create a cool project that you love and then share it with the world.
+Complete the **Getting Started** tutorials, learn to use the engine with the [Ethereal Engine Manual](/manual), create a cool project that you love and then share it with the world.
 <!-- TODO: Revise the copywriting of this paragraph after the `Promote Ethereal Engine` copy has been revised, so that it segues better into the next section. -->
 
 ## Promote Ethereal Engine
