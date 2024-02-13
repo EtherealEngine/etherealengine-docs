@@ -91,7 +91,7 @@ If you run into any trouble with the Quick Start instructions:
 - Check your OS-specific instructions:
   - [Installing on Windows (10+)](./03_windows.md)
   - [Installing on Mac OS X](./02_macOSX.md)
-- [Installation Troubleshooting](/manual/modules/infrastructure/advancedSetup/troubleshooting)
-- [Advanced Setup](/manual/modules/infrastructure/advancedSetup)
+- [Installation Troubleshooting](/manual/install/advancedSetup/troubleshooting)
+- [Advanced Setup](/manual/install/advancedSetup/)
 - [Vite dev server is stalling](https://vitejs.dev/guide/troubleshooting.html#dev-server)
 

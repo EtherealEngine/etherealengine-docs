@@ -7,7 +7,7 @@ NOTE: This page should contain:
 - Segue: Lead the user into the VisualScript section of the Developer Manual.
 -->
 _This guide will teach you how to get started programming with Ethereal Engine and VisualScript._  
-_Visit the [VisualScript: Introduction](/docs/manual/developer/visualscript) page for an overview of what VisualScript is._  
+_Visit the [VisualScript: Introduction](/developer/visualscript) page for an overview of what VisualScript is._  
 <!-- TODO: Add VisualScript intro text as a mdx partial, instead of linking to the other page -->
 
 ## Installation

@@ -6,7 +6,7 @@ NOTE: This page should contain:
 - Segue: Lead the user into the Developer Manual
 -->
 _This guide will teach you how to get started programming with Ethereal Engine using Typescript._  
-_Visit the [Typescript: Introduction](/docs/manual/developer/typescript/intro) page for more details._  
+_Visit the [Typescript: Introduction](/developer/typescript) page for more details._  
 <!-- TODO: Add intro text as a mdx partial, instead of linking to the other page -->
 
 ## Overview
