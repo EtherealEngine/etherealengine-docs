@@ -89,9 +89,9 @@ If you run into any trouble with the Quick Start instructions:
 - Please make sure you've followed the 
   [Mediasoup installation instructions](https://mediasoup.org/documentation/v3/mediasoup/installation/)
 - Check your OS-specific instructions:
-  - [Installing on Windows (10+)](./02_windows.md)
-  - [Installing on Mac OS X](./01_macOSX.md)
-- [Installation Troubleshooting](./06_troubleshooting.md)
-- [Advanced Setup](./04_advancedSetup.md)
+  - [Installing on Windows (10+)](./windows)
+  - [Installing on Mac OS X](./macOSX)
+- [Installation Troubleshooting](./advanced/troubleshooting)
+- [Advanced Setup](./advanced)
 - [Vite dev server is stalling](https://vitejs.dev/guide/troubleshooting.html#dev-server)
 
