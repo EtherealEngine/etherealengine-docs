@@ -8,13 +8,13 @@
   - Prefix always starts with 2digits+underscore (`NN_`, eg: 01_someFile.md)
   - Always use camelCase for file/folder names.
 - Rely on folder/file names for document ordering.  
-  Note: Folders will need a `_category_.json` that defines a `"position": "NN"` property for them to be correctly ordered.
+  Note: Folders will need a `_category_.yml` that defines a `position: NN` property for them to be correctly ordered.
 - Use an `index.md` file for declaring a folder's root file.  
   We don't use the `readme.md` convention, and the `folderName.md` convention is tricky because of file-numbering for order sorting.
 - The `index.md` file of a folder should always contain introductory information about the section.
 - If the `index.md` file is only a dummy file:  
   Always add a `DocCardList` component to the page to make it behave like a `GeneratedIndex`
-- Folders that do not need an introductory page should not add an `index.md` or `_category_.json` files  
+- Folders that do not need an introductory page should not add an `index.md` or `_category_.yml` files  
   Reason: Docusaurus will make the category clickable/expandable with no routing redirection when neither of these files exist.
 
 ### Frontmatter

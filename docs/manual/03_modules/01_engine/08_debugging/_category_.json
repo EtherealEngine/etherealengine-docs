@@ -1,8 +1,0 @@
-{
-  "label": "Debugging",
-  "position": 08,
-  "link": {
-    "type": "generated-index",
-    "description": "This section covers different techniques for debugging Ethereal Engine's source code and any projects created with it."
-  }
-}

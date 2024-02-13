@@ -1,0 +1,5 @@
+label: Nodes
+position: 3
+link:
+  type: generated-index
+  description: Nodes are the basic building blocks defining program logic or processes. They represent actions or elements connected visually.
