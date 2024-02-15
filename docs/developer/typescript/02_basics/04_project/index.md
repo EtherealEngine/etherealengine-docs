@@ -1,4 +1,4 @@
-# Hero Tutorial
+# Hero Project
 <!--
 NOTE: This page should contain:
 - Hero Project: Showcase for Ethereal Engine's development tools and workflows
