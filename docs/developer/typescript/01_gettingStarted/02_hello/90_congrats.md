@@ -1,10 +1,10 @@
 ---
-pagination_next: developer/typescript/gettingStarted/basics/physics
+pagination_next: developer/typescript/basics/physics
 ---
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Congratulations!
-You have just learned the very basics of working with Ethereal Engine using Typescript!  
+You have just learned the minimal basics of working with Ethereal Engine using Typescript!  
 
 This was a very minimal introductory tutorial to get you started really quickly.  
 But Ethereal Engine has a lot more features to explore!

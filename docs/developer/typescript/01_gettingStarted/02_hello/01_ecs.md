@@ -52,7 +52,7 @@ They are not mandatory, but it is good practice to add them to all your entities
 ECS.setComponent(entity, NameComponent, 'hello-world')
 ```
 <TechnicalNote title="Clarification">
-We said that an entity is just a "name" for a "thing", but we are also giving that "name" a `NameComponent`.  
+We said that an entity is an identifier, but we are also giving that identifier a `NameComponent`.  
 Every Entity represents its internal "name" _(aka identifier)_ as an [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), which does not need to be human-readable.  
 And `NameComponents` give a human-readable identifier to an Entity, independent of what its UUID is.  
 </TechnicalNote>

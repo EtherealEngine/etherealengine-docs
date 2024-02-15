@@ -25,33 +25,12 @@ But we also broke Ethereal Engine's best practices in order to achieve that simp
 So, lets fix that.
 
 <TechnicalNote>
-The root of the problem is that we have created and modified our data inside the `worldInjection` function.  
-Mutation of data should always occur in a [Controlled Context](/manual/modules/engine/ecs), and the `worldInjection` function is not such.
-
-This is an even worse bad practices example, as it uses module scope to define and modify our entity.
-```ts title="really/bad/practice.ts" showLineNumbers
-import { ECS } from '@etherealengine/ecs'
-import { NameComponent } from '@etherealengine/spatial/src/common/NameComponent'
-import { VisibleComponent } from '@etherealengine/spatial/src/renderer/components/VisibleComponent'
-import { TransformComponent } from '@etherealengine/spatial/src/transform/components/TransformComponent'
-import { PrimitiveGeometryComponent } from '@etherealengine/engine/src/scene/components/PrimitiveGeometryComponent'
-
-// highlight-start
-// WARNING: Never do this
-// Module scope should only ever be used for declarations.
-const entity = ECS.createEntity()
-ECS.setComponent(entity, NameComponent, 'hello-world')
-ECS.setComponent(entity, VisibleComponent)
-ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
-ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
-// highlight-end
-
-export default async function worldInjection() {}
-```
+The root of the problem is that we have [created and modified](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) our data inside module scope.  
+This is an anti-pattern. [Data Mutation](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations should always occur in a [Controlled Context](/manual/modules/engine/ecs), and the module's top level scope is not such.
 </TechnicalNote>
 
 ## Our first System
-As we mentioned in the [ECS Pattern](../hello/ecs) section earlier, `Systems` are used to define the logic and behavior of our application.  
+As we mentioned in the [ECS Pattern](./ecs) section earlier, `Systems` are used to define the logic and behavior of our application.  
 But, in order to make the example easier to understand, we cheated a little bit and broke the engine's best practices.    
 
 The correct way to create the Sphere of our minimal example would be to:
@@ -197,10 +176,5 @@ export const HelloWorldSystem = ECS.defineSystem({
   insert: { after: PhysicsSystem }
 })
 //highlight-end
-
-//highlight-start
-// Note how we have moved all of our code outside of this function
-//highlight-end
-export default async function worldInjection() {}
 ```
 </TechnicalNote>

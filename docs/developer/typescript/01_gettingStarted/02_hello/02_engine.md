@@ -4,29 +4,29 @@ sidebar_label: The Engine
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
-# Programming with Ethereal Engine
+# Working with Ethereal Engine
+## Installing and running projects
+Ethereal Engine can be extended with projects.
+They are equivalent to "projects" in other engines, except they are modular like npm packages (they are npm packages too).
+
+Ethereal Engine scans for projects mounted in the `/packages/projects/projects` sub-folder of Ethereal Engine.
+
+From a bash shell in the Ethereal Engine folder we can install, run and visit a project with:
+```bash
+git clone https://github.com/EtherealEngine/ee-tutorial-basic packages/projects/packages/ee-tutorial-basic
+npm install
+npm run dev
+```
+## Programming with Ethereal Engine
 We need to do two very important things in order to use Ethereal Engine for our project:
 - We need to import Ethereal Engine's modules
 - We need to export our code so the engine can load our project
 
-## World Injection
-The `worldInjection` function is run for all projects when they are first loaded.  
-It allows projects to run custom logic that will be run across all scenes and routes on any instance of Ethereal Engine.  
-
-```ts title="ee-tutorial-hello/src/Hello.ts"
-export default async function worldInjection() {
-  // ... our code ...
-}
-```
-We don't need to know much more about this function for now. We will explore it further in the upcoming tutorials.  
-
-<TechnicalNote>
-All projects must contain a configuration file named `xrengine.config.ts`.  
-One of its options is the `worldInjection` function, which will be called directly when the engine loads the project.  
-There are [multiple other options](https://github.com/EtherealEngine/etherealengine/blob/dev/packages/projects/ProjectConfigInterface.ts#L29) that can be configured from that file, but the worldInjection function is the most relevant to this guide.  
-
-This is how our `xrengine.config.ts` file looks like at the moment:
-```ts title="ee-tutorial-hello/xrengine.config.ts" showLineNumbers
+### Project Configuration File
+Every project has an `xrengine.config.ts` file that defines how it will behave in the engine.  
+There are multiple options available, but the important one is that our `src/Hello.ts` code will connected to the engine from here.
+<TechnicalNote title="Config File">
+```ts title="ee-tutorial-hello/xrengine.config.ts"
 import type { ProjectConfigInterface } from '@etherealengine/projects/ProjectConfigInterface'
 
 const config: ProjectConfigInterface = {
@@ -36,17 +36,17 @@ const config: ProjectConfigInterface = {
   services: undefined,
   databaseSeed: undefined,
   // highlight-start
-  worldInjection: () => import('./src/Hello')
+  worldInjection: () => import('./src/Hello')  // Import our Hello World code
   // highlight-end
 }
 
 export default config
 ```
-We will explore how this file works in more detail in the upcoming tutorials.
-
 </TechnicalNote>
 
-## Module Imports
+We don't need to know much more about this file for now. We will explore it further in the `Beyond the Basics` guide.
+
+### Module Imports
 In this minimal tutorial we are adding a sphere primitive to the scene.  
 As this sphere will be a `Spatial` object, we will import a few components from the Spatial engine module:
 
@@ -124,15 +124,13 @@ import { PrimitiveGeometryComponent } from '@etherealengine/engine/src/scene/com
 import { GeometryTypeEnum } from '@etherealengine/engine/src/scene/constants/GeometryTypeEnum'
 // highlight-end
 
-export default async function worldInjection() {
-  const entity = ECS.createEntity()
-  ECS.setComponent(entity, NameComponent, 'hello-world')
-  ECS.setComponent(entity, VisibleComponent)
-  ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
-  // highlight-start
-  ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: GeometryTypeEnum.SphereGeometry })
-  // highlight-end
-}
+const entity = ECS.createEntity()
+ECS.setComponent(entity, NameComponent, 'hello-world')
+ECS.setComponent(entity, VisibleComponent)
+ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
+// highlight-start
+ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: GeometryTypeEnum.SphereGeometry })
+// highlight-end
 ```
 </UnstyledDetails>
 <!-- Full Solution End -->
