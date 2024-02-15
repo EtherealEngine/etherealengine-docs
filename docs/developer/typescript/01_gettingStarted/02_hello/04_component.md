@@ -1,3 +1,5 @@
+import { TechnicalNote } from '@site/src/components/TechnicalNote';
+
 # Components
 Ok, lets admit the truth.  
 We have cheated with something else.  
@@ -17,14 +19,19 @@ This is what we have done so far:
 - We never added our Sphere Component to a specific Scene  
   _(well, we didn't have a Sphere Component, so we couldn't)_
 
+These two last steps are the key of our problem.  
+The reason is because the engine will execute projects globally, but we are not restricting our code to be run only when requested.  
+So our example, up until now, has been acting as if it was an extension to the Studio editor!  
+
+<TechnicalNote>
+A more technical description of our problem is that our example is not using the engine API properly.   
+Execution of projects is global and meant to be data oriented.  
+But the data we’re relying on in our example is created within the project, instead of being triggered by actions from our users.  
+</TechnicalNote>
+
 ## Our Solution
-The engine will run whatever code we send from our file as if it was part of the engine itself.
+The proper way to add our simple Sphere would be to lock our logic behind a custom Scene Component.  
+That way, when a component is added to an entity, the system can be activated through a query.  
 
-The core issue is that our example is not using the engine API properly.   
-The execution of projects is global and meant to be data oriented.
-But the data we’re relying on in the example is created within the project, instead of by actions from our users.
-Our example, up until this point, is acting as if it was part of the Studio editor!
 
-The proper way would be to lock our logic behind a component.  
-What we should be doing, instead, is to create a custom Scene Component.  
-That way, when a component is added to an entity, the system can be activated through a query.
+## Creating a Custom Component

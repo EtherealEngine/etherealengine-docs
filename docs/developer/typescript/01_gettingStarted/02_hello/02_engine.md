@@ -5,26 +5,49 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Working with Ethereal Engine
+You will need three very important steps for creating a project with Ethereal Engine:
+1. Installing Ethereal Engine
+2. Installing (or creating) a project
+3. Modify and run the source code of your project
+
+We already solved #1 and #2 in the [Quickstart](../quickstart) guide.  
+Lets explore how #2 works and how we can start programming with the engine.  
+
 ## Installing and running projects
-Ethereal Engine can be extended with projects.
-They are equivalent to "projects" in other engines, except they are modular like npm packages (they are npm packages too).
+Ethereal Engine can be **extended** with projects.
+They are equivalent to the concept of "projects" in other engines, except they are modular like npm packages _(they are npm packages too)_.
 
-Ethereal Engine scans for projects mounted in the `/packages/projects/projects` sub-folder of Ethereal Engine.
-
-From a bash shell in the Ethereal Engine folder we can install, run and visit a project with:
+The engine scans for projects mounted in the `/packages/projects/projects` sub-folder.  
+This means that, like we did earlier in the [Quickstart](../quickstart) guide, we can install and run new projects by executing the following commands inside our Ethereal Engine installation folder:
 ```bash
-git clone https://github.com/EtherealEngine/ee-tutorial-basic packages/projects/packages/ee-tutorial-basic
+git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/packages/ee-tutorial-hello
 npm install
 npm run dev
 ```
+These steps will:
+- Download a copy of the project's git repository, so the engine can load it  
+- Install all `npm` packages required by the project  
+- Run a local development version of the engine
+
+:::note
+This is also the process recommended for installation of your own projects.  
+The difference will be that, instead of starting your project from the minimal HelloWorld example like we are doing now, you will start from a pre-made template.  
+:::
+
+:::important
+Each project's source code is executed globally.  
+This will become very important later on in this guide.  
+:::
+
+
 ## Programming with Ethereal Engine
-We need to do two very important things in order to use Ethereal Engine for our project:
+There are two very important steps to take in order to connect our project to the engine:
 - We need to import Ethereal Engine's modules
 - We need to export our code so the engine can load our project
 
 ### Project Configuration File
 Every project has an `xrengine.config.ts` file that defines how it will behave in the engine.  
-There are multiple options available, but the important one is that our `src/Hello.ts` code will connected to the engine from here.
+There are multiple options available, but the important thing to remember is that our `src/Hello.ts` code will connected to the engine from here.
 <TechnicalNote title="Config File">
 ```ts title="ee-tutorial-hello/xrengine.config.ts"
 import type { ProjectConfigInterface } from '@etherealengine/projects/ProjectConfigInterface'
