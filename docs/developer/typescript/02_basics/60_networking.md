@@ -1,9 +1,11 @@
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
+import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Networking
 
 
-<TechnicalNote title="Full Solution">
+<TechnicalNote title="Solution">
+<UnstyledDetails title="Full Solution">
 
 ```ts
 import React, { useEffect } from 'react'
@@ -150,5 +152,6 @@ export const BasicSystem = defineSystem({
   insert: { after: PresentationSystemGroup }
 })
 ```
+</UnstyledDetails>
 </TechnicalNote>
 

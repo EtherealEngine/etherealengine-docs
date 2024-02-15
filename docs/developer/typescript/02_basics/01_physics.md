@@ -2,6 +2,7 @@
 sidebar_label: Physics
 ---
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
+import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Adding Physics
 So far we have learned how to create an `Entity`, and how to tell the engine what we want our entity to be.  
@@ -68,7 +69,7 @@ ECS.setComponent(entity, ColliderComponent, { shape: 'sphere' })
 ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 3, 0) })
 ```
 
-<TechnicalNote title="Full Solution">
+<UnstyledDetails title="Full Solution">
 
 ```ts
 import { ECS } from '@etherealengine/ecs'
@@ -113,7 +114,7 @@ export const HelloWorldSystem = ECS.defineSystem({
 
 export default async function worldInjection() {}
 ```
-</TechnicalNote>
+</UnstyledDetails>
 <!-- Full Solution End -->
 </TechnicalNote>
 <!-- Solution End -->
