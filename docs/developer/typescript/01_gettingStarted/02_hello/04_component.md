@@ -21,6 +21,7 @@ This is what we have done so far:
 
 These two last steps are the key of our problem.  
 The reason is because the engine will execute projects globally, but we are not restricting our code to be run only when requested.  
+
 So our example, up until now, has been acting as if it was an extension to the Studio editor!  
 
 <TechnicalNote>
@@ -35,3 +36,13 @@ That way, when a component is added to an entity, the system can be activated th
 
 
 ## Creating a Custom Component
+<!--
+TODO:
+- [ ] Fixing the ball being in every scene (anti-pattern)
+  - [ ] Custom Scene   ( provided in the repo )
+  - [ ] Specify in the scene that the ball should spawn
+  - [ ] Custom component  
+        Create Scene Component specific to the hello world tut  
+        Tie it by filename  
+-->
+
