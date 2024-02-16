@@ -71,7 +71,7 @@ ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 3, 0) })
 
 <UnstyledDetails title="Full Solution">
 
-```ts
+```ts title="ee-tutorial-hello/Hello.ts" showLineNumbers
 import { ECS } from '@etherealengine/ecs'
 import { NameComponent } from '@etherealengine/spatial/src/common/NameComponent'
 import { VisibleComponent } from '@etherealengine/spatial/src/renderer/components/VisibleComponent'
@@ -111,8 +111,6 @@ export const HelloWorldSystem = ECS.defineSystem({
   execute: hello,
   insert: { after: PhysicsSystem }
 })
-
-export default async function worldInjection() {}
 ```
 </UnstyledDetails>
 <!-- Full Solution End -->

@@ -15,7 +15,7 @@ ECS.setComponent(entity, VisibleComponent)
 ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
 ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
 ```
-- And then we asked Ethereal Engine to run our code with the `worldInjection` function...
+- And then we asked Ethereal Engine to run our code...
 
 ## Wait, where is the System?
 But we never defined a `System`!
@@ -39,8 +39,8 @@ The correct way to create the Sphere of our minimal example would be to:
 - Insert the System into the engine so that it is run right after the engine's `PhysicsSystem`.
 
 ### Our function
-So far we have been defining the code that creates our Sphere inside the `worldInjection` function.  
-This means that we relied on the function being called when the project configuration is loaded.  
+So far we have been defining the code that creates our Sphere at the top level of our module.  
+This means that we relied on the module being imported when the project configuration is loaded.  
 But the correct way to do this is to define our code inside a separate function, and give that function to the `execute` parameter of a System created with `defineSystem`.  
 
 Lets start by creating a new Typescript function, and moving our ECS code into that function.  
