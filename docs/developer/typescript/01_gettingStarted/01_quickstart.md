@@ -2,6 +2,7 @@
 sidebar_label: Quickstart
 ---
 import UbuntuInstall from '../../../_partials/installUbuntu.md'
+import DefaultProjects from '../../../_partials/defaultProjects.md'
 
 # Typescript Quickstart
 This QuickStart guide will teach you the basics of Ethereal Engine, and how to run the engine for the first time.  
@@ -9,18 +10,22 @@ This QuickStart guide will teach you the basics of Ethereal Engine, and how to r
 ## Installation
 <UbuntuInstall />
 
-### Install and run the tutorial project
+## Projects
+### Default Projects
+<DefaultProjects />
+
+### Install and Run the tutorial project
 The previous command will have the engine running.  
-Lets stop it by pressing `Ctrl+C`, and then run these commands to install and run the Tutorial example template:
+Lets stop it by pressing `Ctrl+C`, and then run these commands to install and run the tutorial's template project:
 ```bash
-git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/packages/ee-tutorial-hello
+git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
 npm install
 npm run dev
 ```
 
-You should now be able to see the `ee-tutorial-hello` project listed in Ethereal Engine's Studio by navigating to https://localhost:3000/studio
+You should now be able to see the `ee-tutorial-hello` project listed in Ethereal Engine's Studio by navigating to https://localhost:3000/studio.
 
-### Confirm the installation
+## Confirm the installation
 Lets make sure that our `hello world` code is running:
 1. Open the project from the Studio by clicking on its card
 2. Create a new empty scene
