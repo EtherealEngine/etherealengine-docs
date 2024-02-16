@@ -1,4 +1,3 @@
-
 import DocCardList from '@theme/DocCardList'
 
 # Beyond the Basics
