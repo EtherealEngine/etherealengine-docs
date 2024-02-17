@@ -149,37 +149,37 @@
  * @note Colors are taken from the main --ifm-color-** variables. These are the overrides to the Docusaurus defaults.
  */
 .alert.alert--secondary {  /* Note Admonition */
-  --ifm-alert-foreground-color           : var(--ifm-color-gray-100);
-  --ifm-alert-background-color-highlight : var(--ifm-color-gray-200);
-  --ifm-alert-background-color           : var(--ifm-color-gray-800);
   --ifm-alert-border-color               : var(--ifm-color-primary);
+  --ifm-alert-background-color           : var(--ifm-color-gray-800);
+  --ifm-alert-background-color-highlight : var(--ifm-color-gray-600);
+  --ifm-alert-foreground-color           : var(--ifm-color-gray-100);
 }
 
 .alert.alert--success {  /* Tip Admonition */
-  --ifm-alert-foreground-color           : var(--ifm-color-info-lightest);
-  --ifm-alert-background-color-highlight : var(--ifm-color-info-light);
-  --ifm-alert-border-color               : var(--ifm-color-info-dark);
+  --ifm-alert-border-color               : var(--ifm-color-info);
   --ifm-alert-background-color           : var(--ifm-color-info-darkest);
+  --ifm-alert-background-color-highlight : var(--ifm-color-info-dark);
+  --ifm-alert-foreground-color           : var(--ifm-color-info-lightest);
 }
 
 .alert.alert--info {  /* Info Admonition */
-  --ifm-alert-foreground-color           : var(--ifm-color-success-lightest);
-  --ifm-alert-background-color-highlight : var(--ifm-color-success-light);
-  --ifm-alert-border-color               : var(--ifm-color-success-dark);
+  --ifm-alert-border-color               : var(--ifm-color-success);
   --ifm-alert-background-color           : var(--ifm-color-success-darkest);
+  --ifm-alert-background-color-highlight : var(--ifm-color-success-dark);
+  --ifm-alert-foreground-color           : var(--ifm-color-success-lightest);
 }
 
 .alert.alert--warning {  /* Warning Admonition */
-  --ifm-alert-foreground-color           : var(--ifm-color-warning-lightest);
-  --ifm-alert-background-color-highlight : var(--ifm-color-warning-light);
-  --ifm-alert-border-color               : var(--ifm-color-warning-dark);
+  --ifm-alert-border-color               : var(--ifm-color-warning);
   --ifm-alert-background-color           : var(--ifm-color-warning-darkest);
+  --ifm-alert-background-color-highlight : var(--ifm-color-warning-dark);
+  --ifm-alert-foreground-color           : var(--ifm-color-warning-lightest);
 }
 .alert.alert--danger {  /* Danger Admonition */
-  --ifm-alert-foreground-color           : var(--ifm-color-danger-lightest);
-  --ifm-alert-background-color-highlight : var(--ifm-color-danger-light);
-  --ifm-alert-border-color               : var(--ifm-color-danger-dark);
+  --ifm-alert-border-color               : var(--ifm-color-danger);
   --ifm-alert-background-color           : var(--ifm-color-danger-darkest);
+  --ifm-alert-background-color-highlight : var(--ifm-color-danger-dark);
+  --ifm-alert-foreground-color           : var(--ifm-color-danger-lightest);
 }
 
 .docusaurus-highlight-code-line {

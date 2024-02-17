@@ -1,1 +1,5 @@
-# Look Development
+---
+sidebar_label: Presets
+---
+
+# Lighting Presets

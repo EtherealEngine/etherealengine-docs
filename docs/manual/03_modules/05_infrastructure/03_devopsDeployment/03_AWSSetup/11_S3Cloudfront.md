@@ -1,3 +1,4 @@
+# S3 & Cloudfront
 ## Set up S3 bucket for static resources and Cloudfront distribution
 
 Various static files are stored in S3 behind a Cloudfront distribution. If you are serving the client files

@@ -24,7 +24,7 @@ GitHub account linked to your Ethereal Engine account by signing in via GitHub.
 (You do not need to have most recently signed in via GitHub, you just have to have
 linked your GH account at some point)
 
-See [the section 'How to set up GitHub to install external projects'](../2_devops_deployment/4_setup_github_oauth_for_projects.md)
+See [the section 'How to set up GitHub to install external projects'](./setupGithubOAuth)
 for instructions on creating an OAuth app from GitHub, installing it into an Ethereal Engine deployment,
 and authorizing it to have access to your GitHub organizations.
 
