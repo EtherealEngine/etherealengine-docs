@@ -68,7 +68,7 @@ If you do this, you do not need to manually run steps 4b, 5, and 6, and can skip
 ## 4b. Start Agones (if you did not run step 4a)
 Open a new terminal and start the Agones sidecar in local mode
 ```bash
-cd scripts && sudo bash start-agones.sh
+npm run dev-agones
 ```
 Alternatively, you can also go to `etherealengine/vendor/agones/` and run:
 - Linux: `./sdk-server.linux.amd64 --local`
