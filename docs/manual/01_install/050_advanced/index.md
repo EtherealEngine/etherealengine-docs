@@ -9,8 +9,6 @@ These instructions will explain how to manually setup Ethereal Engine docker ins
 ```bash
 cd path/to/etherealengine
 npm install
-npm run dev-docker
-npm run dev-reinit
 ```
 _Note how you don't need to use sudo for any of these commands._
 
@@ -24,7 +22,7 @@ Make sure you have a MySQL database installed and running. Our recommendation is
 
 We provide a docker container for easily setting up the database. This command will create a Docker container of MariaDB named `etherealengine_db`:
 ```bash
-cd scripts && sudo bash start-db.sh
+npm run dev-docker
 ```
 > Note: You must have docker installed on your machine for this script to work.  
 If you do not have Docker installed, and do not wish to install it, you will have to manually create a MariaDB server.
@@ -41,17 +39,7 @@ The default database information is:
 > Note: If you have errors connecting to the local database, you might need to shut off your local firewall.
 
 
-## 3. Start Agones
-Open a new terminal and start the Agones sidecar in local mode
-```bash
-cd scripts && sudo bash start-agones.sh
-```
-Alternatively, you can also go to `etherealengine/vendor/agones/` and run:
-- Linux: `./sdk-server.linux.amd64 --local`
-- Windows: `sdk-server.windows.amd64.exe --local`
-- Mac: `./sdk-server.darwin.amd64 --local`
-
-## 4. Start the server in database seed mode
+## 3. Start the server in database seed mode
 Several tables in the database need to be seeded with default values.  
 To do so, run:
 - Unix: `npm run dev-reinit`
@@ -64,6 +52,28 @@ Server Ready
 Executing (default): SET FOREIGN_KEY_CHECKS = 1
 Server EXIT
 ```
+
+## 4a. Run all processes in separate tabs from script (optional)
+
+You can start all of the processes in separate tabs with a single command. From the project root, run
+```bash
+npm run dev-tabs
+```
+
+This will start  agones, the client, the api server, the world and media instanceservers, and the local file server in separate tabs.
+
+If you do this, you do not need to manually run steps 4b, 5, and 6, and can skip to step 7.
+
+
+## 4b. Start Agones (if you did not run step 4a)
+Open a new terminal and start the Agones sidecar in local mode
+```bash
+npm run dev-agones
+```
+Alternatively, you can also go to `etherealengine/vendor/agones/` and run:
+- Linux: `./sdk-server.linux.amd64 --local`
+- Windows: `sdk-server.windows.amd64.exe --local`
+- Mac: `./sdk-server.darwin.amd64 --local`
 
 ## 5. Local file server configuration (Optional)
 If the `.env.local` file you have has this line, the Scene Editor will save components, models, scenes, etc. locally, instead of storing them on the `S3` cloud server:  
@@ -81,7 +91,7 @@ npm run serve-local-files
 This will start up the `http-server` that will serve local files from `packages/server/upload` on `localhost:8642`.  
 > Note: You may have to accept the invalid self-signed certificate in the browser the first time it is loaded. See the `Allow local file http-server connection with invalid certificate` section below.
 
-## 6. Start the API server, instance-server and client
+## 6. Start the API server, two instanceservers, and client (if you did not run step 4a)
 Open two/three separate terminals and run:
 - Run `npm run dev` inside `packages/server`.  
   This will launch the API, world, media and file servers.  
