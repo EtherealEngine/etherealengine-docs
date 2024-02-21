@@ -11,7 +11,7 @@ There are multiple ways to keep track of state
 - A reactor mount with `useEffect`
 
 ## Local Variable
-You might remember the `initialized` variable we created in an earlier section of the [Hello World](../hello/system) tutorial.  
+You might remember the `initialized` variable we created in an earlier section of the [Hello World](../gettingStarted/hello/system) tutorial.  
 That variable was what is called "Local State".  
 
 As you saw, we are fully responsible of book-keeping the values contained in the variables we create in this way.  

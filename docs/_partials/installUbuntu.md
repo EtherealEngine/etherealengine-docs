@@ -1,6 +1,6 @@
 :::note
 This guide assumes you are using Ubuntu Linux.  
-You can find alternative _(and more advanced)_ installation instructions for [Windows](/manual/host/installation/windowsWSL), [Mac](/manual/host/installation/macOSX) and [Linux](/manual/host/installation/intro) in the Manual.
+You can find alternative _(and more advanced)_ installation instructions for [Windows](/manual/install/windowsWSL), [Mac](/manual/install/macOSX) and [Linux](/manual/install/linux) in the Manual.
 :::
 
 ### Install Ethereal Engine and its Pre-requisites
