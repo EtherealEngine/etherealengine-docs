@@ -18,9 +18,11 @@ const config: Config = {
   organizationName: cfg.github.username,  // GitHub pages organization. Usually your GitHub org/user name. Not needed when not using GitHub pages.
   projectName: cfg.github.docsName,       // GitHub pages project. Usually your repo name. Not needed when not using GitHub pages.
 
-  // Broken Links behavior
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  // Site-Building strictness behavior
+  onDuplicateRoutes: 'throw',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set useful metadata like html lang.
   // For example, if your site is Chinese, you may want to replace "en" with "zh-Hans".
@@ -86,6 +88,7 @@ const config: Config = {
         //  ]
         //},
         //{ label: 'Examples', position: cfg.navbar.menu.position, to: 'examples', },  // TODO: Uncomment when the examples pages is ready
+        { label: 'Install', position: cfg.navbar.menu.position, href: '/manual/install' },
         { label: 'Manual', position: cfg.navbar.menu.position, to: 'manual', },
         //{ label: cfg.typedoc.label, position: cfg.navbar.menu.position, href: cfg.typedoc.url },
         { "aria-label": "GitHub", position: cfg.navbar.menu.position, className: "header-github-link", href: cfg.github.projectURL, },

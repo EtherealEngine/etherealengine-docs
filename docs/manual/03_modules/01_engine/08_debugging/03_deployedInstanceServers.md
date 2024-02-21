@@ -7,7 +7,7 @@ One way to catch these errors is to tail the logs of existing pods from a local 
 The tail of the logs will persist in your terminal even after the pod has been deleted.
 
 You should already have kubectl set up and pointing to your cluster, but if not, do so. 
-(see [here](../2_devops_deployment/5_managing_remote_kubernetes.md) for links to do that)
+(see [here](/manual/modules/infrastructure/devopsDeployment/managingRemoteKubernetes) for links to do that)
 Make sure you don't have a browser tab with the offending location(s) open already, as you want to be tailing
 the logs before the instance starts.
 

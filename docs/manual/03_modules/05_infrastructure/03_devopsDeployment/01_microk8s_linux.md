@@ -1,6 +1,6 @@
-import AcceptCertificates from '../_partials/acceptCertificates.md'
-import PythonUbuntu from '../_partials/pythonUbuntu.md'
-import MakeUbuntu from '../_partials/makeUbuntu.md'
+import AcceptCertificates from '../../../_partials/acceptCertificates.md'
+import PythonUbuntu from '../../../_partials/pythonUbuntu.md'
+import MakeUbuntu from '../../../_partials/makeUbuntu.md'
 
 # Ethereal Engine on MicroK8s (Linux)
 

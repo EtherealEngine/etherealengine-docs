@@ -1,3 +1,4 @@
+# EKS Deploy
 ## Deploy to EKS using Helm
 
 With all of the networking set up, you can finally deploy the codebase to EKS.
@@ -56,7 +57,7 @@ Each service has to have the proper `-<service>` suffix on it, e.g. `-api`, `-cl
 #### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
 If you plan to backup Projects you create in the editor to GitHub, or install project from GitHub, it is necessary 
 to set up the OAuth app that will facilitate this before the initial installation. 
-See [this document](./4_setup_github_oauth_for_projects.md) for
+See [this document](../setupGithubOAuth) for
 more information, and enter the appropriate ID/secret in these variables.
 
 ### Run Helm install
