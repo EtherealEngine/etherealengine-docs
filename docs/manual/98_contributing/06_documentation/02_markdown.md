@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Markdown Standard
+# Markdown Standards
 This page will explain how to format your content to fit the standard used by this website.  
 
 :::important
