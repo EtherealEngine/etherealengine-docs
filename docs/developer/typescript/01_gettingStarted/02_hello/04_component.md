@@ -1,4 +1,5 @@
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
+import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Components
 Ok, lets admit the truth.  
@@ -34,6 +35,11 @@ But the data we’re relying on in our example is created within the project, in
 The proper way to add our simple Sphere would be to lock our logic behind a custom Scene Component.  
 That way, when a component is added to an entity, the system can be activated through a query.  
 
+Solving this correctly will require us to use all these new concepts:
+- Defining a Custom Component
+- Defining a Query for our Component
+- Manage our `initialized` variable from inside our Component
+
 
 ## Creating a Custom Component
 <!--
@@ -46,16 +52,19 @@ TODO:
         Tie it by filename  
 -->
 
+
+
+
 ```ts
 // Define our component
 export const HelloComponent = ECS.defineComponent({
   name: 'ee.tutorial.HelloComponent',
   jsonID: 'ee.tutorial.HelloComponent',
-  onInit() { return { initialized: false } }
+  onInit: () => { return { initialized: false } }
 })
 ```
 ```ts
-// Define our query
+// Define the query that will find our Scene's Entity
 const helloQuery = ECS.defineQuery([HelloComponent])
 ```
 ```ts
@@ -63,7 +72,8 @@ const helloQuery = ECS.defineQuery([HelloComponent])
 ECS.getMutableComponent(entity, HelloComponent).initialized.set(true)
 ```
 
-```ts
+
+```ts title="ee-tutorial-hello/src/Hello.ts" showLineNumbers
 import { ECS } from '@etherealengine/ecs'
 import { NameComponent } from '@etherealengine/spatial/src/common/NameComponent'
 import { VisibleComponent } from '@etherealengine/spatial/src/renderer/components/VisibleComponent'
@@ -74,23 +84,31 @@ import { GeometryTypeEnum } from '@etherealengine/engine/src/scene/constants/Geo
 import { PhysicsSystem } from '@etherealengine/spatial'
 
 // Define our component
+//highlight-start
 export const HelloComponent = ECS.defineComponent({
   name: 'ee.tutorial.HelloComponent',
   jsonID: 'ee.tutorial.HelloComponent',
-  onInit() { return { initialized: false } }
+  onInit: () => { return { initialized: false } }
 })
+//highlight-end
 
-// Define our query
+// Define the query that will find our Scene's Entity
+//highlight-start
 const helloQuery = ECS.defineQuery([HelloComponent])
+//highlight-end
 
 const hello = () => {
+  //highlight-start
   for (const entity of helloQuery()) {
     const { initialized } = ECS.getComponent(entity, HelloComponent)
     if (initialized) continue
+    //highlight-end
 
+    //highlight-start
     ECS.getMutableComponent(entity, HelloComponent).initialized.set(true)
+    //highlight-end
 
-    ECS.setComponent(entity, NameComponent, 'hello-entity')
+    ECS.setComponent(entity, NameComponent, 'ee.tutorial.hello-entity')
     ECS.setComponent(entity, VisibleComponent)
     ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
     ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: GeometryTypeEnum.SphereGeometry })
@@ -104,4 +122,7 @@ export const HelloSystem = ECS.defineSystem({
   insert: { after: PhysicsSystem }
 })
 ```
-
+<TechnicalNote title="Solution">
+<UnstyledDetails title="Full Solution">
+</UnstyledDetails>
+</TechnicalNote>
