@@ -2,8 +2,11 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Styling
+We took a lot of shortcuts in previous sections of the tutorial.  
+This made learning much simpler to get started with, but we also left out a few concepts that will make our codebase much easier to navigate as soon as our project starts growing.  
+
 ## ID Naming Convention
-Lets start with the simplest one.  
+Lets start with the simplest style change.  
 You may have noticed that we changed the `uuid` and `NameComponent` in the HelloWorld's final solution.  
 The engine doesn't have a standard for these names yet, but this is a good naming convention that you can follow:
 - Separate words with `.`
@@ -12,6 +15,7 @@ The engine doesn't have a standard for these names yet, but this is a good namin
 - Follow by the name of the thing
 - Separate multi-word names with `-`
 ```md
+# Example
 Namespace  : ee
 Project    : tutorial
 Thing      : HelloSystem
@@ -29,7 +33,6 @@ We talked about Javascript [`Arrow Functions`](https://developer.mozilla.org/en-
 
 They are specially helpful when defining Systems and Components.  
 This is how a `defineSystem` call would look like using each type of function:
-
 ```ts title="Regular Function   : Simpler, but less common in Ethereal Engine"
 // Our function
 function sayhello() { console.log("Hello World") }
@@ -41,7 +44,6 @@ const HelloSystem = ECS.defineSystem({
   insert: { after: PhysicsSystem }
 })
 ```
-
 ```ts title="Arrow Function   : How defining a multi-field object usually looks like"
 // Our function can be declared inside our system. Doesn't need a name
 const HelloSystem = ECS.defineSystem({
@@ -57,12 +59,12 @@ As you can see, this gives us a very small gain for this tiny example.
 But, when the codebase grows, this style can make a big difference in the readability of our code.  
 
 Arrow functions are also used extensively all throughout the engine's codebase.   
-So, even if you don't prefer them, at least you need to know about how they work so that you are not confused the first time you find this styling somewhere.  
+So, even if you don't prefer them, at least you need to know about how they work so that you are not confused the first time you find code using this style.  
 
 :::important[first assignment]
 Change the style of the BasicsTutorial code:  
-: Remove any named functions that are assigned to an object  
-: Use arrow functions directly as object fields  
+. Remove any named functions that are assigned to an object  
+. Use arrow functions directly as object fields  
 
 There are not that many to change. We only had one named function! :)
 :::
@@ -92,7 +94,6 @@ export const HelloSystem = ECS.defineSystem({
   //highlight-end
   insert: { after: PhysicsSystem }
 })
-
 ```
 <UnstyledDetails title="Full Solution">
 

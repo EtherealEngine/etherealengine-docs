@@ -20,8 +20,8 @@ This is what we have done so far:
 - We never added our Sphere Component to a specific Scene  
   _(well, we didn't have a Sphere Component, so we couldn't)_
 
-These two last steps are the key of our problem.  
-The reason is because the engine will execute projects globally, but we are not restricting our code to be run only when requested.  
+These two last steps are the key to our problem.  
+This happens because the engine will execute projects globally, but we are not restricting our code to be run only when requested.  
 
 So our example, up until now, has been acting as if it was an extension to the Studio editor!  
 
@@ -35,13 +35,13 @@ But the data we’re relying on in our example is created within the project, in
 The proper way to add our simple Sphere would be to lock our logic behind a custom Scene Component.  
 That way, when a component is added to an entity, the system can be activated through a query.  
 
-Solving this correctly will require us to use all these new concepts:
+Solving this correctly will require us to use all of these new concepts:
 - Defining a Custom Component
 - Defining a Query for our Component
 - Manage our `initialized` variable from inside our Component
 
 
-## Creating a Custom Component
+## Creating a Custom Component {#create}
 <!--
 TODO:
 - [ ] Fixing the ball being in every scene (anti-pattern)
