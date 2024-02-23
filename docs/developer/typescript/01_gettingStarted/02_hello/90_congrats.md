@@ -1,9 +1,10 @@
 ---
-pagination_next: developer/typescript/basics/physics
+pagination_next: developer/typescript/basics/recap/index
+title: What's Next
 ---
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
-# Congratulations!
+# 🎉 Congratulations! 🎉
 You have just learned the minimal basics of working with Ethereal Engine using Typescript!  
 
 This was a very minimal introductory tutorial to get you started really quickly.  
@@ -11,7 +12,7 @@ But Ethereal Engine has a lot more features to explore!
 
 ## What's Next?
 #### Beginner
-If this is your first time using Ethereal Engine, we have prepared an `Etheral Engine Basics` tutorial for you.  
+If this is your first time using Ethereal Engine, we have prepared an [Ethereal Engine Basics](/developer/typescript/basics) tutorial for you.  
 It will teach you how to start expanding your knowledge of the engine without getting overwhelmed by its complexity.  
 Go to the bottom of this page, and click on "Next" to continue with your learning journey!
 

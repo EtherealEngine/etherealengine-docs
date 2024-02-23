@@ -97,10 +97,9 @@ export const HelloSystem = ECS.defineSystem({
   execute: () => {
   //highlight-end
     for (const entity of helloQuery()) {
-      const { initialized } = ECS.getComponent(entity, HelloComponent)
-      if (initialized) continue
-
-      ECS.getMutableComponent(entity, HelloComponent).initialized.set(true)
+      let { initialized } = ECS.getMutableComponent(entity, HelloComponent)
+      if (initialized.value) continue
+      initialized.set(true)
 
       ECS.setComponent(entity, NameComponent, 'ee.tutorial.hello-entity')
       ECS.setComponent(entity, VisibleComponent)

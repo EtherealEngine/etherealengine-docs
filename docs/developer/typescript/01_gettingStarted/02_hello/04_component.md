@@ -9,7 +9,6 @@ You might have noticed already, but we are creating a Sphere for **every scene**
 Open any other project with the engine, and you will see that our ball is also there!  
 That's not good. Whoops.  
 
-
 ## Our Problem
 We have setup our Sphere code to be simple and minimal.  
 This is what we have done so far:  
@@ -39,9 +38,62 @@ Solving this correctly will require us to use all of these new concepts:
 - Defining a Custom Component
 - Defining a Query for our Component
 - Manage our `initialized` variable from inside our Component
+- Connect our Sphere such that it is loaded only for a specific Scene
 
+This section is quite complex, and we are going to properly explore all of these concepts in the following tutorials. So, for now, the assignments are going to be very simple.  
+We will leave the explanations for the [Ethereal Engine Basics](/developer/typescript/basics) guide.  
 
 ## Creating a Custom Component {#create}
+You can probably already guess the name of the function we are going to use next.  
+The function for **defining a Component** is called...
+<UnstyledDetails title="Spoiler">
+`defineComponent`, which its part of the namespace... <UnstyledDetails title="Spoiler 2">`ECS`</UnstyledDetails>
+</UnstyledDetails>
+
+:::note
+I will fill in the difficult parts for this assignment, as I don't expect you to be able to magically know these things just yet.  
+We will do that on the next tutorial!  
+:::
+
+Here are your hints for completing this task:
+```ts
+// Define our component
+export ... = ... ({
+  name: ...,
+  jsonID: 'EE_tutorial_hello',
+  onInit: () => { return { initialized: false } }
+})
+```
+<TechnicalNote title="Solution">
+
+```ts
+// Define our component
+export const HelloComponent = ECS.defineComponent({
+  name: 'ee.tutorial.HelloComponent',
+  jsonID: 'EE_tutorial_hello',
+  onInit: () => { return { initialized: false } }
+})
+```
+</TechnicalNote>
+
+You won't see any changes if you run the project as it is now.  
+We haven't connected the Component to anything just yet!  
+
+## State Management
+We haven't talked much about State, and there is a lot to explain about it, so I will give you this one for free.
+We will have an entire section explaining these concepts in the [Ethereal Engine Basics](/developer/typescript/basics/state) guide.  
+
+This is the code that replaces our `initialized` variable from the previous page:  
+```ts
+// Check if we have already initialized our Sphere
+let { initialized } = ECS.getMutableComponent(entity, HelloComponent)
+if (initialized.value) continue
+initialized.set(true)  // Set our initialized state to true
+```
+
+This code will be very useful for our next few steps.  
+Lets see how we can lock our code to be run only under a specific condition.  
+
 <!--
 TODO:
 - [ ] Fixing the ball being in every scene (anti-pattern)
@@ -52,77 +104,3 @@ TODO:
         Tie it by filename  
 -->
 
-
-
-
-```ts
-// Define our component
-export const HelloComponent = ECS.defineComponent({
-  name: 'ee.tutorial.HelloComponent',
-  jsonID: 'ee.tutorial.HelloComponent',
-  onInit: () => { return { initialized: false } }
-})
-```
-```ts
-// Define the query that will find our Scene's Entity
-const helloQuery = ECS.defineQuery([HelloComponent])
-```
-```ts
-// Set our initialized state to true
-ECS.getMutableComponent(entity, HelloComponent).initialized.set(true)
-```
-
-
-```ts title="ee-tutorial-hello/src/Hello.ts" showLineNumbers
-import { ECS } from '@etherealengine/ecs'
-import { NameComponent } from '@etherealengine/spatial/src/common/NameComponent'
-import { VisibleComponent } from '@etherealengine/spatial/src/renderer/components/VisibleComponent'
-import { TransformComponent } from '@etherealengine/spatial/src/transform/components/TransformComponent'
-import { PrimitiveGeometryComponent } from '@etherealengine/engine/src/scene/components/PrimitiveGeometryComponent'
-import { Vector3 } from 'three'
-import { GeometryTypeEnum } from '@etherealengine/engine/src/scene/constants/GeometryTypeEnum'
-import { PhysicsSystem } from '@etherealengine/spatial'
-
-// Define our component
-//highlight-start
-export const HelloComponent = ECS.defineComponent({
-  name: 'ee.tutorial.HelloComponent',
-  jsonID: 'ee.tutorial.HelloComponent',
-  onInit: () => { return { initialized: false } }
-})
-//highlight-end
-
-// Define the query that will find our Scene's Entity
-//highlight-start
-const helloQuery = ECS.defineQuery([HelloComponent])
-//highlight-end
-
-const hello = () => {
-  //highlight-start
-  for (const entity of helloQuery()) {
-    const { initialized } = ECS.getComponent(entity, HelloComponent)
-    if (initialized) continue
-    //highlight-end
-
-    //highlight-start
-    ECS.getMutableComponent(entity, HelloComponent).initialized.set(true)
-    //highlight-end
-
-    ECS.setComponent(entity, NameComponent, 'ee.tutorial.hello-entity')
-    ECS.setComponent(entity, VisibleComponent)
-    ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
-    ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: GeometryTypeEnum.SphereGeometry })
-  }
-}
-
-// Define our system
-export const HelloSystem = ECS.defineSystem({
-  uuid: 'ee.tutorial.HelloSystem',
-  execute: hello,
-  insert: { after: PhysicsSystem }
-})
-```
-<TechnicalNote title="Solution">
-<UnstyledDetails title="Full Solution">
-</UnstyledDetails>
-</TechnicalNote>
