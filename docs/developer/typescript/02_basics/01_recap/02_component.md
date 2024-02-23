@@ -5,7 +5,6 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Defining a Custom Component
-...
 ```ts
 // Define our component
 const HelloComponent = ECS.defineComponent({
@@ -14,4 +13,9 @@ const HelloComponent = ECS.defineComponent({
   onInit: () => { return { initialized: false } }
 })
 ```
+## `name`
+## `jsonID`
+## `onInit`
+### Arrow Function
+### Object returned
 
