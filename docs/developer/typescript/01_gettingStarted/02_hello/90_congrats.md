@@ -24,7 +24,7 @@ Make sure to skim-read the basics section at least once, as it gives an overview
 
 #### Advanced
 The [Manual](/manual) is where Ethereal Engine is presented in all of its complexity, without any guard-rails or hand-holding.  
-You will also find the [Reference API](/api) really useful when writing the code of your application.  
+You will also find the [Reference API](https://etherealengine.github.io/etherealengine-docs//api) really useful when writing the code of your application.  
 :::note[Advanced Note]
 Make sure to read the `Mastery Toolkit` section at least once.  
 It contains a list of important tools that you will need when working with advanced projects.

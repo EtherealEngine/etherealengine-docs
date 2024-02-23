@@ -143,3 +143,4 @@ export const HelloSystem = ECS.defineSystem({
 <!-- Full Solution End -->
 </TechnicalNote>
 <!-- Solution End -->
+
