@@ -28,6 +28,24 @@ This is not really an assignment, as we already did this before.
 But see if you have any names leftover in your code that are not using this standard, and change them so that they do.  
 :::
 
+## `jsonID` Naming Requirements
+You may have also noticed that the `jsonID` field does not respect the naming convention we just explained above.  
+Internally, the field `jsonID` will be used to define the name of a [glTF](https://www.khronos.org/gltf) extension.  
+As such, the engine has a different standard for them:
+- Separate words and multi-words with `_`
+- Start with the namespace/organization/author of your project in UPPERCASE
+- Follow by the project name of the thing that you are naming
+- Follow by the name of the thing
+```md
+# Example
+Namespace  : EE
+Project    : tutorial
+Thing      : hello
+
+Result     : EE_tutorial_hello
+Multi-word : EE_multi_word_example_hello
+```
+
 ## Arrow Functions
 We talked about Javascript [`Arrow Functions`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) during one of the earlier sections of the HelloWorld tutorial. They are used a lot throughout the engine's codebase.  
 
