@@ -74,15 +74,18 @@ export const HelloComponent = ECS.defineComponent({
   onInit: () => { return { initialized: false } }
 })
 ```
+Pay attention to the format of the `name` and `jsonID` fields.  
+We haven't talked about this convention, but we will do so later on.  
 </TechnicalNote>
 
 You won't see any changes if you run the project as it is now.  
 We haven't connected the Component to anything just yet!  
 
 ## State Management
-We haven't talked much about State, and there is a lot to explain about it, so I will give you this one for free.
-We will have an entire section explaining these concepts in the [Ethereal Engine Basics](/developer/typescript/basics/state) guide.  
+We haven't talked much about State, and there is a lot to explain about it.  
+We will have an entire section explaining state management in the [Ethereal Engine Basics](/developer/typescript/basics/state) guide.  
 
+I will give you this one for free.  
 This is the code that replaces our `initialized` variable from the previous page:  
 ```ts
 // Check if we have already initialized our Sphere
@@ -90,6 +93,12 @@ let { initialized } = ECS.getMutableComponent(entity, HelloComponent)
 if (initialized.value) continue
 initialized.set(true)  // Set our initialized state to true
 ```
+<TechnicalNote title="Note">
+Note how we wrote `if (initialized.value)` instead of just `if (initialized)`.  
+And we are modifying its value with `initialized.set(true)` instead of `initialized = true`.  
+We will explain why this is the case in the [Ethereal Engine Basics: State](/developer/typescript/basics/state) section.  
+</TechnicalNote>
+
 
 This code will be very useful for our next few steps.  
 Lets see how we can lock our code to be run only under a specific condition.  

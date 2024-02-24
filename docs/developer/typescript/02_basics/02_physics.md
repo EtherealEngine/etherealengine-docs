@@ -10,8 +10,8 @@ In simple terms, we have told the engine how to **create** our sphere.
 
 ## Our problem
 We added some components to our sphere, so that the engine can draw the sphere into the screen and we can see it.  
-But right now it is only an "empty shell" that sits there doing nothing, which is a bit boring.  
-We cannot even use it as a platform to walk on!  
+But right now it is only an "empty shell" that sits there doing nothing.  
+We cannot even move it or push it around! What a boring ball.  
 Lets fix that.
 
 ## Our solution
@@ -22,7 +22,7 @@ Lets get a point of reference of how our project currently behaves, so we can be
 In order to do that, we are going to run our project from the studio and walk around the scene with an Avatar.  
 
 These are the steps needed to accomplish that:
-- Open the scene we created before, or click on `Create Scene` if you don't have it
+- Open the scene you created before, or click on `Create Scene` if you don't have it
 - Press the `Play` button in the studio
 - Move your Avatar around the scene by either:
   - Pressing `WASD` in your keyboard
@@ -36,6 +36,7 @@ In order to correct our problem, we are now going to:
 - Add a `RigidBodyComponent` of type `dynamic` to our entity
 - Add a `ColliderComponent` with the shape of a `sphere`
 
+Lets also change the position of ball so that it spawns some distance above the ground.  
 Here are your hints for this tutorial:
 ```ts
 // Both the RigidBody and Collider components are part of the `Spatial/physics` engine module

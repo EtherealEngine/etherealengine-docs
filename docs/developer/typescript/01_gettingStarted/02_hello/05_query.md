@@ -5,7 +5,7 @@ import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 Queries are a tool provided by the `Entity Component System` pattern used by Ethereal Engine.  
 
 In simple terms, a Query is a function that will request all entities that match a certain condition.  
-More specifically, it will return **all** entities that contain **all** Components in the list that we specified.  
+More specifically, it will return **all** entities that contain **all** Components in the list that we specify.  
 
 ## Creating a Query
 We are going to **define a Query**. I think you can figure out the name of the function already :)  
@@ -16,8 +16,8 @@ This is how the function works:
 
 :::note[notes]
 1. We need to send an array anyway, even if it only contains a single Component.  
-1. The Query will match only those entities that contain **all** components in our list.  
-1. We don't need to export the Query function, as it will only be called by our own code.
+2. The Query will match only those entities that contain **all** components in our list.  
+3. We don't need to export the Query function, as it will only be called by our own code.
 :::
 
 Here are your hints for this assignment:  
@@ -37,11 +37,11 @@ Same as before, if you run the project as it is now you won't see any changes ju
 We have defined the Query that will search for our Scene's entity, but we haven't called it yet.
 
 ## Using our Query
-A Query, when called, will return an array.  
+A Query, when called, will return a array.  
 This array will contain the list of all entities that match the list of Components that we specified.  
-
 Just like any other array, we can iterate through it with a `for` loop.  
-Which means that we can access as many entities as we want from a single unified place!  
+
+This means that we can access as many entities as we want from a single unified place!  
 Really powerful.  
 
 I gave you one solution for free earlier, but I'm leaving this assignment a bit ambiguous on purpose.  
@@ -93,11 +93,12 @@ const hello = () => {
 ## Conclusion
 As you can see, we only added around 10 lines of code in these last two pages...   
 But we introduced so many new concepts!  
-That's the most exciting part about the ECS pattern. You can do **so** much with so little code!
+That's the most exciting part about the ECS pattern. You can do **so** much with so little code.
 
 You will know that you completed the last two pages correctly if:
 - The behavior has not changed for your project. You can still see the sphere in the Scene.  
-- You open another project _(eg: The `default-project` provided by the engine)_ and the Sphere is gone!
+- You open another project _(eg: the `default-project` provided by the engine)_...  
+  and the Sphere is gone!
 
 Lets put everything together.  
 
@@ -150,6 +151,8 @@ export const HelloSystem = ECS.defineSystem({
   insert: { after: PhysicsSystem }
 })
 ```
+Note how the style for names in this solution has been changed.  
+We will learn about them next.  
 </TechnicalNote>
 
 

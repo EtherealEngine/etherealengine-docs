@@ -20,7 +20,7 @@ They are equivalent to the concept of "projects" in other engines, except they a
 The engine scans for projects mounted in the `/packages/projects/projects` sub-folder.  
 This means that, like we did earlier in the [Quickstart](../quickstart) guide, we can install and run new projects by executing the following commands inside our Ethereal Engine installation folder:
 ```bash
-git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/packages/ee-tutorial-hello
+git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
 npm install
 npm run dev
 ```
