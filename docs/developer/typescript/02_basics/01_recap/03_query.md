@@ -5,14 +5,18 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Define a Query
-Ethereal Engine's `defineQuery` is a function that accepts an `array` of `Component` types, and will return a JavaScript `Generator`.  
-This [JavaScript Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#generator_functions) can be used in a `for` loop to iterate over `all` entities that contain `all` Components in our list.
+Queries are the simplest concept to explain out of everything we have dealt with so far.  
+But we looked into them only briefly, so lets explore their technical properties anyway.  
 
-The Query can be named anything we want, as it is only relevant for our project.  
+Ethereal Engine's `defineQuery` is a function that accepts an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) of `Component` types, and will return a [JavaScript Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#generator_functions). This `Generator` can then be used in a [`for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop to iterate over **all** entities that contain **all** Components in the list that we provided _(ie: our array of Components)_.
+
+:::note
+The returned Query can be named anything we want, as its name is only relevant for our project.  
+:::
 ```ts
 const helloQuery = ECS.defineQuery([HelloComponent])
 
 for (const entity of helloQuery()) {
-  // Do something with the entity
+  // Do something for all entities that contain a HelloComponent
 }
 ```
