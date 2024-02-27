@@ -13,7 +13,10 @@ for (const entity of helloQuery()) {
 }
 ```
 ### Name
+Arbitrary name/symbol/identifier
 ### Arguments
+Array of Component types
 ### Return type
+Returns a [Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#generator_functions).
 ### Usage
-
+Inside a for loop.
