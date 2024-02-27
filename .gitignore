@@ -23,3 +23,4 @@ package-lock.json
 
 /docs/API/*
 /typedoc
+/api
