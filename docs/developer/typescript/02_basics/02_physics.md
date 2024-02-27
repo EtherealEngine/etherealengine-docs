@@ -5,8 +5,7 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Adding Physics
-So far we have learned how to create an `Entity`, and how to tell the engine what we want our entity to be.  
-In simple terms, we have told the engine how to **create** our sphere.  
+So far we have learned how to create an `Entity`, and how to tell the engine what we want our entity to be. In simple terms, we told the engine how to **create** our sphere.  
 
 ## Our problem
 We added some components to our sphere, so that the engine can draw the sphere into the screen and we can see it.  
