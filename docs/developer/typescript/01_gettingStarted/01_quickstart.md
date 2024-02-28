@@ -18,7 +18,7 @@ This QuickStart guide will teach you the basics of Ethereal Engine, and how to r
 The previous command will have the engine running.  
 Lets stop it by pressing `Ctrl+C`, and then run these commands to install and run the tutorial's template project:
 ```bash
-git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
+git clone -b Step0 https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
 npm install
 npm run dev
 ```

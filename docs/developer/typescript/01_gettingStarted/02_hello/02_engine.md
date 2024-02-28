@@ -18,12 +18,21 @@ Ethereal Engine can be **extended** with projects.
 They are equivalent to the concept of "projects" in other engines, except they are modular like npm packages _(they are npm packages too)_.
 
 The engine scans for projects mounted in the `/packages/projects/projects` sub-folder.  
-This means that, like we did earlier in the [Quickstart](../quickstart) guide, we can install and run new projects by executing the following commands inside our Ethereal Engine installation folder:
+This means that we can install and run new projects by executing the following commands inside our Ethereal Engine installation folder:
 ```bash
 git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
 npm install
 npm run dev
 ```
+<TechnicalNote>
+Please note that, in the [Quickstart](../quickstart) guide, we cloned the `Step0` branch from the `ee-tutorial-hello` project specifically, and not the whole project.  
+We did this by adding `-b Step0` to the `git clone` command:
+```bash
+git clone -b Step0 https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
+```
+This step won't be needed for your own projects.
+</TechnicalNote>
+
 These steps will:
 - Download a copy of the project's git repository, so the engine can load it  
 - Install all `npm` packages required by the project  
@@ -48,7 +57,9 @@ There are two very important steps to take in order to connect our project to th
 ### Project Configuration File
 Every project has an `xrengine.config.ts` file that defines how it will behave in the engine.  
 There are multiple options available, but the important thing to remember is that our `src/Hello.ts` code will connected to the engine from here.
+
 <TechnicalNote title="Config File">
+
 ```ts title="ee-tutorial-hello/xrengine.config.ts"
 import type { ProjectConfigInterface } from '@etherealengine/projects/ProjectConfigInterface'
 
