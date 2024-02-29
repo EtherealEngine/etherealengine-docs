@@ -37,9 +37,8 @@ Same as before, if you run the project as it is now you won't see any changes ju
 We have defined the Query that will search for our Scene's entity, but we haven't called it yet.
 
 ## Using our Query
-A Query, when called, will return a array.  
-This array will contain the list of all entities that match the list of Components that we specified.  
-Just like any other array, we can iterate through it with a `for` loop.  
+A Query, when called, will return a [JavaScript Generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#generator_functions).  
+This Generator can be used to access the list of all entities that match the list of Components that we specified.  
 
 This means that we can access as many entities as we want from a single unified place!  
 Really powerful.  
@@ -63,6 +62,9 @@ The state management code **must** be inside our `execute` function.
 <UnstyledDetails title="2. Entity Loop">
 We need to execute some code for an entity, just like we did before. That hasn't changed.  
 But we need to change **where** our code will be run.
+</UnstyledDetails>
+<UnstyledDetails title="3. JavaScript Generator">
+Generators are called as if they were functions with no arguments, and they will [`yield`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield) the next entry of the list on every iteration.      
 </UnstyledDetails>
 </TechnicalNote>
 
