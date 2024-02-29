@@ -24,7 +24,7 @@ Reactors come in 3 types:
   _(and custom reactors, which are functionally equivalent to system reactors)_  
 -->
 
-## Component Definitions
+## Component Data Types
 Components support two types of data:
 - Structure of Arrays
 - Array of Structures
@@ -72,81 +72,6 @@ const DebugArrowComponent = defineComponent({
     if (json.position) component.position.set(json.position)
   }
 })
-```
-
-### onInit
-`(entity: Entity) => ComponentType<C>`  
-**onInit** is a function that is called when **setComponent** is called on an entity that does not have the component in question.  
-It takes an entity number, and should return an object with the initial values for the component.
-
-
-### onSet
-`entity: Entity, component: ComponentType<C>, json: SerializedComponentType<C>) => void`  
-**onSet** is a function that is called each time **setComponent** is called.  
-It takes an `entity` number, a `component` object and a `json` object.  
-
-This function provides a method for reactive data to be updated in batch _(such as deserializing scene data)_, which allows for a much tighter data flow.
-
-
-### onRemove
-`(entity: Entity, component: ComponentType<C>) => void`  
-**onRemove** is a function that is called when **removeComponent** is called on an entity that has the component in question.  
-It takes an `entity` number and a `component` object.  
-
-This function is where any resources associated with the component should be cleaned.
-
-
-### toJSON
-`(entity: Entity, component: ComponentType<C>) => SerializedComponentType<C>`  
-**toJSON** is a function that is called when **serializeComponent** is called on an entity that has the component in question.  
-It takes an entity number and a component object.  
-
-This function is where the component's data should be serialized _(eg: transforming a scene's data for saving to a file)_.
-
-### jsonID
-`string`  
-The **jsonID** property is a string that is used to identify the component in json.  
-
-It is used for identifying scenes when their data is serialized/deserialized.
-
-### reactor
-`function(props: { root: EntityRoot }) => void`  
-The **reactor** property specifies a function that exists for the duration of this component instance.
-
-This function is where any effects that depend on the component should be defined.
-
-
-## Update Loop
-Ethereal Engine uses a very similar model to [Unity's update loop](https://docs.unity3d.com/Manual/ExecutionOrder.html), by the use of a [fixed timestep](https://www.gafferongames.com/post/fix_your_timestep/) update loop.
-
-The engine defines a `frame update` process that is called once per frame.  
-Inside this frame-update process there is a `fixed update` process that operates with an `accumulator` pattern.  
-This accumulator ensures that time will always step at a stable number of updates per second, independent of the processing power of the hardware running the engine.
-
-_Note: Because the fixed update process is independent of frame updates, each individual frame update may execute 0-to-many fixed updates during its lifetime._
-
-Ethereal Engine implements this feature through system **pipelines**, which are collections of systems that will be executed in a specific order.
-
-## Queries
-Queries are used to select entities that have a specific set of components.  
-They are used to define the entities that a system will operate on.  
-
-Queries are defined using the **defineQuery** function:
-```ts
-const query = defineQuery([TransformComponent, GroupComponent])
-
-const entities = query() // returns an array of entity numbers
-```
-
-Queries also have enter and exit derivatives.  
-They are used to define when a combination of components is added or removed from an entity.  
-These variations are defined using the **defineEnterQuery** and **defineExitQuery** functions:
-```ts
-const query = defineQuery([TransformComponent, GroupComponent])
-
-const allEntities = query()
-const enterEntities = query.enter()
-const exitEntities = query.exit()
 ```
 
 
