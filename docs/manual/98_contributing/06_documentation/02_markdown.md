@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Markdown Standard
+# Markdown Standards
 This page will explain how to format your content to fit the standard used by this website.  
 
 :::important
@@ -217,6 +217,32 @@ Second line of this section.
 This line is also not close to its title.
 
 Too many line separations make the page less readable in markdown format.
+```
+</TabItem>
+</Tabs>
+
+#### Explicit heading IDs
+Titles can have a [Heading ID](https://docusaurus.io/docs/next/markdown-features/toc#heading-ids) different than its default.  
+Use them only when you know the id will be linked to in multiple other places and:
+- Its default ID is prone to typing errors  
+  _(eg: the title contains strange characters, its name is misleading, etc)_
+- The ID is an important reference that could be memorized
+- The ID is temporary and _will_ change (not _might_ change)
+- The ID is very long, and _cannot_ be shorter / more concise
+
+<Tabs>
+<TabItem value="short-name" label="Short ID">
+
+```md
+`### Very Long Title Name {#short-id}`
+This title will have its direct link as `URL/path/to/page#short-id`
+```
+</TabItem>
+<TabItem value="default-name" label="Default ID">
+
+```md
+`### Very Long Title Name`
+This title will be linked by default as `URL/path/to/page#very-long-title-name`
 ```
 </TabItem>
 </Tabs>
