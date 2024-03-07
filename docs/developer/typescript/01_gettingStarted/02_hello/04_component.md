@@ -99,9 +99,14 @@ And we are modifying its value with `initialized.set(true)` instead of `initiali
 We will explain why this is the case in the [Ethereal Engine Basics: State](/developer/typescript/basics/state) section.  
 </TechnicalNote>
 
-
 This code will be very useful for our next few steps.  
 Don't dwell too much on where to place it just yet. I will give you better instructions for doing that later when we need it.  
+
+<TechnicalNote title="Hint">
+Notice how there is a [`continue`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/continue) statement in the second line.  
+[`continue`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/continue) is a keyword that only works inside of a loop _(eg: A `for` loop)_.  
+Remember that for later.  
+</TechnicalNote>
 
 Lets see how we can lock our code to be run only under a specific condition.  
 

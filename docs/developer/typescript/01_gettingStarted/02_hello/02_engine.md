@@ -11,7 +11,25 @@ You will need three very important steps for creating a project with Ethereal En
 3. Modify and run the source code of your project
 
 We already solved #1 and #2 in the [Quickstart](../quickstart) guide.  
-Lets review how #1 and #2 work really quickly, and we will start programming with the engine right after.  
+Lets do a quick review of how #1 and #2 work, and we  will start programming with the engine right after.  
+
+## Requirements and Dependencies
+We will use `git` and `npm` a lot throughout the guides on this website.  
+
+Whether you followed the Quickstart guide for Ubuntu, or installed the engine with the Manual instructions, you will have both `git` and `npm` already installed.  
+
+You don't need to understand either of them to get started. This guide will teach you what to do every time they are needed.  
+Just remember that they are used a lot to work with the engine locally.
+
+## Installing and running Ethereal Engine 
+Ethereal Engine is a web application.  
+Just like any other web application, it needs to be run in a server. And that server will provide access to the engine remotely to anyone with access to its address.
+
+We will eventually learn how to work with "deployed" versions of the engine.  
+But we need to follow this tutorial in a `local development server` instead.  
+
+That's exactly what the Quickstart installation guide automated for us.  
+As the `localhost` part of the URL indicates, we are running a `local` version of the engine.  
 
 ## Installing and running projects
 Ethereal Engine can be **extended** with projects.
@@ -21,21 +39,26 @@ The engine scans for projects mounted in the `/packages/projects/projects` sub-f
 This means that we can install and run new projects by executing the following commands inside our Ethereal Engine installation folder:
 ```bash
 git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
-npm install
 npm run dev
 ```
+:::note
+You will need to stop the engine and re-run it whenever you install a new project.  
+:::
+
 <TechnicalNote>
 Please note that, in the [Quickstart](../quickstart) guide, we cloned the `Step0` branch from the `ee-tutorial-hello` project specifically, and not the whole project.  
 We did this by adding `-b Step0` to the `git clone` command:
+
 ```bash
 git clone -b Step0 https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
 ```
+
 This step won't be needed for your own projects.
 </TechnicalNote>
 
 These steps will:
-- Download a copy of the project's git repository, so the engine can load it  
-- Install all `npm` packages required by the project  
+- Download a copy of the project's git repository, so the engine can load it
+- Install all `npm` packages required by the project
 - Run a local development version of the engine
 
 :::note
@@ -50,9 +73,9 @@ This will become very important later on in this guide.
 
 
 ## Programming with Ethereal Engine
-There are two very important steps to take in order to connect our project to the engine:
-- We need to import Ethereal Engine's modules
-- We need to export our code so the engine can load our project
+There are two very important steps to take in order to connect the source code of our project to the engine:
+- We need to import some Ethereal Engine's modules
+- We need to export our code so the engine can run it 
 
 ### Project Configuration File
 Every project has an `xrengine.config.ts` file that defines how it will behave in the engine.  
@@ -91,7 +114,7 @@ import { TransformComponent } from '@etherealengine/spatial/src/transform/compon
 import { PrimitiveGeometryComponent } from '@etherealengine/engine/src/scene/components/PrimitiveGeometryComponent'
 ```
 We will be adding these Components to our Entity, and Components are part of the ECS pattern.  
-As such, we will need to use the Ethereal Engine ECS management functions.   
+As such, we will need to use the Ethereal Engine ECS management functions.  
 The engine provides a convenient way to import all ECS related functions at once through the `ECS` [namespace](https://www.typescriptlang.org/docs/handbook/namespaces.html).
 ```ts title="ee-tutorial-hello/src/Hello.ts"
 import { ECS } from '@etherealengine/ecs'
@@ -110,10 +133,11 @@ Lets start with a simple change.
 We will modify our Sphere `PrimitiveGeometryComponent` to load our geometry with a name, instead of the hardcoded number `1` that we used before.  
 
 In order to do this, we need to:
+- Open the file `ee-tutorial-hello/src/Hello.ts` with a text editor.
 - Import the `GeometryTypeEnum` from the `scene/constants/` sub-module inside the `engine` module.
 - Replace the `1` with a call to the `SphereGeometry` name that is stored inside it `GeometryTypeEnum`.  
 
-Try to make the change by yourself before looking at the solution.  
+Try to figure out the changes by yourself before looking at the solution.  
 I don't expect you to know where that enum is stored, so here are some hints to make it easier:  
 ```ts
 // The full path to the GeometryTypeEnum is:
@@ -125,6 +149,14 @@ GeometryTypeEnum.SphereGeometry
 // To be certain that your changes are working, set the geometry to be a cylinder instead:
 GeometryTypeEnum.CylinderGeometry
 ```
+> As we said before, you will need to stop the engine and re-run it whenever you _install_ a new project.  
+> But you can just refresh the webpage when you update your source code and the engine will load your changes correctly.  
+
+:::note
+`VSCode` is the recommended editor for programming with Ethereal Engine.  
+It is not required, but it is highly recommended.  
+VSCode has support for some important features and plugins that make the Ethereal Engine programming workflow really smooth and featureful.  
+:::
 
 <TechnicalNote title="Solution">
 

@@ -23,7 +23,7 @@ This is how the function works:
 Here are your hints for this assignment:  
 ```ts
 // Define the query that will find our Scene's Entity
-const ... = ...([ ... ])
+const queryName = NAMESPACE.funtionName([ CustomComponentName ])
 ```
 
 <TechnicalNote title="Solution">
@@ -44,27 +44,84 @@ This means that we can access as many entities as we want from a single unified 
 Really powerful.  
 
 I gave you one solution for free earlier, but I'm leaving this assignment a bit ambiguous on purpose.  
-See if you can figure out which part of your code goes where before looking at the solution.  
+I will give you three options. Pick the one that fits your learning style best:
+1. Challenge:  
+  See if you can figure out which part of your code goes where before looking at the solution or the hints. It will be very difficult.  
+2. Intermediate difficulty:  
+  Open each hint one by one, and take some time to reason about what the hint is trying to say before opening the next one.  
+  You might land on the solution earlier than you think.  
+3. Otherwise:  
+  Read the hints, try to understand them a bit, and then compare what you thought with the full solution.  
+
+Here are your hints:
 ```ts
 // Our for loop will look something like this
-for (const entity of ...) {
+for (const entity of /* queryName() */) {
   // Our code goes here ...
 }
 ```
 
-Here are some hints, in case you get stuck:  
-
 <TechnicalNote title="Hints">
-<UnstyledDetails title="1. Initialized Variable">
-We cannot store our variable in module scope anymore.  
-The state management code **must** be inside our `execute` function.
+This step is really difficult without hints. Don't worry if you cannot figure it out on your own.  
+There is a lot to process, so what matters most is that you think it through.  
+
+<UnstyledDetails title="1. JavaScript Generator">
+Generators are called as if they were functions with no arguments, and they will [`yield`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield) the next entry of the list on every iteration.  
+
+So, our `for` loop should say:
+```ts
+for (const entity in helloQuery()) {
+  // do something for every entity
+}
+```
 </UnstyledDetails>
-<UnstyledDetails title="2. Entity Loop">
-We need to execute some code for an entity, just like we did before. That hasn't changed.  
-But we need to change **where** our code will be run.
+<UnstyledDetails title="2. For Loop">
+We cannot store our `initialized` variable in module scope anymore.  
+And the code right above cannot be at the top level of your file either.  
+It **must** be inside a function.  
 </UnstyledDetails>
-<UnstyledDetails title="3. JavaScript Generator">
-Generators are called as if they were functions with no arguments, and they will [`yield`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield) the next entry of the list on every iteration.      
+<UnstyledDetails title="3. Continue">
+Remember the hint from earlier about the `continue` keyword?  
+If not, [go back](./component#state-management) and read it again. You really need it now.
+</UnstyledDetails>
+<UnstyledDetails title="4. State Management">
+Now is the moment when you need to add the code that I gave you "for free" earlier.  
+Notice how the hint code above is giving you a `for` loop, and the State Management code has a `continue` keyword. They go together.
+</UnstyledDetails>
+<UnstyledDetails title="5. Initialized Variable">
+The `initialized` variable from before cannot exist anymore.  
+The state management code replaces it.
+</UnstyledDetails>
+<UnstyledDetails title="6. System Execute">
+The state management code **must** be placed inside our `execute` function.  
+</UnstyledDetails>
+<UnstyledDetails title="7. Entity Creation and Loop">
+We need to execute some code for an entity, just like we did before.  
+That hasn't changed.  
+
+But you cannot use `createEntity` anymore.  
+The entity is `requested` by the Query, not created.  
+
+> The `hello-final` scene already contains the entity.  
+> Scroll down to the `Loading the Component` section right below if you are confused as to why this is the case.  
+
+</UnstyledDetails>
+<UnstyledDetails title="8. Source Code Order">
+1. Import the engine modules
+2. Define a Component
+3. Define a Query that will request entities that contain that Component
+4. Create a function that runs our code
+5. Loop through all entities, and do something for each  
+   _(We only have one, but we loop anyway)_
+6. Make sure that we only execute our code once for each entity
+7. Define a System
+8. Set our function as the System's `execute` function 
+
+You already have the code for #1, #2, #3, #6 and #7 from before.  
+We are creating #4 with this step.  
+We are also modifying #5:
+- The initialized variable is replaced with the State Management code I gave you
+- The State Management code **must** placed inside the new #4 loop
 </UnstyledDetails>
 </TechnicalNote>
 
@@ -90,40 +147,7 @@ function hello() {
   }
 }
 ```
-</TechnicalNote>
-
-## Loading the Component
-Now, here is a question:
-> How do we connect our custom scene Component to the scene?  
-
-The answer to that is that there is one last piece of the project that we haven't talked about just yet.  
-You might have even seen it in the Studio already if you explored a bit!  
-
-We don't know how to add a Component to an entity through the Studio just yet, or how to make our Component available through the studio UI.  
-And we have gone through two entire pages with a LOT of theory but not a whole lot of practice. So I have already solved this problem for you.  
-
-When you open the `ee-tutorial-hello` project... there is a scene called `hello-final` in there.  
-That's what we are looking for :)
-
-Thanks to the way that the `hello-final` scene is setup, our Component will work in that Scene because it has the Component... but it will not work anywhere else! Really neat.  
-
-<TechnicalNote>
-What I did, exactly, was:
-- I created an entity that contains the component we are Quering for
-- I saved that entity into the scene
-- I saved the scene into the project
-This means that you already downloaded the scene when we cloned the repository during the Quickstart guide.  
-</TechnicalNote>
-
-## Confirm the Code
-You will know that you completed the last two pages correctly if:
-- The behavior has not changed for your project. You can still see the sphere in the Scene.  
-- You open another project _(eg: the `default-project` provided by the engine)_...  
-  and the Sphere is gone!
-
-Lets put everything together.  
-
-<TechnicalNote title="Full Solution">
+<UnstyledDetails title="Full Solution">
 
 ```ts title="ee-tutorial-hello/src/Hello.ts" showLineNumbers
 import { ECS } from '@etherealengine/ecs'
@@ -172,15 +196,53 @@ export const HelloSystem = ECS.defineSystem({
   insert: { after: PhysicsSystem }
 })
 ```
-Note how I have changed the code to use an arrow function.  
+Notice how I have changed the code to use an arrow function.  
 They can be used interchangeably, so feel free to use either of them.  
 
-Also, note how the style of the names in this solution has been changed.  
+Also, notice how the style of the names in this solution has been changed.  
 We will learn about them next.  
+</UnstyledDetails>
+
 </TechnicalNote>
+
+## Loading the Component
+Now, here is a question:
+> How do we connect our custom scene Component to the scene?  
+
+The answer is that there is one last piece of the project that we haven't talked about just yet.  
+You might have even seen it in the Studio already if you explored a bit!  
+
+We don't know how to add a Component to an entity through the Studio yet, or how to make our Component show up on the `Add Component` Studio UI.  
+And we have gone through two entire pages with a LOT of theory but not a whole lot of practice.  
+So I already solved this problem for you.  
+
+When you open the `ee-tutorial-hello` project... there is a scene called `hello-final` in there.  
+That's what we are looking for :)
+
+Thanks to how the `hello-final` scene is setup, our Component will work in that Scene... but it will not work anywhere else! Really neat.  
+
+<TechnicalNote>
+What I did, exactly, was:
+- I added an entity to the scene
+- I added the component we are Quering for to the entity
+- I saved the scene into the project  
+
+This means that, when you installed the project with the Quickstart guide, you also downloaded the final scene that we need.  
+</TechnicalNote>
+
+## Confirm the Code
+You will know that you have completed the [Components](./component) and [Queries](./query) tasks correctly if:
+- The behavior has not changed for the `hello-final` scene. You can still see the sphere in the Scene.  
+- You open another scene _(eg: `default-project/appartment` provided by the engine)_...  
+  and the Sphere is gone!
 
 ## Conclusion
 As you can see, we only added around 10 lines of code in these last two pages...  
 But we introduced so many new concepts!  
 That's the most exciting part about the ECS pattern. You can do **so** much with so little code.
+
+I hope you didn't struggle too much with the last task. I know it was a difficult one.  
+But I promise that, now that you have this knowledge, the road ahead will only get easier and easier.  
+
+Lets see what we will learn next!  
 
