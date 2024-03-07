@@ -71,7 +71,7 @@ Generators are called as if they were functions with no arguments, and they will
 <TechnicalNote title="Solution">
 
 ```ts
-const hello = () => {
+function hello() {
   //highlight-start
   for (const entity of helloQuery()) {
     //highlight-end
@@ -92,11 +92,30 @@ const hello = () => {
 ```
 </TechnicalNote>
 
-## Conclusion
-As you can see, we only added around 10 lines of code in these last two pages...   
-But we introduced so many new concepts!  
-That's the most exciting part about the ECS pattern. You can do **so** much with so little code.
+## Loading the Component
+Now, here is a question:
+> How do we connect our custom scene Component to the scene?  
 
+The answer to that is that there is one last piece of the project that we haven't talked about just yet.  
+You might have even seen it in the Studio already if you explored a bit!  
+
+We don't know how to add a Component to an entity through the Studio just yet, or how to make our Component available through the studio UI.  
+And we have gone through two entire pages with a LOT of theory but not a whole lot of practice. So I have already solved this problem for you.  
+
+When you open the `ee-tutorial-hello` project... there is a scene called `hello-final` in there.  
+That's what we are looking for :)
+
+Thanks to the way that the `hello-final` scene is setup, our Component will work in that Scene because it has the Component... but it will not work anywhere else! Really neat.  
+
+<TechnicalNote>
+What I did, exactly, was:
+- I created an entity that contains the component we are Quering for
+- I saved that entity into the scene
+- I saved the scene into the project
+This means that you already downloaded the scene when we cloned the repository during the Quickstart guide.  
+</TechnicalNote>
+
+## Confirm the Code
 You will know that you completed the last two pages correctly if:
 - The behavior has not changed for your project. You can still see the sphere in the Scene.  
 - You open another project _(eg: the `default-project` provided by the engine)_...  
@@ -153,8 +172,15 @@ export const HelloSystem = ECS.defineSystem({
   insert: { after: PhysicsSystem }
 })
 ```
-Note how the style for names in this solution has been changed.  
+Note how I have changed the code to use an arrow function.  
+They can be used interchangeably, so feel free to use either of them.  
+
+Also, note how the style of the names in this solution has been changed.  
 We will learn about them next.  
 </TechnicalNote>
 
+## Conclusion
+As you can see, we only added around 10 lines of code in these last two pages...  
+But we introduced so many new concepts!  
+That's the most exciting part about the ECS pattern. You can do **so** much with so little code.
 

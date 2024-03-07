@@ -101,15 +101,7 @@ We will explain why this is the case in the [Ethereal Engine Basics: State](/dev
 
 
 This code will be very useful for our next few steps.  
-Lets see how we can lock our code to be run only under a specific condition.  
+Don't dwell too much on where to place it just yet. I will give you better instructions for doing that later when we need it.  
 
-<!--
-TODO:
-- [ ] Fixing the ball being in every scene (anti-pattern)
-  - [ ] Custom Scene   ( provided in the repo )
-  - [ ] Specify in the scene that the ball should spawn
-  - [ ] Custom component  
-        Create Scene Component specific to the hello world tut  
-        Tie it by filename  
--->
+Lets see how we can lock our code to be run only under a specific condition.  
 

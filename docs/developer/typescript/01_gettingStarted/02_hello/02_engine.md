@@ -11,7 +11,7 @@ You will need three very important steps for creating a project with Ethereal En
 3. Modify and run the source code of your project
 
 We already solved #1 and #2 in the [Quickstart](../quickstart) guide.  
-Lets explore how #2 works and how we can start programming with the engine.  
+Lets review how #1 and #2 work really quickly, and we will start programming with the engine right after.  
 
 ## Installing and running projects
 Ethereal Engine can be **extended** with projects.
@@ -56,7 +56,7 @@ There are two very important steps to take in order to connect our project to th
 
 ### Project Configuration File
 Every project has an `xrengine.config.ts` file that defines how it will behave in the engine.  
-There are multiple options available, but the important thing to remember is that our `src/Hello.ts` code will connected to the engine from here.
+There are multiple options available, but the important thing to remember is that our `src/Hello.ts` code will be connected to the engine from here.
 
 <TechnicalNote title="Config File">
 

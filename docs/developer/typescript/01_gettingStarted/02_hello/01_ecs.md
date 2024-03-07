@@ -14,6 +14,14 @@ The behavior of the application is then controlled by having separate Systems (l
 Systems don't need to know where that data is coming from. They only know what data is stored in the Components that they can operate on.
 </TechnicalNote>
 
+:::note
+Clicking on the `Technical Summary` note right above will open a drop-down with information about what the ECS pattern is in more advanced/technical terms.  
+
+You will find a lot of these `Technical` drop-downs throughout the guides.  
+Their goal is to give you extra information that is not mandatory to understand to follow the guide, but is very useful to achieve a deeper understanding of the content.  
+
+Don't worry if you don't fully understand what some of them explain just yet. We will get there.  
+:::
 
 ## Creating an Entity
 Creating an Entity is as simple as calling the `createEntity()` function from Ethereal Engine's `ECS`.  
@@ -41,6 +49,7 @@ Ethereal Engine requires a specific set of Components in order to create an obje
 
 ### `NameComponent`
 Gives a human-readable identifier to an Entity.  
+Whatever name you add on this field is the name that will show up in the Studio and the debugger.
 They are not mandatory, but it is good practice to add them to all your entities.  
 ```ts
 ECS.setComponent(entity, NameComponent, 'hello-world')

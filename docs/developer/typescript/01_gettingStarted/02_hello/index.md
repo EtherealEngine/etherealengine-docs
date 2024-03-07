@@ -7,20 +7,14 @@ The quickstart tutorial helped us create a project and run the engine for the fi
 This is our starting point.  
 The Quickstart has automated a lot for us, so lets review what we have.
 
-## Conceptual overview
-Conceptually, this is what the example project does:
-- It creates an entity called `hello-world`
-- It gives the entity a primitive geometry component _(a Sphere)_
-- It defines the position of the sphere in the scene
+:::note
+Don't dwell too much on this page.  
+This is a quick preview, so please skim read and don't go into too much detail.  
+The purpose of the next few pages of this tutorial is to teach you how these concepts work.  
+:::
 
-## Technical overview
-In technical terms, this is what the example's source code does:
-- It uses the `ECS` pattern
-- It creates an `Entity`
-- It adds few `Component`s to the Entity
-- It imports some Ethereal Engine's typescript modules in its code 
-- It adds its code to the engine through the `xrengine.config.ts` file
-
+## Hello World Code
+This is how the code for our project looks like at the moment.  
 ```ts title="ee-tutorial-hello/src/Hello.ts" showLineNumbers
 import { ECS } from '@etherealengine/ecs'
 import { NameComponent } from '@etherealengine/spatial/src/common/NameComponent'
@@ -35,6 +29,20 @@ ECS.setComponent(entity, VisibleComponent)
 ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
 ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
 ```
+
+## Conceptual overview
+Conceptually, this is what the example project does:
+- It creates an entity called `hello-world`
+- It gives the entity a primitive geometry component _(a Sphere)_
+- It defines the position of the sphere in the scene
+
+## Technical overview
+In technical terms, this is what the example's source code does:
+- It imports some Ethereal Engine's typescript modules in its code 
+- It uses the `ECS` pattern
+- It creates an `Entity`
+- It adds a few `Components` to the Entity
+- It adds its code to the engine through the `xrengine.config.ts` file
 
 ## The Path Forward
 Our example from the quickstart tutorial is as minimal as it can possibly be.  

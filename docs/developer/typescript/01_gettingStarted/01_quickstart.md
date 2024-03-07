@@ -15,11 +15,17 @@ This QuickStart guide will teach you the basics of Ethereal Engine, and how to r
 <DefaultProjects />
 
 ### Install and Run the tutorial project
-The previous command will have the engine running.  
+Whether you installed the engine with method above, or with the installation instructions for your specific system, your next step will be to install the tutorial project.
+
+:::danger
+This `HelloWorld` project should never be installed in a remote deployment.  
+A local version of the engine is required to follow this introductory tutorial.  
+:::
+
+The previous commands will have the engine running locally.  
 Lets stop it by pressing `Ctrl+C`, and then run these commands to install and run the tutorial's template project:
 ```bash
 git clone -b Step0 https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
-npm install
 npm run dev
 ```
 
@@ -33,5 +39,5 @@ Lets make sure that our `hello world` code is running:
 You will know that the code is running if you can see a white sphere in the middle of the scene.  
 
 :::note
-You can also enter the scene and move around with an avatar by pressing the `Play` button in the editor.  
+You can also enter the scene and move around with an avatar by pressing the `Play` button in the editor like we did before.  
 :::

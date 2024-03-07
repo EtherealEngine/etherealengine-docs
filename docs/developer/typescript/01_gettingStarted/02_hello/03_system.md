@@ -46,7 +46,7 @@ But the correct way to do this is to define our code inside a separate function,
 Lets start by creating a new Typescript function, and moving our ECS code into that function.  
 ```ts
 // Create a function
-const /* name */ = () => { /* code */ }
+function /* name */ () { /* code */ }
 ```
 We will also need to make sure that our code is only run once.  
 Try to figure out a way to make your function code execute only once before looking at the solution.  
@@ -60,7 +60,7 @@ let initialized = false   // Track whether our code was already initialized or n
 //highlight-end
 
 //highlight-start
-const hello = () => {      // Define an arrow function that will run our code
+function hello() {         // Define a function that will run our code
   if (initialized) return  // Exit early if the code was already run before
   initialized = true       // Mark initialized to true, so the code is never run again later
 //highlight-end
@@ -86,21 +86,22 @@ We will learn how properly manage state later on.
 
 </TechnicalNote>
 <!-- State TechnicalNote End -->
-</TechnicalNote>
-<!-- Solution End -->
 
 :::note
-We are using a Typescript arrow function in this example.  
-You could also use a regular Typescript function definition if you prefer.  
+We are using a regular Typescript function in this example.  
+You could also use a Typescript arrow function if you prefer.  
 Both styles work perfectly well.  
 :::
+
+</TechnicalNote>
+<!-- Solution End -->
 
 
 ### The `defineSystem` function
 In order to define a new system, we need to use the `defineSystem` function from the `ECS` namespace.  
 
 This is what we need to know to use this function:
-- `defineSystem` will return the type that represents our `System`
+- `defineSystem` will return the identifier that represents our `System`
 - We need to `export` that type so that the engine can access it
 - We need to pass our function into the `execute` argument
 - We don't need to add any new imports. The `defineSystem` function is available through the `ECS` namespace
@@ -153,7 +154,7 @@ let initialized = false    // Track whether our code was already run or not
 
 //highlight-start
 // Our new function
-const hello = () => {
+function hello() {
   if (initialized) return
   initialized = true
   //highlight-end
