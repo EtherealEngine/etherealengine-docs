@@ -1,3 +1,4 @@
+# GitHub Actions
 ## Kick off GitHub Actions
 In GitHub, if you go to back to the Actions tab, you should see a `dev-deploy` action. Click on it, and you should see
 a page showing its status, which should be all green checkmarks or indicators that things didn't run. In the upper

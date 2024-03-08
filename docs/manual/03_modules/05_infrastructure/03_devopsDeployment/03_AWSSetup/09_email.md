@@ -1,3 +1,4 @@
+# Email Service
 ## Set up Simple Email Service (optional)
 
 If you want to enable email magiclink login, you will need to set up Simple Email Service (SES).

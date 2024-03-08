@@ -1,3 +1,4 @@
+# Notification Service
 ## Set up Simple Notification Service (optional)
 
 If you want to enable text message-based magiclink login, you will need to set up Simple Notification Service (SNS).

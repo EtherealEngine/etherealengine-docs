@@ -1,3 +1,4 @@
+# DNS records
 ## Set up DNS records
 **The Nginx Load Balancer must be fully set up and running before this step can be completed**
 

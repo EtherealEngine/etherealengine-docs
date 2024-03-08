@@ -27,6 +27,7 @@ const Links           = {
   orgSite             : `https://${OrgName}.org/`,
   comSite             : `https://${OrgName}.com/`,
 }
+export const ApiBaseURL = 'api'
 
 /**
  * @description Organization Options
@@ -87,7 +88,7 @@ export const github = {
  */
 export const typedoc = {
   label : 'API',
-  url   : site.fullURL+'typedoc',
+  url   : site.fullURL+ApiBaseURL,
 }
 
 /**
