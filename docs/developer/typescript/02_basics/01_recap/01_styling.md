@@ -127,7 +127,7 @@ import { PhysicsSystem } from '@etherealengine/spatial'
 // Define our component
 export const HelloComponent = ECS.defineComponent({
   name: 'ee.tutorial.HelloComponent',
-  jsonID: 'ee.tutorial.HelloComponent',
+  jsonID: 'EE_tutorial_hello',
   onInit: () => { return { initialized: false } }
 })
 
@@ -141,10 +141,10 @@ export const HelloSystem = ECS.defineSystem({
   execute: () => {
     //highlight-end
     for (const entity of helloQuery()) {
-      const { initialized } = ECS.getComponent(entity, HelloComponent)
-      if (initialized) continue
-
-      ECS.getMutableComponent(entity, HelloComponent).initialized.set(true)
+      // Check if we have already initialized our Sphere
+      let { initialized } = ECS.getMutableComponent(entity, HelloComponent)
+      if (initialized.value) continue
+      initialized.set(true)  // Set our initialized state to true
 
       ECS.setComponent(entity, NameComponent, 'ee.tutorial.hello-entity')
       ECS.setComponent(entity, VisibleComponent)
