@@ -118,10 +118,10 @@ The entity is `requested` by the Query, not created.
 8. Set our function as the System's `execute` function 
 
 You already have the code for #1, #2, #3, #6 and #7 from before.  
-We are creating #4 with this step.  
-We are also modifying #5:
+We are creating #5 with this step.  
+We are also modifying #4:
 - The initialized variable is replaced with the State Management code I gave you
-- The State Management code **must** placed inside the new #4 loop
+- The State Management code **must** placed inside the new #5 loop
 </UnstyledDetails>
 </TechnicalNote>
 
