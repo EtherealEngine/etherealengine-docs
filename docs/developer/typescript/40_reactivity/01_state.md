@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # State Management
 All of Ethereal Engine's state management uses [Hookstate](https://hookstate.js.org/) and [React](https://react.dev/).  
 Together, these tools give reactive, declarative, and controlled state management across any scope.

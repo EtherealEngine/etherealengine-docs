@@ -1,5 +1,6 @@
 ---
 sidebar_label: Rendering
+draft: true
 ---
 # Rendering Guide
 <!--

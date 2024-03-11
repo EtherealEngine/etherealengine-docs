@@ -1,3 +1,7 @@
+---
+title: Getting Started
+---
+
 # Getting Started with VisualScript
 <!-- TODO: Add pictures to this file -->
 <!--
