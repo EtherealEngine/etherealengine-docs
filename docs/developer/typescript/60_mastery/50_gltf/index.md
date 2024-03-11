@@ -1,5 +1,6 @@
 ---
 sidebar_label: glTF
+draft: true
 ---
 # glTF Guide
 <!--

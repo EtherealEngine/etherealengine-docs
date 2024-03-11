@@ -1,5 +1,6 @@
 ---
 sidebar_label: Components
+draft: true
 ---
 # Working with Components
 ## Custom Components
