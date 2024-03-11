@@ -1,1 +1,5 @@
+---
+draft: true
+---
+
 # Assets Panel
