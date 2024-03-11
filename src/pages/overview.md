@@ -1,5 +1,6 @@
 ---
 title: Overview
+draft: true
 ---
 # Introduction
 <!--
@@ -21,12 +22,12 @@ We've roughly divided up Ethereal stakeholders into four kinds of roles:
 
 - **Creators**:  
   You're a creative designer curating experiences for other people, creating a venue, stage or story for others to enjoy.  
-  The [Getting Started: Creator](/creator/gettingStarted) guide is where you will want to start.
+  The [Getting Started: Creator](/creator) guide is where you will want to start.
 
 - **Developers**:  
   You're building tooling to empower creators to create powerful experiences. Here you have two choices:   
-  - [Getting Started: No-Code Developer](/developer/visualscript/gettingStarted) guide.
-  - [Getting Started: Typescript Developer](/developer/visualscript/gettingStarted) guide.
+  - [Getting Started: No-Code Developer](/developer/visualscript) guide.
+  - [Getting Started: Typescript Developer](/developer/typescript) guide.
 
 - **Hosts**:  
   You're focused on installing Ethereal Engine itself, maintaining it, possibly scaling and devops as well to deliver a smooth experience for the users.  
