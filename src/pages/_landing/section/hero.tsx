@@ -70,10 +70,12 @@ export default function Hero (props) {
     ) // << Align
   const StyleImage  = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
   const HeroSection = mergex(Style, StyleImage)
+  const StyleIcon = "absolute inset-x-1/2 bottom-0 animate-bounce"
   return <React.Fragment>
     <section className={HeroSection}>
       <Title data={Data.title} />
       <PersonaCTAs data={Data.CTAs} />
+      <Link to="#choose-path"> <ExpandIcon className={StyleIcon} /> </Link>
     </section>
   </React.Fragment>
 }
