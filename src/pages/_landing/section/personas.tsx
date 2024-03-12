@@ -74,6 +74,7 @@ export function SimplePersonas(props) {
   return <React.Fragment>
     <section className={PersonasContainer}>
       <div className={PersonasTitle}>{Data.title}</div>
+      <Persona data={Data.typescript} />
       <Persona data={Data.manual} />
       <div className={PersonasDescr}>{Data.description}</div>
     </section>
