@@ -6,7 +6,7 @@ export const TechnicalNote = (props) => {
   const TextTitle = props.title ? props.title : "Technical Note"
   const Note      = "alert alert--secondary mb-5 bg-neutral-900"
   //const Note      = DetailsCSS + "mb-5 bg-neutral-900"
-  const Title     = "text-blue-200"
+  const Title     = "text-blue-200 hover:cursor-pointer"
   const Body      = "pt-4"
   return (<React.Fragment>
     <details className={Note}>
