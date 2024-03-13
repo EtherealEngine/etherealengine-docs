@@ -55,7 +55,7 @@ export default function Personas(props) {
   const PersonasDescr = "font-normal justify-items-center text-left text-xl"
   return <React.Fragment>
     <section className={PersonasContainer}>
-      <div className={PersonasTitle}>{Data.title}</div>
+      <div className={PersonasTitle} id="choose-path">{Data.title}</div>
       <Persona data={Data.creator} />
       <Persona data={Data.visualscript} />
       <Persona data={Data.typescript} />
@@ -73,7 +73,7 @@ export function SimplePersonas(props) {
   const PersonasDescr = "font-normal justify-items-center text-left text-xl"
   return <React.Fragment>
     <section className={PersonasContainer}>
-      <div className={PersonasTitle}>{Data.title}</div>
+      <div className={PersonasTitle} id="choose-path">{Data.title}</div>
       <Persona data={Data.typescript} />
       <Persona data={Data.manual} />
       <div className={PersonasDescr}>{Data.description}</div>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { clsx as mergex } from 'clsx'
 import { Colors } from '../../colors.tsx'
+import ExpandIcon from '@site/static/img/expand.svg'
 
 function Title(props) {
   const Data = props.data
@@ -69,10 +70,12 @@ export default function Hero(props) {
   ) // << Align
   const StyleImage = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
   const HeroSection = mergex(Style, StyleImage)
+  const StyleIcon = "absolute inset-x-1/2 bottom-0 animate-bounce"
   return <React.Fragment>
     <section className={HeroSection}>
       <Title data={Data.title} />
       <PersonaCTAs data={Data.CTAs} />
+      <Link to="#choose-path"> <ExpandIcon className={StyleIcon} /> </Link>
     </section>
   </React.Fragment>
 }
@@ -105,11 +108,13 @@ export function SimpleHero(props) {
   ) // << Align
   const StyleImage = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
   const HeroSection = mergex(Style, StyleImage)
+  const StyleIcon = "absolute inset-x-1/2 bottom-0 animate-bounce"
   return <React.Fragment>
     <section className={HeroSection}>
       <Title data={Data.title} />
       <SimplePersonaCTAs data={Data.CTAs} />
+      <Link to="#choose-path"> <ExpandIcon className={StyleIcon} /> </Link>
     </section>
-  </React.Fragment>
+  </React.Fragment >
 }
 
