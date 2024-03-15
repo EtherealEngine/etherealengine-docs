@@ -20,9 +20,9 @@ this page to make a new one. You will need to make several Secrets with the foll
 * CLUSTER_NAME -> The name of the EKS cluster
 * DEPLOYMENTS_ENABLED -> Set to `true`
 * DEV_REPO_NAME -> The base name of the dev ECR repository, e.g. `etherealengine-dev` (all references to the builder and service repos will append `-builder`/`-<service>` to this value)
-* DOCKER_LABEL -> This can be almost anything, but you can use `lagunalabs/etherealengine`
-* ECR_URL -> The root ECR_URL for your repos, i.e. everything before the `/etherealengine-dev-builder`, e.g. `11111111111.dkr.ecr.us-west-1.amazonaws.com` or `public.ecr.aws/a1b2c3d4`
-* PRIVATE_ECR -> Set this to `true` if your ECR repos are private, if they're public you don't need to set this at all
+* DEV_REPO_URL -> The root URL for your repos, i.e. everything before the `/etherealengine-dev-builder`, e.g. `11111111111.dkr.ecr.us-west-1.amazonaws.com` or `public.ecr.aws/a1b2c3d4`. If pushing to Docker Hub, this should have `docker.io/` before the organization name, e.g. `docker.io/myorg .
+* PRIVATE_REPO -> Set this to `true` if your repos are private; if they're public you don't need to set this at all.
+* REPO_PROVIDER -> The provider of the container repos; currently allowed values are `aws` for ECR and `dockerhub` for Docker Hub.
 
 If you go to the Actions Tab, you might see a few workflow runs with green checkmarks. If so, you'll be re-running the
 `dev-deploy` workflow shortly; its initial run just ran a check to see if it should do a deployment based on 
