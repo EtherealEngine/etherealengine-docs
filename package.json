@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "cross-env NODE_OPTIONS=--max_old_space_size=8192 docusaurus start --port 2222",
+    "lint": "./node_modules/.bin/vale docs",
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -39,6 +40,7 @@
     "@docusaurus/module-type-aliases": "^3.1.1",
     "@docusaurus/tsconfig": "^3.1.1",
     "@docusaurus/types": "^3.1.1",
+    "@ocular-d/vale-bin": "^2.29.6",
     "@tsconfig/docusaurus": "1.0.7",
     "@types/node": "^20.10.3",
     "app-root-path": "^3.1.0",
