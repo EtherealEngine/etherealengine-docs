@@ -1,5 +1,6 @@
 ---
 title: Overview
+draft: true
 ---
 # Introduction
 <!--
@@ -12,6 +13,38 @@ This page should send them directly to the relevant `Become a ...` tutorial/guid
 <!--       https://dev.epicgames.com/community/fortnite/getting-started/verse -->
 <!--       https://dev.epicgames.com/community/fortnite/getting-started/creative -->
 <!--       docs.blender.org/ -->
+
+# Choose your Path
+We've roughly divided up Ethereal stakeholders into four kinds of roles:
+
+- **Users**:  
+  You want to participate in an ethereal engine experience and share it with your peers.  
+
+- **Creators**:  
+  You're a creative designer curating experiences for other people, creating a venue, stage or story for others to enjoy.  
+  The [Getting Started: Creator](/creator) guide is where you will want to start.
+
+- **Developers**:  
+  You're building tooling to empower creators to create powerful experiences. Here you have two choices:   
+  - [Getting Started: No-Code Developer](/developer/visualscript) guide.
+  - [Getting Started: Typescript Developer](/developer/typescript) guide.
+
+- **Hosts**:  
+  You're focused on installing Ethereal Engine itself, maintaining it, possibly scaling and devops as well to deliver a smooth experience for the users.  
+  The [Ethereal Engine Manual](/manual) is for you.
+
+As the reader you can think of this as your branching off point. Utimately you may take on all the roles, but even if you just read everything straight through it's helpful to think about a given role from a given stakeholder perspective.
+
+
+# Locations
+_This Section will give an overview of what Ethereal Engine's **Locations** are._
+
+# Features
+_This Section will give an overview of Ethereal Engine's features_
+
+# Frequently Asked Questions
+_This file will contain an Introductory FAQ._  
+_Each Manual has its own independent FAQ._
 
 # Ethereal Engine
 
@@ -68,12 +101,4 @@ export default config
 ## Stack Overview
 ![](./images/overview/stack.png)
 
-# Locations
-_This Section will give an overview of what Ethereal Engine's **Locations** are._
 
-# Features
-_This Section will give an overview of Ethereal Engine's features_
-
-# Frequently Asked Questions
-_This file will contain an Introductory FAQ._  
-_Each Manual has its own independent FAQ._

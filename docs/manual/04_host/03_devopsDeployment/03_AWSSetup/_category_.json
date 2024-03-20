@@ -1,8 +1,0 @@
-{
-  "label": "Ethereal Engine on AWS",
-  "position": 03,
-  "link": {
-    "type": "doc",
-    "id": "manual/host/devopsDeployment/AWSSetup/intro"
-  }
-}
