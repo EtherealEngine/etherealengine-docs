@@ -1,7 +1,8 @@
 ---
 sidebar_position: 00
+title: Typescript Developer
 ---
-# Become a Developer
+# Become a Typescript Developer
 Here you will learn everything that there is to know about programming with Typescript + Ethereal Engine.
 <!--
 TODO:

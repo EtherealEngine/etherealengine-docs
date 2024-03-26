@@ -1,7 +1,9 @@
 ---
 sidebar_position: 00
+title: Visualscript Developer
 ---
-# Become a Developer
+
+# Become a Visualscript Developer
 <!-- TODO: This page will contain an Introduction to the Developers Learning Site. -->
 In this section you will learn everything that there is to know about programming with Visualscript + Ethereal Engine.
 

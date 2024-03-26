@@ -2,7 +2,7 @@
 draft: true
 ---
 
-# Getting Started
+# QuickStart
 <!--
 TODO
 -->
