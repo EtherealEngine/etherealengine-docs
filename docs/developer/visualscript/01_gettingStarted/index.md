@@ -4,12 +4,6 @@ title: Getting Started
 
 # Getting Started with VisualScript
 <!-- TODO: Add pictures to this file -->
-<!--
-NOTE: This page should contain:
-- Hero Project: Showcase for Ethereal Engine's development tools and workflows.
-- Guide: Teaches a new user how to program the Hero Project and be comfortable with EE project development.
-- Segue: Lead the user into the VisualScript section of the Developer Manual.
--->
 _This guide will teach you how to get started programming with Ethereal Engine and VisualScript._  
 _Visit the [VisualScript: Introduction](/developer/visualscript) page for an overview of what VisualScript is._  
 <!-- TODO: Add VisualScript intro text as a mdx partial, instead of linking to the other page -->
