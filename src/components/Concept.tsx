@@ -149,7 +149,7 @@ const ConceptBlock = (props) => {
     <section className={Container}>
       <strong className={Title}>{props.title}</strong>{AfterTitle}<br />
       {props.children}
-    </section><br />
+    </section>
   </React.Fragment>)
 }
 
