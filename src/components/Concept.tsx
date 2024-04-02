@@ -77,6 +77,13 @@ export function addConcept(
   ConceptList.set(title, data)
 }
 
+/*
+ * @internal
+ * @description Returns the correct text for marking a Concept as essential or Non-Essential, based on the given {@param kind}
+ */
+function getEssentialText(kind :ConceptKind) {
+  return kind == ConceptKind.core ? "Essential" : (kind == ConceptKind.advanced) ? "Non-Essential" : "";
+}
 
 /*
  * @internal
@@ -99,7 +106,7 @@ const ConceptInlineTooltip = (props) => {
   // Description style
   const Description = "text-justify"
   // Figure out if the concept is essential or not, and add the text to the Top Section
-  const essentialText = props.kind == ConceptKind.core ? "Essential" : (props.kind == ConceptKind.advanced) ? "Non-Essential" : "";
+  const essentialText = getEssentialText(props.kind)
   // Render the Component
   return (<React.Fragment>
     <div className={Tooltip}>
@@ -108,7 +115,7 @@ const ConceptInlineTooltip = (props) => {
         <span className={Essential}>{essentialText}</span>
         <span className={Meta}>Type: <strong>{props.category} {props.kind} Concept </strong></span><br />
       </div>
-      <span className={Description}>{props.children}</span>
+      <span className={Description}>{props.children} {/* Description */}</span>
     </div>
   </React.Fragment>);
 }
@@ -128,7 +135,7 @@ const ConceptInline = (props) => {
         kind     = {props.kind}
         category = {props.category}
         >
-        {props.children}
+        {props.children} {/* Description */}
       </ConceptInlineTooltip>
     </span>
   </React.Fragment>);
@@ -142,13 +149,18 @@ const ConceptBlock = (props) => {
   // Text Content
   const AfterTitle   = ":  "
   // CSS
-  const Title        = "font-bold"
   const Container    = ""
+  const Title        = ""
+  const Meta         = "right-80 text-align-right text-sm"
+  const Essential    = "italic text-xs"
+  // Figure out if the concept is essential or not, and add the text to the Top Section
+  const essentialText = getEssentialText(props.kind)
   // Return the component HTML Fragment
   return (<React.Fragment>
     <section className={Container}>
-      <strong className={Title}>{props.title}</strong>{AfterTitle}<br />
-      {props.children}
+      <strong className={Title}>{props.title}</strong>{AfterTitle}
+      <i className={Essential}>&emsp;&emsp;{props.kind} {essentialText}</i>
+      {props.children} {/* Description */}
     </section>
   </React.Fragment>)
 }
@@ -171,11 +183,11 @@ const ConceptSelector = (props) => {
  */
 const UnknownConcept = (props) => {
   // Replace with Dummy text when omitted
-  const Title    = props.title ? props.title : Dummy.title
-  const Kind     = props.kind  ? props.kind  : Dummy.kind
+  const Title    = props.title    ? props.title    : Dummy.title
+  const Kind     = props.kind     ? props.kind     : Dummy.kind
   const Category = props.category ? props.category : Dummy.category
   const Body     = props.children ? props.children : Dummy.description
-  // Store the concept into `ConceptList` when it hasn't been yet, and `temporar=` is not set to true
+  // Store the concept into `ConceptList` when it hasn't been yet, and `temporary=` is not set to true
   if (!props.temporary && !ConceptList.has(Title)) addConcept(Title, Kind, Category, Body)
   // Return the component HTML Fragment
   return (<ConceptSelector title={Title} kind={Kind} category={Category} block={props.block}>{Body}</ConceptSelector>)
@@ -236,7 +248,7 @@ export const Concept = (props) => {
         block     = {props.block}
         temporary = {props.temporary}
         >
-        {props.children}
+        {props.children} {/* Description */}
       </UnknownConcept>
     );
   }
