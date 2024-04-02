@@ -186,9 +186,9 @@ const UnknownConcept = (props) => {
  */
 const KnownConcept = (props) => {
   // Replace with text from the ConceptList, based on the passed `title=` value
-  // TODO : FIXME: Massive hack.
-  //      : How to access Map fields by a string?
-  //      : They don't work for some reason :thinking:
+  // FIXME : Massive hack.
+  //       : How to access Map fields by a string?
+  //       : They don't work for some reason :thinking:
   // const Title    = ConceptList[props.title].Title
   // const Kind     = ConceptList[props.title].kind
   // const Category = ConceptList[props.title].category
