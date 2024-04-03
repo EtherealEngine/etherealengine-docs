@@ -2,6 +2,12 @@
 sidebar_label: State
 ---
 
+<!--
+TODO:
+This page should be introductory, but it has expanded too much.
+Most of these explanations/concepts should be moved to the /developer/typescript/state section.
+-->
+
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
 
 # State Management

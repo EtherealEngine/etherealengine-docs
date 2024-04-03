@@ -1,7 +1,16 @@
 ---
 sidebar_position: 00
 ---
-# Ethereal Engine Manual
-<!-- WARNING: This section will be de-personified. @todo: Remove the creator/general/etc categories. -->
-<!-- TODO: This page will contain an Introduction to the Manual Site. -->
-Learn everything that Ethereal Engine has to offer.
+
+# iR Engine Manual
+
+Use this Manual to learn how to use the iR Engine to develop real-time 3D web experiences. It covers installation instructions and guides you through the engine and its features.
+
+This site serves as a reference for understanding complex concepts and configurations for your projects. Learn about the engine's components and advanced settings to enhance your experience.
+
+## Guides and tutorials
+
+For specific tutorials and guides, refer to:
+
+- [Become a Creator](https://etherealengine.github.io/etherealengine-docs/creator): Tutorials for using the engine's **Studio** to build metaverse experiences.
+- [Typescript guides](https://etherealengine.github.io/etherealengine-docs/developer/typescript): Guides for developers using Typescript with the iR Engine.
