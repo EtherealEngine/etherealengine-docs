@@ -1,5 +1,31 @@
+import UI from '@site/docs/_partials/concepts/visualscript/ui.md'
+import Script from '@site/docs/_partials/concepts/visualscript/script.md'
+import Node from '@site/docs/_partials/concepts/visualscript/node.md'
+import Edges from '@site/docs/_partials/concepts/visualscript/edges.md'
+import DataType from '@site/docs/_partials/concepts/visualscript/dataType.md'
+import BestPractices from '@site/docs/_partials/concepts/visualscript/bestPractices.md'
+import Variables from '@site/docs/_partials/concepts/visualscript/variables.md'
+import Templates from '@site/docs/_partials/concepts/visualscript/templates.md'
+import Profiles from '@site/docs/_partials/concepts/visualscript/profiles.md'
+import CustomNodes from '@site/docs/_partials/concepts/visualscript/customNodes.md'
 
 import Concept1 from '@site/docs/_partials/concepts/visualscript/concept1.md'
+
+
+<!-- core -->
+<UI />
+<Script />
+<Node />
+<Edges />
+<DataType />
+<!-- advanced -->
+<BestPractices />
+<Variables />
+<Templates />
+<Profiles />
+<!-- mastery -->
+<CustomNodes />
+
 
 <Concept1 />
 <Concept1 />
