@@ -9,9 +9,6 @@ import Templates from '@site/docs/_partials/concepts/visualscript/templates.md'
 import Profiles from '@site/docs/_partials/concepts/visualscript/profiles.md'
 import CustomNodes from '@site/docs/_partials/concepts/visualscript/customNodes.md'
 
-import Concept1 from '@site/docs/_partials/concepts/visualscript/concept1.md'
-
-
 <!-- core -->
 <UI />
 <Script />
@@ -27,6 +24,9 @@ import Concept1 from '@site/docs/_partials/concepts/visualscript/concept1.md'
 <CustomNodes />
 
 
+<!-- FIXME: Remove -->
+import Concept1 from '@site/docs/_partials/concepts/visualscript/concept1.md'
+
 <Concept1 />
 <Concept1 />
 <Concept1 />
@@ -34,8 +34,7 @@ import Concept1 from '@site/docs/_partials/concepts/visualscript/concept1.md'
 <Concept1 />
 <Concept1 />
 
-<!--
-TODO: Concepts  (isolated from guided steps)
+<!-- Concepts List  (isolated from guided steps)
 
 # Core
 ## Visualscript UI

@@ -1,73 +1,81 @@
+import Studio from '@site/docs/_partials/concepts/creator/studio.md'
+import Assets from '@site/docs/_partials/concepts/creator/assets.md'
+import Components from '@site/docs/_partials/concepts/creator/components.md'
 
 import Concept1 from '@site/docs/_partials/concepts/creator/concept1.md'
 
+<Studio />
+<Assets />
+
+
+<!-- FIXME: Remove -->
+<!-- core -->
+<!-- advanced -->
+<Components />
 <Concept1 />
 <Concept1 />
-<Concept1 />
-<Concept1 />
+<!-- mastery -->
 <Concept1 />
 <Concept1 />
 
-<!--
-TODO:   (isolated from guided steps)
-## Essentials
-### Studio
-Studio: Dashboard : New UI -> Extended greatly
-Studio: Scene Management
-Studio: Project Management
-Studio: UI navigation
 
-### Assets
-Scene
-Scene Building
-Models Sourcing
-Skybox
-Skybox: Cubemap
-Skybox: Procedural
-## CMS
+
+
+<!-- Concepts List  (isolated from guided steps)
+# Core
+## Dashboard    <- (new)
+Project Management
+  Installing Projects
+  Scene Management
+Admin Panel
+Tutorial Tracks
+## Studio
+### Material Editor
+(viewer+editor)
+
+
+## Assets
+Prefabs	
+Kits
+Lights
+LookDev Presets  (name TBD)
+### Scripts
+- [ ] Animation Triggers
+  - [ ] (tut step) Move object
+  - [ ] (tut step) Scale object
+  - [ ] (tut step) Change color
+- [ ] (not yet) Animation Timeline
+  - [ ] Keying
+- [ ] URL redirect
+- [ ] Ecommerce
+### Lighting / Look Dev
+Environment Map
+Environment Map Baker
+Lightmaps
+Lightmaps Baker
+
+### CMS
+User Library
 Assets Packs  (Starter Packs/kits)
 Assets Panel
 Assets Panel Search
 Assets Panel Categories
+### Scene
+Scene Building
+Ground Plane
+#### Skybox
+Cubemap
+Time of Day (Procedural)
+### Optimization
+On Import
+On Publish
+Compression
+Dynamic Loading
+Variants & LODs
 
 
-
-## Content Creator Concepts
-- [ ] Technical-User Essentials
-  - [ ] Custom Assets Usage
-  - [ ] Importing (+compression)	
-  - [ ] Optimization
-    - [ ] Compression
-  - [ ] Animations
-  - [ ] Installing Projects
-  - [ ] Saving
-  - [ ] Sourcing Assets
-  - [ ] Sourcing & Creating Avatars
-  - [ ] Importing & Using Avatars
-  - [ ] Creating your User Library
-  - [ ] Animation Curves
-  - [ ] Animation triggers
-  - [ ] Animation Timeline
-  - [ ] Asset Prefabs	
-  - [ ] Look Dev
-  - [ ] Material Editor  (viewer+editor)
-    - [ ] Lightmaps + Baker
-- [ ] Optimization  (introduction/simple. Need to know it exists, reference to their guides)
-  - [ ] Variants & LODs
-  - [ ] Dynamic Loading
-  - [ ] Compression
-- [ ] ... #todo: other file types ...
-  - [ ] Image
-  - [ ] Video
-  - [ ] Audio
-  - [ ] Text
-- [ ] Important Components
-  - [ ] Camera
-  - [ ] Parameter component  (Visualscript)
-  - [ ] Animations
-
-### Non-Essentials
-#### Studio
+# Advanced
+## Studio
 - [ ] Snapping
 - [ ] Non-default UI layout
 - [ ] Gizmos
@@ -85,48 +93,54 @@ Assets Panel Categories
     - ...
 - [ ] Graphics Basics: Glossary and gamedev concepts
 
-#### Assets
-- [ ] Budgets: Not go over the limits, what are they
-- [ ] Custom Materials  (advanced skill)
-  - [ ] Editing
-  - [ ] Setting them up
+## Assets
+- [ ] Budgets
 - [ ] Optimization
   - [ ] Variants & LODs
   - [ ] Dynamic Loading
   - [ ] Compression
+### Web Formats
 - [ ] ee.GLTF + Extensions
   - [ ] Hierarchy
   - [ ] Model components
   - [ ] gltf vs glb
-- [ ] Other Files
-  - [ ] UVOL
-- [ ] Important Components
-
-#### Lighting / Look Dev
-- [ ] Environment Map + Baker
-
-#### Avatars
+- [ ] KTX
+- [ ] UVOL
+- [ ] Streaming (Video/Audio)
+### Important Components
+- [ ] Text
+- [ ] Camera
 - [ ] Animations
-- [ ] Mocap
+#### Model Component
+- [ ] Animations
+- [ ] Custom Materials  (Editing, Setting them up)
+#### Transform Component
+Origin Point
 
-### Mastery Toolkit   (looking behind the curtain)
-_(how to be fully independent and figure out anything without guidance)_
-- [ ] Parameter components
-- [ ] Project Management
+## Avatars
+- [ ] Emotes
+- [ ] Mocap
+- [ ] Custom Avatars  (currently hardcoded)
+
+
+# Mastery
+Project Management
   - [ ] GitHub Docs
   - [ ] Team sync tools
-- [ ] AI content creation
-  - [ ] Skyboxes
-  - [ ] 3D models
-  - [ ] Material creation
-- [ ] Creator Resources
-  - [ ] Links on DCC creation
-  - [ ] Links gamedev content
-- [ ] Model Checkers
-  - [ ] VRM model
-  - [ ] GLTF view
-- [ ] Bridging into Visualcript
+Model Checkers (websites)
+Visualscript
+GLTF hierarchies  (maybe: relationship to USD)
 
-### Manual
-- [ ] GLTF hierarchies  (maybe: relationship to USD)
+
+
+
+
+
+
+
+
+
+
+
+- [ ] Sourcing Assets, Avatars and Animations   (other people's assets)
 -->
