@@ -1,29 +1,30 @@
+import Dashboard from '@site/docs/_partials/concepts/creator/dashboard.md'
 import Studio from '@site/docs/_partials/concepts/creator/studio.md'
 import Assets from '@site/docs/_partials/concepts/creator/assets.md'
 import Components from '@site/docs/_partials/concepts/creator/components.md'
+import Avatars from '@site/docs/_partials/concepts/creator/avatars.md'
+import Mastery from '@site/docs/_partials/concepts/creator/mastery.md'
 
-import Concept1 from '@site/docs/_partials/concepts/creator/concept1.md'
+<!-- core -->
+<Dashboard />
 
+<!-- core and advanced -->
 <Studio />
 <Assets />
 
-
-<!-- FIXME: Remove -->
-<!-- core -->
-<!-- advanced -->
+<!-- advanced only -->
 <Components />
-<Concept1 />
-<Concept1 />
+<Avatars />
+
 <!-- mastery -->
-<Concept1 />
-<Concept1 />
+<Mastery />
 
 
 
 
 <!-- Concepts List  (isolated from guided steps)
 # Core
-## Dashboard    <- (new)
+## Dashboard    -> (new)
 Project Management
   Installing Projects
   Scene Management
@@ -130,17 +131,4 @@ Project Management
 Model Checkers (websites)
 Visualscript
 GLTF hierarchies  (maybe: relationship to USD)
-
-
-
-
-
-
-
-
-
-
-
-
-- [ ] Sourcing Assets, Avatars and Animations   (other people's assets)
 -->
