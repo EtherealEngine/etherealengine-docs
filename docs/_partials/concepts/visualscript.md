@@ -24,18 +24,8 @@ import CustomNodes from '@site/docs/_partials/concepts/visualscript/customNodes.
 <CustomNodes />
 
 
-<!-- FIXME: Remove -->
-import Concept1 from '@site/docs/_partials/concepts/visualscript/concept1.md'
-
-<Concept1 />
-<Concept1 />
-<Concept1 />
-<Concept1 />
-<Concept1 />
-<Concept1 />
 
 <!-- Concepts List  (isolated from guided steps)
-
 # Core
 ## Visualscript UI
 Visualscript Workspace Panel
