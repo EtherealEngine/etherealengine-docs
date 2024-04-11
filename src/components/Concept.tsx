@@ -1,4 +1,3 @@
-import Error from '@theme/Error';
 import React from 'react';
 import { clsx as mergex } from 'clsx'
 
@@ -232,10 +231,9 @@ const KnownConcept = (props) => {
 export const Concept = (props) => {
   if (ConceptList.has(props.title)) {
     // Assert that component properties other than the title are undefined
-    // TODO: How to do this properly?
-    if (props.kind) throw Error(null)
-    if (props.category) throw Error(null)
-    if (props.children) throw Error(null)
+    if (props.kind) throw Error("Tried to define a `.kind=` property for a concept that already exists: "+props.title)
+    if (props.category) throw Error("Tried to define a `.category=` property for a concept that already exists: "+props.title)
+    if (props.children) throw Error("Tried to define a `.description=` property for a concept that already exists: "+props.title)
     // Render the Concept from the known ConceptList
     return (<KnownConcept title={props.title} block={props.block}/>);
   } else {
