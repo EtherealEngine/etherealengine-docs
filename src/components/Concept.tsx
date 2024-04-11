@@ -182,36 +182,43 @@ const ConceptSelector = (props) => {
  */
 const UnknownConcept = (props) => {
   // Replace with Dummy text when omitted
-  const Title    = props.title    ? props.title    : Dummy.title
-  const Kind     = props.kind     ? props.kind     : Dummy.kind
-  const Category = props.category ? props.category : Dummy.category
-  const Body     = props.children ? props.children : Dummy.description
+  const Title       = props.title    ? props.title    : Dummy.title
+  const Kind        = props.kind     ? props.kind     : Dummy.kind
+  const Category    = props.category ? props.category : Dummy.category
+  const Description = props.children ? props.children : Dummy.description
   // Store the concept into `ConceptList` when it hasn't been yet, and `temporary=` is not set to true
-  if (!props.temporary && !ConceptList.has(Title)) addConcept(Title, Kind, Category, Body)
+  if (!props.temporary && !ConceptList.has(Title)) addConcept(Title, Kind, Category, Description)
   // Return the component HTML Fragment
-  return (<ConceptSelector title={Title} kind={Kind} category={Category} block={props.block}>{Body}</ConceptSelector>)
+  return (<ConceptSelector
+      title    = {Title}
+      kind     = {Kind}
+      category = {Category}
+      block    = {props.block}>
+    {Description}
+    </ConceptSelector>)
 }
 /*
  * @internal
  * @description Renders a Concept based on the data stored into `ConceptList` for the given `title=` property
  */
 const KnownConcept = (props) => {
-  // Replace with text from the ConceptList, based on the passed `title=` value
-  // FIXME : Massive hack.
-  //       : How to access Map fields by a string?
-  //       : They don't work for some reason :thinking:
-  // const Title    = ConceptList[props.title].Title
-  // const Kind     = ConceptList[props.title].kind
-  // const Category = ConceptList[props.title].category
-  // const Body     = ConceptList[props.title].description
-  let fixme :ConceptData
-  ConceptList.forEach((value: ConceptData, key: string) => { if (key == props.title) fixme = value });
-  const Title    = fixme.title
-  const Kind     = fixme.kind
-  const Category = fixme.category
-  const Body     = fixme.description
-  // END: End of the hack
-  return (<ConceptSelector title={Title} kind={Kind} category={Category} block={props.block}>{Body}</ConceptSelector>)
+  // Access the data from the ConceptList, based on the passed `title=` value
+  //
+  // Get the Data: Map[key] with !Element check
+  // const data = ConceptList[props.title]  // <--- For some reason, this sometimes gives invalid data
+  // if (!data) return // <--- This line stops the page from crashing, but also fails to render the component correctly
+  //
+  // Get the Data: foreach
+  // @note For some reason, this is the only reliable option that never fails to access the data.
+  let data :ConceptData
+  ConceptList.forEach((value: ConceptData, key: string) => { if (key == props.title) data = value });
+  return (<ConceptSelector
+      title    = {data.title}
+      kind     = {data.kind}
+      category = {data.category}
+      block    = {props.block}>
+    {data.description}
+    </ConceptSelector>)
 }
 
 
