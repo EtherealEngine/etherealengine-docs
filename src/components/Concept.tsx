@@ -94,7 +94,7 @@ const ConceptInlineTooltip = (props) => {
   const Visibility = "opacity-0 peer-hover:opacity-100" // Make it visible only when peer (aka the Inline Text) is hovered.
   const Transition = "transition-opacity"
   const Text       = "text-sm"
-  const Shape      = "rounded-md"
+  const Shape      = "rounded-md max-w-prose"
   const BG         = "bg-blue-800"
   const Tooltip    = mergex(Align, Visibility, Transition, Text, Align, Shape, BG)
   // Top Section Style
