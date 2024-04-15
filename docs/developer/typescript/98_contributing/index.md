@@ -9,17 +9,6 @@ import Translate from '@site/docs/_partials/contributing/translate.md'
 import Donate from '@site/docs/_partials/contributing/donate.md'
 
 # Get Involved
-<!--
-TODO List of things to contribute:   (This page should explain all of them)
-- TODO:extend: Participate in the community
-- TODO:extend: Create projects and host your own worlds
-- TODO:extend: Get involved with the engine's development
-  - Contribute code
-  - Testing and reporting issues
-- Contribute to the documentation
-- TODO: Contribute translations
-- TODO: Donate
--->
 <Intro />
 
 ## Participate in the community
