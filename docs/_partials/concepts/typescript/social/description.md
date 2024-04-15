@@ -4,6 +4,7 @@ import { Concept } from '@site/src/components/Concept'
   title = "Social System"
   kind  = "Advanced"
   block = {true}>
+This is a dummy description for `concepts/typescript/social/description.md`.
 Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.  
 </Concept>
 
