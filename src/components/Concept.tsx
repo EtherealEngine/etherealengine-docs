@@ -238,9 +238,12 @@ const KnownConcept = (props) => {
 export const Concept = (props) => {
   if (ConceptList.has(props.title)) {
     // Assert that component properties other than the title are undefined
-    if (props.kind) throw Error("Tried to define a `.kind=` property for a concept that already exists: "+props.title)
-    if (props.category) throw Error("Tried to define a `.category=` property for a concept that already exists: "+props.title)
-    if (props.children) throw Error("Tried to define a `.description=` property for a concept that already exists: "+props.title)
+    //@TODO:
+    // Turn this into a compile-time assertion, if posssible    https://github.com/facebook/docusaurus/discussions/10046
+    // Docusaurus gets confused and triggers this incorrectly when clicking on a title/table-of-contents hyperlink
+    // if (props.kind) throw Error("Tried to define a `.kind=` property for a concept that already exists: "+props.title)
+    // if (props.category) throw Error("Tried to define a `.category=` property for a concept that already exists: "+props.title)
+    // if (props.children) throw Error("Tried to define a `.description=` property for a concept that already exists: "+props.title)
     // Render the Concept from the known ConceptList
     return (<KnownConcept title={props.title} block={props.block}/>);
   } else {
