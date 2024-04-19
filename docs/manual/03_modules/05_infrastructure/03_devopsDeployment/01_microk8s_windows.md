@@ -324,7 +324,7 @@ export REGISTRY_HOST=microk8s.registry; export MYSQL_HOST=kubernetes.docker.inte
 export MYSQL_HOST=localhost
 npm run dev-docker
 npm run dev-reinit
-npm run install-projects
+npx ts-node --swc scripts/install-projects.js
 ```
 
 The script builds the full-repo Docker image using several build arguments. Vite, which builds he client files, uses some information from the MariaDB database created for microk8s deployments to fill in some variables, and needs database credentials. The script will supply default values for all of the MYSQL_* variables if they are not provided to the script, as well as VITE_CLIENT_HOST, VITE_SERVER_HOST, and VITE_INSTANCESERVER_HOST. The latter three will make your microk8s deployment accessible on `(local/api-local/instanceserver-local).etherealengine.org`; if you want to run it on a different domain, then you'll have to set those three environment variables to what you want them to be (and also change the hostfile records you made pointing those subdomains)
