@@ -10,11 +10,11 @@ This guide details the installation process for the iR Engine on macOS devices.
 
 ## Prerequisites
 
-Before starting the installation, ensure you have the following tools installed on your system:
+Ensure you have the following tools installed on your system before starting the installation:
 
+- [Homebrew](https://brew.sh/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [nvm (Node Version Manager)](https://github.com/nvm-sh/nvm)
-- [Homebrew](https://brew.sh/)
 - [Python 3](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installation/)
 
@@ -30,13 +30,13 @@ First, generate a copy of the project by cloning the repository and navigate to 
 2. Clone the repository by running:
 
    ```bash
-   git clone https://github.com/EtherealEngine/etherealengine-docs.git
+   git clone https://github.com/EtherealEngine/etherealengine.git
    ```
 
 3. Navigate to the directory of the cloned repository:
 
    ```bash
-   cd etherealengine-docs
+   cd etherealengine
    ```
 
 ### Step 2: Set up environment variables
