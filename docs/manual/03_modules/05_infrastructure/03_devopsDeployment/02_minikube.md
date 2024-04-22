@@ -143,7 +143,8 @@ When minikube is running, run the following command from the root of the Etherea
 export MYSQL_HOST=localhost
 npm run dev-docker
 npm run dev-reinit
-npm run install-projects
+npx ts-node --swc scripts/install-projects.js
+export MYSQL_HOST=host.minikube.internal
 ```
 
 This points Docker *in the current terminal* to minikube's Docker environment. Anything that Docker builds

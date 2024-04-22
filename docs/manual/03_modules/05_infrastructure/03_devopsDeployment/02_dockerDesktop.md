@@ -95,7 +95,7 @@ When docker desktop's Kubernetes cluster is running, run the following command f
 export MYSQL_HOST=localhost
 npm run dev-docker
 npm run dev-reinit
-npm run install-projects
+npx ts-node --swc scripts/install-projects.js
 ```
 
 The script builds the full-repo Docker image using several build arguments. Vite, which builds

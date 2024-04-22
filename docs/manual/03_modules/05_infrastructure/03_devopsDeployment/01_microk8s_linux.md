@@ -242,7 +242,7 @@ Run the following command from the root of the Ethereal Engine repository after 
 > export MYSQL_HOST=localhost
 > npm run dev-docker
 > npm run dev-reinit
-> npm run install-projects
+> npx ts-node --swc scripts/install-projects.js
 > ```
 
 This _build_microK8s_ script will build an image of the entire Ethereal Engine repository into a single Docker file.
