@@ -133,8 +133,127 @@ export const footer = {
   ]
 }
 
+
 /**
- * @description Ethereal Engine specific options
+ * @description Engine specific options
  */
-export const VisualscriptName :string= 'Behave Graph'
+export const VisualscriptName :string= 'VisualScript'
+
+
+/**
+ * @description Color Options: Global
+ */
+export const GlobalColors = {
+  first  : "bg-blue-500",
+  second : "bg-pink-500",
+  third  : "bg-teal-500",
+  fourth : "bg-neutral-800",
+}
+
+
+/**
+ * @description Color Options: Personas
+ */
+export const Colors = {
+  creator      : GlobalColors.first,
+  visualscript : GlobalColors.second,
+  typescript   : GlobalColors.third,
+  manual       : GlobalColors.fourth,
+}
+
+
+/**
+ * @description Landing Page options
+ */
+export const LandingPageData = {
+  hero: {
+    title: { l1: "Learn", l2: "Ethereal Engine" },
+    image: "bg-[url('@site/static/images/landing/hero.jpg')]",
+    CTAs : {
+      creator: {
+        render : false, // Whether the Persona data will be rendered on the Hero section or not
+        color  : Colors.creator,
+        title  : { top: "Become a", mid: "Creator", bot: { l1: "", l2: "" } },
+        link   : "creator",
+      },
+      visualscript: {
+        render : false, // Whether the Persona data will be rendered on the Hero section or not
+        color  : Colors.visualscript,
+        title  : { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Visualscript" } },
+        link   : "developer/visualscript",
+      },
+      typescript: {
+        render : true, // Whether the Persona data will be rendered on the Hero section or not
+        color  : Colors.typescript,
+        title  : { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Typescript" } },
+        link   : "developer/typescript",
+      },
+      manual: {
+        render : true, // Whether the Persona data will be rendered on the Hero section or not
+        color  : Colors.manual,
+        title  : { top: "Open the", mid: "Manual", bot: { l1: "", l2: "" } },
+        link   : "manual",
+      },
+    },
+  },
+  personas: {
+    title       : "Choose your Path",
+    description : `
+    The Ethereal Learning Journeys are guided learning experiences that will help you become an expert at creating Immersive Web Experiences using Ethereal Engine.
+    At the end of your journey you will have gained all the skills that you need to create the project of your dreams.
+    `,
+    creator: {
+      render      : false, // Whether the Persona data will be rendered on the personaCTAs section or not
+      link        : "creator",
+      rightSide   : false,
+      color       : Colors.creator,
+      image       : "bg-[url('@site/static/images/landing/creator1.jpg')]",
+      label       : "Learning Path",
+      title       : "Content Creator",
+      description : `
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      `,
+    },
+    visualscript: {
+      render      : false, // Whether the Persona data will be rendered on the personaCTAs section or not
+      link        : "developer/visualscript",
+      rightSide   : true,
+      color       : Colors.visualscript,
+      image       : "bg-[url('@site/static/images/landing/visualscript1.jpg')]",
+      label       : "Learning Path",
+      title       : "Developer with Visualscript",
+      description : `
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      `,
+    },
+    typescript: {
+      render      : true, // Whether the Persona data will be rendered on the personaCTAs section or not
+      link        : "developer/typescript",
+      rightSide   : false,
+      color       : Colors.typescript,
+      image       : "bg-[url('@site/static/images/landing/typescript1.jpg')]",
+      label       : "Learning Path",
+      title       : "Developer with Typescript",
+      description : `
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      `,
+    },
+    manual: {
+      render      : true, // Whether the Persona data will be rendered on the personaCTAs section or not
+      link        : "manual",
+      rightSide   : true,
+      color       : Colors.manual,
+      image       : "bg-[url('@site/static/images/landing/manual1.jpg')]",
+      label       : "Open the",
+      title       : "Reference Manual",
+      description : `
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
+      `,
+    },
+  }
+}
 
