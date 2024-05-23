@@ -7,9 +7,9 @@
 /**
  * @description General Variables
  */
-const OrgFullName     = 'Ethereal Engine'
+const OrgFullName     = 'iR Engine'
 const OrgName         = 'etherealengine'
-const ProjectFullName = 'Ethereal Engine'
+const ProjectFullName = 'iR Engine'
 const ProjectName     = 'etherealengine'
 const GHUsername      = 'EtherealEngine'
 const GHDocsName      = `${ProjectName}-docs`
@@ -59,7 +59,7 @@ export const site = {
   title       : `${org.project.name} Docs`,
   tagline     : org.project.description,
   icon        : 'img/favicon.ico',
-  description : `Learn how to use ${org.project.name}.`,
+  description : `Learn to use the iR Engine.`,
 }
 
 /**

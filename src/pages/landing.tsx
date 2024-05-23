@@ -14,27 +14,27 @@ import Personas from './_landing/section/personas.tsx'
 
 export const LandingPageData = {
   hero: {
-    title: { l1: "Learn", l2: "Ethereal Engine" },
+    title: { l1: "iR Engine", l2: "Documentation" },
     image: "bg-[url('@site/static/images/landing/hero.jpg')]",
     CTAs : {
       creator: {
         color: Colors.creator,
-        title: { top: "Become a", mid: "Creator", bot: { l1: "", l2: "" } },
+        title: { top: "Guides for", mid: "Content Creators", bot: { l1: "", l2: "" } },
         link: "creator",
       },
       visualscript: {
         color: Colors.visualscript,
-        title: { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Visualscript" } },
+        title: { top: "Guides for", mid: "VisualScript", bot: { l1: "", l2: "Developers" } },
         link: "developer/visualscript",
       },
       typescript: {
         color: Colors.typescript,
-        title: { top: "Become a", mid: "Developer", bot: { l1: "with", l2: "Typescript" } },
+        title: { top: "Guides for", mid: "TypeScript", bot: { l1: "", l2: "Developers" } },
         link: "developer/typescript",
       },
       manual: {
         color: Colors.manual,
-        title: { top: "Open the", mid: "Manual", bot: { l1: "", l2: "" } },
+        title: { top: "Reference", mid: "Manual", bot: { l1: "for technical users", l2: "" } },
         link: "manual",
       },
     },
