@@ -12,7 +12,7 @@ workflow to register a domain name.
 
 ### Create Route 53 Hosted Zone
 In the AWS web client, go to Route 53. Make a hosted zone for the domain you plan to use for
-your setup of Ethereal Engine. You'll be coming back here later to create DNS records.
+your setup of iR Engine. You'll be coming back here later to create DNS records.
 
 Open the Hosted zone, then click on 'Hosted zone details' to see more information. The value 'Hosted zone id'
 is used in the dev/prod.values.yaml file for 'ROUTE53_HOSTED_ZONE_ID'

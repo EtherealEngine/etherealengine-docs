@@ -21,7 +21,7 @@ const spawnAction = defineAction({
 ```
 
 ## State
-Ethereal Engine uses an 'event sourced state' paradigm for networking. That means that as a developer you publish an event and that event is performed by all instances simultaneously.
+iR Engine uses an 'event sourced state' paradigm for networking. That means that as a developer you publish an event and that event is performed by all instances simultaneously.
 
 Typically actions are going to affect state. For this example we will declare that we're going to allow any number of objects, each with their own appearance. We define state in a React like way like so:
 

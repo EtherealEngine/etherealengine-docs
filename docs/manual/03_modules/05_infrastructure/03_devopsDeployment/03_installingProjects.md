@@ -20,12 +20,12 @@ the stack (with `npm run dev`).
 
 Projects can also be installed and managed from the /admin/projects route. You must be
 an admin and must have a linked GitHub account, which can be attained by having your
-GitHub account linked to your Ethereal Engine account by signing in via GitHub.
+GitHub account linked to your iR Engine account by signing in via GitHub.
 (You do not need to have most recently signed in via GitHub, you just have to have
 linked your GH account at some point)
 
 See [the section 'How to set up GitHub to install external projects'](./setupGithubOAuth)
-for instructions on creating an OAuth app from GitHub, installing it into an Ethereal Engine deployment,
+for instructions on creating an OAuth app from GitHub, installing it into an iR Engine deployment,
 and authorizing it to have access to your GitHub organizations.
 
 Click the 'Add Project' button:
@@ -116,7 +116,7 @@ in the storage provider, and are downloaded anew by a client each time the scene
 scenes will always be immediately available. The act of saving a project will clear any cached version
 of the scene's static files, so the client will get the new version.
 
-Additionally, if you want to update the core Ethereal Engine code, you will also need to re-run the builder
+Additionally, if you want to update the core iR Engine code, you will also need to re-run the builder
 process with the new version of the code.
 
 In a production environment, click on the button `Update Engine/Rebuild`. A drawer will open with

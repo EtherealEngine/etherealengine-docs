@@ -28,23 +28,23 @@ TODO List of things to contribute:   (This page should explain all of them)
 ## Create and Host your own worlds
 <Host />
 
-## Promote Ethereal Engine
+## Promote iR Engine
 <Promote />
 
-## Contribute to Ethereal Engine's development
+## Contribute to iR Engine's development
 <Develop />
 
 ## Testing and reporting issues
 <Test />
 
-## Contribute to Ethereal Engine's documentation
+## Contribute to iR Engine's documentation
 <Documentation />
 
-## Translate Ethereal Engine
+## Translate iR Engine
 <Translate />
 
 <!--
 TODO
-## Donate to Ethereal Engine
+## Donate to iR Engine
 -->
 
