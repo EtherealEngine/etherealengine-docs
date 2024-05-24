@@ -2,8 +2,8 @@ import AcceptCertificates from '../../_partials/acceptCertificates.md'
 
 # Advanced Setup
 
-The advanced setup is recommended for users who want to understand the internals of how the Ethereal Engine's deployment stack works.
-These instructions will explain how to manually setup Ethereal Engine docker instances, client, server and/or instance-server.  
+The advanced setup is recommended for users who want to understand the internals of how the iR Engine's deployment stack works.
+These instructions will explain how to manually setup iR Engine docker instances, client, server and/or instance-server.  
 
 ## 1. Install dependencies
 ```bash
@@ -15,7 +15,7 @@ _Note how you don't need to use sudo for any of these commands._
 > If you find errors with mediasoup:
 > - Follow the [Mediasoup Installation](https://mediasoup.org/documentation/v3/mediasoup/installation/) instructions
 > - Check that your version of python is up to date: `python --version`
-> - Make sure that the path where you installed Ethereal Engine has no whitespaces
+> - Make sure that the path where you installed iR Engine has no whitespaces
 
 ## 2. Start the MySQL database
 Make sure you have a MySQL database installed and running. Our recommendation is `MariaDB`.

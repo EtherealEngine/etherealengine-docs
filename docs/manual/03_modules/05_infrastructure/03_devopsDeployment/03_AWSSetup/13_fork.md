@@ -1,6 +1,6 @@
 # GitHub Fork
-## Create GitHub fork of Ethereal Engine repository.
-The Ethereal Engine codebase is most easily deployed by forking it and configuring some Secrets so that the included GitHub
+## Create GitHub fork of iR Engine repository.
+The iR Engine codebase is most easily deployed by forking it and configuring some Secrets so that the included GitHub
 Actions can run the deployment for you. You can run all of the commands that the `<dev/prod>`-deploy action runs manually
 if you so choose, and in that case, you don't need to fork the GH repo.
 

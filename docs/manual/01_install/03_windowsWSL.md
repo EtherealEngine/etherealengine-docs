@@ -66,8 +66,8 @@ You can verify your Node version with the command: `node --version`.
 
 <MakeUbuntu />
 
-## Clone Ethereal Engine repo to your local machine
-Clone Ethereal Engine repo on your machine by running the following command from your WSL Ubuntu terminal:
+## Clone iR Engine repo to your local machine
+Clone iR Engine repo on your machine by running the following command from your WSL Ubuntu terminal:
 <CloneInstructions />
 
 Change directory to the location where `etherealengine` repository is cloned with:
@@ -75,7 +75,7 @@ Change directory to the location where `etherealengine` repository is cloned wit
 pwd                 # Prints the current working directory
 cd etherealengine   # Change directory to `etherealengine`
 ```
-If an `.env.local` file does not exist in the root of your Ethereal Engine repository folder, then create it by duplicating the `.env.local.default` file:
+If an `.env.local` file does not exist in the root of your iR Engine repository folder, then create it by duplicating the `.env.local.default` file:
 ```bash
 cp .env.local.default .env.local
 ```
@@ -86,7 +86,7 @@ npm install
 ```
 
 > Note: If you find issues related to `mediasoup` when running `npm install`, then:
-> - Remove the `mediasoup` package from `packages/instanceserver/package.json` file of Ethereal Engine's source code.
+> - Remove the `mediasoup` package from `packages/instanceserver/package.json` file of iR Engine's source code.
 > - Run `npm install` again.
 > - Run: `npm install mediasoup@3 -w @etherealengine/instanceserver`
 
@@ -97,11 +97,11 @@ npm run dev-reinit
 ```
 
 ## Start the Engine
-Run the Ethereal Engine's stack with:
+Run the iR Engine's stack with:
 ```bash
 npm run dev
 ```
-If everything went well, you will now be able to open Ethereal Engine in your browser by navigating to [this link](https://localhost:3000/location/default).  
+If everything went well, you will now be able to open iR Engine in your browser by navigating to [this link](https://localhost:3000/location/default).  
 
 ## Accept Certificates
 <AcceptCertificates />

@@ -1,5 +1,5 @@
 # Locations
-The Locations page provides a tool to add new locations and list all existing locations of an Ethereal Engine's deployment.
+The Locations page provides a tool to add new locations and list all existing locations of an iR Engine's deployment.
 
 ![](./images/locations/list.png)
 ## Location Table

@@ -1,5 +1,5 @@
 # Recordings
-This page provides a tool to manage the Motion Capture (Mocap) recordings of the Ethereal Engine deployment.
+This page provides a tool to manage the Motion Capture (Mocap) recordings of the iR Engine deployment.
 
 ![](./images/recordings/list.png)
 

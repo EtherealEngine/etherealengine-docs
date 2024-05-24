@@ -1,5 +1,5 @@
 ## Create EKS cluster with four nodegroups
-You first need to set up an EKS cluster for Ethereal Engine to run on.
+You first need to set up an EKS cluster for iR Engine to run on.
 While this can be done via AWS' web interface, the ```eksctl``` CLI 
 will automatically provision more of the services you need automatically,
 and is thus recommended.
@@ -30,13 +30,13 @@ If you name it something else, be sure to change the NodeAffinity in the configu
 nodegroups that will be created for various services to run on.
 
 Make sure to increase the maximum node limit, as by default target, minimum, and maximum are
-set to 2, and Ethereal Engine's setup will definitely need more than two nodes if you've configured
+set to 2, and iR Engine's setup will definitely need more than two nodes if you've configured
 them to use relatively small instance types such as t3a.medium.
 
 #### Enable EBS CSI Addon (if EKS version is 1.23 or later)
 Follow the instructions [here](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html)
 to enable an EKS addon that's required for any cluster that will have Persistent Volumes, which an
-Ethereal Engine deployment cluster will.
+iR Engine deployment cluster will.
 
 #### Install Cluster Autoscaler (optional)
 
@@ -93,8 +93,8 @@ The default subnets should be fine, so hit Next, review everything, and click Cr
 
 #### Create nodegroup for builder
 
-The full Ethereal Engine stack needs a builder server within the cluster in order to bundle and build
-Ethereal Engine projects into the codebase that will be deployed. This should run on its own nodegroup
+The full iR Engine stack needs a builder server within the cluster in order to bundle and build
+iR Engine projects into the codebase that will be deployed. This should run on its own nodegroup
 that has a single node - only one copy of the builder should ever be running at a time, and
 due to the high memory needs of building the client service, a box with >8 GB of RAM is needed.
 
@@ -106,7 +106,7 @@ for this nodegroup. Click Next.
 On the second page, you can change the Capacity Type to `Spot` if you want to in order to save money; the builder
 service will likely not be running very often or for too long, so the odds of it getting interrupted by Spot instance
 outages are low, and it can always re-build if that does happen. Set the Disk Size to 50 GB; it takes a good deal of
-disk space to install and build the Ethereal Engine codebase, and the default 20 GB will almost certainly not be enough.
+disk space to install and build the iR Engine codebase, and the default 20 GB will almost certainly not be enough.
 
 For Instance Types, you need to only select types that have more than 8 GB; t3a.xlarge are the cheapest that fit
 this criteria. If you were to pick something with 8GB, it's highly likely that most builds would crash the node,

@@ -56,7 +56,7 @@ npm run dev-docker
 npm run dev-reinit
 npm run dev
 ```
-Now run Ethereal Engine in your browser by navigating to [this link](https://localhost:3000/location/default).  
+Now run iR Engine in your browser by navigating to [this link](https://localhost:3000/location/default).  
 
 ### Accept Certificates
 <AcceptCertificates />
@@ -66,7 +66,7 @@ You can administrate many features from the admin panel found at the `/admin` ro
 _eg: `https://localhost:3000/admin` when working in a local deployment._
 
 To give administration rights to a user:
-- Open any page in your Ethereal Engine deployment
+- Open any page in your iR Engine deployment
 - Open the user menu _(icon at the top-right of the screen)_
 - Click on `Show API key`
 - Copy that key to your clipboard _(note: there is an icon to the right of this box for this purpose)_
