@@ -1,7 +1,7 @@
 # Frequently Asked Questions
 
 ## Is it free to use?
-Ethereal is a general purpose engine and platform that can be used by creators to provide access to fully customizable experiences.
+iR Engine is a general purpose engine and platform that can be used by creators to provide access to fully customizable experiences.
 
 The engine itself is open source, under a `CPAL` license. Anyone can host iR Engine for free in their own device.
 
