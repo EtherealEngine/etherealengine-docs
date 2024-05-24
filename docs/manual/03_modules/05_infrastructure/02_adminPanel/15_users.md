@@ -3,7 +3,7 @@
 - **User ID**: Unique ID of the selected User.
 - **Name**: Human-readable name of the selected User. Could contain a #NUMBER postfix to differentiate its name from other users with the same name. _(eg: Guest#234)_
 - **Avatar**: Unique ID of the avatar that the selected User is currently using.
-- **Linked Accounts**: Which external OAuth accounts the selected user has connected to his iR Engine deployment account.
+- **Linked Accounts**: Which external OAuth accounts the selected user has connected to their iR Engine deployment account.
 - **Is Guest**: Whether the selected User is a Guest or Registered.
 - **Invite Code**: Currently active invite code of the selected User.
 - **Action**:  
