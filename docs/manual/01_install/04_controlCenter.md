@@ -241,7 +241,7 @@ This section shows various actions that can be activated on the currently select
   It will be disabled and have a spinner in it when a configuration is already running.
 
 - **Launch Button**: ![Launch Button](../images/controlCenter/options-panel-launch.jpg)  
-  This button will open iR Engine's default location in your browser as [discussed](#5-launch-ethereal-engine) later.
+  This button will open iR Engine's default location in your browser as [discussed](#5-launch-ir-engine) later.
 
 ### 3.4. System Status
 This section will show whether or not the system requirements are currently met.  
