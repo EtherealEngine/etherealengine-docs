@@ -69,10 +69,10 @@ Global State in React is any State that can be shared between Components.
 Its purpose is being able to share updatable variables between multiple components. (eg: Accessing a variable from a child component several levels down the component tree) without having to pass their data from component to component _(called "prop-drilling")_.  
 
 React provides the [`Context`](https://react.dev/learn/passing-data-deeply-with-context) API for this exact purpose.  
-But, as we will explore in a moment, `Hookstate` and Ethereal Engine's `Hyperflux` are much better ways to manage the state of our project.  
+But, as we will explore in a moment, `Hookstate` and iR Engine's `Hyperflux` are much better ways to manage the state of our project.  
 
-## Managing State in Ethereal Engine
-There are multiple ways to keep track of state in Ethereal Engine:
+## Managing State in iR Engine
+There are multiple ways to keep track of state in iR Engine:
 - Manually maintaining the value of a variable
 - A state variable with `Hyperflux`
 - A reactor mount with `useEffect`
@@ -82,7 +82,7 @@ As you saw, we are fully responsible of book-keeping the values contained in the
 There are also strict limitations on what these values can be used for.  
 <!-- TODO: Describe what the limitations of module scope variables are -->
 
-### Ethereal Engine's Hyperflux
+### iR Engine's Hyperflux
 
 #### Hookstate
 Hookstate is a tool created to simplify state management in React applications.
@@ -95,7 +95,7 @@ The variable returned from `useState` will have:
 3. `merge()` method: Allows us to combine the current data with new data in an ergonomic way
 
 #### Hyperflux
-Ethereal Engine provides a group of functions to manage state asynchronously.  
+iR Engine provides a group of functions to manage state asynchronously.  
 
 ### `useEffect`
 We want to do some sort of side-effect whenever something happens.  

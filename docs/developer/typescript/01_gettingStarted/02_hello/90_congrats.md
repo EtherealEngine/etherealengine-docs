@@ -5,14 +5,14 @@ title: What's Next
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # 🎉 Congratulations! 🎉
-You have just learned the minimal basics of working with Ethereal Engine using Typescript!  
+You have just learned the minimal basics of working with iR Engine using TypeScript!  
 
 This was an introductory tutorial to teach you the core essentials of the engine as quickly as possible.  
-But Ethereal Engine has a lot of features to explore!
+But iR Engine has a lot of features to explore!
 
 ## What's Next?
 #### Beginner
-If this is your first time using Ethereal Engine, we have prepared an [Ethereal Engine Basics](/developer/typescript/basics) tutorial for you.  
+If this is your first time using iR Engine, we have prepared an [iR Engine Basics](/developer/typescript/basics) tutorial for you.  
 It will teach you how to start expanding your knowledge of the engine without getting overwhelmed by its complexity.  
 Go to the bottom of this page, and click on "Next" to continue with your learning journey!
 
@@ -24,7 +24,7 @@ Make sure to skim-read the basics section at least once, as it gives an overview
 :::
 
 #### Advanced
-The [Manual](/manual) is where Ethereal Engine is presented in all of its complexity, without any guard-rails or hand-holding.  
+The [Manual](/manual) is where iR Engine is presented in all of its complexity, without any guard-rails or hand-holding.  
 You will also find the [Reference API](https://etherealengine.github.io/etherealengine-docs/api) really useful when writing the code of your application.  
 :::note[Advanced Note]
 Make sure to read the `Mastery Toolkit` section at least once.  

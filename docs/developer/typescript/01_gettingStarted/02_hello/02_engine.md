@@ -4,9 +4,9 @@ sidebar_label: The Engine
 import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
-# Working with Ethereal Engine
-You will need three very important steps for creating a project with Ethereal Engine:
-1. Installing Ethereal Engine
+# Working with iR Engine
+You will need three very important steps for creating a project with iR Engine:
+1. Installing iR Engine
 2. Installing (or creating) a project
 3. Modify and run the source code of your project
 
@@ -21,8 +21,8 @@ Whether you followed the Quickstart guide for Ubuntu, or installed the engine wi
 You don't need to understand either of them to get started. This guide will teach you what to do every time they are needed.  
 Just remember that they are used a lot to work with the engine locally.
 
-## Installing and running Ethereal Engine 
-Ethereal Engine is a web application.  
+## Installing and running iR Engine 
+iR Engine is a web application.  
 Just like any other web application, it needs to be run in a server. And that server will provide access to the engine remotely to anyone with access to its address.
 
 We will eventually learn how to work with "deployed" versions of the engine.  
@@ -32,11 +32,11 @@ That's exactly what the Quickstart installation guide automated for us.
 As the `localhost` part of the URL indicates, we are running a `local` version of the engine.  
 
 ## Installing and running projects
-Ethereal Engine can be **extended** with projects.
+iR Engine can be **extended** with projects.
 They are equivalent to the concept of "projects" in other engines, except they are modular like npm packages _(they are npm packages too)_.
 
 The engine scans for projects mounted in the `/packages/projects/projects` sub-folder.  
-This means that we can install and run new projects by executing the following commands inside our Ethereal Engine installation folder:
+This means that we can install and run new projects by executing the following commands inside our iR Engine installation folder:
 ```bash
 git clone https://github.com/EtherealEngine/ee-tutorial-hello packages/projects/projects/ee-tutorial-hello
 npm run dev
@@ -72,9 +72,9 @@ This will become very important later on in this guide.
 :::
 
 
-## Programming with Ethereal Engine
+## Programming with iR Engine
 There are two very important steps to take in order to connect the source code of our project to the engine:
-- We need to import some Ethereal Engine's modules
+- We need to import some iR Engine's modules
 - We need to export our code so the engine can run it 
 
 ### Project Configuration File
@@ -114,7 +114,7 @@ import { TransformComponent } from '@etherealengine/spatial/src/transform/compon
 import { PrimitiveGeometryComponent } from '@etherealengine/engine/src/scene/components/PrimitiveGeometryComponent'
 ```
 We will be adding these Components to our Entity, and Components are part of the ECS pattern.  
-As such, we will need to use the Ethereal Engine ECS management functions.  
+As such, we will need to use the iR Engine ECS management functions.  
 The engine provides a convenient way to import all ECS related functions at once through the `ECS` [namespace](https://www.typescriptlang.org/docs/handbook/namespaces.html).
 ```ts title="ee-tutorial-hello/src/Hello.ts"
 import { ECS } from '@etherealengine/ecs'
@@ -153,9 +153,9 @@ GeometryTypeEnum.CylinderGeometry
 > But you can just refresh the webpage when you update your source code and the engine will load your changes correctly.  
 
 :::note
-`VSCode` is the recommended editor for programming with Ethereal Engine.  
+`VSCode` is the recommended editor for programming with iR Engine.  
 It is not required, but it is highly recommended.  
-VSCode has support for some important features and plugins that make the Ethereal Engine programming workflow really smooth and featureful.  
+VSCode has support for some important features and plugins that make the iR Engine programming workflow really smooth and featureful.  
 :::
 
 <TechnicalNote title="Solution">
