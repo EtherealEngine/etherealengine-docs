@@ -41,10 +41,10 @@ export const LandingPageData = {
   },
   personas: {
     title       : "Choose your Path",
-    description : `
-    The Ethereal Learning Journeys are guided learning experiences that will help you become an expert at creating Immersive Web Experiences using Ethereal Engine.
-    At the end of your journey you will have gained all the skills that you need to create the project of your dreams.
-    `,
+    // description : `
+    // The Ethereal Learning Journeys are guided learning experiences that will help you become an expert at creating Immersive Web Experiences using Ethereal Engine.
+    // At the end of your journey you will have gained all the skills that you need to create the project of your dreams.
+    // `,
     creator: {
       link        : "creator",
       rightSide   : false,
