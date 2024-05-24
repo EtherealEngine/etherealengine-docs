@@ -2,6 +2,6 @@ import DocCardList from '@theme/DocCardList'
 
 # Source Code
 
-This section specify technique through which you can comply with our coding standards.
+This section contains coding standards that help you effectively contribute to the engine's source code.
 
 <DocCardList />
