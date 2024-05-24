@@ -7,7 +7,7 @@ import Introduction from '@site/docs/_partials/roadmap/intro.md'
 import ReadingOrder from '@site/docs/_partials/roadmap/order.md'
 import TypescriptConcepts from '@site/docs/_partials/concepts/typescript.md'
 
-# Typescript Learning Roadmap
+# TypeScript Learning Roadmap
 <Introduction />
 
 ## Concepts List

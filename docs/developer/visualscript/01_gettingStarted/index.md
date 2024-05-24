@@ -4,12 +4,12 @@ title: Getting Started
 
 # Getting Started with VisualScript
 <!-- TODO: Add pictures to this file -->
-_This guide will teach you how to get started programming with Ethereal Engine and VisualScript._  
+_This guide will teach you how to get started programming with iR Engine and VisualScript._  
 _Visit the [VisualScript: Introduction](/developer/visualscript) page for an overview of what VisualScript is._  
 <!-- TODO: Add VisualScript intro text as a mdx partial, instead of linking to the other page -->
 
 ## Installation
-VisualScript is preinstalled with Ethereal Engine, and can be accessed as part of the Ethereal Engine Studio.
+VisualScript is preinstalled with iR Engine, and can be accessed as part of the iR Engine Studio.
 > Note: Access to the Studio requires users to have admin or creator privileges.
 
 ## Configuration
