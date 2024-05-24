@@ -8,23 +8,23 @@ import StepVariables from '../_partials/controlCenter/step_variables.md'
 import StepSummary from '../_partials/controlCenter/step_summary.md'
 
 # Control Center: Getting Started
-Ethereal Engine's Control Center is a self-contained Metaverse world in a box. Take what you need or launch the full stack.  
-The Control Center is a desktop app to manage an Ethereal Engine cluster.
+iR Engine's Control Center is a self-contained Metaverse world in a box. Take what you need or launch the full stack.  
+The Control Center is a desktop app to manage an iR Engine cluster.
 
-We know it's been complicated to build with Ethereal Engine and we've made this tool to give the community easy access to the engine. We would love to see your creations and invite you all to come build with us.
+We know it's been complicated to build with iR Engine and we've made this tool to give the community easy access to the engine. We would love to see your creations and invite you all to come build with us.
 
 ## Overview
-The Ethereal Engine Control Center app provides access to various functionalities which includes:
-- Configure your Ethereal Engine in a cluster in just a few clicks.
-- View status of Ethereal Engine dependencies on your local system.
-- Manage an Ethereal Engine deployment through admin panel.
+The iR Engine Control Center app provides access to various functionalities which includes:
+- Configure your iR Engine in a cluster in just a few clicks.
+- View status of iR Engine dependencies on your local system.
+- Manage an iR Engine deployment through admin panel.
 - Manage kubernetes cluster through its dashboard.
 - Manage IPFS node running in the cluster.
 - Execute commands against rippled server.
 - See realtime logs of different actions being performed.
 
 ## 1. Downloading Control Center App
-In order to download Ethereal Engine Control Center App, navigate to [releases](https://github.com/EtherealEngine/etherealengine-control-center/releases) page and download the latest version of the App.
+In order to download iR Engine Control Center App, navigate to [releases](https://github.com/EtherealEngine/etherealengine-control-center/releases) page and download the latest version of the App.
 - **Windows** _(and WSL)_: Download the `.exe` file
 
   > You will need to allow permission for executing ps1 scripts.  
@@ -67,7 +67,7 @@ In this step, you will need to provide the following information:
 - **Cluster Type:**  
   This will be the kubernetes distribution you want to use.  
   There are two local distributions at the time of this writing: MicroK8s(recommended) and Minikube.  
-  There is also a Custom type which allows you to connect to an existing Ethereal Engine cluster.
+  There is also a Custom type which allows you to connect to an existing iR Engine cluster.
   > Currently, `MicroK8s` is supported on Windows & Linux while `Minikube` is supported on Linux only.
 
 - **Prerequisites:**  
@@ -129,7 +129,7 @@ In this step, you will need to provide following information regarding desired c
 - **Config Type: Text**  
   Loads kubeconfig from a text.
 - **Context**:  
-  This is the selected kube context of the cluster in which your Ethereal Engine deployment exists.  
+  This is the selected kube context of the cluster in which your iR Engine deployment exists.  
   The dropdown will show all contexts that exist for the selected config type.
 
 ### 2.3.2. Deployment
@@ -183,7 +183,7 @@ The Navbar allows navigation and various utility options.
   Navigates to [workloads](#6-workloads) screen of selected cluster.
 
 - **Admin**:  
-  Navigates to ethereal engine [admin](#7-admin-dashboard) panel of selected cluster.
+  Navigates to iR Engine [admin](#7-admin-dashboard) panel of selected cluster.
 
 - **K8 Dashboard**:  
   Navigates to kubernetes [web dashboard](#8-k8-dashboard) of selected kubernetes distribution.
@@ -196,7 +196,7 @@ The Navbar allows navigation and various utility options.
   Visible only when ripple stack is enabled.
 
 - **Change Theme Icon**: ![Change Theme Icon](../images/controlCenter/navbar-theme.jpg)  
-  Allows to toggle between vaporware, light & dark themes. The color scheme of these themes are similar to ethereal engine.
+  Allows to toggle between vaporware, light & dark themes. The color scheme of these themes are similar to iR Engine.
 
 - **Support Icon**: ![Support Icon](../images/controlCenter/navbar-support.jpg)  
   Opens a dropdown menu to allow reaching out to support via Discord or Github.
@@ -216,11 +216,11 @@ This section shows various actions that can be activated on the currently select
   Name that you entered in create cluster dialog. _eg: `Local`_
 
 - **Engine Git Status**: ![Cluster Icon](../images/controlCenter/options-panel-git-engine.jpg)  
-  View and change the state of your local Ethereal Engine GitHub repo.  
+  View and change the state of your local iR Engine GitHub repo.  
   View current branch, pull incoming changes and push outgoing changes.  
 
 - **Ops Git Status**: ![Cluster Icon](../images/controlCenter/options-panel-git-ops.jpg)  
-  View the current status of your local Ethereal Engine ops GitHub repo.  
+  View the current status of your local iR Engine ops GitHub repo.  
   You can perform the same actions explained in the previous bullet point _(Engine Git Status)_.
 
 - **Refresh Icon**: ![Refresh Icon](../images/controlCenter/options-panel-refresh.jpg)  
@@ -241,7 +241,7 @@ This section shows various actions that can be activated on the currently select
   It will be disabled and have a spinner in it when a configuration is already running.
 
 - **Launch Button**: ![Launch Button](../images/controlCenter/options-panel-launch.jpg)  
-  This button will open Ethereal Engine's default location in your browser as [discussed](#5-launch-ethereal-engine) later.
+  This button will open iR Engine's default location in your browser as [discussed](#5-launch-ir-engine) later.
 
 ### 3.4. System Status
 This section will show whether or not the system requirements are currently met.  
@@ -264,11 +264,11 @@ Otherwise you will need to use the configure dialog.
 :::
 
 ### 3.5. Apps Status
-This section shows the current status of all the apps required to run an Ethereal Engine deployment.
+This section shows the current status of all the apps required to run an iR Engine deployment.
 ![Apps Status](../images/controlCenter/status-apps.jpg)
 
 ### 3.6. Engine Status
-This section shows the current status of various components of an Ethereal Engine deployment in your local kubernetes distribution.
+This section shows the current status of various components of an iR Engine deployment in your local kubernetes distribution.
 ![Engine Status](../images/controlCenter/status-engine.jpg)
 
 ### 3.7. Logs
@@ -328,19 +328,19 @@ Always clear your logs before running the configure script to trace its output e
   Pay close attention to last few lines of the [logs](#37-logs). They will contain the reason why the script failed.
   :::
 
-## 5. Launch Ethereal Engine
-![Launch Ethereal Engine](../images/controlCenter/engine-launch.jpg)
+## 5. Launch iR Engine
+![Launch iR Engine](../images/controlCenter/engine-launch.jpg)
 
 If everything was configured correctly and all ticks are green on the "config" page _(aka [Cluster Screen](#3-cluster-screen))_,  
 you will now be able to `Launch` the engine from the [options panel](#33-options-panel).  
-This button will open Ethereal Engine's default location in your browser.
+This button will open iR Engine's default location in your browser.
 
 :::important
 Make sure to allow certificates as explained [here](https://etherealengine.github.io/etherealengine-docs/docs/devops_deployment/microk8s_linux#accept-invalid-certs).
 :::
 
 ## 6. Workloads
-Workloads are the k8s pods of the components of an Ethereal Engine deployment.  
+Workloads are the k8s pods of the components of an iR Engine deployment.  
 
 ![Workloads](../images/controlCenter/workloads-screen.jpg)
 
@@ -372,7 +372,7 @@ Beside these icons there is also a container drop down through which user can se
 
 ![Admin Dashboard](../images/controlCenter/admin-dashboard.jpg)
 
-Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Admin` button in [navbar](#32-navbar). This will show the admin dashboard of ethereal engine deployed in your local k8s cluster.
+Once, everything is configured correctly and all ticks are green on config page ([Cluster Screen](#3-cluster-screen)) then you can click on `Admin` button in [navbar](#32-navbar). This will show the admin dashboard of iR Engine deployed in your local k8s cluster.
 
 You can perform various actions from admin dashboard including installing projects, managing users, groups, locations, instances, resources, etc.
 

@@ -2,7 +2,7 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 import { UnstyledDetails } from '@site/src/components/UnstyledDetails';
 
 # Queries
-Queries are a tool provided by the `Entity Component System` pattern used by Ethereal Engine.  
+Queries are a tool provided by the `Entity Component System` pattern used by iR Engine.  
 
 In simple terms, a Query is a function that will request all entities that match a certain condition.  
 More specifically, it will return **all** entities that contain **all** Components in the list that we specify.  

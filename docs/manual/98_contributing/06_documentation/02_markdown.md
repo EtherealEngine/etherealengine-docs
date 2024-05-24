@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 This page will explain how to format your content to fit the standard used by this website.  
 
 :::important
-Ethereal Engine documentation uses a **very restricted** set of GitHub Markdown for formatting its content.  
+iR Engine documentation uses a **very restricted** set of GitHub Markdown for formatting its content.  
 Multitude of otherwise perfectly legal markdown rules are strictly forbidden by this standard.  
 
 Please make sure to pay extra attention to these rules if you are already accustomed to markdown syntax.
@@ -18,7 +18,7 @@ It has a very intuitive and easy to understand syntax that can also give format 
 One of its key features is how **flexible** it is.  
 But, at the same time, this flexibility is also its biggest problem.  
 
-Maintaining a cohesive format across a team with different users/writers that all have their own unique quirks and style for writing markdown, and all contribute to a project of the size of Ethereal Engine's Documentation _(this website)_, is extremely challenging without having a single and unified standard.
+Maintaining a cohesive format across a team with different users/writers that all have their own unique quirks and style for writing markdown, and all contribute to a project of the size of iR Engine's Documentation _(this website)_, is extremely challenging without having a single and unified standard.
 
 ## The solution
 Compressing the wide range of styling and formatting options that Markdown offers, down into a very minimal and simplified ruleset, pretty much solves the problem altogether.  

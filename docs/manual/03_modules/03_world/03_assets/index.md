@@ -15,7 +15,7 @@ The simplest pipeline uses Blender & the Studio's inbuilt transformation tool.
 Scenes that contain colliders should have these colliders exported separately.
 Visible meshes should not have collider metadata, instead a copy should be created.
 
-The process of moving from Blender to Ethereal Engine looks like the following:
+The process of moving from Blender to iR Engine looks like the following:
 
 1. Blend file is the source of truth
 2. Export visible meshes from from blend file

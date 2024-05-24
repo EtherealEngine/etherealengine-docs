@@ -56,26 +56,10 @@ export default function Personas(props) {
   return <React.Fragment>
     <section className={PersonasContainer}>
       <div className={PersonasTitle} id="choose-path">{Data.title}</div>
-      <Persona data={Data.creator} />
-      <Persona data={Data.visualscript} />
-      <Persona data={Data.typescript} />
-      <Persona data={Data.manual} />
-      <div className={PersonasDescr}>{Data.description}</div>
-    </section>
-  </React.Fragment>
-}
-
-//____________________________
-export function SimplePersonas(props) {
-  const Data = props.data
-  const PersonasContainer = "p-16 space-y-10 w-full"
-  const PersonasTitle = "font-normal justify-items-center text-center text-4xl"
-  const PersonasDescr = "font-normal justify-items-center text-left text-xl"
-  return <React.Fragment>
-    <section className={PersonasContainer}>
-      <div className={PersonasTitle} id="choose-path">{Data.title}</div>
-      <Persona data={Data.typescript} />
-      <Persona data={Data.manual} />
+        { (props.renderAll || Data.creator.render)      && <Persona data={Data.creator} />      }
+        { (props.renderAll || Data.visualscript.render) && <Persona data={Data.visualscript} /> }
+        { (props.renderAll || Data.typescript.render)   && <Persona data={Data.typescript} />   }
+        { (props.renderAll || Data.manual.render)       && <Persona data={Data.manual} />       }
       <div className={PersonasDescr}>{Data.description}</div>
     </section>
   </React.Fragment>

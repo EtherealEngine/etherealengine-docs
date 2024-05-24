@@ -1,18 +1,18 @@
 ---
 sidebar_position: 00
-title: Typescript Developer
+title: TypeScript Developer
 ---
-# Become a Typescript Developer
-Here you will learn everything that there is to know about programming with Typescript + Ethereal Engine.
+# Become a TypeScript Developer
+Here you will learn everything that there is to know about programming with TypeScript + iR Engine.
 <!--
 TODO:
 This page will contain an Introduction to the Developers Learning Site.
 This page should contain:
 - Small introduction to the Developer guides
-- Explanation of VisualScript-vs-Typescript: 
+- Explanation of VisualScript-vs-TypeScript: 
   No-Code: Segue into the VisualScript Learning site
-  Typescript: Segue into the Typescript Learning Site (this site)
+  TypeScript: Segue into the TypeScript Learning Site (this site)
 
-_Programming in Ethereal Engine can be done through **Typescript**._
+_Programming in iR Engine can be done through **TypeScript**._
 _But the engine also has a visual alternative to programming, called **VisualScript**._  
 -->

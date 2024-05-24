@@ -1,9 +1,9 @@
 # Overview
-The `Hello World` tutorial has taught us how to work with and create the most minimal Ethereal Engine programming example possible. But, as we are about to learn, there is a lot more to explore!
+The `Hello World` tutorial has taught us how to work with and create the most minimal iR Engine programming example possible. But, as we are about to learn, there is a lot more to explore!
 
 ## Hello World
 Lets review what we have achieved with our project. So far we:
-- Imported some Ethereal Engine's typescript modules in our file
+- Imported some iR Engine's typescript modules in our file
 - Created an entity, and gave it an `uuid` and a `name`
 - Gave the entity the ability to:
   - Be visible on the screen with a `VisibleComponent`
@@ -19,7 +19,7 @@ Lets review what we have achieved with our project. So far we:
 
 That's a lot!!!
 
-## Ethereal Engine: Basics
+## iR Engine: Basics
 In this tutorial we will expand on our knowledge, and we will add these features to the source code of our project:
 - Physics Properties: Gravity, Collision, Friction, etc
 - Logic that happens every frame at specific intervals _(eg: every fixed-frame or every visual-frame)_

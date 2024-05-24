@@ -1,6 +1,6 @@
 # Projects
 <!-- TODO: Confirm that the information given in this section is correct. -->
-The Projects page provides a tool to add new projects and list all existing projects of an Ethereal Engine's deployment.
+The Projects page provides a tool to add new projects and list all existing projects of an iR Engine's deployment.
 
 ![](./images/projects/list.png)
 

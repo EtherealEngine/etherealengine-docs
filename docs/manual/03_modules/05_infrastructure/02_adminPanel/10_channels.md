@@ -1,7 +1,7 @@
 # Channels
-The Channels page provides list of the active text/audio/video channels available in an Ethereal Engine deployment.
+The Channels page provides list of the active text/audio/video channels available in an iR Engine deployment.
 
-Ethereal Engine channels are very similar in concept to Discord channels.  
+iR Engine channels are very similar in concept to Discord channels.  
 They allow for communication between the users of a deployment via text, audio or video chat.
 
 - **ID**: Unique ID of the Channel.

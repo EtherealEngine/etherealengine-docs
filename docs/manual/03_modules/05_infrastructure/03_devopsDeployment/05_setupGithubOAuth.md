@@ -1,11 +1,11 @@
 # How to set up GitHub to install external projects
 
-Ethereal Engine is extensible via [Projects](/manual/concepts/projects), which can contain
-new scenes, new avatars, new static resources, additional code, and more. Ethereal Engine integrates
+iR Engine is extensible via [Projects](/manual/concepts/projects), which can contain
+new scenes, new avatars, new static resources, additional code, and more. iR Engine integrates
 with GitHub to push and pull projects for backup and restoration, and one can also install existing
 projects from GitHub. In order to install projects from private repositories, or to push local project 
 changes to a GitHub repo, an OAuth app from GitHub (not a GitHub app, that is something different) needs to be
-created, and the logged-in user must be connected in Ethereal Engine to GitHub (i.e. must have logged in via
+created, and the logged-in user must be connected in iR Engine to GitHub (i.e. must have logged in via
 GitHub at some point) and have permission to access the source and destination repositories.
 
 Note that it is recommended that you complete most of this before the initial installation of
@@ -39,7 +39,7 @@ Here, you will generate one credential for the app, so that your deployment can 
 
 ### Make note of Client ID
 Near the top of this page is the Client ID for the app. This is a public ID for the app.
-It will be used when configuring Ethereal Engine.
+It will be used when configuring iR Engine.
 
 ### Generate client secret
 Below `Client ID` is a section `Client secrets`. None are created by default, so click the
@@ -47,7 +47,7 @@ button `Generate a new client secret`. As the notifications that appear say, you
 full secret right now, so copy it somewhere retrievable (but not anywhere publicly accessible). If 
 you ever lose the secret, you can always generate a new one.
 
-## Configure Ethereal Engine deployment with IDs/keys
+## Configure iR Engine deployment with IDs/keys
 
 ### Pre-initial installation 
 If you have not done the initial installation/deployment yet, then you can add most of the values
@@ -96,7 +96,7 @@ Once this is done, you should be able to log in with GitHub and be granted admin
 # Logging in with GitHub and Granting Access to Other Organizations
 
 When you log in with GitHub, you will be asked to grant access to your user information as well as the repositories
-that the OAuth app has authorized for. Ethereal Engine will have access to your personal repositories and,
+that the OAuth app has authorized for. iR Engine will have access to your personal repositories and,
 if the OAuth app was created in a GitHub organization, all repositories in that organization. It will not
 have inherent push access to other organizations' repositories or pull access to their private repositories.
 
@@ -115,11 +115,11 @@ will bypass this page[^1]. In order to grant the OAuth app access to other organ
 In short form:
 
 1. Go to (https://github.com/settings/applications)
-2. Click on the name of the OAuth app installed in Ethereal Engine
-3. Under `Organization access`, click on Grant/Request for the organizations you want Ethereal Engine to
+2. Click on the name of the OAuth app installed in iR Engine
+3. Under `Organization access`, click on Grant/Request for the organizations you want iR Engine to
    have access to
 
-# Installing Ethereal Engine projects from GitHub
+# Installing iR Engine projects from GitHub
 
 See [the section 'Graphical Install Flow](/manual/concepts/projects) for more information on how to install
 projects from GitHub.
@@ -128,7 +128,7 @@ projects from GitHub.
 
 Users can push projects to GitHub if they have write/maintain/admin access to the associated GitHub repository.
 Since fetching this access from the GitHub API every time a user fetches their projects can take a noticeable
-amount of time, Ethereal Engine stores users' GitHub repo access in its database. This is much faster to access.
+amount of time, iR Engine stores users' GitHub repo access in its database. This is much faster to access.
 
 There are multiple actions that will make the engine re-fetch and update users' repo access:
 
@@ -138,8 +138,8 @@ There are multiple actions that will make the engine re-fetch and update users' 
 * Via a GitHub webhook - must manually configure this
 
 ## Setting up GitHub webhook
-Ethereal Engine currently only supports webhook notifications for Collaborators being added/edited/removed. 
-Changes in Teams are not handled by Ethereal Engine due to the opacity of team members. (Team change webhooks do not 
+iR Engine currently only supports webhook notifications for Collaborators being added/edited/removed. 
+Changes in Teams are not handled by iR Engine due to the opacity of team members. (Team change webhooks do not 
 include team members, and the engine does not track who is in a team)
 
 An admin needs to go to /admin/settings, click on 'Server', then enter a secret key in the field 
