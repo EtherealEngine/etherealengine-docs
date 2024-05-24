@@ -9,7 +9,7 @@ Prettier helps us maintain consistent code formatting across our projects.
    2. Type `ext install esbenp.prettier-vscode` and press `Enter`.
    3. Follow the prompts to install the Prettier extension.
 
-### Step 2. **Open VS Code Settings**
+### Step 2. Open VS Code Settings
 Press `Ctrl` + `,` together to open the VS Code settings.
 
 ### Step 3. Enable Format on Save
