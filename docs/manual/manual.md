@@ -13,4 +13,4 @@ This site serves as a reference for understanding complex concepts and configura
 For specific tutorials and guides, refer to:
 
 - [Become a Creator](https://etherealengine.github.io/etherealengine-docs/creator): Tutorials for using the engine's **Studio** to build metaverse experiences.
-- [Typescript guides](https://etherealengine.github.io/etherealengine-docs/developer/typescript): Guides for developers using Typescript with the iR Engine.
+- [TypeScript guides](https://etherealengine.github.io/etherealengine-docs/developer/typescript): Guides for developers using TypeScript with the iR Engine.

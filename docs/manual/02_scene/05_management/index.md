@@ -23,7 +23,7 @@ In the File menu, click the save or save as button to save your scene.
 Some projects require time to save so don't exit this window until a few minutes have passed.
 
 ## Editing Materials
-Ethereal Engine supports PBR workflow and Vertex Colors. The material properties supported are:
+iR Engine supports PBR workflow and Vertex Colors. The material properties supported are:
 - Diffuse or Base Color Map
 - Metalness Map
 - Roughness Map

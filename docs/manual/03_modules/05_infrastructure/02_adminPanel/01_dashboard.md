@@ -1,5 +1,5 @@
 # Dashboard
-The Admin Panel Dashboard provides an overview of several performance indicators relevant to an Ethereal Engine's deployment.  
+The Admin Panel Dashboard provides an overview of several performance indicators relevant to an iR Engine's deployment.  
 It gives a progress report for how a deployment is performing over a certain period of time based on data captured during the selected period.
 
 ![](./images/dashboard.png)
