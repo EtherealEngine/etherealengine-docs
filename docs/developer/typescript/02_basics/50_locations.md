@@ -27,7 +27,7 @@ While the Publish button provides a really simple and easy way to create a Locat
 On the other hand, the [Admin Panel: Locations](https://localhost:3000/admin/locations) section provides utilities to manage your existing locations or edit any of their properties.
 
 #### Creating a Location
-Lets create another Location from Admin Panel. Once Ethereal Engine is running:  
+Lets create another Location from Admin Panel. Once iR Engine is running:  
 - Navigate to the Admin Panel at https://localhost:3000/admin/locations  
 - Click on `Create Location`
 - Set the Location name to `hello2`  

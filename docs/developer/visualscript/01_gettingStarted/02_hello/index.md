@@ -1,6 +1,6 @@
 ---
 draft: true
-title: Hello Visualscript
+title: Hello VisualScript
 ---
 
 # Hello World

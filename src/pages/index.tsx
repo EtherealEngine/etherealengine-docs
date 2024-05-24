@@ -5,18 +5,17 @@ import { clsx as mergex } from 'clsx'
 
 import * as cfg from '../../website.config.ts'
 import { Colors } from './_colors.tsx'
-import { SimpleHero } from './_landing/section/hero.tsx'
-import { SimplePersonas } from './_landing/section/personas.tsx'
-import { LandingPageData } from './landing.tsx'
+import Hero from './_landing/section/hero.tsx'
+import Personas from './_landing/section/personas.tsx'
 
 export default function Home() {
   return (
     <Layout title={`${cfg.meta.title}`} description={cfg.meta.description}>
       <header>
-        <SimpleHero data={LandingPageData.hero} />
+        <Hero data={cfg.LandingPageData.hero} />
       </header>
       <main>
-        <SimplePersonas data={LandingPageData.personas} />
+        <Personas data={cfg.LandingPageData.personas} />
       </main>
     </Layout>
   )

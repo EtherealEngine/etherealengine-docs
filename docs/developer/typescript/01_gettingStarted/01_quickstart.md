@@ -4,8 +4,8 @@ sidebar_label: Quickstart
 import UbuntuInstall from '../../../_partials/installUbuntu.md'
 import DefaultProjects from '../../../_partials/defaultProjects.md'
 
-# Typescript Quickstart
-This QuickStart guide will teach you the basics of Ethereal Engine, and how to run the engine for the first time.  
+# TypeScript Quickstart
+This QuickStart guide will teach you the basics of iR Engine, and how to run the engine for the first time.  
 
 ## Installation
 <UbuntuInstall />
@@ -29,7 +29,7 @@ git clone -b Step0 https://github.com/EtherealEngine/ee-tutorial-hello packages/
 npm run dev
 ```
 
-You should now be able to see the `ee-tutorial-hello` project listed in Ethereal Engine's Studio by navigating to https://localhost:3000/studio.
+You should now be able to see the `ee-tutorial-hello` project listed in iR Engine's Studio by navigating to https://localhost:3000/studio.
 
 ## Confirm the installation
 Lets make sure that our `hello world` code is running:

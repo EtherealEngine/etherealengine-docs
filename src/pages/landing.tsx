@@ -8,7 +8,6 @@ import React from 'react'
 import styles from './index.module.css'
 
 import * as cfg from '../../website.config.ts'
-import { Colors } from './_colors.tsx'
 import Hero     from './_landing/section/hero.tsx'
 import Personas from './_landing/section/personas.tsx'
 
@@ -102,11 +101,12 @@ export default function Home() {
   return (
     <Layout title={`${cfg.meta.title}`} description={cfg.meta.description}>
       <header>
-        <Hero data={LandingPageData.hero} />
+        <Hero data={cfg.LandingPageData.hero} renderAll={true} />  {/* Overrides the render:true/false property for all Personas */}
       </header>
       <main>
-        <Personas data={LandingPageData.personas} />
+        <Personas data={cfg.LandingPageData.personas} renderAll={true} />  {/* Overrides the render:true/false property for all Personas */}
       </main>
     </Layout>
   )
 }
+

@@ -16,19 +16,19 @@ import Donate from '@site/docs/_partials/contributing/donate.md'
 ## Create and Host your own worlds
 <Host />
 
-## Promote Ethereal Engine
+## Promote iR Engine
 <Promote />
 
 ## Testing and reporting issues
 <Test />
 
-## Contribute to Ethereal Engine's documentation
+## Contribute to iR Engine's documentation
 <Documentation />
 
-## Translate Ethereal Engine
+## Translate iR Engine
 <Translate />
 
 <!--
 TODO
-## Donate to Ethereal Engine
+## Donate to iR Engine
 -->

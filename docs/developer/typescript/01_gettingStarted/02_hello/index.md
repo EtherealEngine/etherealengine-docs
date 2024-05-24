@@ -1,7 +1,7 @@
 ---
-sidebar_label: Hello Ethereal
+sidebar_label: Hello iR Engine
 ---
-# Hello World from Ethereal Engine
+# Hello World from iR Engine
 The quickstart tutorial helped us create a project and run the engine for the first time.  
 
 This is our starting point.  
@@ -38,7 +38,7 @@ Conceptually, this is what the example project does:
 
 ## Technical overview
 In technical terms, this is what the example's source code does:
-- It imports some Ethereal Engine's typescript modules in its code 
+- It imports some iR Engine's typescript modules in its code 
 - It uses the `ECS` pattern
 - It creates an `Entity`
 - It adds a few `Components` to the Entity
@@ -49,10 +49,10 @@ Our example from the quickstart tutorial is as minimal as it can possibly be.
 But there is a lot happening already, as you can see, even in such a minimal example!  
 So, the first step we will take is to spend some time understanding how everything in the example works.
 
-Next we will get our hands into the code, and learn how to program with Ethereal Engine.
+Next we will get our hands into the code, and learn how to program with iR Engine.
 
 Then, at the end of this guide, we will have a very minimal project that we can load with the Engine.  
-But, more importantly, we will have enough knowledge to be able to continue our learning through the `Ethereal Engine: Basics` guide.  
+But, more importantly, we will have enough knowledge to be able to continue our learning through the `iR Engine: Basics` guide.  
 
 Lets not delay any longer, and get started with our journey!
 
