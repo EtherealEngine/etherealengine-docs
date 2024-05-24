@@ -59,7 +59,7 @@ export const site = {
   title       : `${org.project.name} Docs`,
   tagline     : org.project.description,
   icon        : 'img/favicon.ico',
-  description : `Learn to use the iR Engine.`,
+  description : `Learn to use the ${org.project.name}.`,
 }
 
 /**
