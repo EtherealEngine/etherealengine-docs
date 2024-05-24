@@ -24,7 +24,7 @@ Don't worry if you don't fully understand what some of them explain just yet. We
 :::
 
 ## Creating an Entity
-Creating an Entity is as simple as calling the `createEntity()` function from Ethereal Engine's `ECS`.  
+Creating an Entity is as simple as calling the `createEntity()` function from iR Engine's `ECS`.  
 This function will return an identifier that can be used to group Components into a unique and distinct Object.
 ```ts
 const entity = ECS.createEntity()
@@ -32,7 +32,7 @@ const entity = ECS.createEntity()
 
 ## Adding Components
 Components represent data that has no behavior or identification.  
-The way to attach Components to Entities is by calling the `setComponent` function from Ethereal Engine's `ECS`.
+The way to attach Components to Entities is by calling the `setComponent` function from iR Engine's `ECS`.
 
 <TechnicalNote>
 The `setComponent` function will not return anything, but it will:
@@ -40,7 +40,7 @@ The `setComponent` function will not return anything, but it will:
 - Store the Component's data in the internal records of the ECS, so it can used by the engine or accessed through the API _(eg: with `getComponent` and similar functions)_.
 </TechnicalNote>
 
-Ethereal Engine requires a specific set of Components in order to create an object that can be presented on the screen:
+iR Engine requires a specific set of Components in order to create an object that can be presented on the screen:
 - **VisibleComponent**
 - **TransformComponent**
 - **PrimitiveGeometryComponent** or **MeshComponent**
