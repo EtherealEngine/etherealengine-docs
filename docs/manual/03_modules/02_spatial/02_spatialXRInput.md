@@ -4,7 +4,7 @@
 
 Input can come from a variety of places. In non-immersive contexts, it usually comes from a gamepad, mouse & keyboard or screen touches. In immersive contexts, it comes from the viewer's 6DOF perspective, and a variety of device-specific extensions such as 6DOF controllers, hands, gamepads & potentially more.
 
-Since this engine is immersive-first, the abstractions of easily unifying all these input sources is naturally to spatializing them where possible, and using WebXR and other web specifications to guide the API layers.
+Since this engine is immersive-first, the abstractions of easily unifying all these input sources are naturally to spatialize them where possible, and using WebXR and other web specifications to guide the API layers.
 
 The first component to introduce is the `InputSourceComponent` which stores the input source information according to the WebXR `XRInputSource` interface, as well as generalized accessor for current button states and entity intersections.
 
