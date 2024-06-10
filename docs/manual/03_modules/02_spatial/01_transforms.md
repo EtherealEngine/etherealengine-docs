@@ -16,6 +16,6 @@ To optimize traditional hierarchy-based calculations, the `TransformSystem` auto
 
 Physics is split into two systems.
 
-The first is the `PhysicsSystem` which updates the ECS and physics bodies before & after simulation, as well running the simulation. Substeps can be configured via `PhysicsState`, and the simulation timestep can be configured via `ECSState`. Beyond this, the system has a few neat tricks, such as interpolating kinematic rigidbodies between substeps, and automatically populating & depopulating collision events into the `CollisionComponent`. 
+The first is the `PhysicsSystem` which updates the ECS and physics bodies before and after simulation, as well as running the simulation. Substeps can be configured via `PhysicsState`, and the simulation timestep can be configured via `ECSState`. Beyond this, the system has a few neat tricks, such as interpolating kinematic rigidbodies between substeps, and automatically populating and depopulating collision events into the `CollisionComponent`.
 
 The second is the `PhysicsPreTransformSystem` which has two responsibilities, teleporting rigidbodies & colliders if the `TransformComponent` has been mutated, and smoothly interpolating the transform of an entity between physics steps, such that it does not stutter relative to the device framerate.
