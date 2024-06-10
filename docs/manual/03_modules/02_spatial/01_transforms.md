@@ -4,7 +4,7 @@
 
 The first concept to spatialize our entities is to introduce the `TransformComponent`. This stores the spatial information for our entity, its `position`, `rotation`, and `scale`. These properties are bitecs-proxified three.js math objects: a Vector3 for position, a Quaternion for rotation, and another Vector3 for scale.
 
-There are two more properties, the `matrix` and `matrixWorld`, which are threejs Matrix4 properties. `matrix` stores this transform relative to it's parent, and `matrixWorld` stores it relative to the absolute origin.
+There are two more properties, the `matrix` and `matrixWorld`, which are three.js Matrix4 properties. `matrix` stores this transform relative to its parent, and `matrixWorld` stores it relative to the absolute origin.
 
 ## Hierarchy
 
