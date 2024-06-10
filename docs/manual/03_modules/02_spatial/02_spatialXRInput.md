@@ -2,7 +2,9 @@
 
 ## Supporting multiple input sources
 
-Input can come from a variety of places. In non-immersive contexts, it usually comes from a gamepad, mouse & keyboard or screen touches. In immersive contexts, it comes from the viewer's 6DOF perspective, and a variety of device-specific extensions such as 6DOF controllers, hands, gamepads & potentially more.
+Input can come from a variety of places: 
+- **In non-immersive contexts**: It usually comes from a gamepad, mouse, keyboard, or screen touches. 
+- **In immersive contexts**: It comes from the viewer's 6DOF perspective, and a variety of device-specific extensions such as 6DOF controllers, hands, gamepads, and potentially more.
 
 Since this engine is immersive-first, the abstractions of easily unifying all these input sources are naturally to spatialize them where possible, and using WebXR and other web specifications to guide the API layers.
 
