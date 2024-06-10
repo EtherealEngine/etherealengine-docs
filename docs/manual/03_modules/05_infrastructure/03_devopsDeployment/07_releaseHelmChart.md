@@ -1,6 +1,6 @@
 # Release Helm Chart
 <!-- TODO: Improve the formatting of this file -->
-These are the steps that needs to be taken in order to update an Ethereal Engine Helm charts repo:
+These are the steps that needs to be taken in order to update an iR Engine Helm charts repo:
 > Pre-requisites:
 > - Have a checked-out copy of https://github.com/EtherealEngine/ethereal-engine-helm  
 >   set to the `gh-pages` branch

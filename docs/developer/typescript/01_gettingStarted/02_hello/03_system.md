@@ -15,13 +15,13 @@ ECS.setComponent(entity, VisibleComponent)
 ECS.setComponent(entity, TransformComponent, { position: new Vector3(0, 1, 0) })
 ECS.setComponent(entity, PrimitiveGeometryComponent, { geometryType: 1 })
 ```
-- And then we asked Ethereal Engine to run our code...
+- And then we asked iR Engine to run our code...
 
 ## Wait, where is the System?
 But we never defined a `System`!
 
 In the quickstart tutorial we used a simplified code example for brevity and ease of understanding.  
-But we also broke Ethereal Engine's best practices in order to achieve that simplicity.  
+But we also broke iR Engine's best practices in order to achieve that simplicity.  
 So, lets fix that.
 
 <TechnicalNote>
@@ -43,14 +43,14 @@ So far we have been defining the code that creates our Sphere at the top level o
 This means that we relied on the module being imported when the project configuration is loaded.  
 But the correct way to do this is to define our code inside a separate function, and give that function to the `execute` parameter of a System created with `defineSystem`.  
 
-Lets start by creating a new Typescript function, and moving our ECS code into that function.  
+Lets start by creating a new TypeScript function, and moving our ECS code into that function.  
 ```ts
 // Create a function
 function /* name */ () { /* code */ }
 ```
 We will also need to make sure that our code is only run once.  
 Try to figure out a way to make your function code execute only once before looking at the solution.  
-_hint: You won't need any special engine modules for this. Just regular Typescript will work._
+_hint: You won't need any special engine modules for this. Just regular TypeScript will work._
 
 <TechnicalNote title="Solution">
 
@@ -88,8 +88,8 @@ We will learn how properly manage state later on.
 <!-- State TechnicalNote End -->
 
 :::note
-We are using a regular Typescript function in this example.  
-You could also use a Typescript arrow function if you prefer.  
+We are using a regular TypeScript function in this example.  
+You could also use a TypeScript arrow function if you prefer.  
 Both styles work perfectly well.  
 :::
 

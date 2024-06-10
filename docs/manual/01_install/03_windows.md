@@ -10,7 +10,7 @@ sidebar_label: Windows 10+
 4. Add the path to `MSbuild.exe` _(which stored in Visual Studio's folder)_ into the `PATH` env variable  
   _eg: `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`_
 5. Make sure to install all windows prerequisites for Mediasoup as mentioned on: [https://mediasoup.org/documentation/v3/mediasoup/installation/#windows](https://mediasoup.org/documentation/v3/mediasoup/installation/#windows)
-6. Install all dependencies using `npm install` from the root folder where you cloned Ethereal Engine.
+6. Install all dependencies using `npm install` from the root folder where you cloned iR Engine.
 
 > Troubleshooting:  
 

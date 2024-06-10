@@ -41,7 +41,7 @@ Solving this correctly will require us to use all of these new concepts:
 - Connect our Sphere such that it is loaded only for a specific Scene
 
 This section is quite complex, and we are going to properly explore all of these concepts in the following tutorials. So, for now, the assignments are going to be very simple.  
-We will leave the explanations for the [Ethereal Engine Basics](/developer/typescript/basics) guide.  
+We will leave the explanations for the [iR Engine Basics](/developer/typescript/basics) guide.  
 
 ## Creating a Custom Component {#create}
 You can probably already guess the name of the function we are going to use next.  
@@ -83,7 +83,7 @@ We haven't connected the Component to anything just yet!
 
 ## State Management
 We haven't talked much about State, and there is a lot to explain about it.  
-We will have an entire section explaining state management in the [Ethereal Engine Basics](/developer/typescript/basics/state) guide.  
+We will have an entire section explaining state management in the [iR Engine Basics](/developer/typescript/basics/state) guide.  
 
 I will give you this one for free.  
 This is the code that replaces our `initialized` variable from the previous page:  
@@ -96,7 +96,7 @@ initialized.set(true)  // Set our initialized state to true
 <TechnicalNote title="Note">
 Note how we wrote `if (initialized.value)` instead of just `if (initialized)`.  
 And we are modifying its value with `initialized.set(true)` instead of `initialized = true`.  
-We will explain why this is the case in the [Ethereal Engine Basics: State](/developer/typescript/basics/state) section.  
+We will explain why this is the case in the [iR Engine Basics: State](/developer/typescript/basics/state) section.  
 </TechnicalNote>
 
 This code will be very useful for our next few steps.  

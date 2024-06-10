@@ -15,7 +15,7 @@ Media instances can be tied to a location, or exist ephemerally as a group call 
 Instances can also be customised with the `matchmaker` functionality to create private rooms.
 
 Locations can be loaded via the `/location/<locationName>` route, where `locationName` is the name of the location.
-Ethereal Engine always adds locations `default`, `apartment` and `sky-station` by default to new projects.
+iR Engine always adds locations `default`, `apartment` and `sky-station` by default to new projects.
 
 Adding a new location is done from the `/admin/locations` route, and live instances can be viewed from `/admin/instances`.
 

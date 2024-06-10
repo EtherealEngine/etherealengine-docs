@@ -29,7 +29,7 @@ Projects have a few conventions.
 - `sceneName.thumbnail.png` is an auto-generated scene thumbnail file
 - `xrengine.config.ts` the project configuration, where client routes, database models, feathers services and the project thumbnail can be defined
 
-A project must also have a package.json to provide custom dependencies, and to define the project name, project version, and Ethereal Engine version it is known to work with.
+A project must also have a package.json to provide custom dependencies, and to define the project name, project version, and iR Engine version it is known to work with.
 
 Systems imported from a scene MUST have their filename end with `System.ts` and be in the `/src/systems` folder.
 This is to optimize vite's code-splitting bundling process, as each potentially dynamically importable file will result in a new bundle with it's own copy of all of it's import dependencies.
@@ -38,7 +38,7 @@ This is to optimize vite's code-splitting bundling process, as each potentially 
 If so, they should be defined in `peerDependencies` and kept up to date with the current engine version.
 
 ## Config
-The ethereal engine config file has the following options:
+The iR Engine config file has the following options:
 
 ```ts
 export interface ProjectConfigInterface {
@@ -82,7 +82,7 @@ export interface ProjectEventHooks {
 
 These functions are called when the project they belong to are installed, 
 updated (such as scenes saved) or uninstalled respectively. This is used in the 
-default ethereal engine project to install the default avatars. 
+default iR Engine project to install the default avatars. 
 See `/packages/projects/default-project/projectEventHooks.ts`.
 
 ### Thumbnail
@@ -90,7 +90,10 @@ The `thumbnail` property is a string that must contain a URL to an image that wi
 
 ### Routes
 The `routes` property enables users to customise the various URL paths of their website utilizing dynamic loading of modules.
-- Key: Represents the path _(with leading forward slash included)_ to the resource,
+- Key: Represents the path _(with leading forward slash included)_ to the resource.
+  - If the route key ends with `/*`, then it will match all sub-paths of that route, but not the base route itself. e.g. `/test/*` will match `/test/test` and `/test/othertest`, but not `/test`
+  - If the route key ends with `*`, but the `*` is not preceded by a `/`, then it matches the base route and all sub-paths of that route. e.g. `/test*` will match `/test`, `/test/test`, and `/test/othertest`
+  - If the key does not end with either of the above, then it will just match the exact route. e.g. `/test` will match `/test` but not `/test/test` nor `/test/othertest`
 - Value: Represents a react component object which gets wrapped with `React.lazy()`
 - `props`: Passes options into the `react-dom-router.Route` component corresponding to the route.
 

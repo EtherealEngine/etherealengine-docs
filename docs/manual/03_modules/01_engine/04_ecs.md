@@ -44,7 +44,7 @@ const TransformComponent = defineComponent({
 ```
 
 ### Array of Structures: Reactive Component Data
-Reactive Component Data is an implementation unique to Ethereal Engine, using `React` and `Hookstate` under the hood.  
+Reactive Component Data is an implementation unique to iR Engine, using `React` and `Hookstate` under the hood.  
 
 Its key benefits are:
 - It allows for reactive data binding.  
@@ -110,7 +110,7 @@ export const TimerSystem = defineSystem({
 
 ```
 
-This example uses the _`Array of Structures`_ Reactive Component Data syntax, from Ethereal Engine, which allows for reactive data binding.
+This example uses the _`Array of Structures`_ Reactive Component Data syntax, from iR Engine, which allows for reactive data binding.
 ```ts
 const TimerComponent = defineComponent({
   name: 'TimerComponent',
@@ -149,4 +149,4 @@ export const TimerSystem = defineSystem({
 ## References
 - [Entity Component System Overview in 7 Minutes](https://www.youtube.com/watch?v=2rW7ALyHaas)
 - [Entity Component System in TypeScript with Phaser 3 and bitECS)](https://www.youtube.com/watch?v=BVIiAO5-2-Y)
-- [Overwatch GDC ECS & Netcode](https://www.youtube.com/watch?v=W3aieHjyNvw) (note, ethereal engine does not use this style of networking)
+- [Overwatch GDC ECS & Netcode](https://www.youtube.com/watch?v=W3aieHjyNvw) (note, iR Engine does not use this style of networking)

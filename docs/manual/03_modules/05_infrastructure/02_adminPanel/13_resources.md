@@ -1,5 +1,5 @@
 # Resources
-The Resources page provides a tool to list and manage all of the Asset files of the Ethereal Engine deployment.
+The Resources page provides a tool to list and manage all of the Asset files of the iR Engine deployment.
 
 ![](./images/resources/list.png)
 - **Id**: Unique ID of the Asset/Resource file.

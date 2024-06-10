@@ -9,7 +9,7 @@ If that isn't present, you'll have to edit the configuration to make the appropr
 
 You next need to add the Agones, ingress-nginx, and redis Helm charts to helm by running 
 ```helm repo add agones https://agones.dev/chart/stable```, ```helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx```, and ```helm repo add redis https://charts.bitnami.com/bitnami```.
-You should also at this time add Ethereal Engine's repo via ```helm repo add etherealengine https://helm.etherealengine.org```.
+You should also at this time add iR Engine's repo via ```helm repo add etherealengine https://helm.etherealengine.org```.
 
 If you ever suspect that a chart is out-of-date, run ```helm repo update``` to update all of them to the latest.
 
@@ -20,9 +20,9 @@ This says to install a service called 'agones' from the 'agones' package in the 
 
 ### Install redis for each deployment
 
-Each deployment of Ethereal Engine uses a redis cluster for coordinating the 'feathers-sync' library.
+Each deployment of iR Engine uses a redis cluster for coordinating the 'feathers-sync' library.
 Each redis deployment needs to be named the same as the deployment that will use it; for an
-Ethereal Engine deployment named 'dev', the corresponding redis deployment would need to be named
+iR Engine deployment named 'dev', the corresponding redis deployment would need to be named
 'dev-redis'.
 
 Run ```helm install -f </path/to/redis-values.yaml> <RELEASE_NAME>-redis redis/redis``` to install, e.g.
@@ -35,10 +35,10 @@ If you named the redis nodegroup something other than 'ng-redis-1', you'll have 
 If you didn't create a nodegroup just for redis, you must omit the ` -f </path/to/redis-values.yaml> `,
 as that config makes redis pods run on a specific nodegroup.
 
-#### Installing redis as part of Ethereal Engine chart (not recommended for production)
-Redis can be installed as part of the Ethereal Engine chart so long as the config file for the Ethereal Engine installation has 'redis.enabled' set to true.
+#### Installing redis as part of iR Engine chart (not recommended for production)
+Redis can be installed as part of the iR Engine chart so long as the config file for the iR Engine installation has 'redis.enabled' set to true.
 In that case, you should skip the above step of installing redis separately. This is not recommended for production
-environments, though, since upgrades to an Ethereal Engine installation will usually reboot the redis servers,
+environments, though, since upgrades to an iR Engine installation will usually reboot the redis servers,
 leading all of the instanceservers to crash due to their redis connections being severed.
 
 This breaks Agones' normal behavior of keeping Allocated instanceservers running until every user has left and slowly replacing

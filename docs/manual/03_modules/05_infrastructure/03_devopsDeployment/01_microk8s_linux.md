@@ -2,7 +2,7 @@ import AcceptCertificates from '../../../_partials/acceptCertificates.md'
 import PythonUbuntu from '../../../_partials/pythonUbuntu.md'
 import MakeUbuntu from '../../../_partials/makeUbuntu.md'
 
-# Ethereal Engine on MicroK8s (Linux)
+# iR Engine on MicroK8s (Linux)
 
 This guide has been tested on Ubuntu, and it is intended for local deployment only.
 
@@ -23,17 +23,17 @@ sudo snap install microk8s --classic --channel=1.26/stable
 
 Another alternative is to follow the instructions for how to [install Kubernetes with MicroK8s](https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview) in a local environment. This will help you learn more about how MicroK8s deployment works.  
 
-## Download Ethereal Engine
-To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to download the Ethereal Engine repository to your device. The easiest way to do this is by running the following command in your Ubuntu terminal:
+## Download iR Engine
+To build the iR Engine Docker image locally, and to have a pre-tested way to run various local services, you'll need to download the iR Engine repository to your device. The easiest way to do this is by running the following command in your Ubuntu terminal:
 ```bash
 git clone https://github.com/etherealengine/etherealengine.git
 ```
-You can create an `.env.local` file by duplicating `.env.local.default` if it does not already exist in the root folder of Ethereal Engine's repository.
+You can create an `.env.local` file by duplicating `.env.local.default` if it does not already exist in the root folder of iR Engine's repository.
 
 ## Start MinIO & MariaDB
 We recommend running MinIO & MariaDB server on your local machine via Docker and outside of MicroK8s.
 
-Running the command `docker-compose up` from the top-level `/scripts` directory of the Ethereal Engine repository will also start MinIO and multiple MariaDB docker containers _(as well as an optional redis server)_:
+Running the command `docker-compose up` from the top-level `/scripts` directory of the iR Engine repository will also start MinIO and multiple MariaDB docker containers _(as well as an optional redis server)_:
 1. Port **3306**: Server for local development
 2. Port **3305**: Server for automated testing
 3. Port **3304**: Server for minikube/microk8s testing
@@ -142,7 +142,7 @@ Add or update the following line into your `/etc/hosts` file:
 > On Linux this can be done by running `sudo gedit /etc/hosts`  
 > Make sure to save the file after editing. You will need administrator permissions to do so.
 
-This will redirect several `*-local.etherealengine.org` domains internally to the host machine. `nginx` ingress server will now be able to redirect the traffic to the appropriate Ethereal Engine pod.
+This will redirect several `*-local.etherealengine.org` domains internally to the host machine. `nginx` ingress server will now be able to redirect the traffic to the appropriate iR Engine pod.
 
 ## Add Helm repositories
 You'll need to add a few Helm chart repositories. You can do so by running the following commands:
@@ -151,7 +151,7 @@ helm repo add agones https://agones.dev/chart/stable
 helm repo add redis https://charts.bitnami.com/bitnami
 helm repo add etherealengine https://helm.etherealengine.org
 ```
-This will add the Helm charts for Agones, Redis and Ethereal Engine, respectively.
+This will add the Helm charts for Agones, Redis and iR Engine, respectively.
 
 ## Install Agones and Redis deployments
 From here on, deployments will be installed using Helm repositories.
@@ -168,7 +168,7 @@ kubectl config get-contexts
 ```
 > The current context will have a `*` under the left-most `current` column.
 
-Once kubectl is pointed to MicroK8s, run these commands from the top of the Ethereal Engine repo to install Agones and Redis:  
+Once kubectl is pointed to MicroK8s, run these commands from the top of the iR Engine repo to install Agones and Redis:  
 ```bash
 helm install -f </path/to/agones-default-values.yaml> agones agones/agones
 helm install local-redis redis/redis
@@ -233,7 +233,7 @@ http://<username>:<password>@<host>:<port>
 > The file [local.microk8s.template.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.microk8s.template.values.yaml) can be found in the [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 ## Build MicroK8s
-Run the following command from the root of the Ethereal Engine repository after MicroK8s is running:
+Run the following command from the root of the iR Engine repository after MicroK8s is running:
 ```bash
 ./scripts/build_microk8s.sh
 ```
@@ -242,10 +242,10 @@ Run the following command from the root of the Ethereal Engine repository after 
 > export MYSQL_HOST=localhost
 > npm run dev-docker
 > npm run dev-reinit
-> npm run install-projects
+> npx ts-node --swc scripts/install-projects.js
 > ```
 
-This _build_microK8s_ script will build an image of the entire Ethereal Engine repository into a single Docker file.
+This _build_microK8s_ script will build an image of the entire iR Engine repository into a single Docker file.
 
 Vite builds the client files using some information from the MariaDB database created for MicroK8s deployments to fill in some variables, and it needs database credentials.  
 The script will supply default values for all of the `MYSQL_*` variables if they are not provided to the script, as well as `VITE_CLIENT_HOST`, `VITE_SERVER_HOST`, and `VITE_INSTANCESERVER_HOST`.
@@ -266,9 +266,9 @@ There is a [template](https://github.com/EtherealEngine/ethereal-engine-ops/blob
 
 If you are using a local file server, as explained in one of the previous steps, you will need to update the variable `api.fileServer.hostUploadFolder` in the `local.values.yaml` file with a value similar to `ENGINE_FULL_PATH/packages/server/upload`.  
 _e.g. `/home/username/etherealengine/packages/server/upload`._  
-It is mandatory that it points to the `/packages/server/upload` folder of your Ethereal Engine folder.
+It is mandatory that it points to the `/packages/server/upload` folder of your iR Engine folder.
 
-## Deploy Ethereal Engine Helm chart
+## Deploy iR Engine Helm chart
 Run the following command:
 ```bash
 helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine

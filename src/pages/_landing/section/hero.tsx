@@ -54,13 +54,14 @@ function PersonaCTAs(props) {
   ) // << PersonaCTAs
   return <React.Fragment>
     <div className={PersonaCTAs}>
-      <PersonaCTA data={Data.creator} />
-      <PersonaCTA data={Data.visualscript} />
-      <PersonaCTA data={Data.typescript} />
-      <PersonaCTA data={Data.manual} />
+      { (props.renderAll || Data.creator.render)      && <PersonaCTA data={Data.creator} />      }
+      { (props.renderAll || Data.visualscript.render) && <PersonaCTA data={Data.visualscript} /> }
+      { (props.renderAll || Data.typescript.render)   && <PersonaCTA data={Data.typescript} />   }
+      { (props.renderAll || Data.manual.render)       && <PersonaCTA data={Data.manual} />       }
     </div>
   </React.Fragment>
 }
+
 export default function Hero(props) {
   const Data = props.data
   const Style = mergex(
@@ -74,47 +75,9 @@ export default function Hero(props) {
   return <React.Fragment>
     <section className={HeroSection}>
       <Title data={Data.title} />
-      <PersonaCTAs data={Data.CTAs} />
+      <PersonaCTAs data={Data.CTAs} renderAll={props.renderAll} />
       <Link to="#choose-path"> <ExpandIcon className={StyleIcon} /> </Link>
     </section>
   </React.Fragment>
-}
-
-
-//__________________________________________________________
-// @section Simplified MVP version of the LandingPage
-//______________________________________
-function SimplePersonaCTAs(props) {
-  const Data = props.data
-  const PersonaCTAs = mergex(
-    /* Base    */ "w-full",
-    /* Phone   */ "flex flex-col space-y-5",
-    /* Desktop */ "lg:flex-row lg:h-40 lg:space-y-0 lg:space-x-20",
-  ) // << PersonaCTAs
-  return <React.Fragment>
-    <div className={PersonaCTAs}>
-      <PersonaCTA data={Data.typescript} />
-      <PersonaCTA data={Data.manual} />
-    </div>
-  </React.Fragment>
-}
-//______________________________________
-export function SimpleHero(props) {
-  const Data = props.data
-  const Style = mergex(
-    /* Base    */ "flex flex-col justify-between",
-    /* Phone   */ "p-16",
-    /* Desktop */ "lg:p-28 lg:h-dvh",
-  ) // << Align
-  const StyleImage = `${Data.image} bg-center bg-cover bg-no-repeat bg-fixed`
-  const HeroSection = mergex(Style, StyleImage)
-  const StyleIcon = "absolute inset-x-1/2 bottom-0 animate-bounce"
-  return <React.Fragment>
-    <section className={HeroSection}>
-      <Title data={Data.title} />
-      <SimplePersonaCTAs data={Data.CTAs} />
-      <Link to="#choose-path"> <ExpandIcon className={StyleIcon} /> </Link>
-    </section>
-  </React.Fragment >
 }
 

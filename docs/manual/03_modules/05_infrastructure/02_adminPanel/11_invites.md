@@ -1,5 +1,5 @@
 # Invites
-The Invites page provides a tool to generate and manage invite links to the Ethereal Engine deployment.
+The Invites page provides a tool to generate and manage invite links to the iR Engine deployment.
 - **ID**: Unique ID of the Invite.
 - **Name**: Human-readable name of the Invite.
 - **Passcode**: .  <!-- TODO: What is this for? -->

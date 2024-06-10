@@ -7,7 +7,7 @@ There are two types of networks:
 - **media** networks -> tied to media instances
 
 ## Users & Peers
-Users are unique accounts created in a particular Ethereal Engine deployment.  
+Users are unique accounts created in a particular iR Engine deployment.  
 Users can connect to multiple instances, and have multiple peers connected to each instance.  
 Only a single avatar will be loaded for a user, but this avatar can be controlled by any of that user's peers.
 

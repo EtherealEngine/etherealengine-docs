@@ -1,6 +1,6 @@
 import AcceptCertificates from './_acceptCertificates.md'
 
-# Ethereal Engine on Minikube
+# iR Engine on Minikube
 
 ## Install kubectl, Helm, Docker, and VirtualBox
 If [kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/),
@@ -13,19 +13,19 @@ You may also need to install [Docker Compose](https://docs.docker.com/compose/in
 Instructions can be found [here](https://minikube.sigs.k8s.io/docs/start/)
 
 While you can follow the demo instructions there about starting minikube, deploying
-some demo deployments, etc. to get a feel for it, before deploying Ethereal Engine you should delete
+some demo deployments, etc. to get a feel for it, before deploying iR Engine you should delete
 your minikube cluster, since we have some specific starting requirements.
 
-## Clone Ethereal Engine repo to your local machine
-To build the Ethereal Engine Docker image locally, and to have a pre-tested way to run various local
-services, you'll need to get the Ethereal Engine repo on your machine. This is most easily
+## Clone iR Engine repo to your local machine
+To build the iR Engine Docker image locally, and to have a pre-tested way to run various local
+services, you'll need to get the iR Engine repo on your machine. This is most easily
 done by running `git clone https://github.com/etherealengine/etherealengine.git`
 
 ## Start MinIO & MariaDB server locally via Docker
 
 For simplicity, we recommend running MinIO & MariaDB server on your local machine outside of MicroK8s.
 
-If you run `docker-compose up` from the top-level `/scripts` directory in the Ethereal Engine repo, it will start up MinIO & multiple MariaDB docker containers (as well as a redis server, which is not needed). For mariadb containers, one is intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the docker container is stopped, you can start it again by running `npm run dev-docker`.
+If you run `docker-compose up` from the top-level `/scripts` directory in the iR Engine repo, it will start up MinIO & multiple MariaDB docker containers (as well as a redis server, which is not needed). For mariadb containers, one is intended for local development, runs on port 3306; another, intended for automated testing purposes, runs on port 3305; and the last one, intended for minikube/microk8s testing, runs on port 3304. Once the docker container is stopped, you can start it again by running `npm run dev-docker`.
 
 Alternatively, if you want to just run MinIO & MariaDB on its own without Docker, that's fine too. You'll just have to configure the Helm config file to have the appropriate S3 & SQL server configuration, and possibly change the script `./scripts/build_minikube.sh`.
 
@@ -81,7 +81,7 @@ helm repo add redis https://charts.bitnami.com/bitnami
 helm repo add etherealengine https://helm.etherealengine.org
 ```
 
-This will add the Helm charts for Agones, Redis, and Ethereal Engine, respectively.
+This will add the Helm charts for Agones, Redis, and iR Engine, respectively.
 
 ## Install Agones and Redis deployments
 After adding those Helm repos, you'll start installing deployments using Helm repos.
@@ -91,7 +91,7 @@ which should say 'minikube'. You can also run `kubectl config get-contexts` to g
 that kubectl has been configured to run; the current one will have a '*' under the left-most
 'current' column.
 
-Once kubectl is pointed to minikube, from the top of the Ethereal Engine repo, run
+Once kubectl is pointed to minikube, from the top of the iR Engine repo, run
 `helm install -f </path/to/agones-default-values.yaml> agones agones/agones` to install Agones
 and `helm install local-redis redis/redis` to install redis.
 
@@ -131,7 +131,7 @@ In order to connect logger with elasticsearch, update `local.minikube.template.v
 > [local.minikube.template.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/local.minikube.template.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
 ## Run build_minikube.sh
-When minikube is running, run the following command from the root of the Ethereal Engine repo:
+When minikube is running, run the following command from the root of the iR Engine repo:
 
 ```bash
 ./scripts/build_minikube.sh
@@ -143,7 +143,8 @@ When minikube is running, run the following command from the root of the Etherea
 export MYSQL_HOST=localhost
 npm run dev-docker
 npm run dev-reinit
-npm run install-projects
+npx ts-node --swc scripts/install-projects.js
+export MYSQL_HOST=host.minikube.internal
 ```
 
 This points Docker *in the current terminal* to minikube's Docker environment. Anything that Docker builds
@@ -159,7 +160,7 @@ accessible on `(local/api-local/instanceserver-local).etherealengine.org`; if yo
 domain, then you'll have to set those three environment variables to what you want them to be (and also
 change the hostfile records you made pointing those subdomains to minikube's IP)
 
-This will build an image of the entire Ethereal Engine repo into a single Docker file. When deployed for
+This will build an image of the entire iR Engine repo into a single Docker file. When deployed for
 different services, it will only run the parts needed for that service. This may take up to 15 minutes,
 though later builds should take less time as things are cached.
 
@@ -170,7 +171,7 @@ a [template](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/c
 
 If you are using local file server as explained couple of steps earlier then, update 'local.values.yaml' variable `api.fileServer.hostUploadFolder` with value e.g. '/hosthome/\<OS_USER_NAME\>/\<ENGINE_FOLDER\>/packages/server/upload'. The folder must be in home folder and make sure to use /hosthome/ instead of home in path. Its mandatory to point to `/packages/server/upload` folder of your engine folder.
 
-## Deploy Ethereal Engine Helm chart
+## Deploy iR Engine Helm chart
 Run the following command: `helm install -f </path/to/local.values.yaml> -f </path/to/db-refresh-true.values.yaml> local etherealengine/etherealengine`.
 
 > [db-refresh-true.values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/db-refresh-true.values.yaml) can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
