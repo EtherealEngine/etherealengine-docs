@@ -8,7 +8,7 @@ There are two more properties, the `matrix` and `matrixWorld`, which are three.j
 
 ## Hierarchy
 
-Our next component is the `EntityTreeComponent` which stores the parent/child relationships: a `parentEntity` entity and `children` array of entities. Changing either of these via setComponent will automatically update the parent and children entities to reflect this change.
+Our next component is the `EntityTreeComponent` which stores the parent/child relationships: a `parentEntity` and `children` array of entities. Changing either of these via `setComponent` will automatically update the parent and children entities to reflect this change. 
 
 To optimize traditional hierarchy-based calculations, the `TransformSystem` automatically sorts a complete list of all spatial entities in order to utilize `bitecs`’ SoA CPU caching to allow the JavaScript engine to calculate matrices as fast as possible.
 
