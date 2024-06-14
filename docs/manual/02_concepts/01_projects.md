@@ -90,10 +90,7 @@ The `thumbnail` property is a string that must contain a URL to an image that wi
 
 ### Routes
 The `routes` property enables users to customise the various URL paths of their website utilizing dynamic loading of modules.
-- Key: Represents the path _(with leading forward slash included)_ to the resource.
-  - If the route key ends with `/*`, then it will match all sub-paths of that route, but not the base route itself. e.g. `/test/*` will match `/test/test` and `/test/othertest`, but not `/test`
-  - If the route key ends with `*`, but the `*` is not preceded by a `/`, then it matches the base route and all sub-paths of that route. e.g. `/test*` will match `/test`, `/test/test`, and `/test/othertest`
-  - If the key does not end with either of the above, then it will just match the exact route. e.g. `/test` will match `/test` but not `/test/test` nor `/test/othertest`
+- Key: Represents the path _(with leading forward slash included)_ to the resource,
 - Value: Represents a react component object which gets wrapped with `React.lazy()`
 - `props`: Passes options into the `react-dom-router.Route` component corresponding to the route.
 
