@@ -1,6 +1,6 @@
 ## Create RDS box
 
-Ethereal Engine is backed by a SQL server. We use MariaDB in development, but it has also been run on AWS with
+iR Engine is backed by a SQL server. We use MariaDB in development, but it has also been run on AWS with
 Aurora without issue. Most other versions of SQL should work but have not been explicitly tested.
 
 ### Accessing RDS box from an external machine

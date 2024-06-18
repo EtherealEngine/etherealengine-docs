@@ -1,5 +1,5 @@
 # Servers
-The Servers page provides a list of all of the servers running in an Ethereal Engine's deployment.
+The Servers page provides a list of all of the servers running in an iR Engine's deployment.
 
 ![](./images/servers.png)
 _Note: The labels at the top of the page will filter servers by category when clicked._

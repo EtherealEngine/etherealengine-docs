@@ -1,5 +1,5 @@
 # Avatars
-The Avatars page provides a tool to view, upload and manage all of the Avatar files stored in the Ethereal Engine deployment.
+The Avatars page provides a tool to view, upload and manage all of the Avatar files stored in the iR Engine deployment.
 
 ![](./images/avatars/list.png)
 ## Avatar Table

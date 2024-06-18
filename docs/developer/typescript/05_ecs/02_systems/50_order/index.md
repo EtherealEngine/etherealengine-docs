@@ -8,7 +8,7 @@ import { TechnicalNote } from '@site/src/components/TechnicalNote';
 
 # Systems Execution Guide
 ## Update Loop
-Ethereal Engine uses a very similar model to [Unity's update loop](https://docs.unity3d.com/Manual/ExecutionOrder.html), by the use of a [fixed timestep](https://www.gafferongames.com/post/fix_your_timestep/) update loop.
+iR Engine uses a very similar model to [Unity's update loop](https://docs.unity3d.com/Manual/ExecutionOrder.html), by the use of a [fixed timestep](https://www.gafferongames.com/post/fix_your_timestep/) update loop.
 
 The engine defines a `frame update` process that is called once per frame.  
 Inside this frame-update process there is a `fixed update` process that operates with an `accumulator` pattern.  
@@ -16,7 +16,7 @@ This accumulator ensures that time will always step at a stable number of update
 
 _Note: Because the fixed update process is independent of frame updates, each individual frame update may execute 0-to-many fixed updates during its lifetime._
 
-Ethereal Engine implements this feature through system **pipelines**, which are collections of systems that will be executed in a specific order.
+iR Engine implements this feature through system **pipelines**, which are collections of systems that will be executed in a specific order.
 
 
 ## Execution Order

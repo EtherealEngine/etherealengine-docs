@@ -51,7 +51,7 @@ We talked about Javascript [`Arrow Functions`](https://developer.mozilla.org/en-
 
 They are specially helpful when defining Systems and Components.  
 This is how a `defineSystem` call would look like using each type of function:
-```ts title="Regular Function   : Simpler, but less common in Ethereal Engine"
+```ts title="Regular Function   : Simpler, but less common in iR Engine"
 // Our function
 function sayhello() { console.log("Hello World") }
 

@@ -29,7 +29,7 @@ Projects have a few conventions.
 - `sceneName.thumbnail.png` is an auto-generated scene thumbnail file
 - `xrengine.config.ts` the project configuration, where client routes, database models, feathers services and the project thumbnail can be defined
 
-A project must also have a package.json to provide custom dependencies, and to define the project name, project version, and Ethereal Engine version it is known to work with.
+A project must also have a package.json to provide custom dependencies, and to define the project name, project version, and iR Engine version it is known to work with.
 
 Systems imported from a scene MUST have their filename end with `System.ts` and be in the `/src/systems` folder.
 This is to optimize vite's code-splitting bundling process, as each potentially dynamically importable file will result in a new bundle with it's own copy of all of it's import dependencies.
@@ -38,7 +38,7 @@ This is to optimize vite's code-splitting bundling process, as each potentially 
 If so, they should be defined in `peerDependencies` and kept up to date with the current engine version.
 
 ## Config
-The ethereal engine config file has the following options:
+The iR Engine config file has the following options:
 
 ```ts
 export interface ProjectConfigInterface {
@@ -82,7 +82,7 @@ export interface ProjectEventHooks {
 
 These functions are called when the project they belong to are installed, 
 updated (such as scenes saved) or uninstalled respectively. This is used in the 
-default ethereal engine project to install the default avatars. 
+default iR Engine project to install the default avatars. 
 See `/packages/projects/default-project/projectEventHooks.ts`.
 
 ### Thumbnail

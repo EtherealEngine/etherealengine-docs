@@ -1,6 +1,6 @@
 ## Create IAM Roles for S3/SES/SNS (or a single admin role)
 
-Ethereal Engine interfaces with several AWS services and requires credentials for these purposes. You could make
+iR Engine interfaces with several AWS services and requires credentials for these purposes. You could make
 one admin role with full access to all AWS services, but we recommend making separate, scoped roles for
 each individual service. To create a role, do the following:
 
