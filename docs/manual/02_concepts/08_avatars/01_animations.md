@@ -7,7 +7,7 @@ draft: true
 
 Avatars use the VRM specification to assign humanoid bones. All major humanoid bones are assigned, or matched, to keys of a humanoid bones object. Bone matching ensures guaranteed access to specific avatar bones by consistent keys.
 
-Non-VRM avatars (GLTF/FBX) are also supported if the avatar’s rig follows a Mixamo naming scheme as a fallback for bone matching.
+Non-VRM avatars (GLTF) are also supported if the avatar’s rig follows a Mixamo naming scheme as a fallback for bone matching.
 
 VRM 0 and VRM 1 are both supported by the engine. All VRM 0 avatars will be rotated 180 degrees before having their normalized bones recalculated to ensure they are facing the correct direction.
 
