@@ -49,6 +49,12 @@ var AppleSecret = getAppleClientSecret();
 
 Please note that this Client Secret will expire in 6 months, we cannot increase the expiry duration of the Client Secret it could at maximum be set to 6 months, so we will have to regenerate it after that save it to wherever it was being used.
 
+You can run the above script as an independent Javascript code to generate the Apple Client Secret or you can also use the script written in the IR Engine's repository and generate an Apple key secret by running the following command on the root folder.
+
+```
+npm run create-apple-sso-secret -- --secretKeyPath <Secret_Key_Path>  --keyId <Secret_Key_ID> --teamId <Developer_Account_Team_ID> --clientId <ClientID_For_ServiceID>
+```
+
 # Updating the Client Secret in IR Studio
 
 Every 6 months, when the Client Secret will expire, you will have to get it updated in the running instances of IR Studio as per the following.
