@@ -46,8 +46,8 @@ const getAppleClientSecret = () => {
 var AppleSecret = getAppleClientSecret();
 
 ```
-
-:::Note: Please note that this Client Secret will expire in 6 months, we cannot increase the expiry duration of the Client Secret it could at maximum be set to 6 months, so we will have to regenerate it after that save it to wherever it was being used.
+**NOTE**
+the Client Secret it could at maximum be set to 6 months, so we will have to regenerate it after that save it to wherever it was being used.
 
 You can run the above script as an independent Javascript code to generate the Apple Client Secret or you can also use the script written in the IR Engine's repository and generate an Apple key secret by running the following command on the root folder.
 
