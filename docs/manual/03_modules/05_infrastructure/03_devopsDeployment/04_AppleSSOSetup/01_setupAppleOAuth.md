@@ -27,9 +27,9 @@ In the Apple Developer account, do the following.
 1. Go to section named as `Certificates, Ids & Profiles` and click Identifiers.
 2. Click the '+' button beside the 'identifiers'.
 3. Click "Service IDs" and click "Continue".
-  -. Enter the description.
-  -. Enter the Bundle ID which could be a reverse-domain styled string i.e. 'com.domainname.appname'
-  -. Click "Continue" and "Register".
+  - Enter the description.
+  - Enter the Bundle ID which could be a reverse-domain styled string i.e. 'com.domainname.appname'
+  - Click "Continue" and "Register".
 4. Edit the service ID that you just created. Check `Sign In with Apple` and click on the "Configure" button beside the checked option.
  a. You will see a screen for "Web Auhentication Configuration". Select the App ID we created previously as the "Primary App ID". You can add the domains and the Return URLs on which the user will be redirected once it is authentication by Apple. 
  b. Click "Continue", verify the details and click "Save".
