@@ -1,4 +1,4 @@
-## Install Elastic Search and Kibana using Helm for Server Logs
+# Install Elastic Search and Kibana using Helm for Server Logs
 
 To install Elasticsearch, add the elastic repository in Helm: `helm repo add elastic https://helm.elastic.co`
 
@@ -21,17 +21,17 @@ Check if all the pods are ready: `kubectl get pods`
 
 After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by typing `http://localhost:5601 `in your browser
 
-In order to connect logger with elasticsearch, update config file(values.yml) for Xr env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
+In order to connect logger with elasticsearch, update config file(values.yml) for Xr env `api.extraEnv.ELASTIC_HOST` for e.g. `http://\<username>:\<password>@\<host>:\<port>`
 
 ### Upgrading an existing Helm deployment
 One of the features of Helm is being able to easily upgrade deployments with new values. The command to
 do this is very similar to the install command:
 
-```helm upgrade --reuse-values -f </path/to/*.values.yaml> --set api.image.tag=<latest_github_commit_SHA>,client.image.tag=<latest_github_commit_SHA>,instanceserver.image.tag=<latest_github_commit_SHA> <RELEASE_NAME> etherealengine/etherealengine```
+```helm upgrade --reuse-values -f \</path/to/*.values.yaml> --set api.image.tag=\<latest_github_commit_SHA>,client.image.tag=\<latest_github_commit_SHA>,instanceserver.image.tag=\<latest_github_commit_SHA> \<RELEASE_NAME> etherealengine/etherealengine```
 
-```--reuse-values``` says to carry over all configuration values from the previous deployment. This is most important
+`reuse-values` says to carry over all configuration values from the previous deployment. This is most important
 for tags, since they're usually set inline with the `helm install/upgrade` command, not a Helm config.
-Using ```-f <config_file>``` and ```--set <variables>``` after it will apply any changes on top of the
+Using `-f \<config_file>` and `--set \<variables>` after it will apply any changes on top of the
 carryover values.
 
-If you're not deploying a new build of the codebase, you can skip the entirety of the ```--set *.image.tag=<SHA>```.
+If you're not deploying a new build of the codebase, you can skip the entirety of the `--set *.image.tag=\<SHA>`.

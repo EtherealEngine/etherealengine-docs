@@ -6,7 +6,7 @@ The value `RELEASE_NAME` referenced throughout this guide is the name of the dep
 e.g. `dev` or `prod` and `DO` stands for  `Digital Ocean`
 
 
-## Create DO Kubernetes cluster with four nodepools
+# Create DO Kubernetes cluster with four nodepools
 You will first need to create a DO Kubernetes cluster cluster to be able to install the EE onto it. There are three different ways in DO with which you can create a kubernetes cluster, these are as following.
 * Using DO CLI called ```doctl```.
 * Using DO API
@@ -21,15 +21,15 @@ To create a DO cluster with DO CLI you will have to do the following.
 
 Once the cluster is up and ready you can start adding node pools to it. 
 
-#### create the main nodepool
+## create the main nodepool
 You will have to create a nodepool where the API and other key services/pods of the Ethereal Engine will be residing. To create a new noodpool go to to your newly created [kubernetes cluster](https://cloud.digitalocean.com/kubernetes/clusters). Go to Cluster -> Resources -> Add a Node Pool. You can give it a name like ```np-main``` and recommended size is ```General Purpose - 2vCPU 8 GB RAM```, but you could always alter the size based on your needs. Once that is done we also would need to enable autoscaling, you can do that by ticking the box called ```Autoscale``` and then setting the Minimum Nodes to 3 and Maximum Nodes to 10. After adding these settings click the ```Add Node Pool(s)``` button at the bottom and it should take a few minutes and the nodepool should be created.
 
-#### Create nodepool for instanceserver
+## Create nodepool for instanceserver
 You will need to create a nodepool where instance servers will be residing. To create a new noodpool on [DO Website](https://cloud.digitalocean.com/kubernetes/clusters), go to Cluster -> Resources -> Add a Node Pool. You can give it a name like ```np-instanceserver``` and set a size, the recommended size is ```CPU Intensive - 2vCPU 4 GB RAM```, but you could always alter the size based on your needs. Once that is done we also would need to enable autoscaling, you can do that by ticking the box called ```Autoscale``` and then setting the Minimum Nodes to 6 and Maximum Nodes to 16. After adding these settings click the ```Add Node Pool(s)``` button at the bottom and it should take a few minutes and the nodepool should be created.
-#### Create nodepool for redis
+## Create nodepool for redis
 In Ethereal Engine deployemnt, the Redis deployment gets its own nodepool. To create a new noodpool on [DO Website](https://cloud.digitalocean.com/kubernetes/clusters), go to Cluster -> Resources -> Add a Node Pool. You can give it a name like ```np-redis``` and set a size, the recommended size is ```CPU Intensive - 2vCPU 4 GB RAM```, but you could always alter the size based on your needs. Once that is done we also would need to enable autoscaling, you can do that by ticking the box called ```Autoscale``` and then setting the Minimum Nodes to 3 and Maximum Nodes to 6. After adding these settings click the ```Add Node Pool(s)``` button at the bottom and it should take a few minutes and the nodepool should be created.
 
-#### create nodepool for builder
+## create nodepool for builder
 We would need to create a new nodepool for running the builder job. To create a new noodpool on [DO Website](https://cloud.digitalocean.com/kubernetes/clusters), go to Cluster -> Resources -> Add a Node Pool. You can give it a name like ```np-builder``` and set a size, the recommended size is ```Basic - 8vCPU 16 GB RAM```, but you could always alter the size based on your needs. We do not need to enable autoscaling for the builder node as we normally are aware of the computational requirnments the build job would need and we could always resize it if the need arises, plus this nodepool is not load intensive. After adding these settings click the ```Add Node Pool(s)``` button at the bottom and it should take a few minutes and the nodepool should be created.
 
 ## Create DOCR for build images
@@ -38,7 +38,7 @@ Along with the DOCR URL, to communicate to the DOCR, you would need to create an
 
 ```Note:``` Unlike the AWS ECR, we do not need to explicitly create the repositories for different categories of images, when a request is sent to DOCR with the repository name, it checks if the repository exists, otherwise it creates the repository on the run time. 
 
-#### Create a Database Cluster
+## Create a Database Cluster
 On the [DO Website](https://cloud.digitalocean.com), you could see a button, most probably on the top right end called Create and it is with a dropdown. You can select ```Databases``` from the drop down and it should take you the the page where you can create the Database Cluster. On create Database cluster you can choose the datacentre region and then choose a database engine. We could choose any SQL database but at the time being with the Digital Ocean clsuter we choose the ```MySQL```.
 You can choose the pricing tier that works for you from various configurations that are available. Then give your database clsuter a unique name and select project that you want the cluster to be created in and finally click the ```Create Database Cluster``` button at the bottom to be able to create the database clsuter. It should take a few minutes and after that your Cluster should be ready to host the databases.
 DO Provides extenisve loging and monitoring for your queries running agains the created datbase clsuter which can be viewed under the ```Logs & Queries``` section. You can also get the connection credentials from the main menu and also manage the users under the ```Users & Databases``` section. You can also update the Settings/configurations of the created database cluster from the same menu.
@@ -60,7 +60,7 @@ From the top level of this repo, run ```helm install -f </path/to/agones-default
 This says to install a service called 'agones' from the 'agones' package in the 'agones' chart, and to configure it with
 [agones-default-values.yaml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/agones-default-values.yaml) that can be found in [ethereal-engine-ops](https://github.com/EtherealEngine/ethereal-engine-ops) repo.
 
-### Install redis for each deployment
+## Install redis for each deployment
 
 Each deployment of Ethereal Engine uses a redis cluster for coordinating the 'feathers-sync' library.
 Each redis deployment needs to be named the same as the deployment that will use it; for an
@@ -78,7 +78,7 @@ in your `redis-values.yaml` file, you will also update the Key value to `doks.di
 If you didn't create a nodepool just for redis, you must omit the ` -f </path/to/redis-values.yaml> `,
 as that config makes redis pods run on a specific nodepool.
 
-### Install ingress-nginx
+## Install ingress-nginx
 Open local version of [nginx-ingress-aws-values.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml) file. Remove the aws specific values under the `annotation` sections and add the following DO sepcific values in there.
 
 ```service.beta.kubernetes.io/do-loadbalancer-certificate-id: <Certificate-ID>
@@ -96,11 +96,10 @@ From the top level of this repo, run ```helm install -f </path/to/nginx-ingress-
 This says to install a service called 'nginx' from the 'ingress-nginx' package in the 'ingress-nginx' chart, and to configure it with
 a file found at [nginx-ingress-aws-values.yml](https://github.com/EtherealEngine/ethereal-engine-ops/blob/master/configs/nginx-ingress-aws-values.yml).
 
-#### DO Spaces Object Storage
+## DO Spaces Object Storage
 You will need to created Space Object Storage (SOS) to be able to store your static files that then could be served via the API pods. Go to [DO Website](https://cloud.digitalocean.com) and on the left hand side click on the `Spaces Object Storage` and create an SOS by giving it the right region and a valid name.  Also make sure that you check the `Enable CDN` checkbox to enable the Content Delivery Network for faster delivery of the static content. 
 
-## Networking Configuarations
-### Adding the domain in DNS
+## Adding the domain in DNS
 You will have to add a domain in on the DO control pannel by going to the Networking -> Domains. Lets assume we want to add a domain called `theoverlay.io`. Under the domain section, you will have to add that TLD and once added, you can expand that to check if the name server records have been created agains that domain.
 You will also have to add a few more records for various services of Ethere engine in under this Domain as per the following. 
 
@@ -112,10 +111,10 @@ You will also have to add a few more records for various services of Ethere engi
 
 These records are created to be able to route the traffic to the loadbalancers and then the relevent services with in the Ethereal Engine. 
 
-### Firewall
+## Firewall
 Under the same Networking -> Firewalls you will have to add the TCP and UDP port rules to allow inbound traffic from Ports 7000-8000 and from ports 30000-32767. Similarly you will have to add the outbound rules for All Ports.
 
-### Adding a wildcard certificate
+## Adding a wildcard certificate
 To make aur domains and subdomains secure, we would also be adding an SSL certificate that can ensure the security of our domains and subdomains. We could get our SSL certificate from any valid Certificate Authority. For DO we are at the moment using the Let's Encrypt certificate that gets created from with in the Digital Ocean Control pannel but if you have aquired a certificate of your own, you can also get that added in to the DO.
 
 To create a certificate go to the [DO Website](https://cloud.digitalocean.com) and in the left hand pane under `Settings` click on the `Security` tab and the click on the `Add Certificate` button to add the certificate. Then click on the `Let's Encrypt` certificate since we want to create a new certificate. Under the domain section, add the wildcard comain for ```*.theoverlay.io``` since we need to also make sure that this certificate is valid for our subdomains. Give your certificate a valid name and then click ```Generate Certificate```. 
@@ -127,7 +126,7 @@ Make sure that you have added the following Name server record with the domain r
 
 If the DO is able to validate the doamin then the certificate will be created in a few minutes and you would be able to see that certificate in certificate list. This is the certifiate whose ID will be added in the ngnx-ingress configurations in the values.yaml file. 
 
-### Adding certificate with DO SOS
+## Adding certificate with DO SOS
 Under the spaces Object storage, you can click on the settings and then the Change button in front of the CDN settings to edit the CDN settings. In there, you can add a certificate to make sure that your DO SOS are secure. If you click on the custom domain a list of the available certifiate should appear in which there will be a wildcard certificate for ```*.theoverlay.io```, you can get that added.
 
 ## Deploy to EKS using Helm
@@ -146,16 +145,16 @@ need to be defined in one config file.
 There are many fields to fill in, most marked with `<>`. Not all are necessary for all situations - if you're not
 using social login, for instance, you don't need credentials for Github/Google/Facebook/etc.
 
-### Configuration variables of note
+### Changes in Configuration variables
 Here are some configuration variables that you'll probably need to change based on your specific setup
 
-#### \<api/instanceserver/taskserver\>.extraEnv.AUTH_SECRET
+### \<api/instanceserver/taskserver\>.extraEnv.AUTH_SECRET
 This is a secret value that is used to sign the JWTs that authenticate users.
 You can use any string for this value, and a randomly-generated one of sufficient length,
 i.e. 32 or more characters, will suffice. If this is changed after some users have signed
 in, their login credentials won't work any more.
 
-#### \<api/client/taskserver\>.affinity.nodeAffinity
+### \<api/client/taskserver\>.affinity.nodeAffinity
 Within the sections of the config for the api, client, instanceserver, etc., is a section that looks 
 something like this:
 ```
@@ -174,14 +173,14 @@ The value, `np` in this example, must be changed to match whatever the name of t
 that service will be running on, e.g. if you create a nodepool for the instanceservers called
 `abcd-instanceservers-5`, then you'd use that value under `values:`
 
-#### builder.extraEnv.PRIVATE_ECR
+### builder.extraEnv.PRIVATE_ECR
 If you're using a private ECR repo, set this to "true" in the builder config file.
 
-#### (everything).image.repository
+### (everything).image.repository
 You'll need to replace every \<repository_name\> with the full DOCR_URL of your non-builder repos, e.g. `registry.digitalocean.com/etherealengine/etherealengine-dig-api`.
 Each service has to have the proper `-<service>` suffix on it, e.g. `-instanceserver`, `-client`, etc.
 
-#### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
+### GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET
 If you plan to backup Projects you create in the editor to GitHub, or install project from GitHub, it is necessary 
 to set up the OAuth app that will facilitate this before the initial installation. 
 See [this document](./4_setup_github_oauth_for_projects.md) for
@@ -232,7 +231,7 @@ After you set up port-forwarding, access Elasticsearch, and the Kibana GUI by ty
 
 In order to connect logger with elasticsearch, update config file(values.yml) for Xr env `api.extraEnv.ELASTIC_HOST` for e.g. `http://<username>:<password>@<host>:<port>`
 
-### Upgrading an existing Helm deployment
+## Upgrading an existing Helm deployment
 One of the features of Helm is being able to easily upgrade deployments with new values. The command to
 do this is very similar to the install command:
 
