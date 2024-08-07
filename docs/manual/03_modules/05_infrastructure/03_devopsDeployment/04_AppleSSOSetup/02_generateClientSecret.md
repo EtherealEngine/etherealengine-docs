@@ -6,61 +6,27 @@ We will need to generate a Client Secret for Apple to be able to send authentica
 
 You must have the following credentials already with you.
 
-- Key ID,
-- Team ID,
-- Client ID,
-- Developer Account's secret Key file
+- Developer Account's secret Key file, "This refers to the file that you had created while creating the secret key on Apple Developer account for this deployment." Path of the file could look something simiar to `/home/SecretFiles/AuthKey_M98LQ25T3Z.p8`
+- Key ID, "Key ID of the Secret key that you may have generated on Apple Developer account for this deployment". e.g. "M98LQ25T3Z". Note that the key identifier in your secret key file name is matching with the Key ID. "ZLWKHWSK48"
+- Team ID, "The team IT of the developer account. It can be obtained from the App ID that you have created for this deplooyment."
+- Client ID, "This is the service ID that you have created which can now be used as a client ID" e.g,e.g. "com.ir-engine.qat-dev.id" 
 
 # Generate the Client Secret
 
-You can make a request to Apple with the required credentials and generate the Client Secret. Following Code snippet can be used to request the Client Secret from Apple. This is written in Javascript but you can use pretty much any programming language to request a Client Secret from Apple provided that you have all what is listed in the Pre-Req section.
+You can make a request to Apple with the required credentials and generate the Client Secret. You can use the script written in the IR Engine's repository under `scripts/generate-apple-sso-token.ts` and generate an Apple key secret by running the following command on the root folder. Please refer to the Pre-Req section for details of the values being used in the command below. 
 
 ```
-var jwt = require('jsonwebtoken');
-
-const getAppleClientSecret = () => {
-    const privateKey = fs.readFileSync('Path to the Apple Secret Key');
-	AuthKey_2K4W7DYLQL.p8";
-	const keyId = "XXXXXXXXXXX";
-	const teamId = "XXXXXXXXXXX";
-	const clientId = "Client ID for the deployment, you can get it from Apple and also from the Client ID variabels at Admin/Settings#Authentication";
-
-	const headers = {
-		kid: keyId,
-		typ: "JWT",
-	}
-	const claims = {
-		'iss': teamId,
-		'aud': 'https://appleid.apple.com',
-		'sub': clientId,
-	}
-	token = jwt.sign(claims, privateKey, {
-		algorithm: 'ES256',
-		header: headers,
-		expiresIn: '180d'
-	});
-
-	return token
-
-}
-var AppleSecret = getAppleClientSecret();
-
+npm run generate-apple-sso-token -- --secretKeyPath <Secret_Key_Path>  --keyId <Secret_Key_ID> --teamId <Developer_Account_Team_ID> --clientId <ClientID_For_ServiceID>
 ```
 **NOTE**
-the Client Secret it could at maximum be set to 6 months, so we will have to regenerate it after that save it to wherever it was being used.
-
-You can run the above script as an independent Javascript code to generate the Apple Client Secret or you can also use the script written in the IR Engine's repository and generate an Apple key secret by running the following command on the root folder.
-
-```
-npm run create-apple-sso-secret -- --secretKeyPath \<Secret_Key_Path>  --keyId \<Secret_Key_ID> --teamId \<Developer_Account_Team_ID> --clientId \<ClientID_For_ServiceID>
-```
+The Client Secret's expiry could at maximum be set to 6 months, so we will have to regenerate it after that.
 
 # Updating the Client Secret in IR Studio
 
 Every 6 months, when the Client Secret will expire, you will have to get it updated in the running instances of IR Studio as per the following.
 
 - Generate a new Client Secret as mentioned above.
-- on the Deploed instance, go to '/admin/settings#authentication'.
+- On the deployed instance, go to '/admin/settings#authentication'.
 - Update the Apple Client Secret and hit save, it should take a couple of minutes to restart the API pods and should be done then.
 - Also update the client Secret value in the "Values.yaml" file for both the main release and builder. You can use the following command as reference for updating the Client Secret in Values.yaml files of the deployments. Run the command separately for Main and Builder release while updating the corresponding values accordingly.
  
