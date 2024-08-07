@@ -6,10 +6,10 @@ We will need to generate a Client Secret for Apple to be able to send authentica
 
 You must have the following credentials already with you.
 
-- Developer Account's secret Key file, "This refers to the file that you had created while creating the secret key on Apple Developer account for this deployment." Path of the file could look something simiar to `/home/SecretFiles/AuthKey_M98LQ25T3Z.p8`
-- Key ID, "Key ID of the Secret key that you may have generated on Apple Developer account for this deployment". e.g. "M98LQ25T3Z". Note that the key identifier in your secret key file name is matching with the Key ID. "ZLWKHWSK48"
-- Team ID, "The team IT of the developer account. It can be obtained from the App ID that you have created for this deplooyment."
-- Client ID, "This is the service ID that you have created which can now be used as a client ID" e.g,e.g. "com.ir-engine.qat-dev.id" 
+- **Developer Account's secret Key file**: This refers to the file that you had created while creating the secret key on Apple Developer account for this deployment. The path of the file could look something simiar to `/home/SecretFiles/AuthKey_M98LQ25T3Z.p8`
+- **Key ID**: Key ID of the Secret key that you may have generated on Apple Developer account for this deployment. e.g. "M98LQ25T3Z". Note that the key identifier in your secret key file name is matching with the Key ID.
+- **Team ID**: The team ID of the developer account. It can be obtained from the App ID that you have created for this deployment. e.g, "ZLWKHWSK48"
+- **Client ID**: This is the service ID that you have created which can now be used as a client ID. e.g. "com.ir-engine.qat-dev.id" 
 
 # Generate the Client Secret
 
@@ -28,7 +28,7 @@ Every 6 months, when the Client Secret will expire, you will have to get it upda
 - Generate a new Client Secret as mentioned above.
 - On the deployed instance, go to '/admin/settings#authentication'.
 - Update the Apple Client Secret and hit save, it should take a couple of minutes to restart the API pods and should be done then.
-- Also update the client Secret value in the "Values.yaml" file for both the main release and builder. You can use the following command as reference for updating the Client Secret in Values.yaml files of the deployments. Run the command separately for Main and Builder release while updating the corresponding values accordingly.
+- Also update the Client Secret value in the "Values.yaml" file for both the main release and builder. You can use the following command as reference for updating the Client Secret in Values.yaml files of the deployments. Run the command separately for Main and Builder release while updating the corresponding values accordingly.
  
 ```
 helm repo update && helm upgrade --reuse-values --set api.extraEnv.APPLE_CALLBACK_URL=\<CallbackURL> --set api.extraEnv.APPLE_CLIENT_ID=\<ClientID> --set api.extraEnv.APPLE_CLIENT_SECRET=\<ClientSecret> --set media.extraEnv.APPLE_CALLBACK_URL=\<CallbackURL> --set media.extraEnv.APPLE_CLIENT_ID=\<ClientID> --set media.extraEnv.APPLE_CLIENT_SECRET="\<ClientSecret>" \<Main and builder Release Name> etherealengine/etherealengine
