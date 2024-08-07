@@ -1,0 +1,2 @@
+# DO Spaces Object Storage
+You will need to created Space Object Storage (SOS) to be able to store your static files that then could be served via the API pods. Go to [DO Website](https://cloud.digitalocean.com) and on the left hand side click on the `Spaces Object Storage` and create an SOS by giving it the right region and a valid name.  Also make sure that you check the `Enable CDN` checkbox to enable the Content Delivery Network for faster delivery of the static content. 
