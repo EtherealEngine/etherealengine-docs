@@ -16,10 +16,10 @@ In the Apple Developer account, do the following.
 2. Create a new identifier, which usually can be created by clicking a small '+' icon besides the identifiers headline. If you do not see that, your logged in user might not have the necessary permissions to add the app ID. Please get your users the right permissions before moving ahead. 
 3. Click "App IDs", App and click "Continue".
 4. Fill in the form that opens up.
- a. Enter the description.
- b. Enter the Bundle ID which could be a reverse-domain styled string i.e. 'com.domainname.appname'
- c. Scroll down to "Capabilities" section and check `Sign In with Apple` and click continue. 
- d. Verify details and click register.
+  a. Enter the description.
+  b. Enter the Bundle ID which could be a reverse-domain styled string i.e. 'com.domainname.appname'
+  c. Scroll down to "Capabilities" section and check `Sign In with Apple` and click continue. 
+  d. Verify details and click register.
 
 # Create a Service ID
 In the Apple Developer account, do the following. 
@@ -27,12 +27,12 @@ In the Apple Developer account, do the following.
 1. Go to section named as `Certificates, Ids & Profiles` and click Identifiers.
 2. Click the '+' button beside the 'identifiers'.
 3. Click "Service IDs" and click "Continue".
- 1. Enter the description.
- 2. Enter the Bundle ID which could be a revers-domain styled string i.e. 'com.domainname.appname'
- 3. Click "Continue" and "Register".
+  a. Enter the description.
+  b. Enter the Bundle ID which could be a revers-domain styled string i.e. 'com.domainname.appname'
+  c. Click "Continue" and "Register".
 4. Edit the service ID that you just created. Check `Sign In with Apple` and click on the "Configure" button beside the checked option.
- 4. You will see a screen for "Web Auhentication Configuration". Select the App ID we created previously as the "Primary App ID". You can add the domains and the Return URLs on which the user will be redirected once it is authentication by Apple. 
- 5. Click "Continue", verify the details and click "Save".
+ a. You will see a screen for "Web Auhentication Configuration". Select the App ID we created previously as the "Primary App ID". You can add the domains and the Return URLs on which the user will be redirected once it is authentication by Apple. 
+ b. Click "Continue", verify the details and click "Save".
 
  :::Note: Please note that the Service ID that you just created will serve as your Client ID while sending authentication requests from your app.
 
