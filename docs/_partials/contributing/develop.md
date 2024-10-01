@@ -1,2 +1,0 @@
-Ethereal Engine is an open-source project, based on the [CPAL](https://github.com/EtherealEngine/etherealengine/blob/dev/LICENSE) license.
-You can find the source code of the engine on Ethereal Engine's [GitHub](https://github.com/EtherealEngine/etherealengine) repository, and some guidelines on how to contribute to its codebase in the [Contributing](https://github.com/EtherealEngine/etherealengine#contributing) section of the repository's readme.
